@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg:   #0D0D0B;
-  --color-fg:   #EDE8DF;
-  --color-rust: #C85A2A;
-  --color-muted:#6E6C69;
+  --color-cream:  #F7F3EC;
+  --color-ink:    #1A1917;
+  --color-navy:   #0F1629;
+  --color-lime:   #C6F135;
+  --color-muted:  #8C8880;
+  --color-rule:   rgba(26,25,23,0.10);
 
   --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-serif: 'Fraunces', Georgia, serif;
   --font-mono:  'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 }
 
@@ -15,12 +17,13 @@
   :root {
     scroll-behavior: smooth;
 
-    --bg:   #0D0D0B;
-    --bg2:  #131311;
-    --fg:   #EDE8DF;
-    --muted:#6E6C69;
-    --rust: #C85A2A;
-    --rule: rgba(237,232,223,0.08);
+    --bg:    #F7F3EC;
+    --bg2:   #EDE9E1;
+    --ink:   #1A1917;
+    --navy:  #0F1629;
+    --lime:  #C6F135;
+    --muted: #8C8880;
+    --rule:  rgba(26,25,23,0.10);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -35,7 +38,7 @@
 
   body {
     background-color: var(--bg);
-    color: var(--fg);
+    color: var(--ink);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 1rem;
     line-height: 1.7;
@@ -44,18 +47,18 @@
   }
 
   ::selection {
-    background-color: var(--rust);
-    color: #fff;
+    background-color: var(--lime);
+    color: var(--ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--rust);
+    outline: 2px solid var(--lime);
     outline-offset: 3px;
     border-radius: 3px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    line-height: 1.15;
+    line-height: 1.1;
     font-weight: 400;
   }
 }

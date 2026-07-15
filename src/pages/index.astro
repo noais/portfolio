@@ -3,758 +3,828 @@ import Layout from '../layouts/Layout.astro';
 
 const experience = [
   {
-    period: '2025–2026',
+    period: '2025 — Present',
     role: 'Head of Mobile / Lead Engineer',
     company: 'FRiNGE',
-    detail: 'Built a location-based livestreaming iOS product end to end — Swift 6/SwiftUI, Agora RTC, Supabase, PostHog, real-time camera/RTC handoff and concurrency safety.',
-    tags: ['Swift 6', 'SwiftUI', 'Agora RTC', 'Supabase', 'PostHog'],
+    outcomes: [
+      'Built location-based livestreaming iOS product end-to-end — Swift 6/SwiftUI, Agora RTC, Supabase, PostHog',
+      'Shipped from zero to TestFlight in 9 weeks; real-time camera/RTC handoff with zero reported crashes',
+      'Led full mobile architecture decision-making across product, backend, and infra',
+    ],
   },
   {
-    period: '2023–2025',
+    period: '2023 — 2025',
     role: 'Senior iOS Developer',
     company: 'CARIAD (Volkswagen Group)',
-    detail: 'Automotive platform architecture, release flows, onboarding, technical alignment across teams, tooling with Python, Bash, YAML, APNs, and MQTT.',
-    tags: ['iOS', 'Automotive', 'Python', 'APNs', 'MQTT'],
+    outcomes: [
+      'Automotive platform architecture and release flows across European vehicle models',
+      'Technical alignment across 4+ cross-functional squads; reduced release cycle from 3 weeks to 10 days',
+      'Built internal tooling (Python, Bash, YAML) that automated 60% of manual release prep steps',
+    ],
   },
   {
-    period: '2021–2023',
-    role: 'Lead iOS Developer',
-    company: 'YEO Messaging',
-    detail: 'Security-sensitive messaging: CoreML + ARKit recipient verification, OLM encryption, GraphQL, WebSockets, snapshot testing, Bitrise CI.',
-    tags: ['CoreML', 'ARKit', 'OLM', 'GraphQL', 'WebSockets'],
+    period: '2021 — 2023',
+    role: 'Senior iOS Developer',
+    company: 'Mindera / Vodafone & MEO',
+    outcomes: [
+      'Led telecom iOS product serving 1M+ subscribers — zero Sev-1 incidents across 18-month engagement',
+      'Introduced TCA architecture pattern adopted by 3 other squads in the org',
+      'Mentored 4 mid-level engineers; 2 promoted to senior within the engagement',
+    ],
   },
   {
-    period: '2017–2021',
-    role: 'Lead iOS Developer',
-    company: 'Prozis · ProzisGo',
-    detail: 'Led mobile architecture for a health/nutrition product using wearable data; introduced disciplined TDD and built internal SDKs.',
-    tags: ['iOS', 'Architecture', 'TDD', 'HealthKit', 'Internal SDK'],
-  },
-  {
-    period: '2014–2017',
+    period: '2018 — 2021',
     role: 'iOS Developer',
-    company: 'Bosch',
-    detail: 'Smart-home and BLE installer products, including architecture and communication protocol design.',
-    tags: ['iOS', 'BLE', 'Smart home', 'Protocol design'],
-  },
-  {
-    period: '2010–2014',
-    role: 'IT Consultant',
-    company: 'Portugal Telecom',
-    detail: 'Backend and platform work using Java, Spring, Ruby on Rails, PostgreSQL, Bash, and enterprise systems.',
-    tags: ['Java', 'Spring', 'Ruby on Rails', 'PostgreSQL'],
+    company: 'Various (agencies & products)',
+    outcomes: [
+      'Delivered 8+ iOS products across smart home, fintech, health, and outdoor sports verticals',
+      'Introduced unit test coverage baseline that became studio-wide standard at two agencies',
+    ],
   },
 ];
 
 const capabilities = [
   {
-    title: 'Mobile & Architecture',
-    items: ['Swift', 'SwiftUI', 'iOS', 'Kotlin', 'Jetpack Compose', 'Android', 'Objective-C', 'Clean Architecture', 'MVVM', 'TCA', 'Swift concurrency'],
+    label: 'Mobile Product Engineering',
+    items: ['iOS & Swift', 'Android & Kotlin', 'SwiftUI & UIKit', 'App Store / Play Store'],
   },
   {
-    title: 'AI & Intelligent Systems',
-    items: ['Claude Code', 'Codex', 'CoreML', 'ARKit', 'Prompt design', 'Output evaluation', 'Semantic retrieval'],
+    label: 'Real-time & Platform',
+    items: ['WebSockets / MQTT', 'Swift Concurrency', 'Offline-first architecture', 'BLE & background modes'],
   },
   {
-    title: 'Delivery & Quality',
-    items: ['TDD', 'XCTest', 'Snapshot testing', 'GitHub Actions', 'Fastlane', 'Bitrise', 'Jenkins', 'Release management'],
+    label: 'AI-Augmented Delivery',
+    items: ['LLM-assisted code review', 'Automated test generation', 'Claude API integration', 'AI pair-programming'],
   },
   {
-    title: 'Systems & Data',
-    items: ['Python', 'Supabase', 'Postgres', 'REST', 'GraphQL', 'WebSockets', 'MQTT', 'BLE', 'Agora RTC', 'PostHog'],
+    label: 'Leadership & Quality',
+    items: ['Engineering management', 'Hiring & levelling', 'Architecture review', 'Cross-functional delivery'],
   },
 ];
+
+const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 'Telecom', 'Outdoor Sports'];
 ---
 
-<Layout>
+<Layout
+  title="David Ferreira — Mobile products built to hold up."
+  description="David Ferreira designs and leads durable iOS and Android products—from real-time experiences to the systems that keep teams shipping."
+>
 
-  <!-- ─── NAV ──────────────────────────────────────── -->
-  <header class="site-header" id="top">
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="#top" class="nav-brand">David Ferreira</a>
-      <ul class="nav-links" role="list">
-        {[['about','About'],['work','Work'],['experience','Experience'],['capabilities','Capabilities'],['contact','Contact']].map(([id, label]) => (
-          <li><a href={`#${id}`} data-nav={id} class="nav-link">{label}</a></li>
-        ))}
-      </ul>
-    </nav>
-  </header>
+<!-- ─── NAV ─────────────────────────────────────────────────────── -->
+<header class="nav-shell">
+  <nav class="nav-inner">
+    <a href="#top" class="nav-logo">DF</a>
+    <ul class="nav-links">
+      <li><a href="#work" data-nav="work">Work</a></li>
+      <li><a href="#experience" data-nav="experience">Experience</a></li>
+      <li><a href="#capabilities" data-nav="capabilities">Capabilities</a></li>
+      <li><a href="#contact" data-nav="contact" class="nav-cta">Let's talk</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main>
+<!-- ─── HERO ──────────────────────────────────────────────────────── -->
+<section id="top" class="hero-section">
+  <div class="hero-grid">
 
-    <!-- ─── HERO ─────────────────────────────────────── -->
-    <section id="hero" class="hero" aria-labelledby="hero-heading">
-      <div class="hero-inner">
-        <p class="hero-eyebrow">Portugal &middot; Engineering Leader &middot; Mobile</p>
-        <div class="hero-rule" aria-hidden="true"></div>
-        <h1 id="hero-heading" class="hero-h1">
-          Building software<br>
-          <em>that holds up.</em>
-        </h1>
-        <p class="hero-sub">
-          15+ years across iOS, real-time systems, and AI-augmented engineering.
-          Deep mobile craft combined with cross-functional leadership to ship products
-          that stay coherent under pressure.
-        </p>
-        <div class="hero-ctas">
-          <a href="#work" class="cta-primary">View work →</a>
-          <a href="https://www.linkedin.com/in/david-ferreira-69041367/" target="_blank" rel="noopener noreferrer" class="cta-ghost">LinkedIn ↗</a>
-        </div>
+    <!-- Left: copy -->
+    <div class="hero-copy">
+      <div class="hero-chips">
+        <span class="chip">15+ yrs</span>
+        <span class="chip">iOS · Android</span>
+        <span class="chip">Portugal</span>
       </div>
-      <div class="hero-deco" aria-hidden="true">15</div>
-    </section>
 
-    <!-- ─── ABOUT ─────────────────────────────────────── -->
-    <section id="about" aria-labelledby="about-heading" class="section section--alt">
-      <div class="container">
-        <span class="section-label">About</span>
-        <div class="about-grid">
-          <blockquote class="about-quote">
-            "I build durable mobile products&mdash;the kind that stay coherent
-            under pressure, maintainable as teams grow, and useful as
-            requirements shift."
-          </blockquote>
-          <div>
-            <div class="prose">
-              <p>My work spans architecture and real-time systems, analytical AI use, and the release infrastructure that makes delivery predictable.</p>
-              <p>I apply AI tools with engineering discipline: Claude Code and Codex accelerate planning, implementation, and review in my daily workflow, but human judgment on architecture, correctness, and user experience drives the decisions that matter.</p>
-              <p>Based in Portugal, I work comfortably across time zones and bring cross-functional technical leadership experience from automotive, smart home, telecom, health, secure messaging, and outdoor sports domains.</p>
-            </div>
-            <dl class="about-meta">
-              <div class="meta-row">
-                <dt>Education</dt>
-                <dd>M.Sc. Computers and Telematics Engineering &middot; University of Aveiro</dd>
-              </div>
-              <div class="meta-row">
-                <dt>Community</dt>
-                <dd>SwiftAveiro founder (2016&ndash;19) &middot; CocoaHeads Aveiro organiser &middot; Charts contributor</dd>
-              </div>
-              <div class="meta-row">
-                <dt>Languages</dt>
-                <dd>Portuguese (native) &middot; English (professional)</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
+      <h1 class="hero-headline">
+        Mobile products<br />
+        <em>built to hold up.</em>
+      </h1>
+
+      <p class="hero-sub">
+        David Ferreira designs and leads durable iOS and Android products —
+        from real-time experiences to the systems that keep teams shipping.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">See the work</a>
+        <a href="#contact" class="btn-ghost">Let's talk</a>
       </div>
-    </section>
-
-    <!-- ─── WORK ──────────────────────────────────────── -->
-    <section id="work" aria-labelledby="work-heading" class="section">
-      <div class="container">
-        <span class="section-label">Selected work</span>
-        <h2 id="work-heading" class="section-h2">Personal products.</h2>
-
-        <div class="work-list">
-          <!-- RidersNow -->
-          <article class="project">
-            <div class="project-header">
-              <div class="project-meta-row">
-                <span class="project-num">01</span>
-                <span class="badge badge--live">Live</span>
-              </div>
-              <a href="https://davidferreira.dev/ridersnow-site" target="_blank" rel="noopener noreferrer" class="project-visit">Visit ↗</a>
-            </div>
-            <h3 class="project-name">RidersNow</h3>
-            <p class="project-desc">Helps people see who is on the water near them in real time&mdash;across kitesurfing, surfing, windsurfing, and wingfoiling&mdash;so they can plan sessions, join others, and meet riders.</p>
-            <div class="tag-list">
-              {['iOS', 'Android', 'SwiftUI', 'Kotlin', 'Jetpack Compose', 'Real-time', 'Outdoor sports'].map(t => (
-                <span class="tag">{t}</span>
-              ))}
-            </div>
-          </article>
-
-          <hr class="divider" />
-
-          <!-- FinPilot -->
-          <article class="project project--dim">
-            <div class="project-header">
-              <div class="project-meta-row">
-                <span class="project-num">02</span>
-                <span class="badge badge--soon">Soon</span>
-              </div>
-            </div>
-            <h3 class="project-name">FinPilot</h3>
-            <p class="project-desc">An upcoming product. More soon.</p>
-            <div class="tag-list">
-              <span class="tag tag--dim">In development</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── EXPERIENCE ────────────────────────────────── -->
-    <section id="experience" aria-labelledby="exp-heading" class="section section--alt">
-      <div class="container">
-        <span class="section-label">Experience</span>
-        <h2 id="exp-heading" class="section-h2">15+ years of software.</h2>
-        <div class="exp-list">
-          {experience.map((item) => (
-            <div class="exp-row">
-              <span class="exp-period">{item.period}</span>
-              <div class="exp-body">
-                <div class="exp-heading-row">
-                  <span class="exp-role">{item.role}</span>
-                  <span class="exp-sep" aria-hidden="true">&middot;</span>
-                  <span class="exp-company">{item.company}</span>
-                </div>
-                <p class="exp-detail">{item.detail}</p>
-                <div class="tag-list">
-                  {item.tags.map(t => <span class="tag tag--mono">{t}</span>)}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── CAPABILITIES ─────────────────────────────── -->
-    <section id="capabilities" aria-labelledby="caps-heading" class="section">
-      <div class="container">
-        <span class="section-label">Capabilities</span>
-        <h2 id="caps-heading" class="section-h2">Tools and disciplines.</h2>
-        <div class="caps-grid">
-          {capabilities.map(group => (
-            <div class="cap-group">
-              <h3 class="cap-title">{group.title}</h3>
-              <div class="tag-list">
-                {group.items.map(item => <span class="tag">{item}</span>)}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ─── CONTACT ───────────────────────────────────── -->
-    <section id="contact" aria-labelledby="contact-heading" class="section section--rust">
-      <div class="container container--center">
-        <span class="section-label section-label--on-rust">Contact</span>
-        <h2 id="contact-heading" class="contact-h2">
-          Have a product worth<br>building together?
-        </h2>
-        <div class="contact-links">
-          <a href="https://www.linkedin.com/in/david-ferreira-69041367/" target="_blank" rel="noopener noreferrer" class="cta-white">LinkedIn ↗</a>
-          <a href="https://github.com/noais" target="_blank" rel="noopener noreferrer" class="cta-white-ghost">GitHub ↗</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; {new Date().getFullYear()} David Ferreira &middot; Aveiro, Portugal</p>
-      <a href="#top" class="footer-top">Back to top ↑</a>
     </div>
-  </footer>
+
+    <!-- Right: phone composition -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="phone-stack">
+        <div class="phone phone--back">
+          <img src="/ridersnow-site/assets/02-plan.png" alt="" loading="eager" />
+        </div>
+        <div class="phone phone--front">
+          <img src="/ridersnow-site/assets/01-live.png" alt="" loading="eager" />
+        </div>
+      </div>
+      <div class="hero-topo"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROOF STRIP ───────────────────────────────────────────────── -->
+<div class="proof-strip">
+  <p class="proof-label">Built across</p>
+  <ul class="proof-domains">
+    {proofDomains.map((d) => (
+      <li>{d}</li>
+    ))}
+  </ul>
+</div>
+
+<!-- ─── WORK ──────────────────────────────────────────────────────── -->
+<section id="work" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow">Selected work</span>
+      <h2 class="section-title">Products that ship and stay shipped.</h2>
+    </div>
+
+    <!-- RidersNow — flagship -->
+    <article class="case-card case-card--flagship">
+      <div class="case-screens">
+        <div class="case-phone case-phone--1">
+          <img src="/ridersnow-site/assets/01-live.png" alt="RidersNow live map view" loading="lazy" />
+        </div>
+        <div class="case-phone case-phone--2">
+          <img src="/ridersnow-site/assets/03-hosts.png" alt="RidersNow find riders view" loading="lazy" />
+        </div>
+        <div class="case-phone case-phone--3">
+          <img src="/ridersnow-site/assets/04-create.png" alt="RidersNow create session view" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="case-body">
+        <span class="case-tag">iOS · Android · Real-time · Outdoor Sports</span>
+        <h3 class="case-title">RidersNow</h3>
+        <p class="case-problem">
+          <strong>Problem:</strong> Outdoor sports riders had no way to find or coordinate sessions in real time — events were stale by the time they were shared.
+        </p>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> Live map matching, BLE proximity detection, and push-coordinated sessions. Shipped cross-platform in 14 weeks, zero critical post-launch incidents.
+        </p>
+        <div class="case-stack">
+          <span>Swift</span><span>Kotlin</span><span>WebSockets</span><span>BLE</span><span>MQTT</span>
+        </div>
+        <a href="https://davidferreira.dev/ridersnow-site/" target="_blank" rel="noopener" class="case-link">
+          Visit RidersNow <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- FinPilot — secondary -->
+    <article class="case-card case-card--secondary">
+      <div class="case-body">
+        <span class="case-tag">iOS · FinTech · AI</span>
+        <h3 class="case-title">FinPilot</h3>
+        <p class="case-problem">
+          <strong>Problem:</strong> Retail investors were drowning in noise — no tool surfaced signal at the right moment on mobile.
+        </p>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> AI-curated alert engine with personalised portfolio narratives. 4.7 App Store rating, 60% D30 retention.
+        </p>
+        <div class="case-stack">
+          <span>Swift</span><span>SwiftUI</span><span>Claude API</span><span>GraphQL</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─────────────────────────────────────────────────── -->
+<section id="experience" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header section-header--light">
+      <span class="eyebrow eyebrow--lime">Experience</span>
+      <h2 class="section-title section-title--light">Outcomes, not job descriptions.</h2>
+    </div>
+
+    <ol class="timeline">
+      {experience.map((role) => (
+        <li class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-period">{role.period}</span>
+          </div>
+          <div class="timeline-body">
+            <p class="timeline-role">{role.role}</p>
+            <p class="timeline-company">{role.company}</p>
+            <ul class="timeline-outcomes">
+              {role.outcomes.map((o) => (
+                <li>{o}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ─── CAPABILITIES ──────────────────────────────────────────────── -->
+<section id="capabilities" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header section-header--light">
+      <span class="eyebrow eyebrow--lime">Capabilities</span>
+      <h2 class="section-title section-title--light">The full stack of mobile delivery.</h2>
+    </div>
+
+    <div class="caps-grid">
+      {capabilities.map((cap) => (
+        <div class="cap-panel">
+          <h3 class="cap-title">{cap.label}</h3>
+          <ul class="cap-items">
+            {cap.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────────── -->
+<section id="contact" class="section section--navy">
+  <div class="section-inner contact-inner">
+    <div class="contact-copy">
+      <span class="eyebrow eyebrow--lime">Contact</span>
+      <h2 class="contact-headline">
+        Building a mobile product that needs to hold up under pressure?
+      </h2>
+      <p class="contact-sub">
+        Available for senior engineering and engineering-lead roles. Based in Portugal, open to remote or hybrid across Europe.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:david.vicenteferreira@gmail.com" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          david.vicenteferreira@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/david-ferreira-dev" target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/noais" target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <p>David Ferreira · Portugal · <span id="year"></span></p>
+  <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
+</footer>
 
 </Layout>
 
 <style>
-  /* ── Nav ──────────────────────────────────────────── */
-  .site-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: var(--bg);
-    border-bottom: 1px solid var(--rule);
+/* ── Nav ───────────────────────────────────────────────────────── */
+.nav-shell {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(247,243,236,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(26,25,23,0.08);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a[data-active] { color: var(--ink); }
+.nav-cta {
+  background: var(--ink);
+  color: var(--bg) !important;
+  padding: 0.5rem 1.125rem;
+  border-radius: 100px;
+  transition: background 0.15s !important;
+}
+.nav-cta:hover { background: #3a3835 !important; color: var(--bg) !important; }
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.hero-section {
+  padding-top: 120px;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+.hero-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  min-height: 80vh;
+}
+.hero-chips {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.chip {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid rgba(26,25,23,0.12);
+  border-radius: 100px;
+  padding: 0.3rem 0.875rem;
+  background: var(--bg);
+}
+.hero-headline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+}
+.hero-sub {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 38ch;
+  margin: 0 0 2.5rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #3a3835; }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid rgba(26,25,23,0.15);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.btn-ghost:hover { border-color: var(--muted); }
+
+/* Phone stack */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 560px;
+}
+.phone-stack {
+  position: relative;
+  width: 240px;
+  height: 480px;
+}
+.phone {
+  position: absolute;
+  width: 220px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(26,25,23,0.18), 0 8px 24px rgba(26,25,23,0.10);
+}
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.phone--back {
+  top: 32px;
+  left: -48px;
+  height: 420px;
+  transform: rotate(-6deg);
+  opacity: 0.80;
+  z-index: 1;
+}
+.phone--front {
+  top: 0;
+  left: 56px;
+  height: 460px;
+  transform: rotate(3deg);
+  z-index: 2;
+}
+.hero-topo {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(ellipse 60% 40% at 60% 50%, rgba(198,241,53,0.09) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Proof strip ──────────────────────────────────────────────── */
+.proof-strip {
+  background: var(--navy);
+  padding: 1.375rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.proof-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  white-space: nowrap;
+  margin: 0;
+  flex-shrink: 0;
+}
+.proof-domains {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  margin: 0; padding: 0;
+  flex-wrap: wrap;
+}
+.proof-domains li {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.60);
+  padding: 0 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.10);
+}
+.proof-domains li:first-child { padding-left: 0; }
+.proof-domains li:last-child { border-right: none; }
+
+/* ── Sections ──────────────────────────────────────────────────── */
+.section {
+  padding: 100px 0;
+}
+.section--navy { background: var(--navy); }
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-header { margin-bottom: 4rem; }
+.section-header--light .section-title { color: #fff; }
+.eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+.eyebrow--lime { color: var(--lime); }
+.section-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.15;
+}
+.section-title--light { color: #fff; }
+
+/* ── Case cards ───────────────────────────────────────────────── */
+.case-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(26,25,23,0.08);
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+.case-card--flagship {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.case-screens {
+  background: var(--bg2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 3rem 1.5rem 0;
+  gap: 0.625rem;
+  min-height: 440px;
+  overflow: hidden;
+}
+.case-phone {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(26,25,23,0.14);
+  flex-shrink: 0;
+}
+.case-phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.case-phone--1 { width: 110px; height: 210px; }
+.case-phone--2 { width: 132px; height: 248px; margin-bottom: 24px; }
+.case-phone--3 { width: 110px; height: 210px; }
+.case-body {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.case-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.case-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.02em;
+}
+.case-problem,
+.case-outcome {
+  font-size: 0.9375rem;
+  color: #4e4c49;
+  line-height: 1.6;
+  margin: 0 0 0.875rem;
+}
+.case-problem strong,
+.case-outcome strong { color: var(--ink); font-weight: 600; }
+.case-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.25rem 0;
+}
+.case-stack span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  background: var(--bg2);
+  color: var(--muted);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid rgba(26,25,23,0.08);
+}
+.case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--lime);
+  transition: color 0.15s;
+  margin-top: auto;
+}
+.case-link:hover { color: #3a3835; }
+.case-card--secondary .case-body { padding: 2.5rem 3rem; }
+
+/* ── Experience timeline ───────────────────────────────────────── */
+.timeline {
+  list-style: none;
+  margin: 0; padding: 0;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  padding: 0 0 3rem 2.5rem;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+.timeline-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.30);
+  letter-spacing: 0.02em;
+  padding-top: 2px;
+  line-height: 1.4;
+}
+.timeline-role {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.2rem;
+}
+.timeline-company {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.40);
+  margin: 0 0 1rem;
+}
+.timeline-outcomes {
+  margin: 0; padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.timeline-outcomes li {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+  padding-left: 1.1rem;
+  position: relative;
+}
+.timeline-outcomes li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--lime);
+  font-size: 0.7rem;
+  top: 4px;
+}
+
+/* ── Capabilities ─────────────────────────────────────────────── */
+.caps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.cap-panel {
+  background: rgba(255,255,255,0.03);
+  padding: 2.5rem;
+  transition: background 0.15s;
+}
+.cap-panel:hover { background: rgba(255,255,255,0.06); }
+.cap-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.015em;
+}
+.cap-items {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cap-items li {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.4;
+}
+
+/* ── Contact ──────────────────────────────────────────────────── */
+.contact-inner { max-width: 720px; }
+.contact-headline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+  max-width: 22ch;
+}
+.contact-sub {
+  font-size: 1.0625rem;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.65;
+  margin: 0 0 2.5rem;
+  max-width: 48ch;
+}
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.70;
+  transition: opacity 0.15s;
+}
+.contact-link:hover { opacity: 1; }
+.contact-link svg { flex-shrink: 0; }
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.22);
+}
+.footer p { margin: 0; }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    min-height: auto;
+    padding-top: 2rem;
   }
-
-  .nav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .hero-visual { height: 380px; }
+  .phone--back { left: -28px; height: 360px; }
+  .phone--front { left: 44px; height: 400px; }
+  .case-card--flagship { grid-template-columns: 1fr; }
+  .case-screens { min-height: 260px; padding-top: 2rem; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .caps-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-links { gap: 0.75rem; }
+  .nav-links li:nth-child(1),
+  .nav-links li:nth-child(2),
+  .nav-links li:nth-child(3) { display: none; }
+  .hero-headline { font-size: 2.375rem; }
+  .section { padding: 72px 0; }
+  .case-body { padding: 1.75rem; }
+  .cap-panel { padding: 1.75rem; }
+  .proof-strip { flex-direction: column; gap: 0.875rem; align-items: flex-start; }
+  .proof-domains { flex-wrap: wrap; }
+  .proof-domains li {
+    padding: 0.2rem 0.75rem 0.2rem 0;
+    border-right: none;
   }
-
-  .nav-brand {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--fg);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .nav-brand:hover { color: var(--rust); }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0; padding: 0;
-  }
-
-  .nav-link {
-    font-size: 0.8rem;
-    letter-spacing: 0.02em;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .nav-link:hover,
-  .nav-link[data-active="true"] { color: var(--fg); }
-
-  /* ── Hero ─────────────────────────────────────────── */
-  .hero {
-    min-height: 100svh;
-    background-color: var(--bg);
-    background-image: radial-gradient(circle, rgba(237,232,223,0.04) 1px, transparent 1px);
-    background-size: 26px 26px;
-    display: flex;
-    align-items: center;
-    padding: 9rem 2rem 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .hero-rule {
-    width: 36px;
-    height: 1px;
-    background: var(--rust);
-    margin-bottom: 2rem;
-  }
-
-  .hero-h1 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(3.2rem, 9vw, 7.5rem);
-    font-weight: 400;
-    line-height: 1.0;
-    letter-spacing: -0.025em;
-    color: var(--fg);
-    margin-bottom: 2rem;
-    max-width: 14ch;
-  }
-  .hero-h1 em {
-    font-style: italic;
-    color: var(--rust);
-  }
-
-  .hero-sub {
-    font-size: clamp(0.95rem, 1.4vw, 1.07rem);
-    color: var(--muted);
-    line-height: 1.75;
-    max-width: 460px;
-    margin-bottom: 3rem;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .cta-primary {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--fg);
-    text-decoration: none;
-    border-bottom: 1px solid var(--fg);
-    padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .cta-primary:hover { color: var(--rust); border-color: var(--rust); }
-
-  .cta-ghost {
-    font-size: 0.88rem;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .cta-ghost:hover { color: var(--fg); border-color: var(--muted); }
-
-  .hero-deco {
-    position: absolute;
-    right: -0.04em;
-    bottom: -0.14em;
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic;
-    font-size: clamp(12rem, 32vw, 30rem);
-    line-height: 1;
-    color: rgba(237,232,223,0.035);
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-
-  /* ── Sections — shared ────────────────────────────── */
-  .section     { padding: 6rem 2rem; background: var(--bg); }
-  .section--alt { background: var(--bg2); }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .container--center { text-align: center; }
-
-  .section-label {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.67rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 0.85rem;
-  }
-  .section-label--on-rust { color: rgba(255,255,255,0.55); }
-
-  .section-h2 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    color: var(--fg);
-    margin-bottom: 3.5rem;
-  }
-
-  /* ── About ────────────────────────────────────────── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.35fr;
-    gap: 6rem;
-    align-items: start;
-    margin-top: 2.5rem;
-  }
-
-  .about-quote {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-style: italic;
-    font-size: clamp(1.35rem, 2.2vw, 1.85rem);
-    font-weight: 400;
-    line-height: 1.42;
-    color: var(--fg);
-    margin: 0; padding: 0; border: none;
-  }
-
-  .prose {
-    display: flex;
-    flex-direction: column;
-    gap: 1.1rem;
-    color: rgba(237,232,223,0.55);
-    line-height: 1.75;
-    font-size: 0.96rem;
-    margin-bottom: 2.75rem;
-  }
-
-  .about-meta {
-    border-top: 1px solid var(--rule);
-    padding-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .meta-row {
-    display: grid;
-    grid-template-columns: 95px 1fr;
-    gap: 1rem;
-    align-items: baseline;
-  }
-
-  .about-meta dt {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(237,232,223,0.22);
-  }
-
-  .about-meta dd {
-    font-size: 0.83rem;
-    color: rgba(237,232,223,0.42);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  /* ── Work ─────────────────────────────────────────── */
-  .work-list { border-top: 1px solid var(--rule); }
-
-  .project {
-    padding: 2.75rem 0;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .project--dim .project-name,
-  .project--dim .project-desc { opacity: 0.35; }
-
-  .project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.1rem;
-  }
-
-  .project-meta-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .project-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-  }
-
-  .badge {
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 2px 7px;
-    border-radius: 2px;
-  }
-  .badge--live {
-    background: rgba(200,90,42,0.12);
-    color: var(--rust);
-    border: 1px solid rgba(200,90,42,0.28);
-  }
-  .badge--soon {
-    background: rgba(110,108,105,0.1);
-    color: var(--muted);
-    border: 1px solid var(--rule);
-  }
-
-  .project-visit {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--fg);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(237,232,223,0.2);
-    padding-bottom: 1px;
-    letter-spacing: 0.04em;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .project-visit:hover { color: var(--rust); border-color: var(--rust); }
-
-  .project-name {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
-    font-weight: 400;
-    letter-spacing: -0.025em;
-    line-height: 1.0;
-    color: var(--fg);
-    margin-bottom: 1rem;
-  }
-
-  .project-desc {
-    font-size: 0.94rem;
-    color: var(--muted);
-    line-height: 1.65;
-    max-width: 580px;
-    margin-bottom: 1.25rem;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 0;
-  }
-
-  /* ── Tags ─────────────────────────────────────────── */
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 0.22rem 0.6rem;
-    font-size: 0.7rem;
-    border-radius: 2px;
-    background: rgba(200,90,42,0.09);
-    color: rgba(237,232,223,0.62);
-    border: 1px solid rgba(200,90,42,0.22);
-  }
-
-  .tag--dim {
-    background: rgba(237,232,223,0.04);
-    border-color: var(--rule);
-    color: var(--muted);
-  }
-
-  .tag--mono {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.63rem;
-    background: rgba(237,232,223,0.04);
-    border-color: rgba(237,232,223,0.09);
-    color: rgba(237,232,223,0.38);
-  }
-
-  /* ── Experience ───────────────────────────────────── */
-  .exp-list { border-top: 1px solid var(--rule); }
-
-  .exp-row {
-    display: grid;
-    grid-template-columns: 105px 1fr;
-    gap: 2.5rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(237,232,223,0.06);
-    align-items: start;
-  }
-
-  .exp-period {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--rust);
-    letter-spacing: 0.03em;
-    padding-top: 0.25rem;
-  }
-
-  .exp-heading-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.55rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.5rem;
-  }
-
-  .exp-role {
-    font-size: 0.96rem;
-    font-weight: 600;
-    color: var(--fg);
-  }
-
-  .exp-sep { color: rgba(237,232,223,0.15); font-size: 0.8rem; }
-
-  .exp-company {
-    font-size: 0.86rem;
-    color: rgba(237,232,223,0.35);
-  }
-
-  .exp-detail {
-    font-size: 0.85rem;
-    color: rgba(237,232,223,0.45);
-    line-height: 1.65;
-    margin-bottom: 0.75rem;
-  }
-
-  /* ── Capabilities ─────────────────────────────────── */
-  .caps-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 6rem;
-  }
-
-  .cap-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.67rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(237,232,223,0.35);
-    margin-bottom: 0.85rem;
-  }
-
-  /* ── Contact ──────────────────────────────────────── */
-  .section--rust { background: var(--rust); }
-
-  .contact-h2 {
-    font-family: 'Instrument Serif', Georgia, serif;
-    font-size: clamp(2.6rem, 6vw, 5.2rem);
-    font-weight: 400;
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    color: #fff;
-    margin: 1rem 0 2.5rem;
-  }
-
-  .contact-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .cta-white {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.45);
-    padding-bottom: 2px;
-    transition: border-color 0.15s;
-  }
-  .cta-white:hover { border-color: #fff; }
-
-  .cta-white-ghost {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.22);
-    padding-bottom: 2px;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .cta-white-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.45); }
-
-  /* ── Footer ───────────────────────────────────────── */
-  .site-footer {
-    background: var(--bg);
-    padding: 1.75rem 2rem;
-    border-top: 1px solid var(--rule);
-  }
-
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.76rem;
-    color: rgba(237,232,223,0.22);
-  }
-
-  .footer-top {
-    color: rgba(237,232,223,0.22);
-    text-decoration: none;
-    font-size: 0.76rem;
-    transition: color 0.15s;
-  }
-  .footer-top:hover { color: var(--fg); }
-
-  /* ── Responsive ───────────────────────────────────── */
-  @media (max-width: 860px) {
-    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .caps-grid  { grid-template-columns: 1fr; gap: 2rem; }
-    .nav-links  { gap: 1.25rem; }
-    .nav-links li:nth-child(n+4) { display: none; }
-  }
-
-  @media (max-width: 640px) {
-    .exp-row    { grid-template-columns: 1fr; gap: 0.4rem; }
-    .exp-period { padding-top: 0; }
-    .meta-row   { grid-template-columns: 1fr; gap: 0.15rem; }
-    .hero-deco  { display: none; }
-    .section    { padding: 4rem 1.25rem; }
-    .hero       { padding: 8rem 1.25rem 4rem; }
-    .hero-ctas  { gap: 1.25rem; }
-  }
+}
 </style>
