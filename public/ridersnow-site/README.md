@@ -1,32 +1,28 @@
-# RidersNow web (privacy + support + landing)
+# RidersNow promo site
 
-Static one-pager hosted on GitHub Pages. Three pages:
+A single self-contained landing page (`index.html`) — no build step, no dependencies. Bilingual **pt-PT / EN** (Portuguese-first, toggle top-right), matched to the app's dark ocean design system.
 
-- `index.html` → marketing landing (used as `marketingUrl` in App Store metadata)
-- `privacy/index.html` → privacy policy (used as `privacyPolicyUrl`)
-- `support/index.html` → support / FAQ (used as `supportUrl`)
+## Run locally
+Just open the file:
+```bash
+open index.html          # macOS
+```
+Or serve it (nicer for testing):
+```bash
+python3 -m http.server -d . 8080   # then visit http://localhost:8080
+```
 
-## Deploy as a Pages project under the `noais` org
+## Screenshots
+Real App Store screenshots live in `assets/` (`01-live`, `02-plan`, `03-hosts`, `04-create`), pulled from the live listing. `01-live.png` is used in the hero phone (with the CSS replica as an `onerror` fallback); all four appear in the "See it. Plan it. Show up." gallery. To refresh them, re-download from the App Store listing and overwrite the files.
 
-1. Create a new public repo: `https://github.com/noais/ridersnow`
-   ```bash
-   gh repo create noais/ridersnow --public --description "RidersNow landing + privacy + support" --add-readme=false
-   ```
-2. From this directory:
-   ```bash
-   cd /Users/davidferreira/Developer/waveleft-ios/web
-   git init -b main
-   git add .
-   git commit -m "Initial site"
-   git remote add origin https://github.com/noais/ridersnow.git
-   git push -u origin main
-   ```
-3. In GitHub repo `Settings → Pages`, set source to `Deploy from a branch`, `main` branch, `/ (root)` folder. Save.
-4. Wait 60–120 seconds. Verify:
-   - `https://noais.github.io/ridersnow/`
-   - `https://noais.github.io/ridersnow/privacy/`
-   - `https://noais.github.io/ridersnow/support/`
+## Status of links
+- **App Store:** live → `https://apps.apple.com/us/app/ridersnow/id6767537767`
+- **Google Play:** shown as **"Em breve / Soon"** (disabled). When the Play listing is live, set `class="store"` (remove `soon`), add the real `href`, and drop the `.soon-tag`.
+- **Email:** the "Schools" CTA uses `hello@ridersnow.app` — the same domain the outreach emails reference.
 
-The metadata files in `../metadata/` already point to these URLs.
+## Deploy (free options)
+- **Netlify / Vercel:** drag the `site/` folder onto the dashboard, or `vercel` / `netlify deploy` from here.
+- **GitHub Pages:** push the repo, enable Pages, point it at `/growth/site` (or move these files to the repo root of a `gh-pages` branch).
+- **Cloudflare Pages:** connect the repo, set the output directory to `growth/site`, no build command.
 
-> Optional: later, point a custom domain (e.g. `ridersnow.app`) via repo `Settings → Pages → Custom domain` and a `CNAME` file in this directory.
+Point the `ridersnow.app` domain at whichever host you pick.
