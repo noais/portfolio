@@ -86,6 +86,7 @@ const capabilities = [
     <section id="hero" class="hero" aria-labelledby="hero-heading">
       <div class="hero-inner">
         <p class="hero-eyebrow">Portugal &middot; Engineering Leader &middot; Mobile</p>
+        <div class="hero-rule" aria-hidden="true"></div>
         <h1 id="hero-heading" class="hero-h1">
           Building software<br>
           <em>that holds up.</em>
@@ -96,15 +97,15 @@ const capabilities = [
           that stay coherent under pressure.
         </p>
         <div class="hero-ctas">
-          <a href="#work" class="cta-ink">View work →</a>
-          <a href="https://www.linkedin.com/in/david-ferreira-69041367/" target="_blank" rel="noopener noreferrer" class="cta-muted">LinkedIn ↗</a>
+          <a href="#work" class="cta-primary">View work →</a>
+          <a href="https://www.linkedin.com/in/david-ferreira-69041367/" target="_blank" rel="noopener noreferrer" class="cta-ghost">LinkedIn ↗</a>
         </div>
       </div>
       <div class="hero-deco" aria-hidden="true">15</div>
     </section>
 
     <!-- ─── ABOUT ─────────────────────────────────────── -->
-    <section id="about" aria-labelledby="about-heading" class="section section--dark">
+    <section id="about" aria-labelledby="about-heading" class="section section--alt">
       <div class="container">
         <span class="section-label">About</span>
         <div class="about-grid">
@@ -139,7 +140,7 @@ const capabilities = [
     </section>
 
     <!-- ─── WORK ──────────────────────────────────────── -->
-    <section id="work" aria-labelledby="work-heading" class="section section--light">
+    <section id="work" aria-labelledby="work-heading" class="section">
       <div class="container">
         <span class="section-label">Selected work</span>
         <h2 id="work-heading" class="section-h2">Personal products.</h2>
@@ -184,7 +185,7 @@ const capabilities = [
     </section>
 
     <!-- ─── EXPERIENCE ────────────────────────────────── -->
-    <section id="experience" aria-labelledby="exp-heading" class="section section--dark">
+    <section id="experience" aria-labelledby="exp-heading" class="section section--alt">
       <div class="container">
         <span class="section-label">Experience</span>
         <h2 id="exp-heading" class="section-h2">15+ years of software.</h2>
@@ -193,7 +194,7 @@ const capabilities = [
             <div class="exp-row">
               <span class="exp-period">{item.period}</span>
               <div class="exp-body">
-                <div class="exp-heading">
+                <div class="exp-heading-row">
                   <span class="exp-role">{item.role}</span>
                   <span class="exp-sep" aria-hidden="true">&middot;</span>
                   <span class="exp-company">{item.company}</span>
@@ -210,7 +211,7 @@ const capabilities = [
     </section>
 
     <!-- ─── CAPABILITIES ─────────────────────────────── -->
-    <section id="capabilities" aria-labelledby="caps-heading" class="section section--light">
+    <section id="capabilities" aria-labelledby="caps-heading" class="section">
       <div class="container">
         <span class="section-label">Capabilities</span>
         <h2 id="caps-heading" class="section-h2">Tools and disciplines.</h2>
@@ -230,7 +231,7 @@ const capabilities = [
     <!-- ─── CONTACT ───────────────────────────────────── -->
     <section id="contact" aria-labelledby="contact-heading" class="section section--rust">
       <div class="container container--center">
-        <span class="section-label section-label--light">Contact</span>
+        <span class="section-label section-label--on-rust">Contact</span>
         <h2 id="contact-heading" class="contact-h2">
           Have a product worth<br>building together?
         </h2>
@@ -258,7 +259,7 @@ const capabilities = [
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    background: var(--cream);
+    background: var(--bg);
     border-bottom: 1px solid var(--rule);
   }
 
@@ -276,7 +277,7 @@ const capabilities = [
     font-family: 'Instrument Serif', Georgia, serif;
     font-style: italic;
     font-size: 1.05rem;
-    color: var(--ink);
+    color: var(--fg);
     text-decoration: none;
     transition: color 0.15s;
   }
@@ -297,12 +298,14 @@ const capabilities = [
     transition: color 0.15s;
   }
   .nav-link:hover,
-  .nav-link[data-active="true"] { color: var(--ink); }
+  .nav-link[data-active="true"] { color: var(--fg); }
 
   /* ── Hero ─────────────────────────────────────────── */
   .hero {
     min-height: 100svh;
-    background: var(--cream);
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, rgba(237,232,223,0.04) 1px, transparent 1px);
+    background-size: 26px 26px;
     display: flex;
     align-items: center;
     padding: 9rem 2rem 6rem;
@@ -324,7 +327,14 @@ const capabilities = [
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-rule {
+    width: 36px;
+    height: 1px;
+    background: var(--rust);
+    margin-bottom: 2rem;
   }
 
   .hero-h1 {
@@ -333,7 +343,7 @@ const capabilities = [
     font-weight: 400;
     line-height: 1.0;
     letter-spacing: -0.025em;
-    color: var(--ink);
+    color: var(--fg);
     margin-bottom: 2rem;
     max-width: 14ch;
   }
@@ -343,7 +353,7 @@ const capabilities = [
   }
 
   .hero-sub {
-    font-size: clamp(0.97rem, 1.4vw, 1.08rem);
+    font-size: clamp(0.95rem, 1.4vw, 1.07rem);
     color: var(--muted);
     line-height: 1.75;
     max-width: 460px;
@@ -357,18 +367,18 @@ const capabilities = [
     flex-wrap: wrap;
   }
 
-  .cta-ink {
+  .cta-primary {
     font-size: 0.88rem;
     font-weight: 500;
-    color: var(--ink);
+    color: var(--fg);
     text-decoration: none;
-    border-bottom: 1px solid var(--ink);
+    border-bottom: 1px solid var(--fg);
     padding-bottom: 2px;
     transition: color 0.15s, border-color 0.15s;
   }
-  .cta-ink:hover { color: var(--rust); border-color: var(--rust); }
+  .cta-primary:hover { color: var(--rust); border-color: var(--rust); }
 
-  .cta-muted {
+  .cta-ghost {
     font-size: 0.88rem;
     color: var(--muted);
     text-decoration: none;
@@ -376,7 +386,7 @@ const capabilities = [
     padding-bottom: 2px;
     transition: color 0.15s, border-color 0.15s;
   }
-  .cta-muted:hover { color: var(--ink); border-color: var(--muted); }
+  .cta-ghost:hover { color: var(--fg); border-color: var(--muted); }
 
   .hero-deco {
     position: absolute;
@@ -386,16 +396,15 @@ const capabilities = [
     font-style: italic;
     font-size: clamp(12rem, 32vw, 30rem);
     line-height: 1;
-    color: var(--cream2);
+    color: rgba(237,232,223,0.035);
     pointer-events: none;
     user-select: none;
     z-index: 0;
   }
 
   /* ── Sections — shared ────────────────────────────── */
-  .section { padding: 6rem 2rem; }
-  .section--light { background: var(--cream); }
-  .section--dark  { background: var(--dark); }
+  .section     { padding: 6rem 2rem; background: var(--bg); }
+  .section--alt { background: var(--bg2); }
 
   .container {
     max-width: 1200px;
@@ -412,7 +421,7 @@ const capabilities = [
     color: var(--rust);
     margin-bottom: 0.85rem;
   }
-  .section-label--light { color: rgba(255,255,255,0.5); }
+  .section-label--on-rust { color: rgba(255,255,255,0.55); }
 
   .section-h2 {
     font-family: 'Instrument Serif', Georgia, serif;
@@ -420,10 +429,9 @@ const capabilities = [
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    color: var(--ink);
+    color: var(--fg);
     margin-bottom: 3.5rem;
   }
-  .section--dark .section-h2 { color: var(--cream); }
 
   /* ── About ────────────────────────────────────────── */
   .about-grid {
@@ -440,7 +448,7 @@ const capabilities = [
     font-size: clamp(1.35rem, 2.2vw, 1.85rem);
     font-weight: 400;
     line-height: 1.42;
-    color: var(--cream);
+    color: var(--fg);
     margin: 0; padding: 0; border: none;
   }
 
@@ -448,14 +456,14 @@ const capabilities = [
     display: flex;
     flex-direction: column;
     gap: 1.1rem;
-    color: rgba(245,240,232,0.6);
+    color: rgba(237,232,223,0.55);
     line-height: 1.75;
     font-size: 0.96rem;
     margin-bottom: 2.75rem;
   }
 
   .about-meta {
-    border-top: 1px solid rgba(245,240,232,0.09);
+    border-top: 1px solid var(--rule);
     padding-top: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -474,20 +482,18 @@ const capabilities = [
     font-size: 0.62rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(245,240,232,0.25);
+    color: rgba(237,232,223,0.22);
   }
 
   .about-meta dd {
     font-size: 0.83rem;
-    color: rgba(245,240,232,0.45);
+    color: rgba(237,232,223,0.42);
     line-height: 1.55;
     margin: 0;
   }
 
   /* ── Work ─────────────────────────────────────────── */
-  .work-list {
-    border-top: 1px solid var(--rule);
-  }
+  .work-list { border-top: 1px solid var(--rule); }
 
   .project {
     padding: 2.75rem 0;
@@ -495,7 +501,7 @@ const capabilities = [
   }
 
   .project--dim .project-name,
-  .project--dim .project-desc { opacity: 0.4; }
+  .project--dim .project-desc { opacity: 0.35; }
 
   .project-header {
     display: flex;
@@ -526,24 +532,24 @@ const capabilities = [
     border-radius: 2px;
   }
   .badge--live {
-    background: rgba(200,90,42,0.1);
+    background: rgba(200,90,42,0.12);
     color: var(--rust);
-    border: 1px solid rgba(200,90,42,0.25);
+    border: 1px solid rgba(200,90,42,0.28);
   }
   .badge--soon {
-    background: rgba(138,134,128,0.1);
+    background: rgba(110,108,105,0.1);
     color: var(--muted);
     border: 1px solid var(--rule);
   }
 
   .project-visit {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--fg);
     text-decoration: none;
-    border-bottom: 1px solid var(--ink);
+    border-bottom: 1px solid rgba(237,232,223,0.2);
     padding-bottom: 1px;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.04em;
     transition: color 0.15s, border-color 0.15s;
   }
   .project-visit:hover { color: var(--rust); border-color: var(--rust); }
@@ -554,7 +560,7 @@ const capabilities = [
     font-weight: 400;
     letter-spacing: -0.025em;
     line-height: 1.0;
-    color: var(--ink);
+    color: var(--fg);
     margin-bottom: 1rem;
   }
 
@@ -584,13 +590,13 @@ const capabilities = [
     padding: 0.22rem 0.6rem;
     font-size: 0.7rem;
     border-radius: 2px;
-    background: rgba(200,90,42,0.07);
-    color: rgba(26,23,20,0.72);
-    border: 1px solid rgba(200,90,42,0.18);
+    background: rgba(200,90,42,0.09);
+    color: rgba(237,232,223,0.62);
+    border: 1px solid rgba(200,90,42,0.22);
   }
 
   .tag--dim {
-    background: rgba(138,134,128,0.08);
+    background: rgba(237,232,223,0.04);
     border-color: var(--rule);
     color: var(--muted);
   }
@@ -598,22 +604,20 @@ const capabilities = [
   .tag--mono {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.63rem;
-    background: rgba(245,240,232,0.04);
-    border-color: rgba(245,240,232,0.1);
-    color: rgba(245,240,232,0.42);
+    background: rgba(237,232,223,0.04);
+    border-color: rgba(237,232,223,0.09);
+    color: rgba(237,232,223,0.38);
   }
 
   /* ── Experience ───────────────────────────────────── */
-  .exp-list {
-    border-top: 1px solid rgba(245,240,232,0.09);
-  }
+  .exp-list { border-top: 1px solid var(--rule); }
 
   .exp-row {
     display: grid;
     grid-template-columns: 105px 1fr;
     gap: 2.5rem;
     padding: 2rem 0;
-    border-bottom: 1px solid rgba(245,240,232,0.06);
+    border-bottom: 1px solid rgba(237,232,223,0.06);
     align-items: start;
   }
 
@@ -625,7 +629,7 @@ const capabilities = [
     padding-top: 0.25rem;
   }
 
-  .exp-heading {
+  .exp-heading-row {
     display: flex;
     align-items: baseline;
     gap: 0.55rem;
@@ -636,19 +640,19 @@ const capabilities = [
   .exp-role {
     font-size: 0.96rem;
     font-weight: 600;
-    color: var(--cream);
+    color: var(--fg);
   }
 
-  .exp-sep { color: rgba(245,240,232,0.18); font-size: 0.8rem; }
+  .exp-sep { color: rgba(237,232,223,0.15); font-size: 0.8rem; }
 
   .exp-company {
     font-size: 0.86rem;
-    color: rgba(245,240,232,0.38);
+    color: rgba(237,232,223,0.35);
   }
 
   .exp-detail {
     font-size: 0.85rem;
-    color: rgba(245,240,232,0.48);
+    color: rgba(237,232,223,0.45);
     line-height: 1.65;
     margin-bottom: 0.75rem;
   }
@@ -661,11 +665,12 @@ const capabilities = [
   }
 
   .cap-title {
-    font-size: 0.73rem;
-    font-weight: 600;
-    letter-spacing: 0.09em;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.67rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: rgba(237,232,223,0.35);
     margin-bottom: 0.85rem;
   }
 
@@ -694,7 +699,7 @@ const capabilities = [
     font-weight: 500;
     color: #fff;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.45);
     padding-bottom: 2px;
     transition: border-color 0.15s;
   }
@@ -704,17 +709,17 @@ const capabilities = [
     font-size: 0.9rem;
     color: rgba(255,255,255,0.6);
     text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.25);
+    border-bottom: 1px solid rgba(255,255,255,0.22);
     padding-bottom: 2px;
     transition: color 0.15s, border-color 0.15s;
   }
-  .cta-white-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+  .cta-white-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.45); }
 
   /* ── Footer ───────────────────────────────────────── */
   .site-footer {
-    background: var(--dark);
+    background: var(--bg);
     padding: 1.75rem 2rem;
-    border-top: 1px solid rgba(245,240,232,0.07);
+    border-top: 1px solid var(--rule);
   }
 
   .footer-inner {
@@ -724,48 +729,32 @@ const capabilities = [
     justify-content: space-between;
     align-items: center;
     font-size: 0.76rem;
-    color: rgba(245,240,232,0.25);
+    color: rgba(237,232,223,0.22);
   }
 
   .footer-top {
-    color: rgba(245,240,232,0.25);
+    color: rgba(237,232,223,0.22);
     text-decoration: none;
     font-size: 0.76rem;
     transition: color 0.15s;
   }
-  .footer-top:hover { color: var(--cream); }
+  .footer-top:hover { color: var(--fg); }
 
   /* ── Responsive ───────────────────────────────────── */
   @media (max-width: 860px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .caps-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .nav-links { gap: 1.25rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .caps-grid  { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links  { gap: 1.25rem; }
     .nav-links li:nth-child(n+4) { display: none; }
   }
 
   @media (max-width: 640px) {
-    .exp-row {
-      grid-template-columns: 1fr;
-      gap: 0.4rem;
-    }
+    .exp-row    { grid-template-columns: 1fr; gap: 0.4rem; }
     .exp-period { padding-top: 0; }
-
-    .meta-row {
-      grid-template-columns: 1fr;
-      gap: 0.15rem;
-    }
-
-    .hero-deco { display: none; }
-    .section { padding: 4rem 1.25rem; }
-    .hero { padding: 8rem 1.25rem 4rem; }
-    .hero-ctas { gap: 1.25rem; }
+    .meta-row   { grid-template-columns: 1fr; gap: 0.15rem; }
+    .hero-deco  { display: none; }
+    .section    { padding: 4rem 1.25rem; }
+    .hero       { padding: 8rem 1.25rem 4rem; }
+    .hero-ctas  { gap: 1.25rem; }
   }
 </style>
