@@ -41,7 +41,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://noais.gi
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -50,20 +50,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://noais.gi
   <body>
     <slot />
     <script>
-      // Scroll reveal
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-
-      // Active nav highlight
       const sections = document.querySelectorAll('section[id]');
       const navLinks = document.querySelectorAll('[data-nav]');
       const navObserver = new IntersectionObserver(
@@ -76,7 +62,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://noais.gi
             }
           });
         },
-        { threshold: 0.4 }
+        { threshold: 0.35 }
       );
       sections.forEach((s) => navObserver.observe(s));
     </script>
