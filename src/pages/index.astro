@@ -179,18 +179,24 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 
     <!-- FinPilot — secondary -->
     <article class="case-card case-card--secondary">
+      <div class="case-screen-single">
+        <img src="/finpilot-overview.png" alt="FinPilot overview screen" loading="lazy" />
+      </div>
       <div class="case-body">
-        <span class="case-tag">iOS · FinTech · AI</span>
+        <span class="case-tag">iOS · Personal Finance · AI</span>
         <h3 class="case-title">FinPilot</h3>
         <p class="case-problem">
-          <strong>Problem:</strong> Retail investors were drowning in noise — no tool surfaced signal at the right moment on mobile.
+          <strong>Problem:</strong> Personal finance apps show data but don't help you reason about it — leaving decisions to guesswork.
         </p>
         <p class="case-outcome">
-          <strong>Outcome:</strong> AI-curated alert engine with personalised portfolio narratives. 4.7 App Store rating, 60% D30 retention.
+          <strong>Outcome:</strong> Chat-first AI advisor that turns transactions, budgets, goals, and subscriptions into clear, calm guidance. Supports Anthropic, OpenAI, Gemini, and local LLMs — with a full offline demo mode.
         </p>
         <div class="case-stack">
-          <span>Swift</span><span>SwiftUI</span><span>Claude API</span><span>GraphQL</span>
+          <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>WidgetKit</span><span>Multi-LLM</span>
         </div>
+        <a href="https://github.com/noais/FinPilot" target="_blank" rel="noopener" class="case-link">
+          View on GitHub <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </article>
 
@@ -557,20 +563,34 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   grid-template-columns: 1fr 1fr;
 }
 .case-screens {
-  background: rgba(237,233,226,0.03);
+  background: rgba(255,255,255,0.02);
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 3rem 1.5rem 0;
-  gap: 0.625rem;
-  min-height: 440px;
+  padding: 3.5rem 1rem 0;
+  gap: 0;
+  min-height: 460px;
   overflow: hidden;
+  perspective: 900px;
+  position: relative;
+}
+.case-screens::before {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 180px;
+  background: radial-gradient(ellipse, rgba(198,241,53,0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 .case-phone {
-  border-radius: 18px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 16px 48px rgba(26,25,23,0.14);
   flex-shrink: 0;
+  position: relative;
+  transform-origin: bottom center;
 }
 .case-phone img {
   display: block;
@@ -578,9 +598,31 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   height: 100%;
   object-fit: cover;
 }
-.case-phone--1 { width: 110px; height: 210px; }
-.case-phone--2 { width: 132px; height: 248px; margin-bottom: 24px; }
-.case-phone--3 { width: 110px; height: 210px; }
+.case-phone--1 {
+  width: 114px;
+  height: 220px;
+  transform: rotateY(22deg) translateX(18px);
+  box-shadow: -12px 24px 64px rgba(0,0,0,0.55), -3px 6px 20px rgba(0,0,0,0.35);
+  z-index: 1;
+  opacity: 0.78;
+  margin-right: -18px;
+}
+.case-phone--2 {
+  width: 144px;
+  height: 272px;
+  transform: translateY(-36px);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.65), 0 8px 28px rgba(0,0,0,0.45);
+  z-index: 3;
+}
+.case-phone--3 {
+  width: 114px;
+  height: 220px;
+  transform: rotateY(-22deg) translateX(-18px);
+  box-shadow: 12px 24px 64px rgba(0,0,0,0.55), 3px 6px 20px rgba(0,0,0,0.35);
+  z-index: 1;
+  opacity: 0.78;
+  margin-left: -18px;
+}
 .case-body {
   padding: 3rem;
   display: flex;
@@ -642,6 +684,25 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   margin-top: auto;
 }
 .case-link:hover { color: #3a3835; }
+.case-card--secondary {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+}
+.case-screen-single {
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem 1.5rem 0;
+  overflow: hidden;
+}
+.case-screen-single img {
+  width: 130px;
+  border-radius: 18px;
+  box-shadow: 0 20px 56px rgba(0,0,0,0.60), 0 6px 20px rgba(0,0,0,0.40);
+  display: block;
+  object-fit: cover;
+}
 .case-card--secondary .case-body { padding: 2.5rem 3rem; }
 
 /* ── Experience timeline ───────────────────────────────────────── */
@@ -806,8 +867,10 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   .hero-visual { height: 380px; }
   .phone--back { left: -28px; height: 360px; }
   .phone--front { left: 44px; height: 400px; }
-  .case-card--flagship { grid-template-columns: 1fr; }
-  .case-screens { min-height: 260px; padding-top: 2rem; }
+  .case-card--flagship,
+  .case-card--secondary { grid-template-columns: 1fr; }
+  .case-screen-single { padding: 2rem 1.5rem 0; min-height: 200px; }
+  .case-screens { min-height: 300px; padding-top: 2.5rem; }
   .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .caps-grid { grid-template-columns: 1fr; }
 }
