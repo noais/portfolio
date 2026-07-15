@@ -115,7 +115,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
     <div class="hero-visual" aria-hidden="true">
       <div class="phone-stack">
         <div class="phone phone--back">
-          <img src="/ridersnow-site/assets/02-plan.png" alt="" loading="eager" />
+          <img src="/finpilot-overview.png" alt="" loading="eager" />
         </div>
         <div class="phone phone--front">
           <img src="/ridersnow-site/assets/01-live.png" alt="" loading="eager" />
@@ -292,10 +292,10 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(247,243,236,0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(26,25,23,0.08);
+  background: rgba(13,15,26,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(237,233,226,0.07);
 }
 .nav-inner {
   max-width: 1200px;
@@ -331,13 +331,13 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 .nav-links a:hover,
 .nav-links a[data-active] { color: var(--ink); }
 .nav-cta {
-  background: var(--ink);
-  color: var(--bg) !important;
+  background: var(--lime);
+  color: #0D0F1A !important;
   padding: 0.5rem 1.125rem;
   border-radius: 100px;
   transition: background 0.15s !important;
 }
-.nav-cta:hover { background: #3a3835 !important; color: var(--bg) !important; }
+.nav-cta:hover { background: #d4ff3a !important; color: #0D0F1A !important; }
 
 /* ── Hero ──────────────────────────────────────────────────────── */
 .hero-section {
@@ -367,10 +367,10 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
-  border: 1px solid rgba(26,25,23,0.12);
+  border: 1px solid rgba(237,233,226,0.10);
   border-radius: 100px;
   padding: 0.3rem 0.875rem;
-  background: var(--bg);
+  background: rgba(237,233,226,0.04);
 }
 .hero-headline {
   font-family: 'Fraunces', Georgia, serif;
@@ -400,8 +400,8 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--lime);
+  color: #0D0F1A;
   font-weight: 600;
   font-size: 0.9375rem;
   padding: 0.75rem 1.75rem;
@@ -409,11 +409,11 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   text-decoration: none;
   transition: background 0.15s;
 }
-.btn-primary:hover { background: #3a3835; }
+.btn-primary:hover { background: #d4ff3a; }
 .btn-ghost {
   display: inline-flex;
   align-items: center;
-  border: 1.5px solid rgba(26,25,23,0.15);
+  border: 1.5px solid rgba(237,233,226,0.15);
   color: var(--ink);
   font-weight: 500;
   font-size: 0.9375rem;
@@ -422,7 +422,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   text-decoration: none;
   transition: border-color 0.15s;
 }
-.btn-ghost:hover { border-color: var(--muted); }
+.btn-ghost:hover { border-color: rgba(237,233,226,0.35); }
 
 /* Phone stack */
 .hero-visual {
@@ -515,7 +515,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 .section {
   padding: 100px 0;
 }
-.section--navy { background: var(--navy); }
+.section--navy { background: var(--navy); border-top: 1px solid rgba(237,233,226,0.05); }
 .section-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -529,7 +529,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--lime);
   margin-bottom: 0.75rem;
 }
 .eyebrow--lime { color: var(--lime); }
@@ -542,22 +542,22 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   margin: 0;
   line-height: 1.15;
 }
-.section-title--light { color: #fff; }
+.section-title--light { color: var(--ink); }
 
 /* ── Case cards ───────────────────────────────────────────────── */
 .case-card {
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(26,25,23,0.08);
+  border: 1px solid rgba(237,233,226,0.07);
   margin-bottom: 1.5rem;
-  background: #fff;
+  background: var(--bg2);
 }
 .case-card--flagship {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 .case-screens {
-  background: var(--bg2);
+  background: rgba(237,233,226,0.03);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -607,7 +607,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 .case-problem,
 .case-outcome {
   font-size: 0.9375rem;
-  color: #4e4c49;
+  color: rgba(237,233,226,0.60);
   line-height: 1.6;
   margin: 0 0 0.875rem;
 }
@@ -622,11 +622,11 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 .case-stack span {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  background: var(--bg2);
+  background: rgba(237,233,226,0.05);
   color: var(--muted);
   padding: 0.25rem 0.6rem;
   border-radius: 4px;
-  border: 1px solid rgba(26,25,23,0.08);
+  border: 1px solid rgba(237,233,226,0.08);
 }
 .case-link {
   display: inline-flex;
@@ -752,7 +752,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   font-family: 'Fraunces', Georgia, serif;
   font-size: clamp(1.75rem, 3.5vw, 2.75rem);
   font-weight: 400;
-  color: #fff;
+  color: var(--ink);
   line-height: 1.15;
   letter-spacing: -0.025em;
   margin: 0 0 1.25rem;
@@ -760,7 +760,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .contact-sub {
   font-size: 1.0625rem;
-  color: rgba(255,255,255,0.50);
+  color: rgba(237,233,226,0.50);
   line-height: 1.65;
   margin: 0 0 2.5rem;
   max-width: 48ch;
@@ -787,11 +787,11 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 /* ── Footer ───────────────────────────────────────────────────── */
 .footer {
   background: var(--navy);
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(237,233,226,0.05);
   padding: 2rem;
   text-align: center;
   font-size: 0.8125rem;
-  color: rgba(255,255,255,0.22);
+  color: rgba(237,233,226,0.22);
 }
 .footer p { margin: 0; }
 

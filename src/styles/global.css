@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream:  #F7F3EC;
-  --color-ink:    #1A1917;
-  --color-navy:   #0F1629;
-  --color-lime:   #C6F135;
-  --color-muted:  #8C8880;
-  --color-rule:   rgba(26,25,23,0.10);
+  --color-bg:    #0D0F1A;
+  --color-bg2:   #13162100;
+  --color-ink:   #EDE9E2;
+  --color-navy:  #07090F;
+  --color-lime:  #C6F135;
+  --color-muted: #7A7870;
 
   --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: 'Fraunces', Georgia, serif;
@@ -17,13 +17,13 @@
   :root {
     scroll-behavior: smooth;
 
-    --bg:    #F7F3EC;
-    --bg2:   #EDE9E1;
-    --ink:   #1A1917;
-    --navy:  #0F1629;
+    --bg:    #0D0F1A;
+    --bg2:   #131621;
+    --ink:   #EDE9E2;
+    --navy:  #07090F;
     --lime:  #C6F135;
-    --muted: #8C8880;
-    --rule:  rgba(26,25,23,0.10);
+    --muted: #7A7870;
+    --rule:  rgba(237,233,226,0.07);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -48,7 +48,7 @@
 
   ::selection {
     background-color: var(--lime);
-    color: var(--ink);
+    color: #0D0F1A;
   }
 
   :focus-visible {
