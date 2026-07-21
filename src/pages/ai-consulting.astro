@@ -68,7 +68,7 @@ const experience = [
   },
   {
     period: '2023 — 2025',
-    role: 'Head of iOS Developer',
+    role: 'Lead iOS Developer',
     company: 'Volkswagen Group',
     outcomes: [
       'Led iOS development for the MAN TGE companion app — architecture, technical roadmap, and delivery across releases',
@@ -323,7 +323,7 @@ const whyCards = [
 
       {placeholderCaseStudies.map((c) => (
         <article class="case-card case-card--placeholder">
-          <span class="case-placeholder-badge">Next Engagement</span>
+          <span class="case-placeholder-badge">Illustrative Engagement</span>
           <span class="case-tag">{c.tag}</span>
           <h3 class="case-title">{c.title}</h3>
           <p class="case-outcome">{c.description}</p>
@@ -1132,7 +1132,7 @@ const whyCards = [
   .hero-section { padding-top: 120px; }
   .case-card--secondary,
   .case-card--text,
-  .case-card--placeholder { grid-template-columns: 1fr; }
+  .case-card--placeholder { grid-template-columns: minmax(0, 1fr); }
   .case-grid { grid-template-columns: 1fr; }
   .case-screen-single { padding: 2rem 1.5rem 0; min-height: 200px; }
   .case-visual-abstract { min-height: 160px; }

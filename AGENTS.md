@@ -19,6 +19,8 @@ npm run build      # Production build → dist/
 npm run preview    # Serve the production build locally
 ```
 
+No test suite or linter is configured. `npm install` needs `--legacy-peer-deps` (see `.github/workflows/deploy.yml`) — `@astrojs/tailwind` is a leftover devDependency that conflicts with the `@tailwindcss/vite` v4 setup actually in use.
+
 ## Architecture
 
 This is a **fully static, multi-page portfolio site** with no client-side framework (no React/Vue/Svelte). It deploys to `https://davidferreira.dev` via GitHub Actions → GitHub Pages on push to `main`.
