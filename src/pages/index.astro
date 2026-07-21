@@ -558,7 +558,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .case-card--flagship {
   display: grid;
-  grid-template-columns: 58% 42%;
+  grid-template-columns: minmax(0, 58%) minmax(0, 42%);
 }
 .case-screens {
   background: rgba(255,255,255,0.02);
@@ -625,6 +625,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
 }
 .case-tag {
   display: inline-block;
@@ -865,7 +866,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   .phone--back { left: -28px; height: 360px; }
   .phone--front { left: 44px; height: 400px; }
   .case-card--flagship,
-  .case-card--secondary { grid-template-columns: 1fr; }
+  .case-card--secondary { grid-template-columns: minmax(0, 1fr); }
   .case-screen-single { padding: 2rem 1.5rem 0; min-height: 200px; }
   .case-screens { min-height: 300px; padding-top: 2.5rem; }
   .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
