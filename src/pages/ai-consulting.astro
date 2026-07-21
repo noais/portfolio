@@ -1,0 +1,1280 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const trustLogos = ['CARIAD', 'FRiNGE', 'Bosch'];
+const trustStats = ['16+ Years Experience', 'Engineering Leader', 'AI Consultant', 'iOS Expert'];
+
+const services = [
+  {
+    title: 'AI Readiness Assessment',
+    pitch: 'Understand where AI creates real business value.',
+    deliverables: ['AI opportunity map', 'ROI estimation', 'Architecture recommendations'],
+  },
+  {
+    title: 'AI Architecture & Solution Design',
+    pitch: 'Design scalable AI systems using LLMs, RAG, vector databases, MCP, function calling, AI agents, and hybrid cloud.',
+    deliverables: ['LLM & RAG system design', 'Vector database selection', 'Agent & MCP architecture', 'Hybrid cloud deployment plan'],
+  },
+  {
+    title: 'AI Prototype in 2 Weeks',
+    pitch: 'Build a working MVP fast, with a clear path to production.',
+    deliverables: ['Architecture', 'Backend', 'Mobile', 'Production roadmap'],
+  },
+  {
+    title: 'Engineering Leadership',
+    pitch: 'Help engineering teams improve delivery and adopt AI-native workflows.',
+    deliverables: ['Delivery process improvements', 'Technical debt reduction', 'AI development workflow adoption', 'Engineering velocity increase'],
+  },
+];
+
+const expertiseGroups = [
+  { label: 'AI', items: ['OpenAI', 'Anthropic', 'Gemini', 'Local LLMs', 'Ollama', 'MCP', 'Function Calling', 'Agents', 'Prompt Engineering'] },
+  { label: 'Data', items: ['RAG', 'Embeddings', 'Pinecone', 'Weaviate', 'Chroma', 'pgvector'] },
+  { label: 'Mobile', items: ['Swift', 'SwiftUI', 'UIKit', 'visionOS', 'iOS Architecture'] },
+  { label: 'Backend', items: ['Python', 'FastAPI', 'Docker', 'AWS', 'Supabase'] },
+];
+
+const process = [
+  { step: '01', title: 'Discovery Call', description: 'Understand the business.' },
+  { step: '02', title: 'AI Strategy', description: 'Define the right use case.' },
+  { step: '03', title: 'Architecture', description: 'Design scalable AI systems.' },
+  { step: '04', title: 'MVP', description: 'Build fast.' },
+  { step: '05', title: 'Production', description: 'Scale confidently.' },
+];
+
+const placeholderCaseStudies = [
+  {
+    title: 'Veterinary AI Platform',
+    tag: 'Veterinary · AI Diagnostics',
+    description: 'A placeholder for an AI-assisted diagnostics and workflow engagement — case study details will be added after delivery.',
+  },
+  {
+    title: 'Mobile AI Integrations',
+    tag: 'Mobile · AI Integrations',
+    description: 'A placeholder for embedding LLM-powered features into an existing mobile product — case study details will be added after delivery.',
+  },
+];
+
+const experience = [
+  {
+    period: '2025 — Present',
+    role: 'Head of Mobile / Lead iOS Engineer',
+    company: 'FRiNGE',
+    outcomes: [
+      'Designed and shipped a location-based livestreaming iOS app end-to-end as sole mobile lead — Swift 6/SwiftUI, Agora RTC, Supabase, PostHog',
+      'Led architecture on Go-Live performance, camera↔Agora handoff, and Swift 6 strict concurrency safety',
+      'Implemented token prefetch and warm-restart flows so Go-Live feels instant and survives flaky outdoor networks',
+    ],
+  },
+  {
+    period: '2023 — 2025',
+    role: 'Head of iOS Developer',
+    company: 'CARIAD (Volkswagen Group)',
+    outcomes: [
+      'Led iOS development for the MAN TGE companion app — architecture, technical roadmap, and delivery across releases',
+      'Defined and enforced Clean Architecture + MVVM standards with strict concurrency safety; drove release strategy within a SAFe Program Increment cadence',
+      'Started on the CARIAD CAT Architecture Team supporting the release pipeline and onboarding new teams org-wide, before stepping into iOS leadership on MAN TGE',
+    ],
+  },
+  {
+    period: '2021 — 2023',
+    role: 'Lead iOS Developer',
+    company: 'YEO Messaging',
+    outcomes: [
+      'Built the recipient-verification pipeline using CoreML and ARKit for on-device face recognition — authenticating the person, not just the device',
+      'Implemented OLM end-to-end encryption, GraphQL APIs, and WebSocket-based real-time messaging',
+      'Architected a hybrid UIKit/SwiftUI codebase in MVVM-C with snapshot testing and BitRise CI',
+    ],
+  },
+  {
+    period: '2017 — 2021',
+    role: 'Lead iOS Developer',
+    company: 'Prozis (ProzisGo)',
+    outcomes: [
+      'Defined the architecture for ingesting data from multiple wearables (smart scales, bands) into a nutrition inference engine',
+      'Applied strict TDD with explicit use-case/test-case specifications; built with TCA, RxSwift, and Realm',
+      'Authored an internal SDK consumed by other product teams',
+    ],
+  },
+  {
+    period: '2014 — 2017',
+    role: 'iOS Developer',
+    company: 'Bosch',
+    outcomes: [
+      'Architected HeatHub, a smart-home app for Bosch\'s full thermotechnology appliance line — hybrid Swift/Objective-C/C++ codebase with HomeKit integration',
+      'Designed a new BLE communication protocol from scratch for ProWater, a water-heater installer app',
+      'Contributed to the open-source "Charts" library',
+    ],
+  },
+  {
+    period: '2010 — 2014',
+    role: 'IT Consultant',
+    company: 'Portugal Telecom',
+    outcomes: [
+      'Built an Objective-C macOS product for wireless pen drives that auto-selected the best available network',
+      'Backend work on an SSO platform (Java, Spring MVC/Security, Hibernate) and a QoS platform (Java, PostgreSQL, Bash)',
+    ],
+  },
+];
+
+const whyCards = [
+  { title: '16+ Years Engineering', description: 'Mobile products shipped to thousands of users.' },
+  { title: 'AI Native Thinking', description: 'AI is designed into the product — not added later.' },
+  { title: 'Engineering Leadership', description: 'Strong experience leading teams and technical strategy.' },
+  { title: 'Business First', description: 'Every AI solution must generate measurable value.' },
+];
+
+const articles = [
+  'RAG Explained Simply',
+  'Building AI Agents',
+  'AI for Mobile Apps',
+  'AI Architecture Patterns',
+  'LLM Cost Optimization',
+];
+---
+
+<Layout
+  title="David Ferreira — AI Solutions Consultant & AI-First Mobile Engineering Leader"
+  description="AI consultant and engineering leader helping startups and enterprises build LLM-powered products — RAG, AI agents, and production-grade mobile AI integrations, backed by 16+ years of software engineering experience."
+  keywords="AI Consultant, AI Solutions Architect, AI Engineering Consultant, AI Product Consultant, AI Mobile Expert, AI Strategy Consultant, LLM Consultant, RAG Consultant, Generative AI Consultant, AI Engineering Leader, AI Mobile Development, Swift AI, iOS AI"
+  structuredData={{
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'David Ferreira',
+    jobTitle: 'AI Solutions Consultant & AI-First Mobile Engineering Leader',
+    url: 'https://davidferreira.dev/ai-consulting/',
+    sameAs: ['https://linkedin.com/in/david-ferreira-dev', 'https://github.com/noais'],
+  }}
+>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────── -->
+<header class="nav-shell">
+  <nav class="nav-inner">
+    <a href="/" class="nav-logo">DF</a>
+    <ul class="nav-links">
+      <li><a href="/">Portfolio</a></li>
+      <li><a href="#services" data-nav="services">Services</a></li>
+      <li><a href="#case-studies" data-nav="case-studies">Case Studies</a></li>
+      <li><a href="#contact" data-nav="contact" class="nav-cta">Book a call</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────── -->
+<section id="top" class="hero-section">
+  <canvas id="hero-network" class="hero-network" aria-hidden="true"></canvas>
+
+  <div class="hero-inner">
+    <div class="hero-chips">
+      <span class="chip">16+ yrs</span>
+      <span class="chip">AI · iOS</span>
+      <span class="chip">Portugal</span>
+    </div>
+
+    <h1 class="hero-headline">
+      Helping companies build <em class="gradient-text">AI products</em><br />
+      that users actually love.
+    </h1>
+
+    <p class="hero-sub">
+      I help startups and enterprises integrate LLMs, AI Agents, and intelligent workflows
+      into mobile and digital products — from strategy to production.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Discovery Call</a>
+      <a href="#case-studies" class="btn-ghost">View Case Studies</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST STRIP ───────────────────────────────────────────────── -->
+<div class="proof-strip">
+  <p class="proof-label">Companies worked with</p>
+  <ul class="proof-domains proof-domains--logos">
+    {trustLogos.map((logo) => (
+      <li>{logo}</li>
+    ))}
+  </ul>
+</div>
+<div class="stat-strip">
+  <ul class="stat-list">
+    {trustStats.map((stat) => (
+      <li>{stat}</li>
+    ))}
+  </ul>
+</div>
+
+<!-- ─── SERVICES ──────────────────────────────────────────────────── -->
+<section id="services" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Services</span>
+      <h2 class="section-title">AI consulting engagements built around outcomes.</h2>
+    </div>
+
+    <div class="services-grid reveal">
+      {services.map((s) => (
+        <div class="service-card glass">
+          <h3 class="service-title">{s.title}</h3>
+          <p class="service-pitch">{s.pitch}</p>
+          <ul class="service-deliverables">
+            {s.deliverables.map((d) => (
+              <li>{d}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERTISE ─────────────────────────────────────────────────── -->
+<section id="expertise" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header section-header--light reveal">
+      <span class="eyebrow eyebrow--lime">Expertise</span>
+      <h2 class="section-title section-title--light">AI, data, mobile, and backend — under one roof.</h2>
+    </div>
+
+    <div class="caps-grid reveal">
+      {expertiseGroups.map((group) => (
+        <div class="cap-panel">
+          <h3 class="cap-title">{group.label}</h3>
+          <ul class="cap-items">
+            {group.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONSULTING PROCESS ────────────────────────────────────────── -->
+<section id="process" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Consulting Process</span>
+      <h2 class="section-title">From idea to production, in five steps.</h2>
+    </div>
+
+    <ol class="timeline timeline--process reveal">
+      {process.map((p) => (
+        <li class="timeline-item">
+          <div class="timeline-meta">
+            <span class="process-step-num">{p.step}</span>
+          </div>
+          <div class="timeline-body">
+            <p class="timeline-role">{p.title}</p>
+            <p class="timeline-company">{p.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ─── CASE STUDIES ──────────────────────────────────────────────── -->
+<section id="case-studies" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header section-header--light reveal">
+      <span class="eyebrow eyebrow--lime">Case Studies</span>
+      <h2 class="section-title section-title--light">Business impact, not just tech stacks.</h2>
+    </div>
+
+    <div class="case-grid reveal">
+      <!-- MyLedgerAI — real, AI-powered personal finance assistant -->
+      <article class="case-card case-card--secondary">
+        <div class="case-screen-single">
+          <img src="/finpilot-overview.png" alt="MyLedgerAI overview screen" loading="lazy" />
+        </div>
+        <div class="case-body">
+          <span class="case-tag">iOS · AI · Personal Finance</span>
+          <h3 class="case-title">AI-Powered Personal Finance Assistant</h3>
+          <p class="case-problem">
+            <strong>Problem:</strong> Traditional finance apps show what happened, but rarely turn that data into a clear next best action.
+          </p>
+          <p class="case-outcome">
+            <strong>Outcome:</strong> A privacy-first, chat-led AI financial assistant that grounds every recommendation in the user's real transactions, budgets, goals, and receipts — built with on-device storage and retrieval-augmented generation, so guidance stays accurate and explainable.
+          </p>
+          <div class="case-stack">
+            <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>RAG</span><span>Vision OCR</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- FRiNGE — real, real-time livestream platform -->
+      <article class="case-card case-card--text">
+        <div class="case-visual-abstract">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+            <circle cx="12" cy="12" r="2.5" /><circle cx="4" cy="6" r="1.75" /><circle cx="20" cy="6" r="1.75" />
+            <circle cx="4" cy="18" r="1.75" /><circle cx="20" cy="18" r="1.75" />
+            <path d="M6 7.2 10.2 11M17.8 11 22 7.2M6 16.8 10.2 13M17.8 13 22 16.8" />
+          </svg>
+        </div>
+        <div class="case-body">
+          <span class="case-tag">iOS · Real-time · Consumer Social</span>
+          <h3 class="case-title">Real-Time Livestream Platform</h3>
+          <p class="case-problem">
+            <strong>Problem:</strong> Location-based livestreaming demands sub-second camera and connection handoffs — most teams either over-engineer this or ship something that stutters under real load.
+          </p>
+          <p class="case-outcome">
+            <strong>Outcome:</strong> Shipped a location-based livestreaming iOS product end-to-end — from zero to TestFlight in 9 weeks, with real-time camera/RTC handoff and zero reported crashes.
+          </p>
+          <div class="case-stack">
+            <span>Swift 6</span><span>SwiftUI</span><span>Agora RTC</span><span>Supabase</span>
+          </div>
+        </div>
+      </article>
+
+      {placeholderCaseStudies.map((c) => (
+        <article class="case-card case-card--placeholder">
+          <span class="case-placeholder-badge">Next Engagement</span>
+          <span class="case-tag">{c.tag}</span>
+          <h3 class="case-title">{c.title}</h3>
+          <p class="case-outcome">{c.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRACK RECORD ──────────────────────────────────────────────── -->
+<section id="track-record" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Track Record</span>
+      <h2 class="section-title">16+ years of outcomes, not job titles.</h2>
+    </div>
+
+    <ol class="timeline reveal">
+      {experience.map((role) => (
+        <li class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-period">{role.period}</span>
+          </div>
+          <div class="timeline-body">
+            <p class="timeline-role">{role.role}</p>
+            <p class="timeline-company">{role.company}</p>
+            <ul class="timeline-outcomes">
+              {role.outcomes.map((o) => (
+                <li>{o}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ─── WHY WORK WITH ME ──────────────────────────────────────────── -->
+<section id="why" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header section-header--light reveal">
+      <span class="eyebrow eyebrow--lime">Why Work With Me</span>
+      <h2 class="section-title section-title--light">Engineering depth, applied to AI.</h2>
+    </div>
+
+    <div class="why-grid reveal">
+      {whyCards.map((w) => (
+        <div class="why-card">
+          <h3 class="why-title">{w.title}</h3>
+          <p class="why-desc">{w.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────────── -->
+<section id="testimonials" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="eyebrow">Testimonials</span>
+      <h2 class="section-title">What clients say.</h2>
+    </div>
+
+    <div class="testimonial-grid reveal">
+      {[0, 1, 2].map(() => (
+        <div class="testimonial-card">
+          <span class="testimonial-quote-mark">"</span>
+          <p class="testimonial-placeholder-text">Testimonial coming soon — client quotes will appear here after engagements wrap.</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── ARTICLES ──────────────────────────────────────────────────── -->
+<section id="articles" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header section-header--light reveal">
+      <span class="eyebrow eyebrow--lime">Articles</span>
+      <h2 class="section-title section-title--light">Writing on AI, RAG, and mobile architecture.</h2>
+    </div>
+
+    <div class="article-grid reveal">
+      {articles.map((title) => (
+        <div class="article-card">
+          <span class="article-badge">Coming soon</span>
+          <h3 class="article-title">{title}</h3>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA + CONTACT ───────────────────────────────────────── -->
+<section id="contact" class="section final-cta-section">
+  <div class="section-inner">
+    <div class="final-cta-panel glass reveal">
+      <h2 class="final-cta-headline">Let's build your next AI product.</h2>
+      <p class="final-cta-sub">
+        Whether you're exploring AI or scaling an existing solution, let's discuss how to
+        turn ideas into production-ready systems.
+      </p>
+      <div class="hero-actions final-cta-actions">
+        <a href="mailto:david.vicenteferreira@gmail.com?subject=Discovery%20Call%20Request" class="btn-primary">Book a Call</a>
+        <a href="mailto:david.vicenteferreira@gmail.com" class="btn-ghost">Contact Me</a>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:david.vicenteferreira@gmail.com" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          david.vicenteferreira@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/david-ferreira-dev" target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/noais" target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <p>David Ferreira · Portugal · <span id="year"></span> · <a href="/" class="footer-link">Engineering Portfolio</a></p>
+  <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
+</footer>
+
+</Layout>
+
+<script>
+  const canvas = document.getElementById('hero-network') as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (canvas && ctx) {
+    let width = 0;
+    let height = 0;
+    let particles: { x: number; y: number; vx: number; vy: number }[] = [];
+    const PARTICLE_COUNT = 55;
+    const LINK_DIST = 130;
+
+    function resize() {
+      const rect = canvas!.parentElement!.getBoundingClientRect();
+      width = canvas!.width = rect.width;
+      height = canvas!.height = rect.height;
+    }
+
+    function initParticles() {
+      particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+      }));
+    }
+
+    function draw() {
+      ctx!.clearRect(0, 0, width, height);
+      for (const p of particles) {
+        if (!reduceMotion) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+        }
+      }
+      for (let i = 0; i < particles.length; i++) {
+        const a = particles[i];
+        ctx!.beginPath();
+        ctx!.arc(a.x, a.y, 1.6, 0, Math.PI * 2);
+        ctx!.fillStyle = 'rgba(198,241,53,0.55)';
+        ctx!.fill();
+        for (let j = i + 1; j < particles.length; j++) {
+          const b = particles[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            ctx!.beginPath();
+            ctx!.moveTo(a.x, a.y);
+            ctx!.lineTo(b.x, b.y);
+            ctx!.strokeStyle = `rgba(198,241,53,${0.12 * (1 - dist / LINK_DIST)})`;
+            ctx!.lineWidth = 1;
+            ctx!.stroke();
+          }
+        }
+      }
+      if (!reduceMotion) requestAnimationFrame(draw);
+    }
+
+    resize();
+    initParticles();
+    window.addEventListener('resize', () => {
+      resize();
+      initParticles();
+    });
+    draw();
+  }
+</script>
+
+<style>
+/* ── Nav ───────────────────────────────────────────────────────── */
+.nav-shell {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(13,15,26,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(237,233,226,0.07);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a[data-active] { color: var(--ink); }
+.nav-cta {
+  background: var(--lime);
+  color: #0D0F1A !important;
+  padding: 0.5rem 1.125rem;
+  border-radius: 100px;
+  transition: background 0.15s !important;
+}
+.nav-cta:hover { background: #d4ff3a !important; color: #0D0F1A !important; }
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  padding-top: 160px;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+.hero-network {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero-chips {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.chip {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid rgba(237,233,226,0.10);
+  border-radius: 100px;
+  padding: 0.3rem 0.875rem;
+  background: rgba(237,233,226,0.04);
+}
+.hero-headline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+}
+.hero-sub {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 48ch;
+  margin: 0 0 2.5rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--lime);
+  color: #0D0F1A;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #d4ff3a; }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid rgba(237,233,226,0.15);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.btn-ghost:hover { border-color: rgba(237,233,226,0.35); }
+
+/* ── Utilities: glass / gradient-text ────────────────────────────── */
+.glass {
+  background: rgba(237,233,226,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(237,233,226,0.08);
+}
+.gradient-text {
+  background: linear-gradient(90deg, var(--lime), #eaffa0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Trust strip ──────────────────────────────────────────────── */
+.proof-strip {
+  background: var(--navy);
+  padding: 1.375rem 2rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.proof-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  white-space: nowrap;
+  margin: 0;
+  flex-shrink: 0;
+}
+.proof-domains {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  margin: 0; padding: 0;
+  flex-wrap: wrap;
+}
+.proof-domains li {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.60);
+  padding: 0 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.10);
+}
+.proof-domains li:first-child { padding-left: 0; }
+.proof-domains li:last-child { border-right: none; }
+.proof-domains--logos li {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: rgba(255,255,255,0.75);
+}
+.stat-strip {
+  background: var(--navy);
+  padding: 0.5rem 2rem 1.5rem;
+  border-bottom: 1px solid rgba(237,233,226,0.05);
+}
+.stat-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.stat-list li {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--lime);
+}
+
+/* ── Sections ──────────────────────────────────────────────────── */
+.section {
+  padding: 100px 0;
+}
+.section--navy { background: var(--navy); border-top: 1px solid rgba(237,233,226,0.05); }
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-header { margin-bottom: 4rem; }
+.section-header--light .section-title { color: #fff; }
+.eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 0.75rem;
+}
+.eyebrow--lime { color: var(--lime); }
+.section-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.15;
+}
+.section-title--light { color: var(--ink); }
+
+/* ── Services ─────────────────────────────────────────────────── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.service-card {
+  border-radius: 18px;
+  padding: 2.5rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.service-card:hover {
+  border-color: rgba(198,241,53,0.3);
+  transform: translateY(-3px);
+}
+.service-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+.service-pitch {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+.service-deliverables {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.service-deliverables li {
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.55);
+  padding-left: 1.1rem;
+  position: relative;
+}
+.service-deliverables li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--lime);
+  font-size: 0.7rem;
+  top: 2px;
+}
+
+/* ── Expertise / Capabilities ─────────────────────────────────── */
+.caps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.cap-panel {
+  background: rgba(255,255,255,0.03);
+  padding: 2.5rem;
+  transition: background 0.15s;
+}
+.cap-panel:hover { background: rgba(255,255,255,0.06); }
+.cap-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.015em;
+}
+.cap-items {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.cap-items li {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.4;
+}
+
+/* ── Timeline (Consulting Process + Track Record) ────────────────── */
+.timeline {
+  list-style: none;
+  margin: 0; padding: 0;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  padding: 0 0 3rem 2.5rem;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+.timeline-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.30);
+  letter-spacing: 0.02em;
+  padding-top: 2px;
+  line-height: 1.4;
+}
+.process-step-num {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.5rem;
+  color: var(--lime);
+  opacity: 0.65;
+}
+.timeline-role {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.2rem;
+}
+.timeline--process .timeline-role { color: var(--ink); }
+.section--navy .timeline-role { color: #fff; }
+.timeline-company {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+.section--navy .timeline-company { color: rgba(255,255,255,0.40); }
+.timeline-outcomes {
+  margin: 0; padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.timeline-outcomes li {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+  padding-left: 1.1rem;
+  position: relative;
+}
+.timeline-outcomes li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--lime);
+  font-size: 0.7rem;
+  top: 4px;
+}
+
+/* ── Case cards ───────────────────────────────────────────────── */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.case-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(237,233,226,0.07);
+  background: var(--bg2);
+}
+.case-card--secondary,
+.case-card--text {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+.case-screen-single {
+  background: rgba(255,255,255,0.02);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2rem 1.5rem 0;
+  overflow: hidden;
+}
+.case-screen-single img {
+  width: 130px;
+  border-radius: 18px;
+  box-shadow: 0 20px 56px rgba(0,0,0,0.60), 0 6px 20px rgba(0,0,0,0.40);
+  display: block;
+  object-fit: cover;
+}
+.case-visual-abstract {
+  background: radial-gradient(circle at 30% 30%, rgba(198,241,53,0.18), transparent 60%), rgba(255,255,255,0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.case-visual-abstract svg {
+  width: 64px;
+  height: 64px;
+  color: var(--lime);
+  opacity: 0.85;
+}
+.case-card--secondary .case-body,
+.case-card--text .case-body { padding: 2.25rem 2.5rem; }
+.case-body {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.case-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.case-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.02em;
+}
+.case-problem,
+.case-outcome {
+  font-size: 0.9375rem;
+  color: rgba(237,233,226,0.60);
+  line-height: 1.6;
+  margin: 0 0 0.875rem;
+}
+.case-problem strong,
+.case-outcome strong { color: var(--ink); font-weight: 600; }
+.case-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.25rem 0 0;
+}
+.case-stack span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  background: rgba(237,233,226,0.05);
+  color: var(--muted);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid rgba(237,233,226,0.08);
+}
+.case-card--placeholder {
+  border-style: dashed;
+  border-color: rgba(237,233,226,0.15);
+  background: rgba(255,255,255,0.015);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.case-placeholder-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid rgba(237,233,226,0.15);
+  border-radius: 100px;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+/* ── Why work with me ─────────────────────────────────────────── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.why-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(237,233,226,0.08);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,241,53,0.35);
+}
+.why-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+.why-desc {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Testimonials ─────────────────────────────────────────────── */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.testimonial-card {
+  border: 1px dashed rgba(237,233,226,0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 160px;
+  justify-content: center;
+}
+.testimonial-quote-mark {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.5rem;
+  color: rgba(198,241,53,0.35);
+  line-height: 1;
+}
+.testimonial-placeholder-text {
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── Articles ─────────────────────────────────────────────────── */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+.article-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(237,233,226,0.07);
+  border-radius: 14px;
+  padding: 1.75rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.article-card:hover {
+  border-color: rgba(198,241,53,0.3);
+  background: rgba(255,255,255,0.05);
+}
+.article-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--lime);
+  background: rgba(198,241,53,0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+.article-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* ── Final CTA + Contact ──────────────────────────────────────── */
+.final-cta-section { padding: 60px 0 100px; }
+.final-cta-panel {
+  border-radius: 24px;
+  padding: 4rem;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.final-cta-headline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+  max-width: 22ch;
+}
+.final-cta-sub {
+  font-size: 1.0625rem;
+  color: rgba(237,233,226,0.55);
+  line-height: 1.65;
+  margin: 0 0 2.5rem;
+  max-width: 48ch;
+}
+.final-cta-actions { margin-bottom: 2.5rem; }
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 0.70;
+  transition: opacity 0.15s;
+}
+.contact-link:hover { opacity: 1; }
+.contact-link svg { flex-shrink: 0; }
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(237,233,226,0.05);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.22);
+}
+.footer p { margin: 0; }
+.footer-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.footer-link:hover { color: var(--lime); }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-section { padding-top: 120px; }
+  .case-card--secondary,
+  .case-card--text,
+  .case-card--placeholder { grid-template-columns: 1fr; }
+  .case-grid { grid-template-columns: 1fr; }
+  .case-screen-single { padding: 2rem 1.5rem 0; min-height: 200px; }
+  .case-visual-abstract { min-height: 160px; }
+  .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .caps-grid,
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .final-cta-panel { padding: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .nav-links { gap: 0.75rem; }
+  .nav-links li:nth-child(1),
+  .nav-links li:nth-child(2),
+  .nav-links li:nth-child(3) { display: none; }
+  .hero-headline { font-size: 2.25rem; }
+  .section { padding: 72px 0; }
+  .case-body { padding: 1.75rem; }
+  .cap-panel,
+  .service-card { padding: 1.75rem; }
+  .why-grid { grid-template-columns: 1fr; }
+  .proof-strip { flex-direction: column; gap: 0.875rem; align-items: flex-start; }
+  .proof-domains { flex-wrap: wrap; }
+  .proof-domains li {
+    padding: 0.2rem 0.75rem 0.2rem 0;
+    border-right: none;
+  }
+  .stat-list { gap: 1.25rem 1.5rem; }
+  .final-cta-panel { padding: 2rem 1.5rem; }
+}
+</style>

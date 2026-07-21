@@ -21,19 +21,23 @@ npm run preview    # Serve the production build locally
 
 ## Architecture
 
-This is a **fully static, single-page portfolio site** with no client-side framework (no React/Vue/Svelte). It deploys to `https://davidferreira.dev` via GitHub Actions → GitHub Pages on push to `main`.
+This is a **fully static, multi-page portfolio site** with no client-side framework (no React/Vue/Svelte). It deploys to `https://davidferreira.dev` via GitHub Actions → GitHub Pages on push to `main`.
 
-**File layout:**
+There are two landing pages, each a full single-file page (all sections + component-scoped CSS in a `<style>` block at the bottom), sharing the same `Layout.astro` shell and visual system (dark navy + lime accent, Fraunces/Inter/JetBrains Mono):
 
-- `src/layouts/Layout.astro` — HTML shell: fonts (Inter + JetBrains Mono), meta/OG tags, the IntersectionObserver scroll-reveal script, and active-nav highlight logic
-- `src/pages/index.astro` — The entire site: all sections (Hero, About, Work, Experience, Capabilities, Principles, Contact, Footer) in one file, plus all component-scoped CSS in a `<style>` block at the bottom
+- `src/pages/index.astro` — **the main landing page.** Positions David as a mobile engineering leader (Hero, Work/case studies, Experience timeline, Capabilities, Contact). This is the site's primary identity — don't remove or replace it when adding new pages.
+- `src/pages/ai-consulting.astro` — a secondary page positioning David as an AI solutions consultant / AI-first mobile engineering leader, aimed at driving consulting inquiries rather than job applications (Hero with a canvas particle-network background, Trust strip, Services, Expertise, Consulting Process, Case Studies, Track Record, Why Work With Me, Testimonials, Articles, Final CTA/Contact). Cross-linked from `index.astro`'s nav ("AI Consulting") and links back via its own nav ("Portfolio") and footer.
+
+**File layout (shared):**
+
+- `src/layouts/Layout.astro` — HTML shell: fonts (Inter + JetBrains Mono + Fraunces), meta/OG tags, optional `keywords` and `structuredData` (JSON-LD) props for pages that want them, the IntersectionObserver `.reveal` scroll-reveal script, and active-nav highlight logic
 - `src/styles/global.css` — Tailwind v4 `@theme` design tokens (colors, fonts, spacing), base resets, and the `.reveal` / `.glass` / `.gradient-text` utility classes
 
-**Content is inline data in `index.astro`.** Experience timeline entries, capability groups, and project cards are defined as JS arrays and rendered with `.map()` — there are no external data files or content collections.
+**Content is inline data in each page file**, not shared between them. Experience timeline entries, capability/expertise groups, services, the consulting process, and project/case-study cards are defined as JS arrays and rendered with `.map()` — there are no external data files or content collections. On `ai-consulting.astro`, Testimonials and Articles render as explicitly-labeled placeholder/"coming soon" cards since there's no CMS or blog content collection yet — replace those inline rather than wiring up new infrastructure until real content exists.
 
 ## Styling
 
-Tailwind CSS v4 is loaded via the `@tailwindcss/vite` Vite plugin (not `@astrojs/tailwind`). Design tokens are defined with `@theme` in `global.css`. The primary accent color is `#00c2d1` (cyan).
+Tailwind CSS v4 is loaded via the `@tailwindcss/vite` Vite plugin (not `@astrojs/tailwind`). Design tokens are defined with `@theme` in `global.css`. The primary accent color is `#C6F135` (lime) against a dark navy background (`#07090F`/`#0D0F1A`).
 
 Most component styles live in the scoped `<style>` block at the bottom of `index.astro`, not in Tailwind utility classes. `global.css` only defines tokens and shared utilities like `.reveal`.
 
