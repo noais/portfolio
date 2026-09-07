@@ -1,0 +1,305 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const faqs = [
+  {
+    q: 'How do I start a nursing?',
+    a: 'Open Nursling and tap the big button. It is already set to the breast that comes next, so there is nothing to choose. You can also start one from the Home Screen widget, from Control Centre, from the Action Button, or by asking Siri — none of which require unlocking into the app.',
+  },
+  {
+    q: 'I switched sides in the middle. Did that create two entries?',
+    a: 'No. Tap "Switch to Right" (or Left) during a session and Nursling keeps recording the same nursing, with the time split across both sides. It is still one entry in your history.',
+  },
+  {
+    q: 'I tapped the wrong thing.',
+    a: 'Undo sits right next to the timer on the active screen. After a session has finished you can still open it from History and change the time, change the side, or delete it entirely.',
+  },
+  {
+    q: 'What does "time since last nursing" actually measure?',
+    a: 'It is measured from the start of one nursing to the start of the next, not from when the last one ended. That is the interval that tends to matter when you are working out when the next feed is due.',
+  },
+  {
+    q: 'How do I add Nursling to Control Centre or the Action Button?',
+    a: 'Both live in iOS Settings rather than in the app. For Control Centre, swipe down from the top-right, tap the + in the corner, choose "Add a control", and search for Nursling. For the Action Button, open Settings → Action Button and pick Nursling from the Shortcut option.',
+  },
+  {
+    q: 'Can I get my data out?',
+    a: 'Yes. Settings → Export to CSV writes everything you have recorded to a file you can share or save anywhere. The export is free forever, whether or not you have bought the unlimited unlock.',
+  },
+  {
+    q: 'What happens after 50 nurslings?',
+    a: 'Nursling is free for your first 50. After that, a single one-time purchase unlocks unlimited tracking — there is no subscription. Your existing history stays readable and exportable either way.',
+  },
+  {
+    q: 'I bought the unlock but it is not showing.',
+    a: 'Go to Settings → Restore purchase. That asks the App Store to re-check the purchase on the Apple ID currently signed in on the device. If it still does not appear, email me with the Apple ID region you purchased from and I will sort it out.',
+  },
+  {
+    q: 'Is my data backed up if I lose my phone?',
+    a: 'Nursling has no cloud of its own, so your records live on the device. They are included in your encrypted iPhone or iCloud device backup, which is what restores them onto a new phone. If you want a copy you control, use the CSV export.',
+  },
+  {
+    q: 'Does it work on Apple Watch?',
+    a: 'Yes. Nursling ships a watch companion app, for the nights when the phone is on the other side of the room.',
+  },
+];
+---
+
+<Layout
+  title="Nursling — Support"
+  description="Support for Nursling, the one-tap breastfeeding tracker. Common questions about sessions, corrections, exports, purchases, and how to reach the developer."
+>
+
+<header class="nav-shell">
+  <nav class="nav-inner">
+    <a href="/" class="nav-logo">DF</a>
+    <ul class="nav-links">
+      <li><a href="/nursling/">Nursling</a></li>
+      <li><a href="/nursling/privacy/">Privacy</a></li>
+      <li><a href="/">Portfolio</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="doc">
+  <div class="doc-inner">
+    <span class="eyebrow">Nursling</span>
+    <h1 class="doc-title">Support</h1>
+
+    <p class="doc-lead">
+      Nursling is a one-tap breastfeeding tracker for iPhone and Apple Watch, built and
+      maintained by one person. If something is not working, or the app is missing something you
+      need, write to me directly — every email reaches me.
+    </p>
+
+    <a href="mailto:hey@davidferreira.dev?subject=Nursling%20support" class="btn-primary">
+      hey@davidferreira.dev
+    </a>
+
+    <h2 class="faq-heading">Common questions</h2>
+    <div class="faq-list">
+      {faqs.map((f) => (
+        <div class="faq-item">
+          <h3 class="faq-q">{f.q}</h3>
+          <p class="faq-a">{f.a}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2>Reporting a problem</h2>
+    <p>
+      Nursling has no crash reporting and no analytics, which means nothing reaches me unless you
+      tell me. If you hit a bug, the most useful details are your iOS version, your device, and
+      what you tapped just before it went wrong. A screenshot helps.
+    </p>
+
+    <h2>Privacy</h2>
+    <p>
+      Nursling has no account, no server and no tracking — your nursings stay on your device. The
+      full details are on the <a href="/nursling/privacy/">privacy page</a>.
+    </p>
+
+    <p class="doc-note">
+      Nursling is a log, not medical advice. For questions about feeding, weight gain or supply,
+      talk to your pediatrician.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <p class="footer-links">
+    <a href="/nursling/">Nursling</a>
+    <span aria-hidden="true">·</span>
+    <a href="/nursling/privacy/">Privacy</a>
+    <span aria-hidden="true">·</span>
+    <a href="/">Portfolio</a>
+  </p>
+  <p>David Ferreira · Portugal · <span id="year"></span></p>
+  <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
+</footer>
+
+</Layout>
+
+<style>
+:root { --accent: #7C5CFF; --accent-2: #FF5CA8; }
+
+/* ── Nav ───────────────────────────────────────────────────────── */
+.nav-shell {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(13,15,26,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(237,233,226,0.07);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ── Document ─────────────────────────────────────────────────── */
+.doc { padding: 140px 0 100px; }
+.doc-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 0.75rem;
+}
+.doc-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+  line-height: 1.1;
+}
+.doc-lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(237,233,226,0.75);
+  margin: 0 0 2rem;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #8f74ff; }
+
+.faq-heading {
+  margin-top: 4rem !important;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(237,233,226,0.08);
+}
+.doc-inner h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 2.75rem 0 0.875rem;
+  line-height: 1.25;
+}
+.doc-inner p {
+  font-size: 0.9875rem;
+  line-height: 1.75;
+  color: rgba(237,233,226,0.55);
+  margin: 0 0 1rem;
+}
+.doc-inner a:not(.btn-primary) {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(124,92,255,0.85);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(237,233,226,0.08);
+  border: 1px solid rgba(237,233,226,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 1.75rem;
+}
+.faq-item {
+  background: rgba(255,255,255,0.025);
+  padding: 1.75rem;
+}
+.faq-q {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+}
+.faq-a {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(237,233,226,0.55);
+  margin: 0 !important;
+}
+.doc-note {
+  margin-top: 3.5rem !important;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(237,233,226,0.08);
+  font-size: 0.8125rem !important;
+  color: rgba(237,233,226,0.30) !important;
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(237,233,226,0.05);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.22);
+}
+.footer p { margin: 0; }
+.footer-links {
+  margin-bottom: 0.5rem !important;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.footer a {
+  color: rgba(237,233,226,0.45);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer a:hover { color: var(--ink); }
+
+@media (max-width: 600px) {
+  .doc { padding: 110px 0 72px; }
+  .nav-links { gap: 1rem; }
+  .faq-item { padding: 1.5rem; }
+}
+</style>

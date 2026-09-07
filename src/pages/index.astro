@@ -78,6 +78,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       <li><a href="#work" data-nav="work">Work</a></li>
       <li><a href="#experience" data-nav="experience">Experience</a></li>
       <li><a href="#capabilities" data-nav="capabilities">Capabilities</a></li>
+      <li><a href="/nursling/">Nursling</a></li>
       <li><a href="/ai-consulting/">AI Consulting</a></li>
       <li><a href="#contact" data-nav="contact" class="nav-cta">Let's talk</a></li>
     </ul>
@@ -195,6 +196,29 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
         <div class="case-stack">
           <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>RAG</span><span>Vision OCR</span>
         </div>
+      </div>
+    </article>
+
+    <!-- Nursling — secondary -->
+    <article class="case-card case-card--secondary">
+      <div class="case-screen-single">
+        <img src="/nursling/02-home.png" alt="Nursling home screen showing time since the last nursing" loading="lazy" />
+      </div>
+      <div class="case-body">
+        <span class="case-tag">iOS · watchOS · Health · Personal Product</span>
+        <h3 class="case-title">Nursling</h3>
+        <p class="case-problem">
+          <strong>Problem:</strong> Baby trackers are built for the daytime version of a parent. At 3am, with one hand free, every picker, confirmation and "which side?" question is a reason to stop logging.
+        </p>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> A breastfeeding tracker scoped down to a single tap that already knows which breast comes next. The same App Intent ships to the widget, Control Centre, the Action Button, Siri, a Live Activity and an Apple Watch app, so a session starts without opening anything. No account, no server, no analytics — records stay in a local store, exportable to CSV. Shipped solo in 21 languages.
+        </p>
+        <div class="case-stack">
+          <span>Swift 6</span><span>SwiftUI</span><span>App Intents</span><span>WidgetKit</span><span>SQLite</span><span>watchOS</span>
+        </div>
+        <a href="/nursling/" class="case-link">
+          See Nursling <span aria-hidden="true">→</span>
+        </a>
       </div>
     </article>
 
@@ -681,7 +705,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   transition: color 0.15s;
   margin-top: auto;
 }
-.case-link:hover { color: #3a3835; }
+.case-link:hover { color: var(--lime); }
 .case-card--secondary {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -873,7 +897,10 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   .caps-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .nav-links { gap: 0.75rem; }
+  .nav-inner { padding: 0 1.25rem; }
+  .nav-links { gap: 0.875rem; }
+  .nav-links a { font-size: 0.8125rem; }
+  .nav-cta { padding: 0.45rem 0.875rem; }
   .nav-links li:nth-child(1),
   .nav-links li:nth-child(2),
   .nav-links li:nth-child(3) { display: none; }
