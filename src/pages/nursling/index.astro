@@ -1,8 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-// Set this to the App Store URL once the app is live; every CTA switches to a real link.
-const appStoreUrl: string | null = null;
+// App Store URL; set to null to fall back to the "Coming to the App Store" placeholder CTAs.
+const appStoreUrl: string | null = 'https://apps.apple.com/app/nursling-breastfeeding-tracker/id6809155622';
 
 const strip = [
   'No account',
@@ -150,7 +150,7 @@ const structuredData = {
 
       <div class="hero-actions">
         {appStoreUrl ? (
-          <a href={appStoreUrl} target="_blank" rel="noopener" class="btn-primary">Download on the App Store</a>
+          <a href={appStoreUrl} target="_blank" rel="noopener" class="btn-primary" data-app-store>Download on the App Store</a>
         ) : (
           <span class="btn-primary btn-primary--pending">Coming to the App Store</span>
         )}
@@ -358,7 +358,7 @@ const structuredData = {
     </p>
     <div class="hero-actions">
       {appStoreUrl ? (
-        <a href={appStoreUrl} target="_blank" rel="noopener" class="btn-primary">Download on the App Store</a>
+        <a href={appStoreUrl} target="_blank" rel="noopener" class="btn-primary" data-app-store>Download on the App Store</a>
       ) : (
         <span class="btn-primary btn-primary--pending">Coming to the App Store</span>
       )}
@@ -383,6 +383,30 @@ const structuredData = {
   <p>David Ferreira · Portugal · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
 </footer>
+
+<script>
+  // On the web, an App Store link without a country always lands on the US store, so send
+  // visitors to the store and language of their browser locale. iOS opens the App Store app,
+  // which already uses the visitor's own store, so links there stay as they are.
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent)
+    || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+  if (!isIOS) {
+    try {
+      // maximize() fills in the likely region for bare languages, e.g. "de" → "de-DE".
+      const locale = new Intl.Locale(navigator.languages?.[0] ?? navigator.language).maximize();
+      if (locale.region && /^[A-Z]{2}$/.test(locale.region)) {
+        document.querySelectorAll<HTMLAnchorElement>('a[data-app-store]').forEach((link) => {
+          const url = new URL(link.href);
+          url.pathname = `/${locale.region!.toLowerCase()}${url.pathname}`;
+          url.searchParams.set('l', locale.language);
+          link.href = url.toString();
+        });
+      }
+    } catch {
+      // Unparseable locale: keep the country-less link.
+    }
+  }
+</script>
 
 </Layout>
 
