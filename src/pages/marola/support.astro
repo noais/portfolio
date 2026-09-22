@@ -1,0 +1,74 @@
+---
+import MarolaDoc from '../../layouts/MarolaDoc.astro';
+
+const faqs = [
+  {
+    q: 'How does booking work?',
+    a: 'Pick your dates and send a request. Your card is authorised for the rental price but not charged. The owner has 72 hours to accept. If they accept, you are charged and the exact pickup point unlocks in your rental. If they decline or don’t answer, the authorisation is released and you pay nothing.',
+  },
+  {
+    q: 'Are there any fees for renters?',
+    a: 'No. You pay the rental price shown before you book. Owners pay Marola a service fee out of what they receive.',
+  },
+  {
+    q: 'How does the deposit work?',
+    a: 'If a listing has a deposit, a hold for that amount is placed on your card from about 24 hours before pickup. It is not a charge. It is released when the owner confirms the gear came back as expected. If the hold can’t be placed, update your card before pickup.',
+  },
+  {
+    q: 'Can I cancel?',
+    a: 'A request can be cancelled at any time for free. After the owner accepts, cancelling is free until 48 hours before pickup and you get a full refund; after that, the rental price isn’t refunded. The app shows the exact refund before you confirm. If an owner cancels, you are always refunded in full.',
+  },
+  {
+    q: 'Why do I have to take photos at pickup and return?',
+    a: 'They are the shared record of the gear’s condition, and they protect both of you. Both of you can see them. A handover can’t be confirmed until the photos have finished uploading, so keep the app open for a moment on a weak connection.',
+  },
+  {
+    q: 'The gear came back damaged. What happens?',
+    a: 'As the owner, report an issue from the rental before you confirm the return, and describe what happened. The deposit stays on hold while Marola reviews the handover photos and your messages, then decides how much of the deposit goes to the owner and releases the rest. Both of you are told the outcome in the rental’s conversation.',
+  },
+  {
+    q: 'How do I get paid for lending gear?',
+    a: 'Go to Profile → Payments & payouts and set up payouts with Stripe. You need this before you can accept a booking. Marola’s fee and the amount you’ll receive are shown before you publish a listing and on every booking.',
+  },
+  {
+    q: 'Someone is being abusive. What can I do?',
+    a: 'In the conversation, tap the menu at the top and choose Report or Block. Once you block someone, neither of you can message or book the other, and they are not told. You can also report a listing from its page, or a user from a completed rental. Reports are reviewed within 24 hours.',
+  },
+  {
+    q: 'How do I delete my account?',
+    a: 'Go to Profile and tap Delete account. If you have a rental in progress, finish or cancel it first. Your login and personal details are removed straight away; records of past rentals stay for the other person, shown as “Deleted user”. The Privacy Policy explains exactly what is kept.',
+  },
+];
+---
+
+<MarolaDoc
+  title="Marola — Support"
+  description="Help with renting and lending water sports gear on Marola, and how to contact support."
+  heading="Support"
+>
+  <p class="doc-lead">
+    Stuck on a booking, a payment or a handover? Most answers are below. If yours isn't, email <a href="mailto:hey@davidferreira.dev?subject=Marola%20support">hey@davidferreira.dev</a> and
+    include the listing or rental it's about. You'll hear back within a day.
+  </p>
+
+  <div class="faq">
+    {faqs.map((f) => (
+      <details>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <h2>Contact</h2>
+  <p>
+    Email <a href="mailto:hey@davidferreira.dev?subject=Marola%20support">hey@davidferreira.dev</a>.
+    For anything about your data, see the <a href="/marola/privacy/">Privacy Policy</a>; for the
+    rules of renting and lending, the <a href="/marola/terms/">Terms of Service</a>.
+  </p>
+
+  <p class="doc-note">
+    If someone is in danger on the water or on land, call 112 (the EU emergency number) or your
+    local emergency services first.
+  </p>
+</MarolaDoc>

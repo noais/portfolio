@@ -1,19 +1,26 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+// Shell for Marola's policy and support pages: the site's navy layout with
+// Marola's lime + aqua accents, a Marola nav, and a document column.
+import Layout from './Layout.astro';
 
-const lastUpdated = 'September 2025';
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  lastUpdated?: string;
+}
+
+const { title, description, heading, lastUpdated } = Astro.props;
 ---
 
-<Layout
-  title="Nursling — Privacy Policy"
-  description="Nursling's privacy policy. Nursling has no account, no server and no analytics — every nursing you record stays on your device."
->
+<Layout title={title} description={description}>
 
 <header class="nav-shell">
-  <nav class="nav-inner"> <a href="/" class="nav-logo">DF</a>
+  <nav class="nav-inner">
+    <a href="/" class="nav-logo">DF</a>
     <ul class="nav-links">
-      <li><a href="/nursling/">Nursling</a></li>
-      <li><a href="/nursling/support/">Support</a></li>
+      <li><a href="/marola/">Marola</a></li>
+      <li><a href="/marola/support/">Support</a></li>
       <li><a href="/">Portfolio</a></li>
     </ul>
   </nav>
@@ -21,89 +28,24 @@ const lastUpdated = 'September 2025';
 
 <main class="doc">
   <div class="doc-inner">
-    <span class="eyebrow">Nursling</span>
-    <h1 class="doc-title">Privacy Policy</h1>
-    <p class="doc-meta">Last updated {lastUpdated}</p>
-
-    <p class="doc-lead">
-      Nursling does not collect your data, because there is nowhere for it to go. There is no
-      account, no server and no analytics in the app. Everything you record stays on your
-      device.
-    </p>
-
-    <h2>What Nursling stores</h2>
-    <p>
-      Nursling stores the nursings you record — the start time, the duration, the side, and any
-      correction you make afterwards — along with your settings, such as reminders, the dark-at-night
-      preference, and an optional baby name. All of it is written to a local database on your
-      device.
-    </p>
-    <p>
-      That local data is included in your device's encrypted iPhone or iCloud backup, the same
-      way any other app's local data is. Nursling itself does not upload it, sync it, or read it
-      back from anywhere.
-    </p>
-
-    <h2>What Nursling does not do</h2>
-    <ul class="doc-list">
-      <li>No account, sign-up, email address, or login of any kind.</li>
-      <li>No server. Nursling has no backend and makes no network requests to send your data.</li>
-      <li>No analytics, telemetry, crash-reporting SDK, or usage tracking.</li>
-      <li>No advertising, and no advertising identifiers.</li>
-      <li>No third-party trackers or data brokers. Your data is never sold or shared, because it is never collected.</li>
-    </ul>
-
-    <h2>Health data</h2>
-    <p>
-      The nursings you record are personal and sensitive, and Nursling treats them that way: they
-      stay on the device. Nursling does not read from or write to Apple Health, and it does not
-      transmit your records anywhere.
-    </p>
-
-    <h2>Purchases</h2>
-    <p>
-      Nursling is free for your first 50 nurslings. Unlimited tracking is a single one-time
-      purchase, handled entirely by Apple through the App Store. Nursling never sees or stores
-      your payment details. Apple tells the app only whether the unlock has been purchased. Your
-      history and your CSV export remain available whether you buy or not.
-    </p>
-
-    <h2>Exporting and deleting your data</h2>
-    <p>
-      You can export everything you have recorded to a CSV file at any time, from Settings, and
-      that export is free forever. Because your data lives only on your device, deleting the app
-      deletes the data with it. You can also delete individual nursings inside the app.
-    </p>
-
-    <h2>Children</h2>
-    <p>
-      Nursling is intended for parents and caregivers, not for children. It does not knowingly
-      collect information from anyone, of any age.
-    </p>
-
-    <h2>Changes to this policy</h2>
-    <p>
-      If this policy changes, the updated version will be published on this page with a new date
-      at the top. Nursling's approach — nothing leaves the device — is a design decision, not a
-      setting, so any change here would be a change to the app itself.
-    </p>
-
-    <h2>Contact</h2>
-    <p>
-      Questions about privacy in Nursling? Email <a href="mailto:hey@davidferreira.dev?subject=Nursling%20privacy">hey@davidferreira.dev</a>.
-    </p>
-
-    <p class="doc-note">
-      Nursling is a log, not medical advice. For questions about feeding, weight gain or supply,
-      talk to your pediatrician.
-    </p>
+    <span class="eyebrow">Marola</span>
+    <h1 class="doc-title">{heading}</h1>
+    {lastUpdated && <p class="doc-meta">Last updated {lastUpdated}</p>}
+    <slot />
   </div>
 </main>
 
 <footer class="footer">
-  <p class="footer-links"> <a href="/nursling/">Nursling</a>
-    <span aria-hidden="true">·</span> <a href="/nursling/support/">Support</a>
-    <span aria-hidden="true">·</span> <a href="/">Portfolio</a>
+  <p class="footer-links">
+    <a href="/marola/">Marola</a>
+    <span aria-hidden="true">·</span>
+    <a href="/marola/support/">Support</a>
+    <span aria-hidden="true">·</span>
+    <a href="/marola/privacy/">Privacy</a>
+    <span aria-hidden="true">·</span>
+    <a href="/marola/terms/">Terms</a>
+    <span aria-hidden="true">·</span>
+    <a href="/">Portfolio</a>
   </p>
   <p>David Ferreira · Portugal · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
@@ -111,8 +53,8 @@ const lastUpdated = 'September 2025';
 
 </Layout>
 
-<style>
-:root { --accent: #7C5CFF; --accent-2: #FF5CA8; }
+<style is:global>
+:root { --accent: #D6F76B; --accent-2: #39C6BD; }
 
 /* ── Nav ───────────────────────────────────────────────────────── */
 .nav-shell {
@@ -205,7 +147,12 @@ const lastUpdated = 'September 2025';
   margin: 2.75rem 0 0.875rem;
   line-height: 1.25;
 }
-.doc-inner h2:first-of-type { margin-top: 0; }
+.doc-inner h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.75rem 0 0.5rem;
+}
 .doc-inner p {
   font-size: 0.9875rem;
   line-height: 1.75;
@@ -216,7 +163,7 @@ const lastUpdated = 'September 2025';
   color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(124,92,255,0.85);
+  text-decoration-color: rgba(214,247,107,0.85);
 }
 .doc-list {
   list-style: none;
@@ -251,6 +198,27 @@ const lastUpdated = 'September 2025';
   color: rgba(237,233,226,0.30) !important;
 }
 
+/* ── FAQ ──────────────────────────────────────────────────────── */
+.faq { margin: 0 0 1rem; }
+.faq details {
+  border-bottom: 1px solid rgba(237,233,226,0.08);
+  padding: 1.1rem 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--accent); flex-shrink: 0; }
+.faq details[open] summary::after { content: '−'; }
+.faq details p { margin: 0.75rem 0 0; }
+
 /* ── Footer ───────────────────────────────────────────────────── */
 .footer {
   background: var(--navy);
@@ -278,5 +246,6 @@ const lastUpdated = 'September 2025';
 @media (max-width: 600px) {
   .doc { padding: 110px 0 72px; }
   .nav-links { gap: 1rem; }
+  .doc-inner { padding: 0 1rem; }
 }
 </style>
