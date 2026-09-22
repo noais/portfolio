@@ -1,0 +1,895 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const strip = ['Kitesurf', 'Surf', 'Wing foil', 'SUP', 'Riders', 'Schools & shops'];
+
+const features = [
+  {
+    title: 'Search the map, not a group chat',
+    body: 'Price pins on the coast you ride, with a list view and filters for sport and dates. Browsing works without an account.',
+  },
+  {
+    title: 'Listings that know the sport',
+    body: 'A kite is listed by size, a board by volume. The listing wizard asks only for what matters to that category and saves your draft as you go.',
+  },
+  {
+    title: 'Money shown honestly',
+    body: 'Rental total, deposit and owner payout are always separate lines. The deposit is held, never added to the rental price, and owners see what they receive before they publish.',
+  },
+  {
+    title: 'Condition on the record',
+    body: 'Guided photo checks at pickup and return. A handover only completes once the evidence has uploaded, so both sides share the same record.',
+  },
+  {
+    title: 'Plans made in the app',
+    body: 'Real-time chat for every booking, with the rental pinned to the top of the conversation, so pickup times do not get lost.',
+  },
+  {
+    title: 'Pro for schools and shops',
+    body: 'A dashboard for rental fleets: today’s pickups and returns, active rentals, estimated payout and what needs attention.',
+  },
+];
+
+const roles = [
+  {
+    tier: 'Renting',
+    headline: 'The right gear for the conditions',
+    points: [
+      'Find a kite, board or foil near the spot you’re riding',
+      'Pick dates on the owner’s live availability',
+      'Pay in-app, with the deposit shown on its own',
+      'Photo check at pickup and return',
+    ],
+  },
+  {
+    tier: 'Lending',
+    headline: 'Earn from the gear you’re not using',
+    points: [
+      'List in minutes, with forms built for each sport',
+      'Choose exactly when your gear is available',
+      'See your payout before you publish',
+      'Get paid out through Stripe',
+    ],
+    accent: true,
+  },
+  {
+    tier: 'Schools & shops',
+    headline: 'Your fleet, in front of local riders',
+    points: [
+      'The same marketplace, with no new booking system to learn',
+      'Multiple units and fleet availability',
+      'A daily view of pickups, returns and payouts',
+    ],
+  },
+];
+
+const build = [
+  { label: 'App', items: ['Swift 6', 'SwiftUI', 'iOS 17+', 'MVVM + typed coordinator', 'Modular Swift packages'] },
+  { label: 'Backend', items: ['Supabase Postgres', 'Edge Functions', 'Realtime', 'Storage'] },
+  { label: 'Payments', items: ['Stripe PaymentSheet', 'Stripe Connect payouts', 'Deposit holds', 'Webhooks'] },
+  { label: 'Craft', items: ['Sign in with Apple & Google', 'Offline-safe upload queue', 'Reduce Motion–aware motion', 'Dark mode'] },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Marola',
+  operatingSystem: 'iOS',
+  applicationCategory: 'LifestyleApplication',
+  description:
+    'A peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Rent from local riders, schools and shops, or earn from the gear you are not using.',
+  author: { '@type': 'Person', name: 'David Ferreira', url: 'https://davidferreira.dev' },
+};
+---
+
+<Layout
+  title="Marola — rent water sports gear from local riders."
+  description="Marola is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Rent great gear from local riders, schools and shops — or share yours."
+  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, iOS app, Marola"
+  structuredData={structuredData}
+>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────── -->
+<header class="nav-shell">
+  <nav class="nav-inner">
+    <a href="/" class="nav-logo">DF</a>
+    <ul class="nav-links">
+      <li><a href="#features" data-nav="features">Features</a></li>
+      <li><a href="#how" data-nav="how">How it works</a></li>
+      <li><a href="#build" data-nav="build">Build</a></li>
+      <li><a href="/">Portfolio</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────── -->
+<section id="top" class="hero-section">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid">
+
+    <div class="hero-copy">
+      <div class="hero-id">
+        <img src="/marola/app-icon.png" alt="Marola app icon" class="hero-icon" width="72" height="72" />
+        <div>
+          <p class="hero-name">Marola</p>
+          <p class="hero-kicker">Water sports gear rental · iPhone · In development</p>
+        </div>
+      </div>
+
+      <h1 class="hero-headline">
+        Less owning.<br />
+        <em>More riding.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Rent great gear from local riders, schools and shops — or share yours. Marola is a
+        peer-to-peer marketplace for kitesurf, surf, wing foil and SUP, built around trust:
+        honest totals, separate deposits, and condition photos at every handover.
+      </p>
+
+      <div class="hero-actions">
+        <span class="btn-primary btn-primary--pending">Coming to the App Store</span>
+        <a href="#how" class="btn-ghost">See how it works</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="phone-stack">
+        <div class="phone phone--back">
+          <img src="/marola/explore.png" alt="" loading="eager" />
+        </div>
+        <div class="phone phone--front">
+          <img src="/marola/welcome.jpg" alt="" loading="eager" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROOF STRIP ───────────────────────────────────────────────── -->
+<div class="proof-strip">
+  <p class="proof-label">Built for</p>
+  <ul class="proof-domains">
+    {strip.map((s) => (
+      <li>{s}</li>
+    ))}
+  </ul>
+</div>
+
+<!-- ─── PREMISE ───────────────────────────────────────────────────── -->
+<section id="premise" class="section">
+  <div class="section-inner premise-grid">
+    <div class="premise-copy">
+      <span class="eyebrow">The premise</span>
+      <h2 class="premise-headline">
+        Great gear spends most of the year in a garage.
+      </h2>
+      <p class="premise-body">
+        Water sports equipment is expensive, bulky and situational. Riders travel without the
+        right kite or board for the conditions, while other riders have spare sizes that barely
+        get wet. Schools and shops have gear to rent, but finding it means websites, WhatsApp
+        and phone calls. Marola puts all of it on one map, bookable in minutes, with the trust
+        built in that lending your own gear to a stranger needs.
+      </p>
+      <div class="premise-stats">
+        <div class="premise-stat">
+          <span class="premise-num">4</span>
+          <span class="premise-cap">sports at launch: kite, surf, wing, SUP</span>
+        </div>
+        <div class="premise-stat">
+          <span class="premise-num">1</span>
+          <span class="premise-cap">account to both rent and lend</span>
+        </div>
+        <div class="premise-stat">
+          <span class="premise-num">2</span>
+          <span class="premise-cap">photo checks per rental, at pickup and return</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="premise-visual">
+      <div class="premise-phone">
+        <img
+          src="/marola/messages.png"
+          alt="Marola messages screen reading &quot;A little hello. A great session. Make plans with your water sports community.&quot;"
+          loading="lazy"
+          width="248"
+          height="512"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ──────────────────────────────────────────────────── -->
+<section id="features" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow eyebrow--accent">What it does</span>
+      <h2 class="section-title">Trust before growth hacks.</h2>
+      <p class="section-lede">
+        Condition photos, clear deposits and transparent payouts matter more than urgency
+        banners. Every flow in Marola is designed so both sides know exactly what they are
+        agreeing to.
+      </p>
+    </div>
+
+    <div class="surface-grid">
+      {features.map((f) => (
+        <div class="surface-panel">
+          <h3 class="surface-title">{f.title}</h3>
+          <p class="surface-body">{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────────────── -->
+<section id="how" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow">How it works</span>
+      <h2 class="section-title">The gear you rent. The gear you share.</h2>
+    </div>
+
+    <div class="price-grid price-grid--3">
+      {roles.map((r) => (
+        <div class={r.accent ? 'price-card price-card--accent' : 'price-card'}>
+          <p class="price-tier">{r.tier}</p>
+          <p class="price-amount">{r.headline}</p>
+          <ul class="price-points">
+            {r.points.map((p) => (
+              <li>{p}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── BUILD ─────────────────────────────────────────────────────── -->
+<section id="build" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow eyebrow--accent">Behind the build</span>
+      <h2 class="section-title">A two-sided marketplace, end to end.</h2>
+      <p class="section-lede">
+        Marola is a product by <a href="/">David Ferreira</a> — the SwiftUI app and its design
+        system, the Supabase schema and edge functions that own pricing and booking state, and
+        the Stripe payment, deposit and payout flows.
+      </p>
+    </div>
+
+    <div class="build-grid">
+      {build.map((b) => (
+        <div class="build-panel">
+          <h3 class="build-title">{b.label}</h3>
+          <ul class="build-items">
+            {b.items.map((i) => (
+              <li>{i}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────────── -->
+<section id="contact" class="section section--navy">
+  <div class="section-inner get-inner">
+    <span class="eyebrow eyebrow--accent">Get in touch</span>
+    <h2 class="get-headline">Life’s better on the water.</h2>
+    <p class="get-sub">
+      Marola is in development for iPhone. If you run a school or shop, have gear to share, or
+      want to talk about building something similar, I’d like to hear from you.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:hey@davidferreira.dev?subject=Marola" class="btn-primary">Email me about Marola</a>
+      <a href="/#work" class="btn-ghost">See more work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <p class="footer-links">
+    <a href="/">Portfolio</a>
+    <span aria-hidden="true">·</span>
+    <a href="/nursling/">Nursling</a>
+  </p>
+  <p>David Ferreira · Portugal · <span id="year"></span></p>
+  <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
+</footer>
+
+</Layout>
+
+<style>
+/* Marola's own lime + ocean-aqua accents, on the site's dark navy shell */
+:root {
+  --accent:   #D6F76B;
+  --accent-2: #39C6BD;
+  --accent-soft: #D6F76B;
+}
+
+/* ── Nav ───────────────────────────────────────────────────────── */
+.nav-shell {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(13,15,26,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(237,233,226,0.07);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover,
+.nav-links a[data-active] { color: var(--ink); }
+.nav-cta {
+  background: var(--accent);
+  color: #07171E !important;
+  padding: 0.5rem 1.125rem;
+  border-radius: 100px;
+  transition: background 0.15s !important;
+}
+.nav-cta:hover { background: #e2fb8c !important; color: #07171E !important; }
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 45% at 72% 42%, rgba(57,198,189,0.20) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 30% at 58% 78%, rgba(214,247,107,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  min-height: 80vh;
+}
+.hero-id {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.hero-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  flex-shrink: 0;
+}
+.hero-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.hero-kicker {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  margin: 0.15rem 0 0;
+  line-height: 1.4;
+}
+.hero-headline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(237,233,226,0.78);
+}
+.hero-sub {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 46ch;
+  margin: 0 0 2.5rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #07171E;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #e2fb8c; }
+.btn-primary--pending {
+  background: rgba(57,198,189,0.14);
+  color: #D6F76B;
+  border: 1.5px solid rgba(57,198,189,0.45);
+  cursor: default;
+}
+.btn-primary--pending:hover { background: rgba(57,198,189,0.14); }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid rgba(237,233,226,0.15);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+.btn-ghost:hover { border-color: rgba(237,233,226,0.35); }
+.hero-note {
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.35);
+  margin: 1.5rem 0 0;
+}
+
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 560px;
+}
+.phone-stack {
+  position: relative;
+  width: 240px;
+  height: 480px;
+}
+.phone {
+  position: absolute;
+  width: 220px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.35);
+}
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.phone--back {
+  top: 32px;
+  left: -48px;
+  height: 420px;
+  transform: rotate(-6deg);
+  opacity: 0.85;
+  z-index: 1;
+}
+.phone--front {
+  top: 0;
+  left: 56px;
+  height: 460px;
+  transform: rotate(3deg);
+  z-index: 2;
+}
+
+/* ── Proof strip ──────────────────────────────────────────────── */
+.proof-strip {
+  background: var(--navy);
+  padding: 1.375rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.proof-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  white-space: nowrap;
+  margin: 0;
+  flex-shrink: 0;
+}
+.proof-domains {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  margin: 0; padding: 0;
+  flex-wrap: wrap;
+}
+.proof-domains li {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.60);
+  padding: 0 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.10);
+}
+.proof-domains li:first-child { padding-left: 0; }
+.proof-domains li:last-child { border-right: none; }
+
+/* ── Sections ──────────────────────────────────────────────────── */
+.section { padding: 100px 0; }
+.section--navy { background: var(--navy); border-top: 1px solid rgba(237,233,226,0.05); }
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.section-header { margin-bottom: 4rem; max-width: 62ch; }
+.eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 0.75rem;
+}
+.eyebrow--accent { color: var(--accent-soft); }
+.section-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.15;
+}
+.section-lede {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(237,233,226,0.50);
+  margin: 1.25rem 0 0;
+}
+.section-lede a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(57,198,189,0.85);
+}
+
+/* ── Premise ──────────────────────────────────────────────────── */
+.premise-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 4.5rem;
+  align-items: center;
+}
+.premise-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.premise-visual::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(ellipse, rgba(214,247,107,0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+.premise-phone {
+  position: relative;
+  width: 248px;
+  height: 512px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35);
+}
+.premise-phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.premise-headline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.premise-body {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(237,233,226,0.55);
+  margin: 0;
+}
+.premise-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(237,233,226,0.08);
+}
+.premise-stat { display: flex; flex-direction: column; gap: 0.35rem; }
+.premise-num {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent-soft);
+  letter-spacing: -0.03em;
+}
+.premise-cap {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── Surfaces ─────────────────────────────────────────────────── */
+.surface-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.surface-panel {
+  background: rgba(255,255,255,0.03);
+  padding: 2.25rem;
+  transition: background 0.15s;
+}
+.surface-panel:hover { background: rgba(57,198,189,0.07); }
+.surface-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.015em;
+}
+.surface-body {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Pricing ──────────────────────────────────────────────────── */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.price-card {
+  border: 1px solid rgba(237,233,226,0.09);
+  border-radius: 20px;
+  padding: 2.5rem;
+  background: var(--bg2);
+}
+.price-card--accent {
+  border-color: rgba(57,198,189,0.40);
+  background: linear-gradient(160deg, rgba(57,198,189,0.10), rgba(214,247,107,0.05));
+}
+.price-tier {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 0.75rem;
+}
+.price-card--accent .price-tier { color: var(--accent-soft); }
+.price-amount {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.625rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 1.75rem;
+  line-height: 1.2;
+}
+.price-points {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.price-points li {
+  font-size: 0.9375rem;
+  color: rgba(237,233,226,0.60);
+  line-height: 1.5;
+  padding-left: 1.4rem;
+  position: relative;
+}
+.price-points li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-soft);
+  font-size: 0.8rem;
+  top: 1px;
+}
+
+.price-grid--3 { grid-template-columns: repeat(3, 1fr); }
+
+/* ── Build ────────────────────────────────────────────────────── */
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.build-panel {
+  background: rgba(255,255,255,0.03);
+  padding: 2.25rem;
+}
+.build-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: #fff;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.015em;
+}
+.build-items {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.build-items li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.50);
+  line-height: 1.5;
+}
+
+/* ── Get ──────────────────────────────────────────────────────── */
+.get-inner { max-width: 720px; }
+.get-headline {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem;
+  max-width: 22ch;
+}
+.get-sub {
+  font-size: 1.0625rem;
+  color: rgba(237,233,226,0.50);
+  line-height: 1.65;
+  margin: 0 0 2.5rem;
+  max-width: 48ch;
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(237,233,226,0.05);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.22);
+}
+.footer p { margin: 0; }
+.footer-links {
+  margin-bottom: 0.5rem !important;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.footer a {
+  color: rgba(237,233,226,0.45);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer a:hover { color: var(--ink); }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .surface-grid { grid-template-columns: repeat(2, 1fr); }
+  .build-grid { grid-template-columns: repeat(2, 1fr); }
+  .premise-grid { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
+  .premise-visual { order: 2; }
+}
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+    min-height: auto;
+    padding-top: 2rem;
+  }
+  .hero-visual { height: 400px; }
+  .phone--back { left: -28px; height: 360px; }
+  .phone--front { left: 44px; height: 400px; }
+  .price-grid,
+  .price-grid--3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-inner { padding: 0 1.25rem; }
+  .nav-links { gap: 0.875rem; }
+  .nav-links a { font-size: 0.8125rem; }
+  .nav-cta { padding: 0.45rem 0.875rem; }
+  .nav-links li:nth-child(1),
+  .nav-links li:nth-child(2),
+  .nav-links li:nth-child(3) { display: none; }
+  .hero-headline { font-size: 2.375rem; }
+  .hero-icon { width: 60px; height: 60px; border-radius: 15px; }
+  .section { padding: 72px 0; }
+  .premise-stats { grid-template-columns: 1fr; gap: 1.75rem; }
+  .premise-num { font-size: 2.5rem; }
+  .surface-grid { grid-template-columns: 1fr; }
+  .build-grid { grid-template-columns: 1fr; }
+  .surface-panel, .build-panel { padding: 1.75rem; }
+  .price-card { padding: 1.75rem; }
+  .proof-strip { flex-direction: column; gap: 0.875rem; align-items: flex-start; }
+  .proof-domains { flex-wrap: wrap; }
+  .proof-domains li { padding: 0.2rem 0.75rem 0.2rem 0; border-right: none; }
+  .footer-links { flex-wrap: wrap; }
+}
+</style>

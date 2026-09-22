@@ -78,6 +78,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       <li><a href="#work" data-nav="work">Work</a></li>
       <li><a href="#experience" data-nav="experience">Experience</a></li>
       <li><a href="#capabilities" data-nav="capabilities">Capabilities</a></li>
+      <li><a href="/marola/">Marola</a></li>
       <li><a href="/nursling/">Nursling</a></li>
       <li><a href="/ai-consulting/">AI Consulting</a></li>
       <li><a href="#contact" data-nav="contact" class="nav-cta">Let's talk</a></li>
@@ -117,10 +118,10 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
     <div class="hero-visual" aria-hidden="true">
       <div class="phone-stack">
         <div class="phone phone--back">
-          <img src="/finpilot-overview.png" alt="" loading="eager" />
+          <img src="/ridersnow-site/assets/01-live.png" alt="" loading="eager" />
         </div>
         <div class="phone phone--front">
-          <img src="/ridersnow-site/assets/01-live.png" alt="" loading="eager" />
+          <img src="/marola/welcome.jpg" alt="" loading="eager" />
         </div>
       </div>
       <div class="hero-topo"></div>
@@ -147,20 +148,43 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       <h2 class="section-title">Products that ship and stay shipped.</h2>
     </div>
 
-    <!-- RidersNow — flagship -->
+    <!-- Marola — flagship -->
     <article class="case-card case-card--flagship">
       <div class="case-screens">
         <div class="case-phone case-phone--1">
-          <img src="/ridersnow-site/assets/01-live.png" alt="RidersNow live map view" loading="lazy" />
+          <img src="/marola/explore.png" alt="Marola explore screen with gear search and sport filters" loading="lazy" />
         </div>
         <div class="case-phone case-phone--2">
-          <img src="/ridersnow-site/assets/03-hosts.png" alt="RidersNow find riders view" loading="lazy" />
+          <img src="/marola/welcome.jpg" alt="Marola welcome screen: “Life’s better on the water.”" loading="lazy" />
         </div>
         <div class="case-phone case-phone--3">
-          <img src="/ridersnow-site/assets/04-create.png" alt="RidersNow create session view" loading="lazy" />
+          <img src="/marola/messages.png" alt="Marola messages screen" loading="lazy" />
         </div>
       </div>
 
+      <div class="case-body">
+        <span class="case-tag">iOS · Marketplace · Payments · Water Sports</span>
+        <h3 class="case-title">Marola</h3>
+        <p class="case-problem">
+          <strong>Problem:</strong> Kites, boards and foils are expensive, bulky and situational. Riders travel without the right gear for the conditions, while owners have spare sizes sitting unused and local schools rent through WhatsApp and phone calls.
+        </p>
+        <p class="case-outcome">
+          <strong>Outcome:</strong> A peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP where one account can both rent and lend. Map search, sport-aware listing forms, Stripe checkout with deposits kept separate from the rental total, photo-documented pickup and return inspections, real-time messaging, and a Pro dashboard for schools and shops — backed by Supabase edge functions that own pricing and booking state. In development.
+        </p>
+        <div class="case-stack">
+          <span>Swift 6</span><span>SwiftUI</span><span>Supabase</span><span>Stripe Connect</span><span>MapKit</span><span>Realtime</span>
+        </div>
+        <a href="/marola/" class="case-link">
+          See Marola <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- RidersNow — secondary -->
+    <article class="case-card case-card--secondary">
+      <div class="case-screen-single">
+        <img src="/ridersnow-site/assets/01-live.png" alt="RidersNow live map view" loading="lazy" />
+      </div>
       <div class="case-body">
         <span class="case-tag">iOS · Android · Real-time · Outdoor Sports</span>
         <h3 class="case-title">RidersNow</h3>
@@ -903,7 +927,8 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   .nav-cta { padding: 0.45rem 0.875rem; }
   .nav-links li:nth-child(1),
   .nav-links li:nth-child(2),
-  .nav-links li:nth-child(3) { display: none; }
+  .nav-links li:nth-child(3),
+  .nav-links li:nth-child(5) { display: none; }
   .hero-headline { font-size: 2.375rem; }
   .section { padding: 72px 0; }
   .case-body { padding: 1.75rem; }
