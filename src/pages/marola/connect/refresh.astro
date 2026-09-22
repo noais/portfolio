@@ -1,0 +1,51 @@
+---
+import MarolaDoc from '../../../layouts/MarolaDoc.astro';
+---
+
+<MarolaDoc
+  title="Marola — Payout setup link expired"
+  description="Stripe's payout setup link expired. Start it again from Marola."
+  heading="That setup link expired"
+>
+  <p class="doc-lead">
+    Stripe's payout links last only a few minutes, and this one has run out.
+    Nothing is lost: start it again from the app and carry on where you left
+    off.
+  </p>
+
+  <p>
+    <a href="marola://connect/refresh" class="app-button" id="open-app">Open Marola</a>
+  </p>
+
+  <h2>Starting again</h2>
+  <p>
+    In Marola, go to <strong>Profile → Payments &amp; payouts</strong> and tap
+    <strong>Continue payout setup</strong>. Stripe keeps whatever you already
+    entered, so you'll only be asked for what's still missing.
+  </p>
+
+  <p class="doc-note">
+    Stuck? Email
+    <a href="mailto:hey@davidferreira.dev?subject=Marola%20payouts">hey@davidferreira.dev</a>.
+  </p>
+</MarolaDoc>
+
+<script>
+  window.setTimeout(() => { window.location.href = 'marola://connect/refresh'; }, 400);
+</script>
+
+<style>
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #07171E !important;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none !important;
+  transition: background 0.15s;
+}
+.app-button:hover { background: #e2fb8c; }
+</style>

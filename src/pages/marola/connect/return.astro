@@ -1,0 +1,56 @@
+---
+import MarolaDoc from '../../../layouts/MarolaDoc.astro';
+---
+
+<MarolaDoc
+  title="Marola — Payout setup complete"
+  description="Stripe has your details. Head back to Marola to start accepting bookings."
+  heading="You're set up for payouts"
+>
+  <p class="doc-lead">
+    Stripe has what it needs. Head back to Marola, and your listings can start
+    taking bookings.
+  </p>
+
+  <p>
+    <a href="marola://connect/return" class="app-button" id="open-app">Open Marola</a>
+  </p>
+
+  <h2>If the app didn't open</h2>
+  <p>
+    Switch to Marola yourself and go to <strong>Profile → Payments &amp; payouts</strong>.
+    It checks with Stripe each time you open it, so your status will be up to date.
+  </p>
+  <p>
+    Stripe sometimes takes a few minutes to finish verifying, and may come back
+    asking for one more detail. If it does, tap <strong>Continue payout setup</strong>
+    in the app.
+  </p>
+
+  <p class="doc-note">
+    Questions about payouts? Email
+    <a href="mailto:hey@davidferreira.dev?subject=Marola%20payouts">hey@davidferreira.dev</a>,
+    or read how fees and payouts work in the <a href="/marola/terms/">Terms</a>.
+  </p>
+</MarolaDoc>
+
+<script>
+  // Try the app straight away; the button stays for when that's blocked.
+  window.setTimeout(() => { window.location.href = 'marola://connect/return'; }, 400);
+</script>
+
+<style>
+.app-button {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #07171E !important;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  text-decoration: none !important;
+  transition: background 0.15s;
+}
+.app-button:hover { background: #e2fb8c; }
+</style>
