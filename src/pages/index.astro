@@ -78,7 +78,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       <li><a href="#work" data-nav="work">Work</a></li>
       <li><a href="#experience" data-nav="experience">Experience</a></li>
       <li><a href="#capabilities" data-nav="capabilities">Capabilities</a></li>
-      <li><a href="/marola/">Marola</a></li>
+      <li><a href="/carpeit/">CarpeIt</a></li>
       <li><a href="/nursling/">Nursling</a></li>
       <li><a href="/ai-consulting/">AI Consulting</a></li>
       <li><a href="#contact" data-nav="contact" class="nav-cta">Let's talk</a></li>
@@ -116,15 +116,19 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 
     <!-- Right: phone composition -->
     <div class="hero-visual" aria-hidden="true">
-      <div class="phone-stack">
-        <div class="phone phone--back">
-          <img src="/ridersnow-site/assets/01-live.png" alt="" loading="eager" />
+      <div class="hero-topo"></div>
+      <div class="phone-fan">
+        <div class="device device--left">
+          <img src="/carpeit/screen-explore.webp" alt="" width="659" height="1434" loading="eager" />
         </div>
-        <div class="phone phone--front">
-          <img src="/marola/welcome.jpg" alt="" loading="eager" />
+        <div class="device device--right">
+          <img src="/carpeit/screen-map.webp" alt="" width="659" height="1434" loading="eager" />
+        </div>
+        <div class="device device--center">
+          <img src="/carpeit/screen-detail.webp" alt="" width="659" height="1434" loading="eager" fetchpriority="high" />
         </div>
       </div>
-      <div class="hero-topo"></div>
+      <p class="hero-caption"><span class="status-dot"></span>Now building · CarpeIt for iPhone</p>
     </div>
 
   </div>
@@ -148,34 +152,40 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       <h2 class="section-title">Products that ship and stay shipped.</h2>
     </div>
 
-    <!-- Marola — flagship -->
+    <!-- CarpeIt — flagship -->
     <article class="case-card case-card--flagship">
       <div class="case-screens">
         <div class="case-phone case-phone--1">
-          <img src="/marola/explore.png" alt="Marola explore screen with gear search and sport filters" loading="lazy" />
+          <img src="/carpeit/screen-explore.webp" alt="CarpeIt Explore feed with rentable wing and kite gear, priced per day" width="659" height="1434" loading="lazy" />
         </div>
         <div class="case-phone case-phone--2">
-          <img src="/marola/welcome.jpg" alt="Marola welcome screen: “Life’s better on the water.”" loading="lazy" />
+          <img src="/carpeit/screen-detail.webp" alt="CarpeIt listing for a Duotone Rebel SLS 9m kite at €50 a day, with a Check availability button" width="659" height="1434" loading="lazy" />
         </div>
         <div class="case-phone case-phone--3">
-          <img src="/marola/messages.png" alt="Marola messages screen" loading="lazy" />
+          <img src="/carpeit/screen-map.webp" alt="CarpeIt map search with price pins along the Aveiro coast" width="659" height="1434" loading="lazy" />
         </div>
       </div>
 
       <div class="case-body">
-        <span class="case-tag">iOS · Marketplace · Payments · Water Sports</span>
-        <h3 class="case-title">Marola</h3>
-        <p class="case-problem">
-          <strong>Problem:</strong> Kites, boards and foils are expensive, bulky and situational. Riders travel without the right gear for the conditions, while owners have spare sizes sitting unused and local schools rent through WhatsApp and phone calls.
+        <div class="case-meta">
+          <span class="case-tag">iOS · Marketplace · Payments</span>
+          <span class="status-pill"><span class="status-dot"></span>In development</span>
+        </div>
+        <h3 class="case-title">CarpeIt</h3>
+        <p class="case-lede">
+          Kites, boards and foils are expensive, bulky and situational. CarpeIt is a peer-to-peer marketplace for kitesurf, surf, wing foil and SUP gear. One account can both rent and lend.
         </p>
-        <p class="case-outcome">
-          <strong>Outcome:</strong> A peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP where one account can both rent and lend. Map search, sport-aware listing forms, Stripe checkout with deposits kept separate from the rental total, photo-documented pickup and return inspections, real-time messaging, and a Pro dashboard for schools and shops — backed by Supabase edge functions that own pricing and booking state. In development.
-        </p>
+        <ul class="case-highlights">
+          <li><strong>Map search</strong> with price pins on the coast you ride</li>
+          <li><strong>Stripe checkout</strong> with deposits kept separate from the total</li>
+          <li><strong>Photo inspections</strong> at pickup and return</li>
+          <li><strong>Pro dashboard</strong> for schools and shops</li>
+        </ul>
         <div class="case-stack">
           <span>Swift 6</span><span>SwiftUI</span><span>Supabase</span><span>Stripe Connect</span><span>MapKit</span><span>Realtime</span>
         </div>
-        <a href="/marola/" class="case-link">
-          See Marola <span aria-hidden="true">→</span>
+        <a href="/carpeit/" class="case-link">
+          See CarpeIt <span aria-hidden="true">→</span>
         </a>
       </div>
     </article>
@@ -183,7 +193,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
     <!-- RidersNow — secondary -->
     <article class="case-card case-card--secondary">
       <div class="case-screen-single">
-        <img src="/ridersnow-site/assets/01-live.png" alt="RidersNow live map view" loading="lazy" />
+        <img src="/work/ridersnow-live.webp" alt="RidersNow live map showing riders at nearby spots" width="660" height="1428" loading="lazy" />
       </div>
       <div class="case-body">
         <span class="case-tag">iOS · Android · Real-time · Outdoor Sports</span>
@@ -206,7 +216,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
     <!-- MyLedgerAI — secondary -->
     <article class="case-card case-card--secondary">
       <div class="case-screen-single">
-        <img src="/finpilot-overview.png" alt="MyLedgerAI overview screen" loading="lazy" />
+        <img src="/work/myledger-overview.webp" alt="MyLedgerAI overview screen with balance, budgets and spending chart" width="660" height="1434" loading="lazy" />
       </div>
       <div class="case-body">
         <span class="case-tag">iOS · Personal Finance · AI</span>
@@ -226,7 +236,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
     <!-- Nursling — secondary -->
     <article class="case-card case-card--secondary">
       <div class="case-screen-single">
-        <img src="/nursling/02-home.png" alt="Nursling home screen showing time since the last nursing" loading="lazy" />
+        <img src="/work/nursling-home.webp" alt="Nursling home screen showing time since the last nursing" width="660" height="1434" loading="lazy" />
       </div>
       <div class="case-body">
         <span class="case-tag">iOS · watchOS · Health · Personal Product</span>
@@ -279,7 +289,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 </section>
 
 <!-- ─── CAPABILITIES ──────────────────────────────────────────────── -->
-<section id="capabilities" class="section section--navy">
+<section id="capabilities" class="section">
   <div class="section-inner">
     <div class="section-header section-header--light">
       <span class="eyebrow eyebrow--lime">Capabilities</span>
@@ -303,8 +313,8 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 
 <!-- ─── CONTACT ───────────────────────────────────────────────────── -->
 <section id="contact" class="section section--navy">
-  <div class="section-inner contact-inner">
-    <div class="contact-copy">
+  <div class="section-inner">
+    <div class="contact-card">
       <span class="eyebrow eyebrow--lime">Contact</span>
       <h2 class="contact-headline">
         Building a mobile product that needs to hold up under pressure?
@@ -313,7 +323,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
         Available for senior engineering and engineering-lead roles. Based in Portugal, open to remote or hybrid across Europe.
       </p>
       <div class="contact-links">
-        <a href="mailto:hey@davidferreira.dev" class="contact-link">
+        <a href="mailto:hey@davidferreira.dev" class="contact-link contact-link--primary">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
           hey@davidferreira.dev
         </a>
@@ -378,6 +388,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   font-weight: 500;
   color: var(--muted);
   text-decoration: none;
+  white-space: nowrap;
   transition: color 0.15s;
 }
 .nav-links a:hover,
@@ -393,19 +404,31 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 
 /* ── Hero ──────────────────────────────────────────────────────── */
 .hero-section {
-  padding-top: 120px;
-  padding-bottom: 80px;
+  position: relative;
+  padding-top: 132px;
+  padding-bottom: 96px;
   overflow: hidden;
 }
+/* Faint dot grid, faded out towards the edges */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(237,233,226,0.10) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 60% at 60% 45%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 45%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
 .hero-grid {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
-  gap: 4rem;
-  min-height: 80vh;
+  gap: 3rem;
 }
 .hero-chips {
   display: flex;
@@ -426,22 +449,24 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .hero-headline {
   font-family: 'Fraunces', Georgia, serif;
-  font-size: clamp(2.75rem, 6vw, 5rem);
+  font-size: clamp(2.75rem, 5.4vw, 4.75rem);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   color: var(--ink);
   margin: 0 0 1.5rem;
+  text-wrap: balance;
 }
 .hero-headline em {
   font-style: italic;
   font-weight: 300;
+  color: var(--lime);
 }
 .hero-sub {
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--muted);
-  max-width: 38ch;
+  max-width: 44ch;
   margin: 0 0 2.5rem;
 }
 .hero-actions {
@@ -459,9 +484,9 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   padding: 0.75rem 1.75rem;
   border-radius: 100px;
   text-decoration: none;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
-.btn-primary:hover { background: #d4ff3a; }
+.btn-primary:hover { background: #d4ff3a; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(198,241,53,0.25); }
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -476,53 +501,94 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .btn-ghost:hover { border-color: rgba(237,233,226,0.35); }
 
-/* Phone stack */
+/* Phone fan */
 .hero-visual {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  min-height: 600px;
+}
+.phone-fan {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
   height: 560px;
 }
-.phone-stack {
-  position: relative;
-  width: 240px;
-  height: 480px;
-}
-.phone {
+.device {
   position: absolute;
-  width: 220px;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 32px 80px rgba(26,25,23,0.18), 0 8px 24px rgba(26,25,23,0.10);
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 659 / 1434;
+  border-radius: 38px;
+  padding: 6px;
+  background: linear-gradient(160deg, #2a2e3b, #0b0d14 60%);
+  box-shadow:
+    0 0 0 1px rgba(237,233,226,0.10),
+    0 40px 90px rgba(0,0,0,0.60),
+    0 12px 30px rgba(0,0,0,0.40);
 }
-.phone img {
+.device img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  border-radius: 32px;
 }
-.phone--back {
-  top: 32px;
-  left: -48px;
-  height: 420px;
-  transform: rotate(-6deg);
-  opacity: 0.80;
+.device--center {
+  width: 250px;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+.device--left {
+  width: 210px;
+  transform: translate(-112%, -46%) rotate(-7deg);
   z-index: 1;
+  filter: brightness(0.72);
 }
-.phone--front {
-  top: 0;
-  left: 56px;
-  height: 460px;
-  transform: rotate(3deg);
+.device--right {
+  width: 210px;
+  transform: translate(12%, -46%) rotate(7deg);
   z-index: 2;
+  filter: brightness(0.72);
 }
 .hero-topo {
   position: absolute;
-  inset: 0;
-  background-image: radial-gradient(ellipse 60% 40% at 60% 50%, rgba(198,241,53,0.09) 0%, transparent 70%);
+  inset: -10% -20%;
+  background:
+    radial-gradient(ellipse 45% 40% at 50% 50%, rgba(198,241,53,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 35% at 70% 30%, rgba(57,198,189,0.10) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+}
+.hero-caption {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.62);
+  background: rgba(237,233,226,0.04);
+  border: 1px solid rgba(237,233,226,0.09);
+  border-radius: 100px;
+  padding: 0.35rem 0.9rem;
+  backdrop-filter: blur(8px);
+}
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 0 rgba(198,241,53,0.6);
+  animation: pulse 2.4s ease-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(198,241,53,0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(198,241,53,0); }
+  100% { box-shadow: 0 0 0 0 rgba(198,241,53,0); }
 }
 
 /* ── Proof strip ──────────────────────────────────────────────── */
@@ -539,7 +605,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.50);
   white-space: nowrap;
   margin: 0;
   flex-shrink: 0;
@@ -598,76 +664,60 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 
 /* ── Case cards ───────────────────────────────────────────────── */
 .case-card {
-  border-radius: 20px;
+  position: relative;
+  border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(237,233,226,0.07);
+  border: 1px solid rgba(237,233,226,0.08);
   margin-bottom: 1.5rem;
-  background: var(--bg2);
+  background: linear-gradient(180deg, rgba(237,233,226,0.035), rgba(237,233,226,0.01)), var(--bg2);
+  transition: border-color 0.25s, transform 0.25s;
 }
+.case-card:hover { border-color: rgba(198,241,53,0.28); }
 .case-card--flagship {
   display: grid;
-  grid-template-columns: minmax(0, 58%) minmax(0, 42%);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
 }
 .case-screens {
-  background: rgba(255,255,255,0.02);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 3rem 0 0;
-  gap: 0;
-  min-height: 600px;
-  perspective: 900px;
   position: relative;
-}
-.case-screens::before {
-  content: '';
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  height: 240px;
-  background: radial-gradient(ellipse, rgba(198,241,53,0.10) 0%, transparent 70%);
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  min-height: 620px;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 55%, rgba(198,241,53,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 30% 20%, rgba(57,198,189,0.10) 0%, transparent 70%);
+  border-right: 1px solid rgba(237,233,226,0.06);
 }
 .case-phone {
-  border-radius: 28px;
-  overflow: hidden;
-  flex-shrink: 0;
   position: relative;
-  transform-origin: bottom center;
+  flex-shrink: 0;
+  aspect-ratio: 659 / 1434;
+  border-radius: 34px;
+  padding: 5px;
+  background: linear-gradient(160deg, #2a2e3b, #0b0d14 60%);
+  box-shadow: 0 0 0 1px rgba(237,233,226,0.10), 0 32px 80px rgba(0,0,0,0.60);
+  transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
 }
 .case-phone img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 29px;
 }
-.case-phone--1 {
-  width: 190px;
-  height: 366px;
-  transform: rotateY(20deg);
-  box-shadow: -12px 24px 64px rgba(0,0,0,0.55), -3px 6px 20px rgba(0,0,0,0.35);
-  z-index: 1;
-  opacity: 0.80;
-  margin-right: -40px;
-}
-.case-phone--2 {
-  width: 236px;
-  height: 448px;
-  transform: translateY(-56px);
-  box-shadow: 0 44px 110px rgba(0,0,0,0.72), 0 12px 36px rgba(0,0,0,0.50);
-  z-index: 3;
-}
+.case-phone--1,
 .case-phone--3 {
   width: 190px;
-  height: 366px;
-  transform: rotateY(-20deg);
-  box-shadow: 12px 24px 64px rgba(0,0,0,0.55), 3px 6px 20px rgba(0,0,0,0.35);
   z-index: 1;
-  opacity: 0.80;
-  margin-left: -40px;
+  filter: brightness(0.8);
 }
+.case-phone--1 { transform: translateY(28px) rotate(-5deg); margin-right: -34px; }
+.case-phone--3 { transform: translateY(28px) rotate(5deg); margin-left: -34px; }
+.case-phone--2 { width: 236px; z-index: 3; }
+.case-card--flagship:hover .case-phone--1 { transform: translateY(20px) rotate(-7deg) translateX(-8px); }
+.case-card--flagship:hover .case-phone--3 { transform: translateY(20px) rotate(7deg) translateX(8px); }
+.case-card--flagship:hover .case-phone--2 { transform: translateY(-6px); }
 .case-body {
   padding: 3rem;
   display: flex;
@@ -675,29 +725,83 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   justify-content: center;
   min-width: 0;
 }
+.case-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
 .case-tag {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(237,233,226,0.55);
   margin-bottom: 1rem;
+}
+.case-meta .case-tag { margin-bottom: 0; }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--lime);
+  background: rgba(198,241,53,0.08);
+  border: 1px solid rgba(198,241,53,0.22);
+  border-radius: 100px;
+  padding: 0.25rem 0.7rem;
 }
 .case-title {
   font-family: 'Fraunces', Georgia, serif;
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 400;
   color: var(--ink);
-  margin: 0 0 1.25rem;
+  margin: 0 0 1rem;
   letter-spacing: -0.02em;
 }
+.case-card--flagship .case-title { font-size: clamp(2rem, 3.4vw, 2.75rem); }
+.case-lede {
+  font-size: 1rem;
+  color: rgba(237,233,226,0.68);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+.case-highlights {
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.case-highlights li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(237,233,226,0.62);
+}
+.case-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: rgba(198,241,53,0.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23C6F135' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+}
+.case-highlights strong { color: var(--ink); font-weight: 600; }
 .case-problem,
 .case-outcome {
   font-size: 0.9375rem;
-  color: rgba(237,233,226,0.60);
+  color: rgba(237,233,226,0.62);
   line-height: 1.6;
   margin: 0 0 0.875rem;
+  max-width: 68ch;
 }
 .case-problem strong,
 .case-outcome strong { color: var(--ink); font-weight: 600; }
@@ -711,44 +815,55 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   background: rgba(237,233,226,0.05);
-  color: var(--muted);
+  color: rgba(237,233,226,0.62);
   padding: 0.25rem 0.6rem;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid rgba(237,233,226,0.08);
 }
 .case-link {
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--lime);
-  transition: color 0.15s;
-  margin-top: auto;
+  text-decoration: none;
+  border: 1px solid rgba(237,233,226,0.16);
+  border-radius: 100px;
+  padding: 0.55rem 1.1rem;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
-.case-link:hover { color: var(--lime); }
+.case-link span { transition: transform 0.15s; }
+.case-link:hover { border-color: var(--lime); color: var(--lime); }
+.case-link:hover span { transform: translateX(3px); }
 .case-card--secondary {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 300px 1fr;
 }
+/* Phone bleeds off the bottom edge of the card */
 .case-screen-single {
-  background: rgba(255,255,255,0.02);
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 2rem 1.5rem 0;
+  padding: 2.5rem 2rem 0;
   overflow: hidden;
+  background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(198,241,53,0.08) 0%, transparent 70%);
+  border-right: 1px solid rgba(237,233,226,0.06);
 }
 .case-screen-single img {
-  width: 130px;
-  border-radius: 18px;
-  box-shadow: 0 20px 56px rgba(0,0,0,0.60), 0 6px 20px rgba(0,0,0,0.40);
+  width: 190px;
+  height: auto;
+  margin-bottom: -90px;
+  border-radius: 28px 28px 0 0;
+  border: 5px solid #1d202b;
+  border-bottom: 0;
+  box-shadow: 0 0 0 1px rgba(237,233,226,0.10), 0 24px 60px rgba(0,0,0,0.55);
   display: block;
-  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
 }
+.case-card--secondary:hover .case-screen-single img { transform: translateY(-8px); }
 .case-card--secondary .case-body { padding: 2.5rem 3rem; }
 
 /* ── Experience timeline ───────────────────────────────────────── */
@@ -778,7 +893,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 .timeline-period {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.50);
   letter-spacing: 0.02em;
   padding-top: 2px;
   line-height: 1.4;
@@ -791,7 +906,7 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .timeline-company {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.40);
+  color: rgba(255,255,255,0.55);
   margin: 0 0 1rem;
 }
 .timeline-outcomes {
@@ -849,46 +964,67 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .cap-items li {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.50);
+  color: rgba(255,255,255,0.62);
   line-height: 1.4;
 }
 
 /* ── Contact ──────────────────────────────────────────────────── */
-.contact-inner { max-width: 720px; }
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 5rem 2rem;
+  border-radius: 28px;
+  border: 1px solid rgba(237,233,226,0.08);
+  background:
+    radial-gradient(ellipse 55% 70% at 50% 0%, rgba(198,241,53,0.12) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(237,233,226,0.04), rgba(237,233,226,0.01));
+}
 .contact-headline {
   font-family: 'Fraunces', Georgia, serif;
-  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.875rem, 4vw, 3.25rem);
   font-weight: 400;
   color: var(--ink);
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  margin: 0 0 1.25rem;
-  max-width: 22ch;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 auto 1.25rem;
+  max-width: 20ch;
+  text-wrap: balance;
 }
 .contact-sub {
   font-size: 1.0625rem;
-  color: rgba(237,233,226,0.50);
+  color: rgba(237,233,226,0.62);
   line-height: 1.65;
-  margin: 0 0 2.5rem;
+  margin: 0 auto 2.5rem;
   max-width: 48ch;
 }
 .contact-links {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 .contact-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.6rem;
   font-size: 0.9375rem;
-  color: #fff;
-  text-decoration: none;
   font-weight: 500;
-  opacity: 0.70;
-  transition: opacity 0.15s;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid rgba(237,233,226,0.16);
+  border-radius: 100px;
+  padding: 0.75rem 1.4rem;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
-.contact-link:hover { opacity: 1; }
+.contact-link:hover { border-color: rgba(237,233,226,0.40); background: rgba(237,233,226,0.04); }
+.contact-link--primary {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: #0D0F1A;
+  font-weight: 600;
+}
+.contact-link--primary:hover { background: #d4ff3a; border-color: #d4ff3a; }
 .contact-link svg { flex-shrink: 0; }
 
 /* ── Footer ───────────────────────────────────────────────────── */
@@ -898,25 +1034,33 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   padding: 2rem;
   text-align: center;
   font-size: 0.8125rem;
-  color: rgba(237,233,226,0.22);
+  color: rgba(237,233,226,0.45);
 }
 .footer p { margin: 0; }
 
 /* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  /* Section anchors drop before the nav can wrap; product pages stay */
+  .nav-links li:nth-child(-n+3) { display: none; }
+  .nav-links { gap: 1.5rem; }
+  .case-phone--1, .case-phone--3 { width: 160px; }
+  .case-phone--2 { width: 200px; }
+}
 @media (max-width: 900px) {
+  .hero-section { padding-top: 104px; }
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 8rem;
-    min-height: auto;
-    padding-top: 2rem;
+    gap: 2.5rem;
   }
-  .hero-visual { height: 380px; }
-  .phone--back { left: -28px; height: 360px; }
-  .phone--front { left: 44px; height: 400px; }
+  .hero-visual { min-height: 0; }
+  .phone-fan { height: 480px; }
+  .device--center { width: 210px; }
+  .device--left, .device--right { width: 176px; }
   .case-card--flagship,
   .case-card--secondary { grid-template-columns: minmax(0, 1fr); }
-  .case-screen-single { padding: 2rem 1.5rem 0; min-height: 200px; }
-  .case-screens { min-height: 300px; padding-top: 2.5rem; }
+  .case-screens { min-height: 0; padding: 3rem 1rem 3.5rem; border-right: 0; border-bottom: 1px solid rgba(237,233,226,0.06); }
+  .case-screen-single { height: 280px; align-items: flex-start; border-right: 0; border-bottom: 1px solid rgba(237,233,226,0.06); }
+  .case-screen-single img { margin-bottom: 0; }
   .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .caps-grid { grid-template-columns: 1fr; }
 }
@@ -925,19 +1069,34 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   .nav-links { gap: 0.875rem; }
   .nav-links a { font-size: 0.8125rem; }
   .nav-cta { padding: 0.45rem 0.875rem; }
-  .nav-links li:nth-child(1),
-  .nav-links li:nth-child(2),
-  .nav-links li:nth-child(3),
   .nav-links li:nth-child(5) { display: none; }
-  .hero-headline { font-size: 2.375rem; }
+  .hero-section { padding-bottom: 64px; }
+  .hero-grid { padding: 0 1.25rem; }
+  .hero-headline { font-size: 2.5rem; }
+  .phone-fan { height: 400px; }
+  .device--center { width: 176px; border-radius: 30px; }
+  .device--left, .device--right { width: 146px; border-radius: 28px; }
+  .device img { border-radius: 25px; }
   .section { padding: 72px 0; }
-  .case-body { padding: 1.75rem; }
+  .section-inner { padding: 0 1.25rem; }
+  .case-screens { padding: 2.5rem 0.5rem 3rem; }
+  .case-phone--1, .case-phone--3 { width: 116px; border-radius: 22px; padding: 4px; }
+  .case-phone--2 { width: 150px; border-radius: 26px; padding: 4px; }
+  .case-phone img { border-radius: 19px; }
+  .case-phone--1 { margin-right: -24px; }
+  .case-phone--3 { margin-left: -24px; }
+  .case-body,
+  .case-card--secondary .case-body { padding: 1.75rem; }
   .cap-panel { padding: 1.75rem; }
-  .proof-strip { flex-direction: column; gap: 0.875rem; align-items: flex-start; }
+  .contact-card { padding: 3.5rem 1.25rem; }
+  .proof-strip { flex-direction: column; gap: 0.875rem; align-items: flex-start; padding: 1.375rem 1.25rem; }
   .proof-domains { flex-wrap: wrap; }
   .proof-domains li {
     padding: 0.2rem 0.75rem 0.2rem 0;
     border-right: none;
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-dot { animation: none; }
 }
 </style>

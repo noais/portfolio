@@ -1,24 +1,24 @@
 ---
-import MarolaDoc from '../../../layouts/MarolaDoc.astro';
+import CarpeItDoc from '../../../layouts/CarpeItDoc.astro';
 ---
 
-<MarolaDoc
-  title="Marola — Payout setup complete"
-  description="Stripe has your details. Head back to Marola to start accepting bookings."
+<CarpeItDoc
+  title="CarpeIt — Payout setup complete"
+  description="Stripe has your details. Head back to CarpeIt to start accepting bookings."
   heading="You're set up for payouts"
 >
   <p class="doc-lead">
-    Stripe has what it needs. Head back to Marola, and your listings can start
+    Stripe has what it needs. Head back to CarpeIt, and your listings can start
     taking bookings.
   </p>
 
   <p>
-    <a href="marola://connect/return" class="app-button" id="open-app">Open Marola</a>
+    <a href="carpeit://connect/return" class="app-button" id="open-app">Open CarpeIt</a>
   </p>
 
   <h2>If the app didn't open</h2>
   <p>
-    Switch to Marola yourself and go to <strong>Profile → Payments &amp; payouts</strong>.
+    Switch to CarpeIt yourself and go to <strong>Profile → Payments &amp; payouts</strong>.
     It checks with Stripe each time you open it, so your status will be up to date.
   </p>
   <p>
@@ -29,14 +29,14 @@ import MarolaDoc from '../../../layouts/MarolaDoc.astro';
 
   <p class="doc-note">
     Questions about payouts? Email
-    <a href="mailto:hey@davidferreira.dev?subject=Marola%20payouts">hey@davidferreira.dev</a>,
-    or read how fees and payouts work in the <a href="/marola/terms/">Terms</a>.
+    <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20payouts">hey@davidferreira.dev</a>,
+    or read how fees and payouts work in the <a href="/carpeit/terms/">Terms</a>.
   </p>
-</MarolaDoc>
+</CarpeItDoc>
 
 <script>
   // Try the app straight away; the button stays for when that's blocked.
-  window.setTimeout(() => { window.location.href = 'marola://connect/return'; }, 400);
+  window.setTimeout(() => { window.location.href = 'carpeit://connect/return'; }, 400);
 </script>
 
 <style>

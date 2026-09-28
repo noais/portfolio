@@ -1,10 +1,10 @@
 ---
-import MarolaDoc from '../../../layouts/MarolaDoc.astro';
+import CarpeItDoc from '../../../layouts/CarpeItDoc.astro';
 ---
 
-<MarolaDoc
-  title="Marola — Payout setup link expired"
-  description="Stripe's payout setup link expired. Start it again from Marola."
+<CarpeItDoc
+  title="CarpeIt — Payout setup link expired"
+  description="Stripe's payout setup link expired. Start it again from CarpeIt."
   heading="That setup link expired"
 >
   <p class="doc-lead">
@@ -14,24 +14,24 @@ import MarolaDoc from '../../../layouts/MarolaDoc.astro';
   </p>
 
   <p>
-    <a href="marola://connect/refresh" class="app-button" id="open-app">Open Marola</a>
+    <a href="carpeit://connect/refresh" class="app-button" id="open-app">Open CarpeIt</a>
   </p>
 
   <h2>Starting again</h2>
   <p>
-    In Marola, go to <strong>Profile → Payments &amp; payouts</strong> and tap
+    In CarpeIt, go to <strong>Profile → Payments &amp; payouts</strong> and tap
     <strong>Continue payout setup</strong>. Stripe keeps whatever you already
     entered, so you'll only be asked for what's still missing.
   </p>
 
   <p class="doc-note">
     Stuck? Email
-    <a href="mailto:hey@davidferreira.dev?subject=Marola%20payouts">hey@davidferreira.dev</a>.
+    <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20payouts">hey@davidferreira.dev</a>.
   </p>
-</MarolaDoc>
+</CarpeItDoc>
 
 <script>
-  window.setTimeout(() => { window.location.href = 'marola://connect/refresh'; }, 400);
+  window.setTimeout(() => { window.location.href = 'carpeit://connect/refresh'; }, 400);
 </script>
 
 <style>

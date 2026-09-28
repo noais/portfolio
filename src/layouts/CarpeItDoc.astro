@@ -1,6 +1,6 @@
 ---
-// Shell for Marola's policy and support pages: the site's navy layout with
-// Marola's lime + aqua accents, a Marola nav, and a document column.
+// Shell for CarpeIt's policy and support pages: the site's navy layout with
+// CarpeIt's lime + aqua accents, a CarpeIt nav, and a document column.
 import Layout from './Layout.astro';
 
 interface Props {
@@ -19,8 +19,8 @@ const { title, description, heading, lastUpdated } = Astro.props;
   <nav class="nav-inner">
     <a href="/" class="nav-logo">DF</a>
     <ul class="nav-links">
-      <li><a href="/marola/">Marola</a></li>
-      <li><a href="/marola/support/">Support</a></li>
+      <li><a href="/carpeit/">CarpeIt</a></li>
+      <li><a href="/carpeit/support/">Support</a></li>
       <li><a href="/">Portfolio</a></li>
     </ul>
   </nav>
@@ -28,7 +28,7 @@ const { title, description, heading, lastUpdated } = Astro.props;
 
 <main class="doc">
   <div class="doc-inner">
-    <span class="eyebrow">Marola</span>
+    <span class="eyebrow">CarpeIt</span>
     <h1 class="doc-title">{heading}</h1>
     {lastUpdated && <p class="doc-meta">Last updated {lastUpdated}</p>}
     <slot />
@@ -37,13 +37,13 @@ const { title, description, heading, lastUpdated } = Astro.props;
 
 <footer class="footer">
   <p class="footer-links">
-    <a href="/marola/">Marola</a>
+    <a href="/carpeit/">CarpeIt</a>
     <span aria-hidden="true">·</span>
-    <a href="/marola/support/">Support</a>
+    <a href="/carpeit/support/">Support</a>
     <span aria-hidden="true">·</span>
-    <a href="/marola/privacy/">Privacy</a>
+    <a href="/carpeit/privacy/">Privacy</a>
     <span aria-hidden="true">·</span>
-    <a href="/marola/terms/">Terms</a>
+    <a href="/carpeit/terms/">Terms</a>
     <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>

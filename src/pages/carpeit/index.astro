@@ -30,6 +30,39 @@ const features = [
   },
 ];
 
+const screens = [
+  {
+    src: '/carpeit/screen-explore.webp',
+    title: 'Browse what’s nearby',
+    body: 'Gear from riders, schools and shops, with the day price up front.',
+    alt: 'CarpeIt Explore feed with a Duotone Unit 4m wing at €30 a day and sport filters',
+  },
+  {
+    src: '/carpeit/screen-map.webp',
+    title: 'Search the coast',
+    body: 'Price pins along the spots you ride, with a list view one tap away.',
+    alt: 'CarpeIt map search with price pins around Aveiro and a Duotone Rebel SLS preview card',
+  },
+  {
+    src: '/carpeit/screen-detail.webp',
+    title: 'Know what you’re getting',
+    body: 'Sport-specific specs, condition and owner rating before you book.',
+    alt: 'CarpeIt listing for a Duotone Rebel SLS 9m kite at €50 a day',
+  },
+  {
+    src: '/carpeit/screen-dates.webp',
+    title: 'Pick your days',
+    body: 'Live availability and an honest total before checkout.',
+    alt: 'CarpeIt availability calendar with 26 to 28 September selected and a Continue · €100 button',
+  },
+  {
+    src: '/carpeit/screen-explore2.webp',
+    title: 'Follow the water',
+    body: 'A map preview and editorial moments that keep the feed feeling like the beach.',
+    alt: 'CarpeIt Explore map preview with prices and a “Find your gear. Follow the water.” card',
+  },
+];
+
 const roles = [
   {
     tier: 'Renting',
@@ -73,7 +106,7 @@ const build = [
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Marola',
+  name: 'CarpeIt',
   operatingSystem: 'iOS',
   applicationCategory: 'LifestyleApplication',
   description:
@@ -83,9 +116,9 @@ const structuredData = {
 ---
 
 <Layout
-  title="Marola — rent water sports gear from local riders."
-  description="Marola is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Rent great gear from local riders, schools and shops — or share yours."
-  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, iOS app, Marola"
+  title="CarpeIt — rent water sports gear from local riders."
+  description="CarpeIt is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Rent great gear from local riders, schools and shops — or share yours."
+  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, iOS app, CarpeIt"
   structuredData={structuredData}
 >
 
@@ -94,6 +127,7 @@ const structuredData = {
   <nav class="nav-inner">
     <a href="/" class="nav-logo">DF</a>
     <ul class="nav-links">
+      <li><a href="#inside" data-nav="inside">Screens</a></li>
       <li><a href="#features" data-nav="features">Features</a></li>
       <li><a href="#how" data-nav="how">How it works</a></li>
       <li><a href="#build" data-nav="build">Build</a></li>
@@ -110,9 +144,9 @@ const structuredData = {
 
     <div class="hero-copy">
       <div class="hero-id">
-        <img src="/marola/app-icon.png" alt="Marola app icon" class="hero-icon" width="72" height="72" />
+        <img src="/carpeit/app-icon.png" alt="CarpeIt app icon" class="hero-icon" width="72" height="72" />
         <div>
-          <p class="hero-name">Marola</p>
+          <p class="hero-name">CarpeIt</p>
           <p class="hero-kicker">Water sports gear rental · iPhone · In development</p>
         </div>
       </div>
@@ -123,13 +157,13 @@ const structuredData = {
       </h1>
 
       <p class="hero-sub">
-        Rent great gear from local riders, schools and shops — or share yours. Marola is a
+        Rent great gear from local riders, schools and shops — or share yours. CarpeIt is a
         peer-to-peer marketplace for kitesurf, surf, wing foil and SUP, built around trust:
         honest totals, separate deposits, and condition photos at every handover.
       </p>
 
       <div class="hero-actions">
-        <span class="btn-primary btn-primary--pending">Coming to the App Store</span>
+        <span class="status-pill"><span class="status-dot"></span>Coming to the App Store</span>
         <a href="#how" class="btn-ghost">See how it works</a>
       </div>
     </div>
@@ -137,10 +171,10 @@ const structuredData = {
     <div class="hero-visual" aria-hidden="true">
       <div class="phone-stack">
         <div class="phone phone--back">
-          <img src="/marola/explore.png" alt="" loading="eager" />
+          <img src="/carpeit/screen-explore.webp" alt="" width="659" height="1434" loading="eager" />
         </div>
         <div class="phone phone--front">
-          <img src="/marola/welcome.jpg" alt="" loading="eager" />
+          <img src="/carpeit/welcome.webp" alt="" width="659" height="1434" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -170,7 +204,7 @@ const structuredData = {
         Water sports equipment is expensive, bulky and situational. Riders travel without the
         right kite or board for the conditions, while other riders have spare sizes that barely
         get wet. Schools and shops have gear to rent, but finding it means websites, WhatsApp
-        and phone calls. Marola puts all of it on one map, bookable in minutes, with the trust
+        and phone calls. CarpeIt puts all of it on one map, bookable in minutes, with the trust
         built in that lending your own gear to a stranger needs.
       </p>
       <div class="premise-stats">
@@ -192,26 +226,48 @@ const structuredData = {
     <div class="premise-visual">
       <div class="premise-phone">
         <img
-          src="/marola/messages.png"
-          alt="Marola messages screen reading &quot;A little hello. A great session. Make plans with your water sports community.&quot;"
+          src="/carpeit/screen-detail.webp"
+          alt="CarpeIt listing for a Duotone Rebel SLS 9m kite in Costa Nova at €50 a day, with condition, discipline and a Check availability button"
           loading="lazy"
-          width="248"
-          height="512"
+          width="659"
+          height="1434"
         />
       </div>
     </div>
   </div>
 </section>
 
+<!-- ─── INSIDE THE APP ────────────────────────────────────────────── -->
+<section id="inside" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow eyebrow--accent">Inside the app</span>
+      <h2 class="section-title">From the map to the water in a few taps.</h2>
+    </div>
+  </div>
+  <ol class="gallery" aria-label="CarpeIt screens">
+    {screens.map((sc, i) => (
+      <li class="gallery-item">
+        <div class="gallery-phone">
+          <img src={sc.src} alt={sc.alt} width="659" height="1434" loading="lazy" />
+        </div>
+        <p class="gallery-step">{String(i + 1).padStart(2, '0')}</p>
+        <h3 class="gallery-title">{sc.title}</h3>
+        <p class="gallery-body">{sc.body}</p>
+      </li>
+    ))}
+  </ol>
+</section>
+
 <!-- ─── FEATURES ──────────────────────────────────────────────────── -->
-<section id="features" class="section section--navy">
+<section id="features" class="section">
   <div class="section-inner">
     <div class="section-header">
       <span class="eyebrow eyebrow--accent">What it does</span>
       <h2 class="section-title">Trust before growth hacks.</h2>
       <p class="section-lede">
         Condition photos, clear deposits and transparent payouts matter more than urgency
-        banners. Every flow in Marola is designed so both sides know exactly what they are
+        banners. Every flow in CarpeIt is designed so both sides know exactly what they are
         agreeing to.
       </p>
     </div>
@@ -228,7 +284,7 @@ const structuredData = {
 </section>
 
 <!-- ─── HOW IT WORKS ──────────────────────────────────────────────── -->
-<section id="how" class="section">
+<section id="how" class="section section--navy">
   <div class="section-inner">
     <div class="section-header">
       <span class="eyebrow">How it works</span>
@@ -252,13 +308,13 @@ const structuredData = {
 </section>
 
 <!-- ─── BUILD ─────────────────────────────────────────────────────── -->
-<section id="build" class="section section--navy">
+<section id="build" class="section">
   <div class="section-inner">
     <div class="section-header">
       <span class="eyebrow eyebrow--accent">Behind the build</span>
       <h2 class="section-title">A two-sided marketplace, end to end.</h2>
       <p class="section-lede">
-        Marola is a product by <a href="/">David Ferreira</a> — the SwiftUI app and its design
+        CarpeIt is a product by <a href="/">David Ferreira</a> — the SwiftUI app and its design
         system, the Supabase schema and edge functions that own pricing and booking state, and
         the Stripe payment, deposit and payout flows.
       </p>
@@ -285,11 +341,11 @@ const structuredData = {
     <span class="eyebrow eyebrow--accent">Get in touch</span>
     <h2 class="get-headline">Life’s better on the water.</h2>
     <p class="get-sub">
-      Marola is in development for iPhone. If you run a school or shop, have gear to share, or
+      CarpeIt is in development for iPhone. If you run a school or shop, have gear to share, or
       want to talk about building something similar, I’d like to hear from you.
     </p>
     <div class="hero-actions">
-      <a href="mailto:hey@davidferreira.dev?subject=Marola" class="btn-primary">Email me about Marola</a>
+      <a href="mailto:hey@davidferreira.dev?subject=CarpeIt" class="btn-primary">Email me about CarpeIt</a>
       <a href="/#work" class="btn-ghost">See more work</a>
     </div>
   </div>
@@ -298,11 +354,11 @@ const structuredData = {
 <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
 <footer class="footer">
   <p class="footer-links">
-    <a href="/marola/support/">Support</a>
+    <a href="/carpeit/support/">Support</a>
     <span aria-hidden="true">·</span>
-    <a href="/marola/privacy/">Privacy</a>
+    <a href="/carpeit/privacy/">Privacy</a>
     <span aria-hidden="true">·</span>
-    <a href="/marola/terms/">Terms</a>
+    <a href="/carpeit/terms/">Terms</a>
     <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>
@@ -313,7 +369,7 @@ const structuredData = {
 </Layout>
 
 <style>
-/* Marola's own lime + ocean-aqua accents, on the site's dark navy shell */
+/* CarpeIt's own lime + ocean-aqua accents, on the site's dark navy shell */
 :root {
   --accent:   #D6F76B;
   --accent-2: #39C6BD;
@@ -465,13 +521,32 @@ const structuredData = {
   transition: background 0.15s;
 }
 .btn-primary:hover { background: #e2fb8c; }
-.btn-primary--pending {
-  background: rgba(57,198,189,0.14);
-  color: #D6F76B;
-  border: 1.5px solid rgba(57,198,189,0.45);
-  cursor: default;
+/* A status, not a button: nothing to click until the app is live */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: rgba(214,247,107,0.07);
+  border: 1px solid rgba(214,247,107,0.22);
+  border-radius: 100px;
+  padding: 0.75rem 1.4rem;
 }
-.btn-primary--pending:hover { background: rgba(57,198,189,0.14); }
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2.4s ease-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(214,247,107,0.55); }
+  70%  { box-shadow: 0 0 0 8px rgba(214,247,107,0); }
+  100% { box-shadow: 0 0 0 0 rgba(214,247,107,0); }
+}
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -506,9 +581,10 @@ const structuredData = {
 .phone {
   position: absolute;
   width: 220px;
-  border-radius: 32px;
+  border-radius: 34px;
   overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.35);
+  border: 5px solid #1d202b;
+  box-shadow: 0 0 0 1px rgba(237,233,226,0.10), 0 32px 80px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.35);
 }
 .phone img {
   width: 100%;
@@ -522,7 +598,7 @@ const structuredData = {
   left: -48px;
   height: 420px;
   transform: rotate(-6deg);
-  opacity: 0.85;
+  filter: brightness(0.75);
   z-index: 1;
 }
 .phone--front {
@@ -547,7 +623,7 @@ const structuredData = {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.50);
   white-space: nowrap;
   margin: 0;
   flex-shrink: 0;
@@ -602,7 +678,7 @@ const structuredData = {
 .section-lede {
   font-size: 1.0625rem;
   line-height: 1.65;
-  color: rgba(237,233,226,0.50);
+  color: rgba(237,233,226,0.62);
   margin: 1.25rem 0 0;
 }
 .section-lede a {
@@ -638,8 +714,9 @@ const structuredData = {
 .premise-phone {
   position: relative;
   width: 248px;
-  height: 512px;
-  border-radius: 32px;
+  height: 540px;
+  border-radius: 36px;
+  border: 5px solid #1d202b;
   overflow: hidden;
   box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35);
 }
@@ -662,7 +739,7 @@ const structuredData = {
 .premise-body {
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: rgba(237,233,226,0.55);
+  color: rgba(237,233,226,0.65);
   margin: 0;
 }
 .premise-stats {
@@ -685,6 +762,60 @@ const structuredData = {
   font-size: 0.875rem;
   color: var(--muted);
   line-height: 1.4;
+}
+
+/* ── Inside the app (gallery) ─────────────────────────────────── */
+.gallery {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 1264px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.gallery-item { min-width: 0; }
+.gallery-phone {
+  aspect-ratio: 659 / 1434;
+  border-radius: 30px;
+  border: 5px solid #1d202b;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(237,233,226,0.10), 0 28px 70px rgba(0,0,0,0.55);
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s;
+}
+.gallery-item:nth-child(even) .gallery-phone { transform: translateY(32px); }
+.gallery-item:nth-child(even) .gallery-step { margin-top: 32px; }
+.gallery-item:hover .gallery-phone {
+  transform: translateY(-6px);
+  box-shadow: 0 0 0 1px rgba(214,247,107,0.35), 0 36px 80px rgba(0,0,0,0.6);
+}
+.gallery-item:nth-child(even):hover .gallery-phone { transform: translateY(26px); }
+.gallery-phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-step {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+.gallery-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.015em;
+}
+.gallery-body {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(237,233,226,0.62);
+  margin: 0;
 }
 
 /* ── Surfaces ─────────────────────────────────────────────────── */
@@ -712,7 +843,7 @@ const structuredData = {
 }
 .surface-body {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.50);
+  color: rgba(255,255,255,0.62);
   line-height: 1.55;
   margin: 0;
 }
@@ -807,7 +938,7 @@ const structuredData = {
 .build-items li {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.50);
+  color: rgba(255,255,255,0.62);
   line-height: 1.5;
 }
 
@@ -825,7 +956,7 @@ const structuredData = {
 }
 .get-sub {
   font-size: 1.0625rem;
-  color: rgba(237,233,226,0.50);
+  color: rgba(237,233,226,0.62);
   line-height: 1.65;
   margin: 0 0 2.5rem;
   max-width: 48ch;
@@ -838,7 +969,7 @@ const structuredData = {
   padding: 2rem;
   text-align: center;
   font-size: 0.8125rem;
-  color: rgba(237,233,226,0.22);
+  color: rgba(237,233,226,0.45);
 }
 .footer p { margin: 0; }
 .footer-links {
@@ -855,6 +986,24 @@ const structuredData = {
 .footer a:hover { color: var(--ink); }
 
 /* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  /* Swipeable strip instead of five squeezed phones */
+  .gallery {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 220px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 2rem;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+  }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery-item { scroll-snap-align: start; }
+  .gallery-item:nth-child(even) .gallery-phone,
+  .gallery-item:nth-child(even):hover .gallery-phone { transform: none; }
+  .gallery-item:nth-child(even) .gallery-step { margin-top: 0; }
+}
 @media (max-width: 980px) {
   .surface-grid { grid-template-columns: repeat(2, 1fr); }
   .build-grid { grid-template-columns: repeat(2, 1fr); }
@@ -879,9 +1028,9 @@ const structuredData = {
   .nav-links { gap: 0.875rem; }
   .nav-links a { font-size: 0.8125rem; }
   .nav-cta { padding: 0.45rem 0.875rem; }
-  .nav-links li:nth-child(1),
-  .nav-links li:nth-child(2),
-  .nav-links li:nth-child(3) { display: none; }
+  .nav-links li:nth-child(-n+4) { display: none; }
+  .gallery { padding: 0 1.25rem 1rem; scroll-padding: 0 1.25rem; grid-auto-columns: 200px; }
+  .section-inner { padding: 0 1.25rem; }
   .hero-headline { font-size: 2.375rem; }
   .hero-icon { width: 60px; height: 60px; border-radius: 15px; }
   .section { padding: 72px 0; }
@@ -895,5 +1044,8 @@ const structuredData = {
   .proof-domains { flex-wrap: wrap; }
   .proof-domains li { padding: 0.2rem 0.75rem 0.2rem 0; border-right: none; }
   .footer-links { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-dot { animation: none; }
 }
 </style>
