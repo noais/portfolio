@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const lastUpdated = 'September 2025';
+const lastUpdated = 'October 2026';
 ---
 
 <Layout
@@ -39,9 +39,10 @@ const lastUpdated = 'September 2025';
       device.
     </p>
     <p>
-      That local data is included in your device's encrypted iPhone or iCloud backup, the same
-      way any other app's local data is. Nursling itself does not upload it, sync it, or read it
-      back from anywhere.
+      That local data is included in your device's own backup, the same way any other app's
+      local data is: your encrypted iPhone or iCloud backup on iOS, and your Google account's
+      Android backup on Android, if you have backup turned on. Nursling itself does not upload it,
+      sync it, or read it back from anywhere.
     </p>
 
     <h2>What Nursling does not do</h2>
@@ -56,16 +57,23 @@ const lastUpdated = 'September 2025';
     <h2>Health data</h2>
     <p>
       The nursings you record are personal and sensitive, and Nursling treats them that way: they
-      stay on the device. Nursling does not read from or write to Apple Health, and it does not
-      transmit your records anywhere.
+      stay on the device. Nursling does not read from or write to Apple Health or Health Connect,
+      and it does not transmit your records anywhere.
     </p>
 
     <h2>Purchases</h2>
     <p>
       Nursling is free for your first 50 nurslings. Unlimited tracking is a single one-time
-      purchase, handled entirely by Apple through the App Store. Nursling never sees or stores
-      your payment details. Apple tells the app only whether the unlock has been purchased. Your
-      history and your CSV export remain available whether you buy or not.
+      purchase, handled entirely by Apple through the App Store on iPhone, and by Google through
+      Google Play on Android. Nursling never sees or stores your payment details. The store tells
+      the app only whether the unlock has been purchased. Your history and your CSV export remain
+      available whether you buy or not.
+    </p>
+    <p>
+      On Android, purchases go through Google Play's billing library, which Google requires for
+      in-app purchases. That library sends Google its own diagnostics about the purchase service.
+      It does not carry your nursings, and Nursling adds nothing to it. How Google handles that
+      information is covered by Google's privacy policy.
     </p>
 
     <h2>Exporting and deleting your data</h2>
