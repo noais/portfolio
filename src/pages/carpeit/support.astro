@@ -1,5 +1,6 @@
 ---
 import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
+import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
 const faqs = [
   {
@@ -8,7 +9,7 @@ const faqs = [
   },
   {
     q: 'Are there any fees for renters?',
-    a: 'No. You pay the rental price shown before you book. Owners pay CarpeIt a service fee out of what they receive.',
+    a: 'No. You pay the rental price shown before you book. Owners pay CarpeIt a service fee (currently 8%) out of the price, so nothing is added for you.',
   },
   {
     q: 'How does the deposit work?',
@@ -24,7 +25,7 @@ const faqs = [
   },
   {
     q: 'The gear came back damaged. What happens?',
-    a: 'As the owner, report an issue from the rental before you confirm the return, and describe what happened. The deposit stays on hold while CarpeIt reviews the handover photos and your messages, then decides how much of the deposit goes to the owner and releases the rest. Both of you are told the outcome in the rental’s conversation.',
+    a: 'As the owner, open a claim from the rental before you confirm the return: describe what happened and how much of the deposit you’re asking for. The renter has 48 hours to accept or dispute it. If they accept, that amount goes to you and the rest of the hold is released. If they dispute it or don’t answer, the deposit stays on hold while CarpeIt reviews the handover photos and your messages, then decides how much goes to the owner and releases the rest. Both of you are told the outcome in the rental’s conversation.',
   },
   {
     q: 'How do I get paid for lending gear?',
@@ -65,6 +66,12 @@ const faqs = [
     Email <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20support">hey@davidferreira.dev</a>.
     For anything about your data, see the <a href="/carpeit/privacy/">Privacy Policy</a>; for the
     rules of renting and lending, the <a href="/carpeit/terms/">Terms of Service</a>.
+  </p>
+  <p>
+    Not happy with how we handled something? You can also use the
+    <a href={complaintsBookUrl}>electronic complaints book (Livro de Reclamações)</a>, or, as a
+    consumer, take a dispute to <a href="https://www.cniacc.pt">CNIACC</a>, a consumer
+    arbitration centre. CarpeIt is operated by {carpeitOperator.name}, {carpeitOperator.address}.
   </p>
 
   <p class="doc-note">

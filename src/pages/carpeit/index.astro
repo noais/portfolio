@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
 const strip = ['Kitesurf', 'Surf', 'Wing foil', 'SUP', 'Riders', 'Schools & shops'];
 
@@ -360,9 +361,11 @@ const structuredData = {
     <span aria-hidden="true">·</span>
     <a href="/carpeit/terms/">Terms</a>
     <span aria-hidden="true">·</span>
+    <a href={complaintsBookUrl}>Livro de Reclamações</a>
+    <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>
-  <p>David Ferreira · Portugal · <span id="year"></span></p>
+  <p>{carpeitOperator.name} · NIPC {carpeitOperator.nipc} · {carpeitOperator.address} · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
 </footer>
 

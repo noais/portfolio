@@ -2,6 +2,7 @@
 // Shell for CarpeIt's policy and support pages: the site's navy layout with
 // CarpeIt's lime + aqua accents, a CarpeIt nav, and a document column.
 import Layout from './Layout.astro';
+import { carpeitOperator, complaintsBookUrl } from '../data/carpeitOperator';
 
 interface Props {
   title: string;
@@ -45,9 +46,11 @@ const { title, description, heading, lastUpdated } = Astro.props;
     <span aria-hidden="true">·</span>
     <a href="/carpeit/terms/">Terms</a>
     <span aria-hidden="true">·</span>
+    <a href={complaintsBookUrl}>Livro de Reclamações</a>
+    <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>
-  <p>David Ferreira · Portugal · <span id="year"></span></p>
+  <p>{carpeitOperator.name} · NIPC {carpeitOperator.nipc} · {carpeitOperator.address} · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
 </footer>
 
