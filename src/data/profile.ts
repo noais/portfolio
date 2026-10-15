@@ -5,7 +5,7 @@
 export const profile = {
   name: 'David Ferreira',
   role: 'Mobile Engineering Lead & iOS Architect',
-  yearsExperience: '18+',
+  yearsExperience: '16+',
   location: 'Portugal',
   timezone: 'UTC+0 / UTC+1 (Lisbon)',
   availability: 'Open to fully remote roles with international teams, working from Portugal.',
