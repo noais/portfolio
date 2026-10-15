@@ -1,117 +1,154 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { profile, experience, education, community, languages, personSchema } from '../data/profile';
 
-const experience = [
+const fringe = experience.find((r) => r.company === 'FRiNGE')!;
+const volkswagen = experience.find((r) => r.company === 'Volkswagen Group')!;
+
+// Client work featured above the personal products. Details come from the CV.
+const leadership = [
   {
-    period: '2025 — Present',
-    role: 'Head of Mobile / Lead Engineer',
-    company: 'FRiNGE',
-    outcomes: [
-      'Built location-based livestreaming iOS product end-to-end — Swift 6/SwiftUI, Agora RTC, Supabase, PostHog',
-      'Shipped from zero to TestFlight in 9 weeks; real-time camera/RTC handoff with zero reported crashes',
-      'Led full mobile architecture decision-making across product, backend, and infra',
+    ...fringe,
+    tag: 'iOS · Live video · Location',
+    subtitle: fringe.role,
+    lede: 'Location-based livestreaming for iPhone. As Head of Mobile and the only mobile lead, I owned the iOS app end to end, from architecture to release.',
+    decisions: [
+      { title: 'Instant Go-Live', body: 'token prefetch and warm-restart flows, so going live feels immediate and survives flaky outdoor networks' },
+      { title: 'Camera ↔ RTC handoff', body: 'led the architecture for handing the camera between capture and the Agora RTC session' },
+      { title: 'Swift 6 strict concurrency', body: 'compile-time data-race safety for a heavily concurrent, real-time app' },
     ],
   },
   {
-    period: '2023 — 2025',
-    role: 'Lead iOS Developer',
-    company: 'Volkswagen Group',
-    outcomes: [
-      'Automotive platform architecture and release flows across European vehicle models',
-      'Technical alignment across 4+ cross-functional squads; reduced release cycle from 3 weeks to 10 days',
-      'Built internal tooling (Python, Bash, YAML) that automated 60% of manual release prep steps',
-    ],
-  },
-  {
-    period: '2021 — 2023',
-    role: 'Senior iOS Developer',
-    company: 'Mindera / Vodafone & MEO',
-    outcomes: [
-      'Led telecom iOS product serving 1M+ subscribers — zero Sev-1 incidents across 18-month engagement',
-      'Introduced TCA architecture pattern adopted by 3 other squads in the org',
-      'Mentored 4 mid-level engineers; 2 promoted to senior within the engagement',
-    ],
-  },
-  {
-    period: '2018 — 2021',
-    role: 'iOS Developer',
-    company: 'Various (agencies & products)',
-    outcomes: [
-      'Delivered 8+ iOS products across smart home, fintech, health, and outdoor sports verticals',
-      'Introduced unit test coverage baseline that became studio-wide standard at two agencies',
+    ...volkswagen,
+    tag: 'iOS · Automotive · Multi-team delivery',
+    subtitle: `${volkswagen.role} · MAN TGE companion app`,
+    lede: 'Led iOS development of the MAN TGE companion app inside a multi-team automotive programme: architecture, technical roadmap and delivery across releases.',
+    decisions: [
+      { title: 'Architecture standards', body: 'defined and enforced Clean Architecture + MVVM, with strict concurrency safety' },
+      { title: 'Release strategy', body: 'planned and drove releases within a SAFe Program Increment cadence' },
+      { title: 'Platform & onboarding', body: 'on the CAT Architecture Team, supported the release pipeline and onboarded new teams org-wide, with tooling in Python, Bash and YAML' },
     ],
   },
 ];
 
 const capabilities = [
   {
-    label: 'Mobile Product Engineering',
-    items: ['iOS & Swift', 'Android & Kotlin', 'SwiftUI & UIKit', 'App Store / Play Store'],
+    label: 'iOS Architecture',
+    items: ['Swift 6 & Swift Concurrency', 'SwiftUI & UIKit', 'Clean Architecture, MVVM, MVVM-C, TCA', 'Internal SDKs & shared modules'],
   },
   {
     label: 'Real-time & Platform',
-    items: ['WebSockets / MQTT', 'Swift Concurrency', 'Offline-first architecture', 'BLE & background modes'],
+    items: ['Live video with Agora RTC', 'WebSockets, MQTT & GraphQL', 'BLE protocols & HomeKit', 'Supabase, Postgres & Stripe Connect'],
   },
   {
-    label: 'AI-Augmented Delivery',
-    items: ['LLM-assisted code review', 'Automated test generation', 'Claude API integration', 'AI pair-programming'],
+    label: 'Engineering Leadership',
+    items: ['Mobile architecture ownership', 'Technical roadmaps', 'Architecture standards & review', 'Onboarding teams; CocoaHeads & SwiftAveiro organiser'],
   },
   {
-    label: 'Leadership & Quality',
-    items: ['Engineering management', 'Hiring & levelling', 'Architecture review', 'Cross-functional delivery'],
+    label: 'Delivery & Quality',
+    items: ['TDD & snapshot testing', 'CI/CD with Bitrise, GitHub Actions & Fastlane', 'Release strategy in SAFe PI cadences', 'App Store & Google Play releases'],
+  },
+  {
+    label: 'AI & On-device ML',
+    items: ['CoreML & ARKit', 'Vision OCR', 'RAG inside an iOS app', 'Claude Code & Codex in daily work'],
+  },
+  {
+    label: 'Beyond iOS',
+    items: ['Kotlin & Jetpack Compose', 'Objective-C & C++ interop', 'Java & Spring backends', 'Python & Bash tooling'],
   },
 ];
 
-const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 'Telecom', 'Outdoor Sports'];
+const proofDomains = ['Automotive', 'Live Video', 'Secure Messaging', 'Health', 'Smart Home', 'Telecom', 'Outdoor Sports'];
+
+const pageTitle = `David Ferreira — ${profile.role}`;
+const pageDescription = `${profile.role} with ${profile.yearsExperience} years in software. Native iOS architecture, real-time systems and engineering leadership at FRiNGE, Volkswagen Group, YEO Messaging and Bosch. Based in Portugal, open to fully remote roles.`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${profile.site}/#website`,
+      url: `${profile.site}/`,
+      name: profile.name,
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': `${profile.site}/#profilepage`,
+      url: `${profile.site}/`,
+      name: pageTitle,
+      isPartOf: { '@id': `${profile.site}/#website` },
+      mainEntity: { '@id': personSchema['@id'] },
+    },
+    { ...personSchema, description: pageDescription },
+  ],
+};
+
+const year = new Date().getFullYear();
 ---
 
 <Layout
-  title="David Ferreira — Mobile products built to hold up."
-  description="David Ferreira designs and leads durable iOS and Android products—from real-time experiences to the systems that keep teams shipping."
+  title={pageTitle}
+  description={pageDescription}
+  structuredData={structuredData}
 >
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- ─── NAV ─────────────────────────────────────────────────────── -->
 <header class="nav-shell">
-  <nav class="nav-inner">
-    <a href="#top" class="nav-logo">DF</a>
+  <nav class="nav-inner" aria-label="Primary">
+    <a href="#top" class="nav-logo" aria-label="David Ferreira, back to top">DF</a>
     <ul class="nav-links">
-      <li><a href="#work" data-nav="work">Work</a></li>
-      <li><a href="#experience" data-nav="experience">Experience</a></li>
-      <li><a href="#capabilities" data-nav="capabilities">Capabilities</a></li>
-      <li><a href="/carpeit/">CarpeIt</a></li>
-      <li><a href="/nursling/">Nursling</a></li>
-      <li><a href="/ai-consulting/">AI Consulting</a></li>
+      <li class="nav-section"><a href="#work" data-nav="work">Work</a></li>
+      <li class="nav-section"><a href="#experience" data-nav="experience">Experience</a></li>
+      <li class="nav-section"><a href="#capabilities" data-nav="capabilities">Capabilities</a></li>
+      <li class="nav-optional"><a href="/carpeit/">CarpeIt</a></li>
+      <li class="nav-optional"><a href="/nursling/">Nursling</a></li>
+      <li class="nav-ai"><a href="/ai-consulting/">AI Consulting</a></li>
+      <li><a href={profile.cv}>CV</a></li>
       <li><a href="#contact" data-nav="contact" class="nav-cta">Let's talk</a></li>
     </ul>
   </nav>
 </header>
 
+<main id="main">
+
 <!-- ─── HERO ──────────────────────────────────────────────────────── -->
-<section id="top" class="hero-section">
+<section id="top" class="hero-section" aria-labelledby="hero-heading">
   <div class="hero-grid">
 
     <!-- Left: copy -->
     <div class="hero-copy">
-      <div class="hero-chips">
-        <span class="chip">16+ yrs</span>
-        <span class="chip">iOS · Android</span>
-        <span class="chip">Portugal</span>
-      </div>
+      <ul class="hero-chips" aria-label="At a glance">
+        <li class="chip">{profile.yearsExperience} yrs software</li>
+        <li class="chip">Native iOS · Swift</li>
+        <li class="chip">Remote · Portugal</li>
+      </ul>
 
-      <h1 class="hero-headline">
+      <h1 id="hero-heading" class="hero-headline">
         Mobile products<br />
         <em>built to hold up.</em>
       </h1>
 
       <p class="hero-sub">
-        David Ferreira designs and leads durable iOS and Android products —
-        from real-time experiences to the systems that keep teams shipping.
+        I'm David Ferreira, a <strong>mobile engineering lead and iOS architect</strong> with {profile.yearsExperience} years in software and over a decade in native iOS. I design
+        the architecture, lead the team and ship: most recently at FRiNGE and Volkswagen Group.
       </p>
 
       <div class="hero-actions">
         <a href="#work" class="btn-primary">See the work</a>
-        <a href="#contact" class="btn-ghost">Let's talk</a>
+        <a href={profile.cv} class="btn-ghost">View CV</a>
+        <a href={profile.linkedin} target="_blank" rel="noopener" class="btn-ghost">
+          LinkedIn&nbsp;<span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span>
+        </a>
       </div>
+
+      <p class="hero-availability">
+        <span class="status-dot" aria-hidden="true"></span>
+        Open to fully remote roles with international teams
+      </p>
     </div>
 
     <!-- Right: phone composition -->
@@ -119,16 +156,16 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       <div class="hero-topo"></div>
       <div class="phone-fan">
         <div class="device device--left">
-          <img src="/carpeit/screen-explore.webp" alt="" width="659" height="1434" loading="eager" />
+          <img src="/carpeit/screen-explore.webp" alt="" width="659" height="1434" decoding="async" />
         </div>
         <div class="device device--right">
-          <img src="/carpeit/screen-map.webp" alt="" width="659" height="1434" loading="eager" />
+          <img src="/carpeit/screen-map.webp" alt="" width="659" height="1434" decoding="async" />
         </div>
         <div class="device device--center">
-          <img src="/carpeit/screen-detail.webp" alt="" width="659" height="1434" loading="eager" fetchpriority="high" />
+          <img src="/carpeit/screen-detail.webp" alt="" width="659" height="1434" fetchpriority="high" />
         </div>
       </div>
-      <p class="hero-caption"><span class="status-dot"></span>Now building · CarpeIt for iPhone</p>
+      <p class="hero-caption"><span class="status-dot"></span>Now building · CarpeIt for iPhone &amp; Android</p>
     </div>
 
   </div>
@@ -136,8 +173,8 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 
 <!-- ─── PROOF STRIP ───────────────────────────────────────────────── -->
 <div class="proof-strip">
-  <p class="proof-label">Built across</p>
-  <ul class="proof-domains">
+  <p class="proof-label" id="proof-label">Built across</p>
+  <ul class="proof-domains" aria-labelledby="proof-label">
     {proofDomains.map((d) => (
       <li>{d}</li>
     ))}
@@ -145,44 +182,75 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 </div>
 
 <!-- ─── WORK ──────────────────────────────────────────────────────── -->
-<section id="work" class="section">
+<section id="work" class="section" aria-labelledby="work-heading">
   <div class="section-inner">
     <div class="section-header">
       <span class="eyebrow">Selected work</span>
-      <h2 class="section-title">Products that ship and stay shipped.</h2>
+      <h2 id="work-heading" class="section-title">Architecture that ships, in teams and on my own.</h2>
     </div>
+
+    <p class="work-group">Leading mobile</p>
+    <div class="lead-grid">
+      {leadership.map((r) => (
+        <article class="case-card lead-card">
+          <div class="case-meta">
+            <span class="case-tag">{r.tag}</span>
+            <span class="lead-period">
+              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – <time datetime={r.end}>{r.period.split(' – ')[1]}</time>
+            </span>
+          </div>
+          <h3 class="case-title">{r.company}</h3>
+          <p class="lead-role">{r.subtitle}</p>
+          <p class="case-lede">{r.lede}</p>
+          <p class="lead-label">Architecture &amp; decisions</p>
+          <ul class="case-highlights">
+            {r.decisions.map((d) => (
+              <li><strong>{d.title}</strong>: {d.body}</li>
+            ))}
+          </ul>
+          <div class="case-stack">
+            {r.stack.map((s) => <span>{s}</span>)}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="work-group">Products I build and ship</p>
 
     <!-- CarpeIt — flagship -->
     <article class="case-card case-card--flagship">
       <div class="case-screens">
         <div class="case-phone case-phone--1">
-          <img src="/carpeit/screen-explore.webp" alt="CarpeIt Explore feed with rentable wing and kite gear, priced per day" width="659" height="1434" loading="lazy" />
+          <img src="/carpeit/screen-explore.webp" alt="CarpeIt Explore feed with rentable wing and kite gear, priced per day" width="659" height="1434" loading="lazy" decoding="async" />
         </div>
         <div class="case-phone case-phone--2">
-          <img src="/carpeit/screen-detail.webp" alt="CarpeIt listing for a Duotone Rebel SLS 9m kite at €50 a day, with a Check availability button" width="659" height="1434" loading="lazy" />
+          <img src="/carpeit/screen-detail.webp" alt="CarpeIt listing for a Duotone Rebel SLS 9m kite at €50 a day, with a Check availability button" width="659" height="1434" loading="lazy" decoding="async" />
         </div>
         <div class="case-phone case-phone--3">
-          <img src="/carpeit/screen-map.webp" alt="CarpeIt map search with price pins along the Aveiro coast" width="659" height="1434" loading="lazy" />
+          <img src="/carpeit/screen-map.webp" alt="CarpeIt map search with price pins along the Aveiro coast" width="659" height="1434" loading="lazy" decoding="async" />
         </div>
       </div>
 
       <div class="case-body">
         <div class="case-meta">
-          <span class="case-tag">iOS · Marketplace · Payments</span>
-          <span class="status-pill"><span class="status-dot"></span>In development</span>
+          <span class="case-tag">iOS · Android · Marketplace · Payments</span>
+          <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>Launching in Portugal</span>
         </div>
         <h3 class="case-title">CarpeIt</h3>
         <p class="case-lede">
-          Kites, boards and foils are expensive, bulky and situational. CarpeIt is a peer-to-peer marketplace for kitesurf, surf, wing foil and SUP gear. One account can both rent and lend.
+          A peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Riders rent
+          kit near the spot they're riding; riders, schools and shops earn from gear they aren't
+          using. One account does both.
         </p>
+        <p class="case-availability">Coming soon to the App Store and Google Play.</p>
         <ul class="case-highlights">
-          <li><strong>Map search</strong> with price pins on the coast you ride</li>
-          <li><strong>Stripe checkout</strong> with deposits kept separate from the total</li>
-          <li><strong>Photo inspections</strong> at pickup and return</li>
-          <li><strong>Pro dashboard</strong> for schools and shops</li>
+          <li><strong>Stripe Connect payments</strong>: rental total, held deposit and owner payout kept as separate lines, never blended</li>
+          <li><strong>Evidence-gated handovers</strong>: pickup and return only complete once the photo inspection has uploaded</li>
+          <li><strong>Map-first search</strong> with price pins and sport and date filters; browsing needs no account</li>
+          <li><strong>Real-time booking chat</strong>, plus a Pro dashboard for schools and shops</li>
         </ul>
         <div class="case-stack">
-          <span>Swift 6</span><span>SwiftUI</span><span>Supabase</span><span>Stripe Connect</span><span>MapKit</span><span>Realtime</span>
+          <span>Swift 6</span><span>SwiftUI</span><span>Kotlin</span><span>Jetpack Compose</span><span>Supabase</span><span>Stripe Connect</span><span>MapKit</span><span>Realtime</span>
         </div>
         <a href="/carpeit/" class="case-link">
           See CarpeIt <span aria-hidden="true">→</span>
@@ -190,63 +258,24 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       </div>
     </article>
 
-    <!-- RidersNow — secondary -->
-    <article class="case-card case-card--secondary">
-      <div class="case-screen-single">
-        <img src="/work/ridersnow-live.webp" alt="RidersNow live map showing riders at nearby spots" width="660" height="1428" loading="lazy" />
-      </div>
-      <div class="case-body">
-        <span class="case-tag">iOS · Android · Real-time · Outdoor Sports</span>
-        <h3 class="case-title">RidersNow</h3>
-        <p class="case-problem">
-          <strong>Problem:</strong> Outdoor sports riders had no way to find or coordinate sessions in real time — events were stale by the time they were shared.
-        </p>
-        <p class="case-outcome">
-          <strong>Outcome:</strong> Live map matching, BLE proximity detection, and push-coordinated sessions. Shipped cross-platform in 14 weeks, zero critical post-launch incidents.
-        </p>
-        <div class="case-stack">
-          <span>Swift</span><span>Kotlin</span><span>WebSockets</span><span>BLE</span><span>MQTT</span>
-        </div>
-        <a href="/ridersnow-site/" target="_blank" rel="noopener" class="case-link">
-          Visit RidersNow <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </article>
-
-    <!-- MyLedgerAI — secondary -->
-    <article class="case-card case-card--secondary">
-      <div class="case-screen-single">
-        <img src="/work/myledger-overview.webp" alt="MyLedgerAI overview screen with balance, budgets and spending chart" width="660" height="1434" loading="lazy" />
-      </div>
-      <div class="case-body">
-        <span class="case-tag">iOS · Personal Finance · AI</span>
-        <h3 class="case-title">MyLedgerAI</h3>
-        <p class="case-problem">
-          <strong>Problem:</strong> Traditional finance apps track what happened, but rarely turn that data into useful context for what to do next.
-        </p>
-        <p class="case-outcome">
-          <strong>Outcome:</strong> A privacy-first, chat-led financial companion that connects transactions, budgets, goals, forecasts, and scanned receipts to deliver grounded guidance. Built with on-device storage, RAG-powered context, receipt OCR, and exportable financial reports.
-        </p>
-        <div class="case-stack">
-          <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>RAG</span><span>Vision OCR</span>
-        </div>
-      </div>
-    </article>
-
     <!-- Nursling — secondary -->
     <article class="case-card case-card--secondary">
       <div class="case-screen-single">
-        <img src="/work/nursling-home.webp" alt="Nursling home screen showing time since the last nursing" width="660" height="1434" loading="lazy" />
+        <img src="/work/nursling-home.webp" alt="Nursling home screen showing time since the last nursing" width="660" height="1434" loading="lazy" decoding="async" />
       </div>
       <div class="case-body">
-        <span class="case-tag">iOS · watchOS · Health · Personal Product</span>
+        <div class="case-meta">
+          <span class="case-tag">iOS · watchOS · Android · Health</span>
+          <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>On the App Store &amp; Google Play</span>
+        </div>
         <h3 class="case-title">Nursling</h3>
         <p class="case-problem">
-          <strong>Problem:</strong> Baby trackers are built for the daytime version of a parent. At 3am, with one hand free, every picker, confirmation and "which side?" question is a reason to stop logging.
+          <strong>Challenge:</strong> Baby trackers are built for the daytime version of a parent. At 3am, with one hand free, every picker, confirmation and "which side?" question is a reason to stop logging.
         </p>
         <p class="case-outcome">
-          <strong>Outcome:</strong> A breastfeeding tracker scoped down to a single tap that already knows which breast comes next. The same App Intent ships to the widget, Control Centre, the Action Button, Siri, a Live Activity and an Apple Watch app, so a session starts without opening anything. No account, no server, no analytics — records stay in a local store, exportable to CSV. Shipped solo in 21 languages.
+          <strong>Approach:</strong> A breastfeeding tracker scoped down to a single tap that already knows which breast comes next. One App Intent powers the widget, Control Centre, the Action Button, Siri, a Live Activity and the Apple Watch app, so a session starts without opening anything. No account, no server, no analytics: records stay in a local store and export to CSV. Built solo, in 21 languages.
         </p>
+        <p class="case-availability">Available on the App Store for iPhone and Apple Watch, and on <a href="https://play.google.com/store/apps/details?id=com.davidferreira.nursling" target="_blank" rel="noopener">Google Play</a> for Android.</p>
         <div class="case-stack">
           <span>Swift 6</span><span>SwiftUI</span><span>App Intents</span><span>WidgetKit</span><span>SQLite</span><span>watchOS</span>
         </div>
@@ -256,44 +285,121 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
       </div>
     </article>
 
+    <!-- RidersNow — secondary -->
+    <article class="case-card case-card--secondary">
+      <div class="case-screen-single">
+        <img src="/work/ridersnow-live.webp" alt="RidersNow live map showing riders at nearby spots" width="660" height="1428" loading="lazy" decoding="async" />
+      </div>
+      <div class="case-body">
+        <div class="case-meta">
+          <span class="case-tag">iOS · Android · Real-time · Outdoor Sports</span>
+          <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>On the App Store</span>
+        </div>
+        <h3 class="case-title">RidersNow</h3>
+        <p class="case-problem">
+          <strong>Challenge:</strong> Kite, surf, wing and windsurf sessions get organised in group chats that are out of date by the time anyone reads them.
+        </p>
+        <p class="case-outcome">
+          <strong>Approach:</strong> A live map of active sessions and riders at nearby spots, with one-tap join, a chat for every session, and an hourly wind, swell and tide forecast scored for conditions.
+        </p>
+        <p class="case-availability">On the App Store for iPhone; coming soon to Google Play.</p>
+        <div class="case-stack">
+          <span>Swift</span><span>SwiftUI</span><span>Kotlin</span><span>Jetpack Compose</span><span>Real-time</span>
+        </div>
+        <a href="/ridersnow-site/" target="_blank" rel="noopener" class="case-link">
+          Visit RidersNow <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- MyLedgerAI — secondary -->
+    <article class="case-card case-card--secondary">
+      <div class="case-screen-single">
+        <img src="/work/myledger-overview.webp" alt="MyLedgerAI overview screen with balance, budgets and spending chart" width="660" height="1434" loading="lazy" decoding="async" />
+      </div>
+      <div class="case-body">
+        <span class="case-tag">iOS · Personal Finance · AI</span>
+        <h3 class="case-title">MyLedgerAI</h3>
+        <p class="case-problem">
+          <strong>Challenge:</strong> Finance apps track what happened, but rarely turn that data into useful context for what to do next.
+        </p>
+        <p class="case-outcome">
+          <strong>Approach:</strong> A privacy-first, chat-led financial companion. Retrieval-augmented generation grounds every answer in the user's own transactions, budgets, goals, forecasts and scanned receipts. Storage stays on device, receipts are read with Vision OCR, and reports export.
+        </p>
+        <div class="case-stack">
+          <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>RAG</span><span>Vision OCR</span>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
 
 <!-- ─── EXPERIENCE ─────────────────────────────────────────────────── -->
-<section id="experience" class="section section--navy">
+<section id="experience" class="section section--navy" aria-labelledby="experience-heading">
   <div class="section-inner">
     <div class="section-header section-header--light">
       <span class="eyebrow eyebrow--lime">Experience</span>
-      <h2 class="section-title section-title--light">Outcomes, not job descriptions.</h2>
+      <h2 id="experience-heading" class="section-title section-title--light">{profile.yearsExperience} years in software. Over a decade in native iOS.</h2>
     </div>
 
     <ol class="timeline">
-      {experience.map((role) => (
+      {experience.map((r) => (
         <li class="timeline-item">
           <div class="timeline-meta">
-            <span class="timeline-period">{role.period}</span>
+            <span class="timeline-period">
+              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – <time datetime={r.end}>{r.period.split(' – ')[1]}</time>
+            </span>
           </div>
           <div class="timeline-body">
-            <p class="timeline-role">{role.role}</p>
-            <p class="timeline-company">{role.company}</p>
+            <h3 class="timeline-role">{r.role}</h3>
+            <p class="timeline-company">{r.company}</p>
             <ul class="timeline-outcomes">
-              {role.outcomes.map((o) => (
-                <li>{o}</li>
+              {r.highlights.map((h) => (
+                <li>{h}</li>
               ))}
             </ul>
           </div>
         </li>
       ))}
     </ol>
+
+    <div class="exp-extras">
+      <div class="exp-extra">
+        <h3 class="exp-extra-label">Education</h3>
+        <p class="exp-extra-title">{education.degree}</p>
+        <p class="exp-extra-meta">{education.school}</p>
+      </div>
+      <div class="exp-extra">
+        <h3 class="exp-extra-label">Community</h3>
+        <ul class="exp-extra-list">
+          {community.map((c) => (
+            <li><span class="exp-extra-title">{c.name}</span> <span class="exp-extra-meta">{c.detail}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="exp-extra">
+        <h3 class="exp-extra-label">Languages</h3>
+        <ul class="exp-extra-list">
+          {languages.map((l) => (
+            <li><span class="exp-extra-title">{l.name}</span> <span class="exp-extra-meta">{l.level}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <a href={profile.cv} class="case-link exp-cv-link">
+      Read the full CV <span aria-hidden="true">→</span>
+    </a>
   </div>
 </section>
 
 <!-- ─── CAPABILITIES ──────────────────────────────────────────────── -->
-<section id="capabilities" class="section">
+<section id="capabilities" class="section" aria-labelledby="capabilities-heading">
   <div class="section-inner">
     <div class="section-header section-header--light">
       <span class="eyebrow eyebrow--lime">Capabilities</span>
-      <h2 class="section-title section-title--light">The full stack of mobile delivery.</h2>
+      <h2 id="capabilities-heading" class="section-title section-title--light">The full stack of mobile delivery.</h2>
     </div>
 
     <div class="caps-grid">
@@ -312,38 +418,54 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 </section>
 
 <!-- ─── CONTACT ───────────────────────────────────────────────────── -->
-<section id="contact" class="section section--navy">
+<section id="contact" class="section section--navy" aria-labelledby="contact-heading">
   <div class="section-inner">
     <div class="contact-card">
       <span class="eyebrow eyebrow--lime">Contact</span>
-      <h2 class="contact-headline">
-        Building a mobile product that needs to hold up under pressure?
+      <h2 id="contact-heading" class="contact-headline">
+        Hiring a mobile lead or iOS architect?
       </h2>
       <p class="contact-sub">
-        Available for senior engineering and engineering-lead roles. Based in Portugal, open to remote or hybrid across Europe.
+        I'm open to Mobile Engineering Lead, Head of Mobile and iOS Architect roles, <strong>fully
+        remote with international teams</strong>. Based in Portugal, on Lisbon time ({profile.timezone.split(' (')[0]}).
       </p>
       <div class="contact-links">
-        <a href="mailto:hey@davidferreira.dev" class="contact-link contact-link--primary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          hey@davidferreira.dev
+        <a href={`mailto:${profile.email}`} class="contact-link contact-link--primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          {profile.email}
         </a>
-        <a href="https://www.linkedin.com/in/david-ferreira-69041367" target="_blank" rel="noopener" class="contact-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
-          LinkedIn
+        <a href={profile.cv} class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+          CV
         </a>
-        <a href="https://github.com/noais" target="_blank" rel="noopener" class="contact-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
+        <a href={profile.linkedin} target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+          LinkedIn<span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <a href={profile.github} target="_blank" rel="noopener" class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub<span class="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
+      <p class="contact-note">
+        Need help bringing AI into a mobile product instead? See <a href="/ai-consulting/">AI consulting</a>.
+      </p>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
 <footer class="footer">
-  <p>David Ferreira · Portugal · <span id="year"></span></p>
-  <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
+  <p>David Ferreira · Portugal · <span id="year">{year}</span></p>
+  <nav class="footer-nav" aria-label="Footer">
+    <a href={profile.cv}>CV</a>
+    <a href="/carpeit/">CarpeIt</a>
+    <a href="/nursling/">Nursling</a>
+    <a href="/ai-consulting/">AI Consulting</a>
+  </nav>
+  <script>document.getElementById('year')!.textContent = new Date().getFullYear().toString();</script>
 </footer>
 
 </Layout>
@@ -433,7 +555,9 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 .hero-chips {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
   flex-wrap: wrap;
 }
 .chip {
@@ -466,13 +590,23 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--muted);
-  max-width: 44ch;
+  max-width: 46ch;
   margin: 0 0 2.5rem;
 }
+.hero-sub strong { color: var(--ink); font-weight: 500; }
 .hero-actions {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+.hero-availability {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.75rem 0 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
 }
 .btn-primary {
   display: inline-flex;
@@ -865,6 +999,68 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .case-card--secondary:hover .case-screen-single img { transform: translateY(-8px); }
 .case-card--secondary .case-body { padding: 2.5rem 3rem; }
+.case-availability {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--lime);
+  margin: 0 0 1.25rem;
+}
+
+/* ── Work groups + leadership cards ───────────────────────────── */
+.work-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(237,233,226,0.62);
+  margin: 0 0 1.25rem;
+}
+.work-group::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(237,233,226,0.08);
+}
+.lead-grid + .work-group { margin-top: 3.5rem; }
+.lead-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.lead-card {
+  margin-bottom: 0;
+  padding: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(198,241,53,0.07) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(237,233,226,0.035), rgba(237,233,226,0.01)), var(--bg2);
+}
+.lead-card .case-meta { margin-bottom: 1.25rem; }
+.lead-card .case-title { font-size: clamp(1.75rem, 3vw, 2.25rem); margin-bottom: 0.35rem; }
+.lead-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(237,233,226,0.62);
+}
+.lead-role {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--lime);
+  margin: 0 0 1.25rem;
+}
+.lead-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(237,233,226,0.62);
+  margin: 0 0 0.875rem;
+}
+.lead-card .case-stack { margin-top: auto; padding-top: 1.5rem; margin-bottom: 0; }
 
 /* ── Experience timeline ───────────────────────────────────────── */
 .timeline {
@@ -899,8 +1095,10 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   line-height: 1.4;
 }
 .timeline-role {
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.4;
   color: #fff;
   margin: 0 0 0.2rem;
 }
@@ -932,10 +1130,48 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   top: 4px;
 }
 
+/* ── Education / community / languages ────────────────────────── */
+.exp-extras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.exp-extra-label {
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin: 0 0 0.875rem;
+}
+.exp-extra-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+.exp-extra-meta {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.62);
+  margin: 0;
+}
+.exp-extra-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.exp-extra-list li { line-height: 1.5; }
+.exp-cv-link { margin-top: 2.5rem; }
+
 /* ── Capabilities ─────────────────────────────────────────────── */
 .caps-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5px;
   background: rgba(255,255,255,0.07);
   border-radius: 16px;
@@ -1026,6 +1262,14 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
 }
 .contact-link--primary:hover { background: #d4ff3a; border-color: #d4ff3a; }
 .contact-link svg { flex-shrink: 0; }
+.contact-sub strong { color: var(--ink); font-weight: 600; }
+.contact-note {
+  font-size: 0.875rem;
+  color: rgba(237,233,226,0.62);
+  margin: 2rem 0 0;
+}
+.contact-note a { color: var(--ink); text-underline-offset: 3px; }
+.contact-note a:hover { color: var(--lime); }
 
 /* ── Footer ───────────────────────────────────────────────────── */
 .footer {
@@ -1034,15 +1278,26 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   padding: 2rem;
   text-align: center;
   font-size: 0.8125rem;
-  color: rgba(237,233,226,0.45);
+  color: rgba(237,233,226,0.62);
 }
 .footer p { margin: 0; }
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.75rem;
+}
+.footer-nav a { color: inherit; text-underline-offset: 3px; }
+.footer-nav a:hover { color: var(--lime); }
 
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 1080px) {
   /* Section anchors drop before the nav can wrap; product pages stay */
-  .nav-links li:nth-child(-n+3) { display: none; }
+  .nav-section { display: none; }
   .nav-links { gap: 1.5rem; }
+  .caps-grid { grid-template-columns: repeat(2, 1fr); }
+  .lead-card { padding: 2.25rem; }
   .case-phone--1, .case-phone--3 { width: 160px; }
   .case-phone--2 { width: 200px; }
 }
@@ -1063,13 +1318,15 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   .case-screen-single img { margin-bottom: 0; }
   .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
   .caps-grid { grid-template-columns: 1fr; }
+  .lead-grid { grid-template-columns: minmax(0, 1fr); }
+  .exp-extras { grid-template-columns: 1fr; gap: 2rem; }
 }
 @media (max-width: 600px) {
   .nav-inner { padding: 0 1.25rem; }
   .nav-links { gap: 0.875rem; }
   .nav-links a { font-size: 0.8125rem; }
   .nav-cta { padding: 0.45rem 0.875rem; }
-  .nav-links li:nth-child(5) { display: none; }
+  .nav-optional { display: none; }
   .hero-section { padding-bottom: 64px; }
   .hero-grid { padding: 0 1.25rem; }
   .hero-headline { font-size: 2.5rem; }
@@ -1086,7 +1343,10 @@ const proofDomains = ['Automotive', 'Smart Home', 'Secure Messaging', 'Health', 
   .case-phone--1 { margin-right: -24px; }
   .case-phone--3 { margin-left: -24px; }
   .case-body,
-  .case-card--secondary .case-body { padding: 1.75rem; }
+  .case-card--secondary .case-body,
+  .lead-card { padding: 1.75rem; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost { padding: 0.7rem 1.25rem; }
   .cap-panel { padding: 1.75rem; }
   .contact-card { padding: 3.5rem 1.25rem; }
   .proof-strip { flex-direction: column; gap: 0.875rem; align-items: flex-start; padding: 1.375rem 1.25rem; }

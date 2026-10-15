@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { profile, experience, personSchema } from '../data/profile';
 
-const trustLogos = ['Volkswagen', 'FRiNGE', 'Bosch'];
-const trustStats = ['16+ Years Experience', 'Engineering Leader', 'AI Consultant', 'iOS Expert'];
+const trustLogos = ['Volkswagen Group', 'FRiNGE', 'YEO Messaging', 'Prozis', 'Bosch', 'Portugal Telecom'];
+const trustStats = [`${profile.yearsExperience} Years in Software`, 'Mobile Engineering Lead', 'iOS Architect', 'On-device ML & RAG in production code'];
 
 const services = [
   {
@@ -42,128 +43,68 @@ const process = [
   { step: '05', title: 'Production', description: 'Scale confidently.' },
 ];
 
-const placeholderCaseStudies = [
-  {
-    title: 'Veterinary AI Platform',
-    tag: 'Veterinary · AI Diagnostics',
-    description: 'A placeholder for an AI-assisted diagnostics and workflow engagement — case study details will be added after delivery.',
-  },
-  {
-    title: 'Mobile AI Integrations',
-    tag: 'Mobile · AI Integrations',
-    description: 'A placeholder for embedding LLM-powered features into an existing mobile product — case study details will be added after delivery.',
-  },
-];
-
-const experience = [
-  {
-    period: '2025 — Present',
-    role: 'Head of Mobile / Lead iOS Engineer',
-    company: 'FRiNGE',
-    outcomes: [
-      'Designed and shipped a location-based livestreaming iOS app end-to-end as sole mobile lead — Swift 6/SwiftUI, Agora RTC, Supabase, PostHog',
-      'Led architecture on Go-Live performance, camera↔Agora handoff, and Swift 6 strict concurrency safety',
-      'Implemented token prefetch and warm-restart flows so Go-Live feels instant and survives flaky outdoor networks',
-    ],
-  },
-  {
-    period: '2023 — 2025',
-    role: 'Lead iOS Developer',
-    company: 'Volkswagen Group',
-    outcomes: [
-      'Led iOS development for the MAN TGE companion app — architecture, technical roadmap, and delivery across releases',
-      'Defined and enforced Clean Architecture + MVVM standards with strict concurrency safety; drove release strategy within a SAFe Program Increment cadence',
-      'Started on the Volkswagen CAT Architecture Team supporting the release pipeline and onboarding new teams org-wide, before stepping into iOS leadership on MAN TGE',
-    ],
-  },
-  {
-    period: '2021 — 2023',
-    role: 'Lead iOS Developer',
-    company: 'YEO Messaging',
-    outcomes: [
-      'Built the recipient-verification pipeline using CoreML and ARKit for on-device face recognition — authenticating the person, not just the device',
-      'Implemented OLM end-to-end encryption, GraphQL APIs, and WebSocket-based real-time messaging',
-      'Architected a hybrid UIKit/SwiftUI codebase in MVVM-C with snapshot testing and BitRise CI',
-    ],
-  },
-  {
-    period: '2017 — 2021',
-    role: 'Lead iOS Developer',
-    company: 'Prozis (ProzisGo)',
-    outcomes: [
-      'Defined the architecture for ingesting data from multiple wearables (smart scales, bands) into a nutrition inference engine',
-      'Applied strict TDD with explicit use-case/test-case specifications; built with TCA, RxSwift, and Realm',
-      'Authored an internal SDK consumed by other product teams',
-    ],
-  },
-  {
-    period: '2014 — 2017',
-    role: 'iOS Developer',
-    company: 'Bosch',
-    outcomes: [
-      'Architected HeatHub, a smart-home app for Bosch\'s full thermotechnology appliance line — hybrid Swift/Objective-C/C++ codebase with HomeKit integration',
-      'Designed a new BLE communication protocol from scratch for ProWater, a water-heater installer app',
-      'Contributed to the open-source "Charts" library',
-    ],
-  },
-  {
-    period: '2010 — 2014',
-    role: 'IT Consultant',
-    company: 'Portugal Telecom',
-    outcomes: [
-      'Built an Objective-C macOS product for wireless pen drives that auto-selected the best available network',
-      'Backend work on an SSO platform (Java, Spring MVC/Security, Hibernate) and a QoS platform (Java, PostgreSQL, Bash)',
-    ],
-  },
-];
-
 const whyCards = [
-  { title: '16+ Years Engineering', description: 'Mobile products shipped to thousands of users.' },
+  { title: `${profile.yearsExperience} Years Engineering`, description: 'Native products shipped for automotive, live video, secure messaging, health and smart-home companies.' },
   { title: 'AI Native Thinking', description: 'AI is designed into the product — not added later.' },
-  { title: 'Engineering Leadership', description: 'Strong experience leading teams and technical strategy.' },
+  { title: 'Engineering Leadership', description: 'Led iOS architecture and delivery at Volkswagen Group, FRiNGE, YEO Messaging and Prozis.' },
   { title: 'Business First', description: 'Every AI solution must generate measurable value.' },
 ];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${profile.site}/ai-consulting/#service`,
+      name: 'AI & Mobile Product Consulting',
+      url: `${profile.site}/ai-consulting/`,
+      provider: { '@id': personSchema['@id'] },
+      areaServed: 'Worldwide',
+      serviceType: services.map((s) => s.title),
+      description: 'AI readiness assessments, LLM and RAG solution design, rapid AI prototypes and engineering leadership for mobile and digital products.',
+    },
+    personSchema,
+  ],
+};
 ---
 
 <Layout
   title="David Ferreira — AI Solutions Consultant & AI-First Mobile Engineering Leader"
-  description="AI consultant and engineering leader helping startups and enterprises build LLM-powered products — RAG, AI agents, and production-grade mobile AI integrations, backed by 16+ years of software engineering experience."
+  description={`AI consultant and mobile engineering lead helping startups and enterprises build LLM-powered products — RAG, AI agents and production-grade mobile AI integrations, backed by ${profile.yearsExperience} years of software engineering.`}
   keywords="AI Consultant, AI Solutions Architect, AI Engineering Consultant, AI Product Consultant, AI Mobile Expert, AI Strategy Consultant, LLM Consultant, RAG Consultant, Generative AI Consultant, AI Engineering Leader, AI Mobile Development, Swift AI, iOS AI"
-  structuredData={{
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'David Ferreira',
-    jobTitle: 'AI Solutions Consultant & AI-First Mobile Engineering Leader',
-    url: 'https://davidferreira.dev/ai-consulting/',
-    sameAs: ['https://www.linkedin.com/in/david-ferreira-69041367', 'https://github.com/noais'],
-  }}
+  structuredData={structuredData}
 >
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- ─── NAV ─────────────────────────────────────────────────────── -->
 <header class="nav-shell">
-  <nav class="nav-inner">
-    <a href="/" class="nav-logo">DF</a>
+  <nav class="nav-inner" aria-label="Primary">
+    <a href="/" class="nav-logo" aria-label="David Ferreira, portfolio home">DF</a>
     <ul class="nav-links">
-      <li><a href="/">Portfolio</a></li>
-      <li><a href="#services" data-nav="services">Services</a></li>
-      <li><a href="#case-studies" data-nav="case-studies">Case Studies</a></li>
+      <li class="nav-section"><a href="/">Portfolio</a></li>
+      <li class="nav-section"><a href="#services" data-nav="services">Services</a></li>
+      <li class="nav-section"><a href="#case-studies" data-nav="case-studies">Work</a></li>
+      <li><a href={profile.cv}>CV</a></li>
       <li><a href="#contact" data-nav="contact" class="nav-cta">Book a call</a></li>
     </ul>
   </nav>
 </header>
 
+<main id="main">
+
 <!-- ─── HERO ──────────────────────────────────────────────────────── -->
-<section id="top" class="hero-section">
+<section id="top" class="hero-section" aria-labelledby="hero-heading">
   <canvas id="hero-network" class="hero-network" aria-hidden="true"></canvas>
 
   <div class="hero-inner">
-    <div class="hero-chips">
-      <span class="chip">16+ yrs</span>
-      <span class="chip">AI · iOS</span>
-      <span class="chip">Portugal</span>
-    </div>
+    <ul class="hero-chips" aria-label="At a glance">
+      <li class="chip">{profile.yearsExperience} yrs</li>
+      <li class="chip">AI · iOS</li>
+      <li class="chip">Portugal</li>
+    </ul>
 
-    <h1 class="hero-headline">
+    <h1 id="hero-heading" class="hero-headline">
       Helping companies build <em class="gradient-text">AI products</em><br />
       that users actually love.
     </h1>
@@ -175,22 +116,22 @@ const whyCards = [
 
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Book a Discovery Call</a>
-      <a href="#case-studies" class="btn-ghost">View Case Studies</a>
+      <a href="#case-studies" class="btn-ghost">See the work</a>
     </div>
   </div>
 </section>
 
 <!-- ─── TRUST STRIP ───────────────────────────────────────────────── -->
 <div class="proof-strip">
-  <p class="proof-label">Companies worked with</p>
-  <ul class="proof-domains proof-domains--logos">
+  <p class="proof-label" id="trust-label">Companies worked with</p>
+  <ul class="proof-domains proof-domains--logos" aria-labelledby="trust-label">
     {trustLogos.map((logo) => (
       <li>{logo}</li>
     ))}
   </ul>
 </div>
 <div class="stat-strip">
-  <ul class="stat-list">
+  <ul class="stat-list" aria-label="Background">
     {trustStats.map((stat) => (
       <li>{stat}</li>
     ))}
@@ -269,27 +210,27 @@ const whyCards = [
 </section>
 
 <!-- ─── CASE STUDIES ──────────────────────────────────────────────── -->
-<section id="case-studies" class="section section--navy">
+<section id="case-studies" class="section section--navy" aria-labelledby="case-studies-heading">
   <div class="section-inner">
     <div class="section-header section-header--light reveal">
-      <span class="eyebrow eyebrow--lime">Case Studies</span>
-      <h2 class="section-title section-title--light">Business impact, not just tech stacks.</h2>
+      <span class="eyebrow eyebrow--lime">Selected work</span>
+      <h2 id="case-studies-heading" class="section-title section-title--light">Applied AI and real-time systems, built into real products.</h2>
     </div>
 
     <div class="case-grid reveal">
-      <!-- MyLedgerAI — real, AI-powered personal finance assistant -->
+      <!-- MyLedgerAI — AI-powered personal finance assistant -->
       <article class="case-card case-card--secondary">
         <div class="case-screen-single">
-          <img src="/finpilot-overview.png" alt="MyLedgerAI overview screen" loading="lazy" />
+          <img src="/work/myledger-overview.webp" alt="MyLedgerAI overview screen with balance, budgets and spending chart" width="660" height="1434" loading="lazy" decoding="async" />
         </div>
         <div class="case-body">
-          <span class="case-tag">iOS · AI · Personal Finance</span>
-          <h3 class="case-title">AI-Powered Personal Finance Assistant</h3>
+          <span class="case-tag">iOS · LLM · RAG · Personal Finance</span>
+          <h3 class="case-title">MyLedgerAI: grounded finance assistant</h3>
           <p class="case-problem">
-            <strong>Problem:</strong> Traditional finance apps show what happened, but rarely turn that data into a clear next best action.
+            <strong>Challenge:</strong> Finance apps show what happened, but rarely turn that data into a clear next step, and generic chatbots answer without knowing the user's numbers.
           </p>
           <p class="case-outcome">
-            <strong>Outcome:</strong> A privacy-first, chat-led AI financial assistant that grounds every recommendation in the user's real transactions, budgets, goals, and receipts — built with on-device storage and retrieval-augmented generation, so guidance stays accurate and explainable.
+            <strong>Approach:</strong> A privacy-first, chat-led assistant that uses retrieval-augmented generation to ground every answer in the user's own transactions, budgets, goals and receipts. Data stays in on-device storage, and receipts are read with Vision OCR.
           </p>
           <div class="case-stack">
             <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>RAG</span><span>Vision OCR</span>
@@ -297,8 +238,31 @@ const whyCards = [
         </div>
       </article>
 
-      <!-- FRiNGE — real, real-time livestream platform -->
+      <!-- YEO Messaging — on-device ML -->
       <article class="case-card case-card--text">
+        <div class="case-visual-abstract">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
+            <path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3" />
+            <circle cx="12" cy="10" r="3" /><path d="M7 18c.8-2.4 2.7-3.5 5-3.5s4.2 1.1 5 3.5" />
+          </svg>
+        </div>
+        <div class="case-body">
+          <span class="case-tag">iOS · On-device ML · Security</span>
+          <h3 class="case-title">YEO Messaging: verify the person, not the device</h3>
+          <p class="case-problem">
+            <strong>Challenge:</strong> A secure messenger needed to confirm that the intended recipient is the person reading a message, not just whoever is holding their unlocked phone.
+          </p>
+          <p class="case-outcome">
+            <strong>Approach:</strong> As Lead iOS Developer, built the recipient-verification pipeline with CoreML and ARKit, running face recognition on the device, alongside OLM end-to-end encryption and WebSocket messaging.
+          </p>
+          <div class="case-stack">
+            <span>CoreML</span><span>ARKit</span><span>OLM</span><span>GraphQL</span><span>WebSockets</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- FRiNGE — real-time livestream platform -->
+      <article class="case-card case-card--text case-card--wide">
         <div class="case-visual-abstract">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">
             <circle cx="12" cy="12" r="2.5" /><circle cx="4" cy="6" r="1.75" /><circle cx="20" cy="6" r="1.75" />
@@ -307,51 +271,44 @@ const whyCards = [
           </svg>
         </div>
         <div class="case-body">
-          <span class="case-tag">iOS · Real-time · Consumer Social</span>
-          <h3 class="case-title">Real-Time Livestream Platform</h3>
+          <span class="case-tag">iOS · Real-time video · Location</span>
+          <h3 class="case-title">FRiNGE: location-based livestreaming</h3>
           <p class="case-problem">
-            <strong>Problem:</strong> Location-based livestreaming demands sub-second camera and connection handoffs — most teams either over-engineer this or ship something that stutters under real load.
+            <strong>Challenge:</strong> Going live outdoors means slow, flaky networks and a camera that has to move cleanly between capture and the live RTC session.
           </p>
           <p class="case-outcome">
-            <strong>Outcome:</strong> Shipped a location-based livestreaming iOS product end-to-end — from zero to TestFlight in 9 weeks, with real-time camera/RTC handoff and zero reported crashes.
+            <strong>Approach:</strong> As Head of Mobile and the only mobile lead, designed and shipped the iOS app end to end: led the architecture for Go-Live performance and the camera ↔ Agora handoff, added token prefetch and warm-restart flows so going live feels instant, and built on Swift 6 strict concurrency.
           </p>
           <div class="case-stack">
-            <span>Swift 6</span><span>SwiftUI</span><span>Agora RTC</span><span>Supabase</span>
+            <span>Swift 6</span><span>SwiftUI</span><span>Agora RTC</span><span>Supabase</span><span>PostHog</span>
           </div>
         </div>
       </article>
-
-      {placeholderCaseStudies.map((c) => (
-        <article class="case-card case-card--placeholder">
-          <span class="case-placeholder-badge">Illustrative Engagement</span>
-          <span class="case-tag">{c.tag}</span>
-          <h3 class="case-title">{c.title}</h3>
-          <p class="case-outcome">{c.description}</p>
-        </article>
-      ))}
     </div>
   </div>
 </section>
 
 <!-- ─── TRACK RECORD ──────────────────────────────────────────────── -->
-<section id="track-record" class="section">
+<section id="track-record" class="section" aria-labelledby="track-record-heading">
   <div class="section-inner">
     <div class="section-header reveal">
       <span class="eyebrow">Track Record</span>
-      <h2 class="section-title">16+ years of outcomes, not job titles.</h2>
+      <h2 id="track-record-heading" class="section-title">{profile.yearsExperience} years of building and leading software.</h2>
     </div>
 
     <ol class="timeline reveal">
       {experience.map((role) => (
         <li class="timeline-item">
           <div class="timeline-meta">
-            <span class="timeline-period">{role.period}</span>
+            <span class="timeline-period">
+              <time datetime={role.start}>{role.period.split(' – ')[0]}</time> – <time datetime={role.end}>{role.period.split(' – ')[1]}</time>
+            </span>
           </div>
           <div class="timeline-body">
-            <p class="timeline-role">{role.role}</p>
+            <h3 class="timeline-role">{role.role}</h3>
             <p class="timeline-company">{role.company}</p>
             <ul class="timeline-outcomes">
-              {role.outcomes.map((o) => (
+              {role.highlights.map((o) => (
                 <li>{o}</li>
               ))}
             </ul>
@@ -391,32 +348,38 @@ const whyCards = [
         turn ideas into production-ready systems.
       </p>
       <div class="hero-actions final-cta-actions">
-        <a href="mailto:hey@davidferreira.dev?subject=Discovery%20Call%20Request" class="btn-primary">Book a Call</a>
+        <a href={`mailto:${profile.email}?subject=Discovery%20Call%20Request`} class="btn-primary">Book a Call</a>
         <a href="/" class="btn-ghost">View Portfolio</a>
       </div>
 
       <div class="contact-links">
         <a href="mailto:hey@davidferreira.dev" class="contact-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
           hey@davidferreira.dev
         </a>
         <a href="https://www.linkedin.com/in/david-ferreira-69041367" target="_blank" rel="noopener" class="contact-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
-          LinkedIn
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg>
+          LinkedIn<span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <a href={profile.cv} class="contact-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+          CV
         </a>
         <a href="https://github.com/noais" target="_blank" rel="noopener" class="contact-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub<span class="sr-only"> (opens in a new tab)</span>
         </a>
       </div>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
 <footer class="footer">
-  <p>David Ferreira · Portugal · <span id="year"></span> · <a href="/" class="footer-link">Engineering Portfolio</a></p>
-  <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
+  <p>David Ferreira · Portugal · <span id="year">{new Date().getFullYear()}</span> · <a href="/" class="footer-link">Engineering Portfolio</a> · <a href={profile.cv} class="footer-link">CV</a></p>
+  <script>document.getElementById('year')!.textContent = new Date().getFullYear().toString();</script>
 </footer>
 
 </Layout>
@@ -479,16 +442,37 @@ const whyCards = [
           }
         }
       }
-      if (!reduceMotion) requestAnimationFrame(draw);
     }
+
+    // Only animate while the hero is on screen and the tab is visible
+    let visible = true;
+    let frame = 0;
+    function loop() {
+      draw();
+      frame = !reduceMotion && visible && !document.hidden ? requestAnimationFrame(loop) : 0;
+    }
+    function restart() {
+      if (!frame && !reduceMotion && visible && !document.hidden) loop();
+    }
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      restart();
+    }).observe(canvas);
+    document.addEventListener('visibilitychange', restart);
+
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        resize();
+        initParticles();
+        if (reduceMotion) draw();
+      }, 150);
+    });
 
     resize();
     initParticles();
-    window.addEventListener('resize', () => {
-      resize();
-      initParticles();
-    });
-    draw();
+    loop();
   }
 </script>
 
@@ -574,7 +558,9 @@ const whyCards = [
 .hero-chips {
   display: flex;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -670,7 +656,7 @@ const whyCards = [
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.55);
   white-space: nowrap;
   margin: 0;
   flex-shrink: 0;
@@ -837,7 +823,7 @@ const whyCards = [
 }
 .cap-items li {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.50);
+  color: rgba(255,255,255,0.62);
   line-height: 1.4;
 }
 
@@ -868,7 +854,7 @@ const whyCards = [
 .timeline-period {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.55);
   letter-spacing: 0.02em;
   padding-top: 2px;
   line-height: 1.4;
@@ -880,8 +866,10 @@ const whyCards = [
   opacity: 0.65;
 }
 .timeline-role {
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.4;
   color: var(--ink);
   margin: 0 0 0.2rem;
 }
@@ -892,7 +880,7 @@ const whyCards = [
   color: var(--muted);
   margin: 0 0 1rem;
 }
-.section--navy .timeline-company { color: rgba(255,255,255,0.40); }
+.section--navy .timeline-company { color: rgba(255,255,255,0.62); }
 .timeline-outcomes {
   margin: 0; padding: 0;
   list-style: none;
@@ -1009,28 +997,7 @@ const whyCards = [
   border-radius: 4px;
   border: 1px solid rgba(237,233,226,0.08);
 }
-.case-card--placeholder {
-  border-style: dashed;
-  border-color: rgba(237,233,226,0.15);
-  background: rgba(255,255,255,0.015);
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.case-placeholder-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid rgba(237,233,226,0.15);
-  border-radius: 100px;
-  padding: 0.25rem 0.75rem;
-  margin-bottom: 1rem;
-  width: fit-content;
-}
+.case-card--wide { grid-column: 1 / -1; }
 
 /* ── Why work with me ─────────────────────────────────────────── */
 .why-grid {
@@ -1121,7 +1088,7 @@ const whyCards = [
   padding: 2rem;
   text-align: center;
   font-size: 0.8125rem;
-  color: rgba(237,233,226,0.22);
+  color: rgba(237,233,226,0.62);
 }
 .footer p { margin: 0; }
 .footer-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
@@ -1131,8 +1098,7 @@ const whyCards = [
 @media (max-width: 900px) {
   .hero-section { padding-top: 120px; }
   .case-card--secondary,
-  .case-card--text,
-  .case-card--placeholder { grid-template-columns: minmax(0, 1fr); }
+  .case-card--text { grid-template-columns: minmax(0, 1fr); }
   .case-grid { grid-template-columns: 1fr; }
   .case-screen-single { padding: 2rem 1.5rem 0; min-height: 200px; }
   .case-visual-abstract { min-height: 160px; }
@@ -1144,9 +1110,7 @@ const whyCards = [
 }
 @media (max-width: 600px) {
   .nav-links { gap: 0.75rem; }
-  .nav-links li:nth-child(1),
-  .nav-links li:nth-child(2),
-  .nav-links li:nth-child(3) { display: none; }
+  .nav-section { display: none; }
   .hero-headline { font-size: 2.25rem; }
   .section { padding: 72px 0; }
   .case-body { padding: 1.75rem; }

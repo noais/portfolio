@@ -20,6 +20,8 @@ interface Props {
   /** Absolute or root-relative URL of the social preview image. */
   ogImage?: string;
   ogImageAlt?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   siteName?: string;
   locale?: string;
   twitterCard?: 'summary' | 'summary_large_image';
@@ -30,15 +32,17 @@ interface Props {
 }
 
 const {
-  title = 'David Ferreira — Engineering Leader & Senior Mobile Engineer',
-  description = 'Engineering leader and senior mobile engineer based in Portugal. 15+ years of software experience across iOS, Swift, real-time systems, and AI-augmented engineering.',
+  title = 'David Ferreira — Mobile Engineering Lead & iOS Architect',
+  description = 'Mobile Engineering Lead and iOS Architect with 18+ years in software. Native iOS architecture, real-time systems and engineering leadership. Based in Portugal, open to fully remote roles.',
   keywords,
   structuredData,
-  ogImage,
-  ogImageAlt,
+  ogImage = '/og.png',
+  ogImageAlt = 'David Ferreira — Mobile Engineering Lead & iOS Architect',
+  ogImageWidth = 1200,
+  ogImageHeight = 630,
   siteName = 'David Ferreira',
   locale = 'en_US',
-  twitterCard = 'summary',
+  twitterCard = 'summary_large_image',
   favicon,
   appleTouchIcon,
   lang = 'en',
@@ -57,8 +61,9 @@ const ogImageURL = ogImage ? new URL(ogImage, Astro.site ?? 'https://davidferrei
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="author" content="David Ferreira" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0D0F1A" />
     <link rel="canonical" href={canonicalURL} />
-    {favicon && <link rel="icon" type="image/png" href={favicon} />}
+    {favicon ? <link rel="icon" type="image/png" href={favicon} /> : <link rel="icon" type="image/svg+xml" href="/favicon.svg" />}
     {appleTouchIcon && <link rel="apple-touch-icon" href={appleTouchIcon} />}
     {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 
@@ -70,8 +75,8 @@ const ogImageURL = ogImage ? new URL(ogImage, Astro.site ?? 'https://davidferrei
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content={locale} />
     {ogImageURL && <meta property="og:image" content={ogImageURL} />}
-    {ogImageURL && <meta property="og:image:width" content="1200" />}
-    {ogImageURL && <meta property="og:image:height" content="630" />}
+    {ogImageURL && <meta property="og:image:width" content={String(ogImageWidth)} />}
+    {ogImageURL && <meta property="og:image:height" content={String(ogImageHeight)} />}
     {ogImageURL && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
 
     <!-- Twitter / X -->
