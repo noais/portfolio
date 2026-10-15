@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://davidferreira.dev',
-  integrations: [sitemap()],
+  // /nursling/get/ only redirects to the stores, so keep it out of the sitemap.
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/nursling/get/') })],
   vite: {
     plugins: [tailwindcss()],
   },
