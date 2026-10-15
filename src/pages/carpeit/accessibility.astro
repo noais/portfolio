@@ -1,0 +1,50 @@
+---
+import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
+import { carpeitOperator } from '../../data/carpeitOperator';
+
+const lastUpdated = '14 October 2026';
+const email = carpeitOperator.email;
+const a11yMail = `mailto:${email}?subject=${encodeURIComponent('CarpeIt accessibility')}`;
+---
+
+<CarpeItDoc
+  title="CarpeIt — Accessibility"
+  description="CarpeIt's accessibility statement: the standard we aim for, known gaps, and how to tell us about a barrier."
+  heading="Accessibility"
+  lastUpdated={lastUpdated}
+>
+  <p class="doc-lead">
+    CarpeIt should work for everyone who wants to get on the water. This statement covers the
+    CarpeIt apps for iPhone and Android and these CarpeIt web pages.
+  </p>
+
+  <h2>What we aim for</h2>
+  <p>
+    We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA, the standard
+    referenced by the European accessibility standard EN 301 549. That includes working towards:
+  </p>
+  <ul class="doc-list">
+    <li>Screens labelled for VoiceOver and TalkBack, with images and controls described.</li>
+    <li>Text that scales with your system text size (Dynamic Type and Android font size).</li>
+    <li>Colour contrast that meets AA, and information that never relies on colour alone.</li>
+    <li>Animations that respect Reduce Motion and the equivalent Android setting.</li>
+  </ul>
+
+  <h2>Known gaps</h2>
+  <ul class="doc-list">
+    <li>The apps and these pages are currently available in English only.</li>
+    <li>We have tested with accessibility tools and simulators, and a full review with VoiceOver and TalkBack on physical devices is ongoing. Some screens may still have unlabelled controls or awkward reading order.</li>
+  </ul>
+
+  <h2>Tell us about a barrier</h2>
+  <p>
+    If something in CarpeIt is hard or impossible for you to use, email
+    <a href={a11yMail}>{email}</a> with the screen or page and what happened. We usually reply
+    within 2 working days, and we'll do what we can to help you in the meantime.
+  </p>
+
+  <p class="doc-note">
+    This statement was prepared on 14 October 2026, before CarpeIt's public launch, and will be
+    reviewed after launch and at least once a year.
+  </p>
+</CarpeItDoc>

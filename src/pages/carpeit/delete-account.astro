@@ -1,0 +1,75 @@
+---
+// Public account-deletion page for CarpeIt (Google Play's "delete account URL"
+// requirement). Keep in step with the deletion section of the Privacy Policy.
+import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
+import { carpeitOperator } from '../../data/carpeitOperator';
+
+const lastUpdated = '14 October 2026';
+const email = carpeitOperator.email;
+const deleteMail = `mailto:${email}?subject=${encodeURIComponent('Delete my CarpeIt account')}`;
+---
+
+<CarpeItDoc
+  title="CarpeIt — Delete your account"
+  description="How to delete your CarpeIt account and data, what is deleted, and what is kept and for how long."
+  heading="Delete your CarpeIt account"
+  lastUpdated={lastUpdated}
+>
+  <p class="doc-lead">
+    You can delete your CarpeIt account, and the personal data that goes with it, at any time.
+    CarpeIt is the water sports gear rental app operated by {carpeitOperator.name}
+    (NIPC {carpeitOperator.nipc}), {carpeitOperator.address}.
+  </p>
+
+  <h2>In the app</h2>
+  <ul class="doc-list">
+    <li>Open CarpeIt and sign in.</li>
+    <li>Go to <strong>Profile</strong>.</li>
+    <li>Tap <strong>Delete account</strong> and confirm.</li>
+  </ul>
+  <p>
+    Deletion happens straight away. If you have a rental in progress, finish or cancel it first.
+    Booking requests nobody has answered yet are withdrawn for you.
+  </p>
+
+  <h2>By email</h2>
+  <p>
+    If you can't use the app, email <a href={deleteMail}>{email}</a> from the email address on
+    your CarpeIt account, with the subject “Delete my CarpeIt account”. If you signed in with
+    Apple and hid your email, write from the Apple ID email and tell us so; we may ask you to
+    confirm the request before acting on it. We delete the account within 30 days of receiving
+    the request, and confirm by email when it's done.
+  </p>
+
+  <h2>What is deleted</h2>
+  <ul class="doc-list">
+    <li>Your login, email address, display name and profile photo.</li>
+    <li>Your listings, listing photos, pickup addresses and saved gear.</li>
+    <li>Your notification tokens, business profile, and your Sign in with Apple authorisation.</li>
+    <li>The text of your messages, which is replaced with “Message deleted”.</li>
+  </ul>
+
+  <h2>What is kept, and for how long</h2>
+  <p>
+    Some records have to be kept after your account is gone, either because the law requires it
+    or so the other person on a rental keeps their record. Your name on them is replaced with
+    “Deleted user”, and each is deleted automatically when its period ends.
+  </p>
+  <ul class="doc-list">
+    <li><strong>Bookings, payments, fees and invoices</strong>: 10 years, for Portuguese accounting and tax law.</li>
+    <li><strong>Seller details already used in a DAC7 tax report</strong> (owners only): 10 years, as tax law requires.</li>
+    <li><strong>Handover and claim photos, reviews and claims of past rentals</strong>: 36 months after the rental ends, the period in which a claim about it can usually still be made.</li>
+    <li><strong>Reports and moderation records</strong>: 36 months after the report is made.</li>
+    <li><strong>Crash and diagnostic reports</strong>: 90 days.</li>
+  </ul>
+  <p>
+    The <a href="/carpeit/privacy/">Privacy Policy</a> has the full details, including how to get
+    a copy of your data before you delete your account.
+  </p>
+
+  <p class="doc-note">
+    Deleting your CarpeIt account doesn't close the Stripe account you may have set up for
+    payouts as an owner. Stripe keeps its own records under
+    <a href="https://stripe.com/privacy">Stripe's privacy policy</a>.
+  </p>
+</CarpeItDoc>

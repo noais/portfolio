@@ -2,6 +2,7 @@
 // Shell for CarpeIt's policy and support pages: the site's navy layout with
 // CarpeIt's lime + aqua accents, a CarpeIt nav, and a document column.
 import Layout from './Layout.astro';
+import { carpeitOperator, complaintsBookUrl } from '../data/carpeitOperator';
 
 interface Props {
   title: string;
@@ -13,7 +14,17 @@ interface Props {
 const { title, description, heading, lastUpdated } = Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<Layout
+  title={title}
+  description={description}
+  siteName="CarpeIt"
+  locale="en_GB"
+  ogImage="/carpeit/og.png"
+  ogImageAlt="CarpeIt — rent water sports gear from local riders, schools and shops"
+  twitterCard="summary_large_image"
+  favicon="/carpeit/favicon-64.png"
+  appleTouchIcon="/carpeit/apple-touch-icon.png"
+>
 
 <header class="nav-shell">
   <nav class="nav-inner">
@@ -45,9 +56,15 @@ const { title, description, heading, lastUpdated } = Astro.props;
     <span aria-hidden="true">·</span>
     <a href="/carpeit/terms/">Terms</a>
     <span aria-hidden="true">·</span>
+    <a href="/carpeit/delete-account/">Delete account</a>
+    <span aria-hidden="true">·</span>
+    <a href="/carpeit/accessibility/">Accessibility</a>
+    <span aria-hidden="true">·</span>
+    <a href={complaintsBookUrl}>Livro de Reclamações</a>
+    <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>
-  <p>David Ferreira · Portugal · <span id="year"></span></p>
+  <p>{carpeitOperator.name} · NIPC {carpeitOperator.nipc} · {carpeitOperator.address} · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
 </footer>
 

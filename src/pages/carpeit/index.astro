@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
 const strip = ['Kitesurf', 'Surf', 'Wing foil', 'SUP', 'Riders', 'Schools & shops'];
 
@@ -100,26 +101,67 @@ const build = [
   { label: 'App', items: ['Swift 6', 'SwiftUI', 'iOS 17+', 'MVVM + typed coordinator', 'Modular Swift packages'] },
   { label: 'Backend', items: ['Supabase Postgres', 'Edge Functions', 'Realtime', 'Storage'] },
   { label: 'Payments', items: ['Stripe PaymentSheet', 'Stripe Connect payouts', 'Deposit holds', 'Webhooks'] },
-  { label: 'Craft', items: ['Sign in with Apple & Google', 'Offline-safe upload queue', 'Reduce Motion–aware motion', 'Dark mode'] },
+  { label: 'Craft', items: ['Sign in with Apple & email code', 'Offline-safe upload queue', 'Reduce Motion–aware motion', 'Dark mode'] },
 ];
+
+const ownerTypes = [
+  {
+    tier: 'Riders',
+    headline: 'Spare kite, board or foil?',
+    points: [
+      'List it in minutes, with a form built for that sport',
+      'You choose the price, the deposit and the dates',
+      'Condition photos at every pickup and return',
+    ],
+  },
+  {
+    tier: 'Schools & shops',
+    headline: 'Put your rental fleet on the map',
+    points: [
+      'Reach riders searching the coast you’re on',
+      'Multiple units, fleet availability and a daily dashboard',
+      'Payouts through Stripe, with an invoice for every fee',
+    ],
+    accent: true,
+  },
+];
+
+const listMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('Listing my gear on CarpeIt')}`;
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'CarpeIt',
-  operatingSystem: 'iOS',
+  operatingSystem: 'iOS, Android',
   applicationCategory: 'LifestyleApplication',
+  inLanguage: 'en',
+  url: 'https://davidferreira.dev/carpeit/',
+  image: 'https://davidferreira.dev/carpeit/og.png',
   description:
-    'A peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Rent from local riders, schools and shops, or earn from the gear you are not using.',
+    'A peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear in Portugal. Rent from local riders, schools and shops, or earn from the gear you are not using.',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
   author: { '@type': 'Person', name: 'David Ferreira', url: 'https://davidferreira.dev' },
+  publisher: {
+    '@type': 'Organization',
+    name: carpeitOperator.name,
+    email: carpeitOperator.email,
+    address: carpeitOperator.address,
+  },
 };
 ---
 
 <Layout
   title="CarpeIt — rent water sports gear from local riders."
   description="CarpeIt is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Rent great gear from local riders, schools and shops — or share yours."
-  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, iOS app, CarpeIt"
+  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, Portugal, iOS app, Android app, CarpeIt"
   structuredData={structuredData}
+  siteName="CarpeIt"
+  locale="en_GB"
+  ogImage="/carpeit/og.png"
+  ogImageAlt="CarpeIt — rent water sports gear from local riders, schools and shops"
+  twitterCard="summary_large_image"
+  favicon="/carpeit/favicon-64.png"
+  appleTouchIcon="/carpeit/apple-touch-icon.png"
 >
 
 <!-- ─── NAV ─────────────────────────────────────────────────────── -->
@@ -130,6 +172,7 @@ const structuredData = {
       <li><a href="#inside" data-nav="inside">Screens</a></li>
       <li><a href="#features" data-nav="features">Features</a></li>
       <li><a href="#how" data-nav="how">How it works</a></li>
+      <li><a href="#list" data-nav="list">List your gear</a></li>
       <li><a href="#build" data-nav="build">Build</a></li>
       <li><a href="/">Portfolio</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
@@ -147,7 +190,7 @@ const structuredData = {
         <img src="/carpeit/app-icon.png" alt="CarpeIt app icon" class="hero-icon" width="72" height="72" />
         <div>
           <p class="hero-name">CarpeIt</p>
-          <p class="hero-kicker">Water sports gear rental · iPhone · In development</p>
+          <p class="hero-kicker">Water sports gear rental · Launching in Portugal</p>
         </div>
       </div>
 
@@ -163,7 +206,7 @@ const structuredData = {
       </p>
 
       <div class="hero-actions">
-        <span class="status-pill"><span class="status-dot"></span>Coming to the App Store</span>
+        <span class="status-pill"><span class="status-dot"></span>Coming soon to the App Store and Google Play</span>
         <a href="#how" class="btn-ghost">See how it works</a>
       </div>
     </div>
@@ -307,6 +350,41 @@ const structuredData = {
   </div>
 </section>
 
+<!-- ─── LIST YOUR GEAR ────────────────────────────────────────────── -->
+<section id="list" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow eyebrow--accent">For owners</span>
+      <h2 class="section-title">Got gear or a surf school? List it free.</h2>
+      <p class="section-lede">
+        Listing on CarpeIt costs nothing. CarpeIt only takes a service fee, currently 8% of the
+        rental price, when a rental actually happens, and you see exactly what you’ll receive
+        before you publish. Renters pay no fee on top. We’re onboarding the first riders,
+        schools and shops in Portugal ahead of launch.
+      </p>
+    </div>
+
+    <div class="price-grid">
+      {ownerTypes.map((r) => (
+        <div class={r.accent ? 'price-card price-card--accent' : 'price-card'}>
+          <p class="price-tier">{r.tier}</p>
+          <p class="price-amount">{r.headline}</p>
+          <ul class="price-points">
+            {r.points.map((p) => (
+              <li>{p}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="hero-actions list-actions">
+      <a href={listMail} class="btn-primary">Tell us about your gear</a>
+      <a href="/carpeit/terms/" class="btn-ghost">Read the owner terms</a>
+    </div>
+  </div>
+</section>
+
 <!-- ─── BUILD ─────────────────────────────────────────────────────── -->
 <section id="build" class="section">
   <div class="section-inner">
@@ -341,11 +419,11 @@ const structuredData = {
     <span class="eyebrow eyebrow--accent">Get in touch</span>
     <h2 class="get-headline">Life’s better on the water.</h2>
     <p class="get-sub">
-      CarpeIt is in development for iPhone. If you run a school or shop, have gear to share, or
-      want to talk about building something similar, I’d like to hear from you.
+      CarpeIt is launching in Portugal on iPhone and Android. If you run a school or shop, have
+      gear to share, or want to talk about building something similar, I’d like to hear from you.
     </p>
     <div class="hero-actions">
-      <a href="mailto:hey@davidferreira.dev?subject=CarpeIt" class="btn-primary">Email me about CarpeIt</a>
+      <a href={`mailto:${carpeitOperator.email}?subject=CarpeIt`} class="btn-primary">Email me about CarpeIt</a>
       <a href="/#work" class="btn-ghost">See more work</a>
     </div>
   </div>
@@ -360,9 +438,15 @@ const structuredData = {
     <span aria-hidden="true">·</span>
     <a href="/carpeit/terms/">Terms</a>
     <span aria-hidden="true">·</span>
+    <a href="/carpeit/delete-account/">Delete account</a>
+    <span aria-hidden="true">·</span>
+    <a href="/carpeit/accessibility/">Accessibility</a>
+    <span aria-hidden="true">·</span>
+    <a href={complaintsBookUrl}>Livro de Reclamações</a>
+    <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>
-  <p>David Ferreira · Portugal · <span id="year"></span></p>
+  <p>{carpeitOperator.name} · NIPC {carpeitOperator.nipc} · {carpeitOperator.address} · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
 </footer>
 
@@ -977,7 +1061,9 @@ const structuredData = {
   display: flex;
   justify-content: center;
   gap: 0.6rem;
+  flex-wrap: wrap;
 }
+.list-actions { margin-top: 2.5rem; }
 .footer a {
   color: rgba(237,233,226,0.45);
   text-decoration: none;
@@ -1028,7 +1114,7 @@ const structuredData = {
   .nav-links { gap: 0.875rem; }
   .nav-links a { font-size: 0.8125rem; }
   .nav-cta { padding: 0.45rem 0.875rem; }
-  .nav-links li:nth-child(-n+4) { display: none; }
+  .nav-links li:nth-child(-n+5) { display: none; }
   .gallery { padding: 0 1.25rem 1rem; scroll-padding: 0 1.25rem; grid-auto-columns: 200px; }
   .section-inner { padding: 0 1.25rem; }
   .hero-headline { font-size: 2.375rem; }

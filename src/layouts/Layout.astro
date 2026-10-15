@@ -1,4 +1,15 @@
 ---
+// Self-hosted fonts (no request to Google Fonts, so no visitor IP is sent to a
+// third party). Same families and weights the site used to load from Google Fonts.
+import '@fontsource/fraunces/400.css';
+import '@fontsource/fraunces/600.css';
+import '@fontsource/fraunces/300-italic.css';
+import '@fontsource/fraunces/400-italic.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
 import '../styles/global.css';
 
 interface Props {
@@ -6,6 +17,16 @@ interface Props {
   description?: string;
   keywords?: string;
   structuredData?: Record<string, unknown>;
+  /** Absolute or root-relative URL of the social preview image. */
+  ogImage?: string;
+  ogImageAlt?: string;
+  siteName?: string;
+  locale?: string;
+  twitterCard?: 'summary' | 'summary_large_image';
+  /** Root-relative favicon / apple-touch-icon overrides (default: site favicon). */
+  favicon?: string;
+  appleTouchIcon?: string;
+  lang?: string;
 }
 
 const {
@@ -13,13 +34,22 @@ const {
   description = 'Engineering leader and senior mobile engineer based in Portugal. 15+ years of software experience across iOS, Swift, real-time systems, and AI-augmented engineering.',
   keywords,
   structuredData,
+  ogImage,
+  ogImageAlt,
+  siteName = 'David Ferreira',
+  locale = 'en_US',
+  twitterCard = 'summary',
+  favicon,
+  appleTouchIcon,
+  lang = 'en',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://davidferreira.dev');
+const ogImageURL = ogImage ? new URL(ogImage, Astro.site ?? 'https://davidferreira.dev') : undefined;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,6 +58,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://davidfer
     <meta name="author" content="David Ferreira" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
+    {favicon && <link rel="icon" type="image/png" href={favicon} />}
+    {appleTouchIcon && <link rel="apple-touch-icon" href={appleTouchIcon} />}
     {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 
     <!-- Open Graph -->
@@ -35,21 +67,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://davidfer
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="David Ferreira" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={locale} />
+    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
+    {ogImageURL && <meta property="og:image:width" content="1200" />}
+    {ogImageURL && <meta property="og:image:height" content="630" />}
+    {ogImageURL && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
 
     <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content={twitterCard} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+    {ogImageURL && ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
 
     <title>{title}</title>
   </head>
