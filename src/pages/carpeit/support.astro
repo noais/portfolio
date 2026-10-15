@@ -2,7 +2,9 @@
 import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
-const faqs = [
+const supportMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('CarpeIt support')}`;
+
+const faqs: { q: string; a: string; link?: { href: string; label: string } }[] = [
   {
     q: 'How does booking work?',
     a: 'Pick your dates and send a request. Your card is authorised for the rental price but not charged. The owner has 72 hours to accept. If they accept, you are charged and the exact pickup point unlocks in your rental. If they decline or don’t answer, the authorisation is released and you pay nothing.',
@@ -13,7 +15,7 @@ const faqs = [
   },
   {
     q: 'How does the deposit work?',
-    a: 'If a listing has a deposit, a hold for that amount is placed on your card from about 24 hours before pickup. It is not a charge. It is released when the owner confirms the gear came back as expected. If the hold can’t be placed, update your card before pickup.',
+    a: 'If a listing has a deposit, a hold for that amount is placed on your card from about 24 hours before pickup. It is not a charge. It is released when the owner confirms the gear came back as expected, or automatically 24 hours after the return if the owner doesn’t make a claim. For rentals longer than about 5 days, the hold is renewed before it expires, so you may briefly see a new hold replace the old one. If the hold can’t be placed, update your card before pickup.',
   },
   {
     q: 'Can I cancel?',
@@ -25,7 +27,7 @@ const faqs = [
   },
   {
     q: 'The gear came back damaged. What happens?',
-    a: 'As the owner, open a claim from the rental before you confirm the return: describe what happened and how much of the deposit you’re asking for. The renter has 48 hours to accept or dispute it. If they accept, that amount goes to you and the rest of the hold is released. If they dispute it or don’t answer, the deposit stays on hold while CarpeIt reviews the handover photos and your messages, then decides how much goes to the owner and releases the rest. Both of you are told the outcome in the rental’s conversation.',
+    a: 'As the owner, open a claim from the rental before you confirm the return: describe what happened and how much of the deposit you’re asking for. The renter has 48 hours to accept or dispute it. If they accept, that amount goes to you and the rest of the hold is released. If they dispute it or don’t answer, the deposit stays on hold while CarpeIt reviews the handover photos and your messages, then decides how much goes to the owner and releases the rest. Both of you are told the outcome and the reasons in the rental’s conversation, and either of you can ask for a review within 14 days.',
   },
   {
     q: 'How do I get paid for lending gear?',
@@ -33,11 +35,17 @@ const faqs = [
   },
   {
     q: 'Someone is being abusive. What can I do?',
-    a: 'In the conversation, tap the menu at the top and choose Report or Block. Once you block someone, neither of you can message or book the other, and they are not told. You can also report a listing from its page, or a user from a completed rental. Reports are reviewed within 24 hours.',
+    a: 'In the conversation, tap the menu at the top and choose Report or Block. Once you block someone, neither of you can message or book the other, and they are not told. You can also report a listing from its page, or a user from a completed rental. Reports are reviewed by a person, usually within 2 working days. If someone is in immediate danger, call 112 first.',
   },
   {
     q: 'How do I delete my account?',
-    a: 'Go to Profile and tap Delete account. If you have a rental in progress, finish or cancel it first. Your login and personal details are removed straight away; records of past rentals stay for the other person, shown as “Deleted user”. The Privacy Policy explains exactly what is kept.',
+    a: 'Go to Profile and tap Delete account. If you have a rental in progress, finish or cancel it first. If you can’t use the app, email us from the address on your account with the subject “Delete my CarpeIt account”, and we’ll delete it within 30 days. Your login and personal details are removed; records of past rentals stay for the other person, shown as “Deleted user”, for as long as the law requires. The Delete account page explains exactly what is kept and for how long.',
+    link: { href: '/carpeit/delete-account/', label: 'How to delete your account' },
+  },
+  {
+    q: 'Can I get a copy of my data?',
+    a: 'Yes. Email us from the address on your account with the subject “CarpeIt data export”. We’ll send you a copy of your account, listings, bookings, messages and other data in a machine-readable format within a month, as the GDPR requires. You can also ask us to correct or delete anything.',
+    link: { href: '/carpeit/privacy/', label: 'Read the Privacy Policy' },
   },
 ];
 ---
@@ -48,8 +56,8 @@ const faqs = [
   heading="Support"
 >
   <p class="doc-lead">
-    Stuck on a booking, a payment or a handover? Most answers are below. If yours isn't, email <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20support">hey@davidferreira.dev</a> and
-    include the listing or rental it's about. You'll hear back within a day.
+    Stuck on a booking, a payment or a handover? Most answers are below. If yours isn't, email <a href={supportMail}>{carpeitOperator.email}</a> and
+    include the listing or rental it's about. We usually reply within 2 working days.
   </p>
 
   <div class="faq">
@@ -57,15 +65,17 @@ const faqs = [
       <details>
         <summary>{f.q}</summary>
         <p>{f.a}</p>
+        {f.link && <p><a href={f.link.href}>{f.link.label}</a></p>}
       </details>
     ))}
   </div>
 
   <h2>Contact</h2>
   <p>
-    Email <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20support">hey@davidferreira.dev</a>.
-    For anything about your data, see the <a href="/carpeit/privacy/">Privacy Policy</a>; for the
-    rules of renting and lending, the <a href="/carpeit/terms/">Terms of Service</a>.
+    Email <a href={supportMail}>{carpeitOperator.email}</a>. We usually reply within 2 working days.
+    For anything about your data, see the <a href="/carpeit/privacy/">Privacy Policy</a>; to close
+    your account, <a href="/carpeit/delete-account/">Delete your account</a>; for the rules of
+    renting and lending, the <a href="/carpeit/terms/">Terms of Service</a>.
   </p>
   <p>
     Not happy with how we handled something? You can also use the

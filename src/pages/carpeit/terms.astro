@@ -2,9 +2,11 @@
 import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
-// Keep in step with app_config.terms_version on the server: changing it asks
-// every user to accept again.
-const lastUpdated = '13 October 2026';
+// Keep in step with app_config.terms_version on the server (currently
+// "2026-10-14"): changing it asks every user to accept again.
+const lastUpdated = '14 October 2026';
+const email = carpeitOperator.email;
+const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 ---
 
 <CarpeItDoc
@@ -19,39 +21,66 @@ const lastUpdated = '13 October 2026';
     you accept them in the app before you start, and again whenever they change.
   </p>
 
-  <h2>1. What CarpeIt is</h2>
+  <h2>1. Who we are and what CarpeIt is</h2>
   <p>
     CarpeIt is a marketplace operated by {carpeitOperator.name} (NIPC {carpeitOperator.nipc}),
-    registered at {carpeitOperator.address} (“CarpeIt”). It lets riders, schools and
-    shops (“owners”) offer water sports equipment for rent, and lets other people (“renters”)
-    book it. CarpeIt provides the app, takes payments, and keeps the record of each rental.
-    CarpeIt does not own, inspect or supply the gear, and is not a party to the rental itself:
-    the rental is an agreement between the renter and the owner.
+    registered at {carpeitOperator.address} (“CarpeIt”, “we”). You can reach us at
+    <a href={mail('CarpeIt')}>{email}</a>. This address is also our single point of contact
+    for users and for authorities under the EU Digital Services Act; we answer in English and
+    Portuguese.
   </p>
   <p>
-    Owners are either private individuals or businesses (schools and shops), and every listing
-    says which. When you rent from a business, you have the rights EU and Portuguese consumer
-    law gives you against a trader. When you rent from a private individual, that consumer law
-    doesn't apply to the rental itself; these terms and general civil law still do.
+    CarpeIt lets riders, schools and shops (“owners”) offer kitesurf, surf, wing foil and SUP
+    equipment for rent, and lets other people (“renters”) book it. CarpeIt provides the app,
+    takes payments through Stripe, holds deposits under the procedure in section 8, and keeps
+    the record of each rental. CarpeIt does not own, inspect or supply the gear, and is not a
+    party to the rental itself: the rental is a contract between the renter and the owner.
   </p>
 
-  <h2>2. Your account</h2>
+  <h2>2. Private and business owners</h2>
+  <p>
+    Every listing shows whether the owner is a <strong>private individual</strong> or a
+    <strong>business</strong> (a “trader”), as the owner has declared.
+  </p>
+  <ul class="doc-list">
+    <li><strong>Renting from a private individual:</strong> EU consumer-protection rules that apply to contracts with businesses do not apply to the rental contract itself. Your rights against the owner are those of general civil law. These terms and the deposit procedure still apply.</li>
+    <li><strong>Renting from a business:</strong> consumer law applies to the rental, and you have the rights EU and Portuguese consumer law gives you against a trader.</li>
+  </ul>
+  <p>
+    Owners who rent out gear as part of a trade, business or profession must register as a
+    business. Before their listings go live, business owners give CarpeIt their legal name,
+    address, phone and trade register number, and certify that they comply with applicable EU
+    law. CarpeIt makes reasonable efforts to check this information (Digital Services Act,
+    Art. 30).
+  </p>
+
+  <h2>3. Your account</h2>
   <ul class="doc-list">
     <li>You must be at least 18 and able to enter into a binding contract. You confirm this in the app before you start.</li>
     <li>Keep your sign-in secure. You are responsible for what happens on your account.</li>
-    <li>Use accurate information, and one account per person. A school or shop can add a business profile to a personal account.</li>
-    <li>You can delete your account at any time from Profile in the app.</li>
+    <li>Use accurate information, and one account per person. A school or shop adds a business profile to a personal account.</li>
+    <li>You can delete your account at any time from Profile in the app, once you have no rental in progress. See <a href="/carpeit/delete-account/">Delete your account</a>.</li>
   </ul>
 
-  <h2>3. Listing gear</h2>
+  <h2>4. Listing gear</h2>
   <ul class="doc-list">
-    <li>Only list gear you own or are authorised to rent out, that is safe to use, and that matches its description and photos.</li>
+    <li>Only list gear you own or are authorised to rent out, that is safe and in good working order, and that matches its description and photos, including any known defects or repairs.</li>
     <li>You set the daily price, the deposit, and when the gear is available. Keep your availability up to date.</li>
     <li>The pickup address you enter is shown only to renters whose booking you accept. The public listing shows an approximate area.</li>
-    <li>CarpeIt may remove listings that break these terms or that people report as unsafe or misleading.</li>
+    <li>CarpeIt may remove listings that break these terms or the law (see section 13).</li>
   </ul>
+  <h3>Seller details and tax reporting</h3>
+  <p>
+    Before you can lend, you give CarpeIt your seller details: your legal name, date of birth
+    (private owners), tax identification number (NIF) and the country that issued it, address
+    and phone, and, for businesses, your trade register number. Under Council Directive (EU)
+    2021/514 (“DAC7”) and Decree-Law 41/2023, CarpeIt must collect these details, report the
+    income owners earn through it to the Portuguese Tax Authority (Autoridade Tributária e
+    Aduaneira, AT) once a year where DAC7 applies, and give each owner a copy of what was
+    reported. These details are never shown to other users.
+  </p>
 
-  <h2>4. Booking</h2>
+  <h2>5. Booking</h2>
   <p>
     A renter chooses dates and sends a booking request. Their card is authorised for the rental
     price when they request, but not charged. The owner then has 72 hours to accept or decline.
@@ -59,72 +88,88 @@ const lastUpdated = '13 October 2026';
     declines, or doesn't answer in time, the authorisation is released and nothing is charged.
   </p>
   <p>
+    Before paying, the renter confirms that they have the skill and experience for the gear and
+    the conditions, that they will check the gear before use, and that they will follow local
+    rules. The confirmation is recorded with the booking.
+  </p>
+  <p>
     Each rental is for specific dates, so the 14-day right of withdrawal for distance contracts
-    doesn't apply to it (Decree-Law 24/2014, which excludes leisure services for a specific
-    date or period). You can cancel under section 8 instead.
+    doesn't apply to it (Decree-Law 24/2014, art. 17(1)(l), which excludes leisure services for
+    a specific date or period). You can cancel under section 9 instead.
   </p>
 
-  <h2>5. Prices, fees and payouts</h2>
+  <h2>6. Prices, fees and payouts</h2>
   <ul class="doc-list">
-    <li>Renters pay the rental price shown before they book. CarpeIt doesn't add a fee on top for renters, and the price doesn't depend on the card used.</li>
-    <li>CarpeIt charges owners a service fee, currently 8% of the rental price, taken from the price the renter pays. The fee and the amount the owner receives are shown before a listing is published and on every booking. CarpeIt issues owners an invoice for its fee.</li>
+    <li>Renters pay the rental price shown before they book, which is the total for the rental. CarpeIt doesn't add a fee on top for renters, and the price doesn't depend on how you pay. Any deposit is shown separately (section 8).</li>
+    <li>CarpeIt charges owners a service fee, currently 8% of the rental price, deducted from each payout. It is only charged when a rental happens. The fee and the amount the owner receives are shown before a listing is published and on every booking. CarpeIt issues owners an invoice for its fee.</li>
     <li>Owners are paid through Stripe. To accept bookings you must set up payouts with Stripe and accept <a href="https://stripe.com/legal/connect-account">Stripe's Connected Account Agreement</a>.</li>
     <li>You are responsible for any taxes due on what you earn.</li>
   </ul>
 
-  <h2>6. How listings are shown</h2>
+  <h2>7. How listings are shown, and reviews</h2>
   <p>
-    Search shows active listings that match the sport, dates and area you choose, newest first.
-    Nobody can pay to be shown higher, and CarpeIt doesn't rank its own interests above
-    anyone's. Ratings show the average of verified reviews: only the renter and the owner of a
-    completed rental can review each other, once, within 60 days of the rental ending.
-    CarpeIt doesn't edit reviews, and removes them only when they break section 12.
+    Search shows active listings in the area you choose that are available for your dates and
+    match the sport and any filters you set, newest first. Nobody can pay to be shown higher,
+    and CarpeIt doesn't rank its own interests above anyone's. Ratings show the average of
+    verified reviews: only the renter and the owner of a completed rental can review each
+    other, once, within 60 days of the rental ending. CarpeIt doesn't edit reviews, and removes
+    them only when they break section 12.
   </p>
 
-  <h2>7. Deposits</h2>
-  <p>
-    If a listing has a deposit, a hold for that amount is placed on the renter's card from about
-    24 hours before pickup, and kept while the gear is out. It is not a charge. The hold is
-    released when the owner confirms the gear came back as expected. If the gear can't be held
-    against a deposit, pickup can't go ahead until the renter updates their card.
-  </p>
+  <h2>8. Deposits</h2>
+  <ul class="doc-list">
+    <li>If a listing has a deposit, a hold for that amount is placed on the renter's card from about 24 hours before pickup, and kept while the gear is out. It is not a charge.</li>
+    <li>Card holds expire after a few days, so for longer rentals (more than about 5 days) CarpeIt renews the hold before it expires: a new hold for the same amount is placed and the old one is released.</li>
+    <li>The hold is released when the owner confirms the gear came back as expected, or automatically 24 hours after the return if the owner hasn't made a claim.</li>
+    <li>If the hold can't be placed or renewed, pickup can't go ahead (or the renter is asked to update their card) until it can.</li>
+    <li>The deposit is the most CarpeIt will take from a renter for damage through the app.</li>
+  </ul>
 
-  <h2>8. Cancellations</h2>
+  <h2>9. Cancellations</h2>
   <ul class="doc-list">
     <li><strong>Renters</strong> can cancel a request at any time for free. After the owner accepts, cancelling is free until 48 hours before pickup and the rental price is refunded in full; after that, it isn't refunded.</li>
     <li><strong>Owners</strong> can cancel an accepted booking, and the renter is always refunded in full. Owners who cancel repeatedly may lose access to lending.</li>
     <li>The exact refund is shown in the app before you confirm a cancellation.</li>
   </ul>
 
-  <h2>9. Pickup and return</h2>
-  <p>
-    Both people use the app to photograph the gear at pickup and at return, following the
-    prompts for that kind of equipment. These photos are the shared record of the gear's
-    condition. The rental starts when pickup is confirmed. The renter must return the gear on
-    time, clean, and in the condition it was received in, apart from normal wear.
-  </p>
+  <h2>10. Pickup, return and the condition record</h2>
+  <ul class="doc-list">
+    <li><strong>At pickup</strong>, the app asks for photos of the gear, following prompts for that kind of equipment. Either person can take them. The other person must then either agree that they show the gear's condition, or record their own check. Pickup can't be confirmed until one of those has happened. If you disagree with the other person's photos, say what's wrong and take your own before you accept the gear.</li>
+    <li><strong>Photos should be taken in the app with the camera.</strong> The app records whether each photo was taken in the app or chosen from the library. Library photos carry less weight, because their date can't be verified.</li>
+    <li><strong>Problems found after pickup.</strong> If the renter finds a fault the pickup check missed (for example when rigging), they can report it with photos in the app for 3 hours after pickup. The report becomes part of the rental record.</li>
+    <li><strong>At return</strong>, the renter photographs the gear again and marks it as returned. The owner then has 24 hours to confirm the return or make a claim (section 11).</li>
+    <li>The renter must return the gear on time, clean, and in the condition it was received in, apart from normal wear and tear.</li>
+  </ul>
 
-  <h2>10. Damage and disputes</h2>
+  <h2>11. Damage claims and disputes</h2>
   <p>
-    If gear comes back damaged, missing or late, the owner can open a claim in the app before
-    confirming the return, saying what happened and how much of the deposit they ask for. The
-    renter then has 48 hours to accept or dispute it. If the renter accepts, that amount is
-    taken from the deposit hold and paid to the owner, and the rest is released. If the renter
-    disputes the claim or doesn't answer in time, the hold stays in place while CarpeIt reviews
-    the handover photos, messages and anything else both people provide. CarpeIt then decides
+    If gear comes back damaged, with parts missing, or isn't returned, the owner can open a claim
+    in the app before confirming the return, stating what happened and how much of the deposit
+    they ask for, with photos unless the gear wasn't returned. The renter then has 48 hours to
+    accept or dispute it; nothing is charged in the meantime. If the renter accepts, that amount
+    is taken from the deposit hold and paid to the owner, and the rest is released.
+  </p>
+  <p>
+    If the renter disputes the claim or doesn't answer in time, the hold stays in place while a
+    CarpeIt reviewer looks at the rental record: pickup and return photos and whether both
+    people agreed to them, pickup problem reports, messages, and anything either person sends
+    in within the time we give. Normal wear and tear and faults recorded at pickup are not
+    charged to the renter, and amounts are based on reasonable repair cost or the fair value of
+    the item at the time of the rental, not its replacement cost when new. CarpeIt then decides
     how much of the deposit, if any, goes to the owner, never more than the owner asked for,
-    releases the rest, and tells you both why. The deposit is the most CarpeIt will take through the app; either of you keeps any
-    other rights you have against the other, including going to a dispute resolution body or a
-    court (section 16).
+    releases the rest, and tells you both why.
   </p>
-
-  <h2>11. Safety and your responsibility</h2>
   <p>
-    Water sports are dangerous. You are responsible for judging whether gear, conditions and
-    your own ability are safe before you use anything you rent, and for using it within your
-    skill level and local rules; you confirm this in the app before each booking. Owners are
-    responsible for the condition of what they lend. CarpeIt doesn't check gear, people or
-    spots, and doesn't provide insurance.
+    <strong>Appeal.</strong> Either of you can ask for the decision to be reviewed by replying
+    within 14 days with new information. The review is done by someone not involved in the
+    first decision.
+  </p>
+  <p>
+    CarpeIt's decision settles only what happens to the deposit; it doesn't decide who is
+    legally liable. Damage beyond the deposit, injury and any other claim are between the renter
+    and the owner, and either of you keeps every right to take them to a Julgado de Paz, an
+    arbitration centre or the courts (section 18). On request, CarpeIt will share the rental
+    record with both of you and with the court.
   </p>
 
   <h2>12. How to behave</h2>
@@ -133,58 +178,70 @@ const lastUpdated = '13 October 2026';
     <li>Keep bookings and payments in the app. Arranging payment outside CarpeIt removes the protections of the deposit and the rental record.</li>
     <li>Reviews must describe a real rental, honestly.</li>
     <li>You can report a user, message or listing from the app, and block anyone you don't want to hear from. Once blocked, neither of you can message or book the other.</li>
-    <li>CarpeIt reviews reports and may remove content or suspend accounts that break these rules.</li>
-    <li>You don't need an account to report illegal content: email <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20report">hey@davidferreira.dev</a> with a link or description of it and why it's illegal.</li>
-    <li>When CarpeIt removes your content or limits your account, it tells you what it did, why, and which rule or law it relied on. You can ask for the decision to be reviewed by replying to that message.</li>
+    <li>CarpeIt reviews reports and may remove content or suspend accounts that break these rules (section 13).</li>
   </ul>
 
-  <h2>13. Liability</h2>
+  <h2>13. Reporting illegal content, moderation and appeals</h2>
+  <ul class="doc-list">
+    <li><strong>Reporting.</strong> Anyone, even without an account, can report a listing, message, review or user they believe is illegal or breaks these terms: in the app, or by email to <a href={mail('CarpeIt report')}>{email}</a>. Explain why, and include a link to or description of the content. We confirm receipt and tell you what we decided.</li>
+    <li><strong>Our decisions.</strong> We may remove or restrict content, suspend lending, or suspend or close an account. These decisions are taken by a person, not by automated systems. We tell the person affected what we decided, the facts and the rule or law it is based on, and how to contest it (a statement of reasons), before or when the decision takes effect, unless the law or a safety risk prevents it.</li>
+    <li><strong>Appeals and redress.</strong> You can contest any moderation decision within 6 months by replying to that message or emailing <a href={mail('CarpeIt appeal')}>{email}</a>. Someone not involved in the original decision reviews it. You can also use a certified out-of-court dispute settlement body under Art. 21 of the Digital Services Act, or go to court.</li>
+    <li>Reports made in bad faith, or repeated unfounded reports, may lead us to stop processing your reports for a time, after a warning.</li>
+  </ul>
+
+  <h2>14. Safety and your responsibility</h2>
   <p>
-    CarpeIt provides the app as it is. To the extent the law allows, CarpeIt is not liable for
-    the gear, for what renters and owners do, or for injury, loss or damage arising from a
-    rental, and CarpeIt's total liability to you is limited to the fees CarpeIt received from you
-    in the twelve months before the claim. Nothing in these terms limits liability that cannot
-    be limited by law, or your rights as a consumer.
+    Water sports are dangerous and can cause serious injury. Renters are responsible for judging
+    whether gear, conditions and their own ability are suitable, for checking the gear before
+    use, and for using it within their skill level and local rules. Owners are responsible for
+    the safety and condition of what they lend, and for disclosing known defects. CarpeIt
+    doesn't check gear, people or spots, and doesn't provide insurance. We recommend that owners
+    insure valuable gear for rental use, and that renters have personal accident and liability
+    cover.
   </p>
 
-  <h2>14. Ending your use</h2>
+  <h2>15. Liability</h2>
+  <ul class="doc-list">
+    <li>CarpeIt is responsible for providing the app and the payment and deposit services described here with reasonable care and skill. CarpeIt is not responsible for the gear itself, for the rental contract between renter and owner, for what renters and owners do, or for loss caused by events outside our reasonable control.</li>
+    <li>Nothing in these terms excludes or limits liability for death or personal injury caused by our negligence, for fraud, wilful misconduct or gross negligence (art. 809 of the Portuguese Civil Code and Decree-Law 446/85), or any other liability that cannot be excluded or limited by law. Nothing in these terms affects your statutory rights as a consumer.</li>
+    <li>Subject to the point above: if you lend on CarpeIt <strong>as a business</strong>, CarpeIt's total liability to you is limited to the fees CarpeIt received from you in the 12 months before the claim. If you are a <strong>consumer</strong>, CarpeIt is liable for loss that was a foreseeable result of our breach of these terms.</li>
+  </ul>
+
+  <h2>16. Ending your use</h2>
   <p>
     You can stop using CarpeIt and delete your account whenever you like, once you have no
-    rental in progress. CarpeIt may suspend or close accounts that break these terms, after
-    telling you why unless there is a safety or legal reason not to.
+    rental in progress. CarpeIt may suspend or close accounts that break these terms or the law,
+    as described in section 13.
   </p>
   <p>
-    For schools and shops lending as a business, CarpeIt gives at least 30 days' notice before
-    closing a business account for good, except for repeated or serious breaches of these terms
-    or where the law requires it. Business owners can raise any complaint about CarpeIt by
-    email, and CarpeIt answers within 15 days.
+    For schools and shops lending as a business, CarpeIt gives at least 30 days' notice, with
+    reasons, before ending their access for good, except for a serious or repeated breach of
+    these terms, a legal obligation, or a safety risk (Regulation (EU) 2019/1150, art. 4).
+    Business owners can raise any complaint about CarpeIt by email, and CarpeIt answers within
+    15 days.
   </p>
 
-  <h2>15. Changes and law</h2>
+  <h2>17. Changes and law</h2>
   <p>
     If these terms change, the new version is published here and announced in the app at least
-    15 days before it applies, unless a law or a safety issue requires a change sooner. You'll
-    be asked to accept the new version in the app; if you don't want to, you can close your
-    account. These terms are governed by Portuguese law. If you are a consumer, you also keep
-    the protection of the mandatory laws of the country where you live, and can bring a claim
-    there.
+    15 days before it applies, unless a law or a safety issue requires a change sooner. For
+    business users, this notice is always at least 15 days, as Regulation (EU) 2019/1150
+    requires. You'll be asked to accept the new version in the app; if you don't want to, you
+    can close your account before it applies. These terms are governed by Portuguese law. If
+    you are a consumer, you also keep the protection of the mandatory laws of the country where
+    you live, and can bring a claim there.
   </p>
 
-  <h2>16. Complaints and dispute resolution</h2>
-  <p>
-    You can complain to CarpeIt by email, or in the
-    <a href={complaintsBookUrl}>electronic complaints book (Livro de Reclamações)</a>.
-  </p>
-  <p>
-    If you're a consumer and we can't resolve a dispute, you can take it to a consumer
-    arbitration centre (alternative dispute resolution entity). CarpeIt's is
-    <a href="https://www.cniacc.pt">CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo</a>.
-    The full list of approved entities is on the <a href="https://www.consumidor.gov.pt">Portal do Consumidor</a>.
-  </p>
+  <h2>18. Complaints and dispute resolution</h2>
+  <ul class="doc-list">
+    <li><strong>Contact us first</strong> at <a href={mail('CarpeIt complaint')}>{email}</a>. We reply within 15 working days.</li>
+    <li><strong>Complaints book.</strong> You can also complain in CarpeIt's <a href={complaintsBookUrl}>electronic complaints book (Livro de Reclamações Eletrónico)</a>.</li>
+    <li><strong>Alternative dispute resolution.</strong> If you're a consumer and we can't resolve a dispute, you can take it to a consumer arbitration centre. Under Lei 144/2015, CarpeIt refers you to <a href="https://www.cniacc.pt">CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo</a> (www.cniacc.pt), or the consumer arbitration centre for your area. The full list of approved entities is on the <a href="https://www.consumidor.gov.pt">Portal do Consumidor</a>.</li>
+  </ul>
 
-  <h2>17. Contact</h2>
+  <h2>19. Contact</h2>
   <p>
-    Questions about these terms? Email <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20terms">hey@davidferreira.dev</a>
+    Questions about these terms? Email <a href={mail('CarpeIt terms')}>{email}</a>
     or write to {carpeitOperator.name}, {carpeitOperator.address}.
     For how your data is handled, see the <a href="/carpeit/privacy/">Privacy Policy</a>.
   </p>
