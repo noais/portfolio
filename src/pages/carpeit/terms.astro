@@ -1,10 +1,10 @@
 ---
 import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
+import { ownerPricingSummary, foundingMigrationSummary, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
-// Keep in step with app_config.terms_version on the server (currently
-// "2026-10-14"): changing it asks every user to accept again.
-const lastUpdated = '14 October 2026';
+// Coordinate app_config.terms_version with this revision before activating the new pricing model.
+const lastUpdated = '17 October 2026';
 const email = carpeitOperator.email;
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 ---
@@ -98,10 +98,13 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
     a specific date or period). You can cancel under section 9 instead.
   </p>
 
-  <h2>6. Prices, fees and payouts</h2>
+  <h2 id="owner-fees">6. Prices, fees and payouts</h2>
   <ul class="doc-list">
     <li>Renters pay the rental price shown before they book, which is the total for the rental. CarpeIt doesn't add a fee on top for renters, and the price doesn't depend on how you pay. Any deposit is shown separately (section 8).</li>
-    <li>CarpeIt charges owners a service fee, currently 8% of the rental price, deducted from each payout. It is only charged when a rental happens. The fee and the amount the owner receives are shown before a listing is published and on every booking. CarpeIt issues owners an invoice for its fee.</li>
+    <li>CarpeIt charges owners a service fee deducted from each payout. Until the new pricing model activates, the current commission remains 8%. {ownerPricingSummary} It is only charged when a rental happens. The fee and the amount the owner receives are shown before a listing is published and on every booking. CarpeIt issues owners an invoice for its fee.</li>
+    <li>{foundingMigrationSummary}</li>
+    <li>{foundingApplicationsSummary} Closing applications does not remove existing Founding Partners’ eligibility.</li>
+    <li>{existingBookingSummary}</li>
     <li>Owners are paid through Stripe. To accept bookings you must set up payouts with Stripe and accept <a href="https://stripe.com/legal/connect-account">Stripe's Connected Account Agreement</a>.</li>
     <li>You are responsible for any taxes due on what you earn.</li>
   </ul>

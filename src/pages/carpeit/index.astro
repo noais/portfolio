@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { ownerPricingSummary, foundingApplicationsOpen, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
 const strip = ['Kitesurf', 'Surf', 'Wing foil', 'SUP', 'Riders', 'Schools & shops'];
@@ -357,10 +358,14 @@ const structuredData = {
       <span class="eyebrow eyebrow--accent">For owners</span>
       <h2 class="section-title">Got gear or a surf school? List it free.</h2>
       <p class="section-lede">
-        Listing on CarpeIt costs nothing. CarpeIt only takes a service fee, currently 8% of the
-        rental price, when a rental actually happens, and you see exactly what you’ll receive
-        before you publish. Renters pay no fee on top. We’re onboarding the first riders,
-        schools and shops in Portugal ahead of launch.
+        {ownerPricingSummary} Commission is deducted from the owner’s payout when a rental
+        happens. You see the fee and what you’ll receive before you publish and on each booking.
+      </p>
+      <p class="section-lede">
+        <strong>Founding Partner · 8% commission.</strong> {foundingApplicationsSummary}
+      </p>
+      <p class="section-lede">
+        {existingBookingSummary} <a href="/carpeit/terms/#owner-fees">See eligibility and fee details.</a>
       </p>
     </div>
 
@@ -379,7 +384,7 @@ const structuredData = {
     </div>
 
     <div class="hero-actions list-actions">
-      <a href={listMail} class="btn-primary">Tell us about your gear</a>
+      <a href={listMail} class="btn-primary">{foundingApplicationsOpen ? 'Ask about Founding Partner eligibility' : 'Tell us about your gear'}</a>
       <a href="/carpeit/terms/" class="btn-ghost">Read the owner terms</a>
     </div>
   </div>

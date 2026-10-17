@@ -1,5 +1,6 @@
 ---
 import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
+import { ownerPricingSummary, foundingMigrationSummary, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
 const supportMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('CarpeIt support')}`;
@@ -11,7 +12,17 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: 'Are there any fees for renters?',
-    a: 'No. You pay the rental price shown before you book. Owners pay CarpeIt a service fee (currently 8%) out of the price, so nothing is added for you.',
+    a: 'No. You pay the rental price shown before you book. Owners pay CarpeIt a service fee out of the rental price, so nothing is added for you.',
+  },
+  {
+    q: 'What commission do owners pay?',
+    a: `${ownerPricingSummary} ${existingBookingSummary}`,
+    link: { href: '/carpeit/terms/#owner-fees', label: 'Owner fees and eligibility' },
+  },
+  {
+    q: 'Who qualifies as a Founding Partner?',
+    a: `${foundingMigrationSummary} ${foundingApplicationsSummary}`,
+    link: { href: supportMail, label: 'Contact us about eligibility' },
   },
   {
     q: 'How does the deposit work?',
