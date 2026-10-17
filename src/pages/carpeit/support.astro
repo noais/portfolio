@@ -1,7 +1,7 @@
 ---
 import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
-import { ownerPricingSummary, foundingMigrationSummary, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
+import { pricingFaq } from '../../data/carpeitPricing';
 
 const supportMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('CarpeIt support')}`;
 
@@ -12,17 +12,7 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: 'Are there any fees for renters?',
-    a: 'No. You pay the rental price shown before you book. Owners pay CarpeIt a service fee out of the rental price, so nothing is added for you.',
-  },
-  {
-    q: 'What commission do owners pay?',
-    a: `${ownerPricingSummary} ${existingBookingSummary}`,
-    link: { href: '/carpeit/terms/#owner-fees', label: 'Owner fees and eligibility' },
-  },
-  {
-    q: 'Who qualifies as a Founding Partner?',
-    a: `${foundingMigrationSummary} ${foundingApplicationsSummary}`,
-    link: { href: supportMail, label: 'Contact us about eligibility' },
+    a: 'No. You pay the rental price shown before you book, with no service fee on top. CarpeIt’s commission is paid by the owner out of the price, so nothing is added for you.',
   },
   {
     q: 'How does the deposit work?',
@@ -42,8 +32,14 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: 'How do I get paid for lending gear?',
-    a: 'Go to Profile → Payments & payouts and set up payouts with Stripe. You need this before you can accept a booking. CarpeIt’s fee and the amount you’ll receive are shown before you publish a listing and on every booking.',
+    a: 'Go to Profile → Payments & payouts and set up payouts with Stripe. You need this before you can accept a booking. Your share of each rental is paid to your Stripe account when you accept the booking, and Stripe pays it out to your bank on Stripe’s payout schedule. CarpeIt’s commission and the amount you’ll receive are shown before you publish a listing and on every booking.',
   },
+  // Owner commission entries, shared with the landing page FAQ.
+  pricingFaq('commission'),
+  pricingFaq('when-charged'),
+  pricingFaq('become-partner'),
+  pricingFaq('founding-eligibility'),
+  pricingFaq('existing-bookings'),
   {
     q: 'Someone is being abusive. What can I do?',
     a: 'In the conversation, tap the menu at the top and choose Report or Block. Once you block someone, neither of you can message or book the other, and they are not told. You can also report a listing from its page, or a user from a completed rental. Reports are reviewed by a person, usually within 2 working days. If someone is in immediate danger, call 112 first.',

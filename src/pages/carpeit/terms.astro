@@ -1,6 +1,6 @@
 ---
 import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
-import { ownerPricingSummary, foundingMigrationSummary, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
+import { foundingMigrationSummary, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
 
 // Coordinate app_config.terms_version with this revision before activating the new pricing model.
@@ -101,10 +101,13 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
   <h2 id="owner-fees">6. Prices, fees and payouts</h2>
   <ul class="doc-list">
     <li>Renters pay the rental price shown before they book, which is the total for the rental. CarpeIt doesn't add a fee on top for renters, and the price doesn't depend on how you pay. Any deposit is shown separately (section 8).</li>
-    <li>CarpeIt charges owners a service fee deducted from each payout. Until the new pricing model activates, the current commission remains 8%. {ownerPricingSummary} It is only charged when a rental happens. The fee and the amount the owner receives are shown before a listing is published and on every booking. CarpeIt issues owners an invoice for its fee.</li>
+    {/* Rates mirror src/data/carpeitPricing.ts and the backend commission_tiers table; change them together, with advance notice. */}
+    <li>CarpeIt charges owners a commission, a percentage of the rental price deducted from the rental payment before the owner is paid. Until the new pricing model activates, the current commission remains 8% for every owner. Once it activates, the default rate is 12% (Standard Partners). Founding Partners pay 8% and Volume Partners 10%; these rates are given by CarpeIt's approval, and their eligibility and duration are governed by the published programme terms. Any VAT due on CarpeIt's commission is included in the rate, so it is everything CarpeIt takes from the owner.</li>
+    <li>The commission is only charged when a rental goes ahead. If the renter gets a full refund, CarpeIt gives back its commission and the owner pays nothing on that rental. The rate and the amount the owner receives are shown before a listing is published and on every booking.</li>
     <li>{foundingMigrationSummary}</li>
     <li>{foundingApplicationsSummary} Closing applications does not remove existing Founding Partners’ eligibility.</li>
     <li>{existingBookingSummary}</li>
+    <li>CarpeIt will tell owners about any change to their commission rate in advance, as the law requires.</li>
     <li>Owners are paid through Stripe. To accept bookings you must set up payouts with Stripe and accept <a href="https://stripe.com/legal/connect-account">Stripe's Connected Account Agreement</a>.</li>
     <li>You are responsible for any taxes due on what you earn.</li>
   </ul>

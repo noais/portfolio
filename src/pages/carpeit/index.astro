@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { ownerPricingSummary, foundingApplicationsOpen, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
 import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
+import { commissionTiers, exampleRentalPrice, formatEuro, ownerReceives, pricingFaqs, standardTier, currentRateNote, existingBookingSummary, foundingApplicationsOpen } from '../../data/carpeitPricing';
 
 const strip = ['Kitesurf', 'Surf', 'Wing foil', 'SUP', 'Riders', 'Schools & shops'];
 
@@ -16,7 +16,7 @@ const features = [
   },
   {
     title: 'Money shown honestly',
-    body: 'Rental total, deposit and owner payout are always separate lines. The deposit is held, never added to the rental price, and owners see what they receive before they publish.',
+    body: 'Rental total, deposit and owner payout are always separate lines. The deposit is held, never added to the rental price, and owners see their commission and exactly what they receive before they publish.',
   },
   {
     title: 'Condition on the record',
@@ -82,7 +82,7 @@ const roles = [
     points: [
       'List in minutes, with forms built for each sport',
       'Choose exactly when your gear is available',
-      'See your payout before you publish',
+      'See your commission and payout before you publish',
       'Get paid out through Stripe',
     ],
     accent: true,
@@ -121,7 +121,7 @@ const ownerTypes = [
     points: [
       'Reach riders searching the coast you’re on',
       'Multiple units, fleet availability and a daily dashboard',
-      'Payouts through Stripe, with an invoice for every fee',
+      'Payouts through Stripe, and a reduced Volume Partner rate if you qualify',
     ],
     accent: true,
   },
@@ -129,8 +129,7 @@ const ownerTypes = [
 
 const listMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('Listing my gear on CarpeIt')}`;
 
-const structuredData = {
-  '@context': 'https://schema.org',
+const app = {
   '@type': 'SoftwareApplication',
   name: 'CarpeIt',
   operatingSystem: 'iOS, Android',
@@ -149,17 +148,33 @@ const structuredData = {
     address: carpeitOperator.address,
   },
 };
+
+// Mirrors the visible FAQ below, question for question.
+const faqPage = {
+  '@type': 'FAQPage',
+  url: 'https://davidferreira.dev/carpeit/#faq',
+  mainEntity: pricingFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [app, faqPage],
+};
 ---
 
 <Layout
   title="CarpeIt — rent water sports gear from local riders."
-  description="CarpeIt is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear. Rent great gear from local riders, schools and shops — or share yours."
-  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, Portugal, iOS app, Android app, CarpeIt"
+  description="CarpeIt is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear in Portugal. Rent from local riders, schools and shops with no renter fees — or list your gear for free and earn when it’s rented."
+  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, list gear for free, earn from your gear, rental commission, Portugal, iOS app, Android app, CarpeIt"
   structuredData={structuredData}
   siteName="CarpeIt"
   locale="en_GB"
   ogImage="/carpeit/og.png"
-  ogImageAlt="CarpeIt — rent water sports gear from local riders, schools and shops"
+  ogImageAlt="CarpeIt — rent water sports gear from local riders, schools and shops, or list yours for free"
   twitterCard="summary_large_image"
   favicon="/carpeit/favicon-64.png"
   appleTouchIcon="/carpeit/apple-touch-icon.png"
@@ -170,11 +185,13 @@ const structuredData = {
   <nav class="nav-inner">
     <a href="/" class="nav-logo">DF</a>
     <ul class="nav-links">
-      <li><a href="#inside" data-nav="inside">Screens</a></li>
-      <li><a href="#features" data-nav="features">Features</a></li>
+      <li class="nav-wide"><a href="#inside" data-nav="inside">Screens</a></li>
+      <li class="nav-wide"><a href="#features" data-nav="features">Features</a></li>
       <li><a href="#how" data-nav="how">How it works</a></li>
       <li><a href="#list" data-nav="list">List your gear</a></li>
-      <li><a href="#build" data-nav="build">Build</a></li>
+      <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
+      <li><a href="#faq" data-nav="faq">FAQ</a></li>
+      <li class="nav-wide"><a href="#build" data-nav="build">Build</a></li>
       <li><a href="/">Portfolio</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
     </ul>
@@ -356,16 +373,14 @@ const structuredData = {
   <div class="section-inner">
     <div class="section-header">
       <span class="eyebrow eyebrow--accent">For owners</span>
-      <h2 class="section-title">Got gear or a surf school? List it free.</h2>
+      <h2 class="section-title">List your equipment for free. Earn when someone rents it.</h2>
       <p class="section-lede">
-        {ownerPricingSummary} Commission is deducted from the owner’s payout when a rental
-        happens. You see the fee and what you’ll receive before you publish and on each booking.
-      </p>
-      <p class="section-lede">
-        <strong>Founding Partner · 8% commission.</strong> {foundingApplicationsSummary}
-      </p>
-      <p class="section-lede">
-        {existingBookingSummary} <a href="/carpeit/terms/#owner-fees">See eligibility and fee details.</a>
+        That spare kite, the board that only comes out in big swell, the SUPs stacked at the back
+        of the school: most gear spends more days dry than wet. CarpeIt puts it in front of riders
+        searching the coast you’re on, so it earns while you’re not using it. Listing is free,
+        there’s no subscription, and CarpeIt only takes a commission when a rental goes ahead —
+        you see exactly what you’ll receive before you publish. We’re onboarding the first
+        riders, schools and shops in Portugal ahead of launch.
       </p>
     </div>
 
@@ -387,6 +402,76 @@ const structuredData = {
       <a href={listMail} class="btn-primary">{foundingApplicationsOpen ? 'Ask about Founding Partner eligibility' : 'Tell us about your gear'}</a>
       <a href="/carpeit/terms/" class="btn-ghost">Read the owner terms</a>
     </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ───────────────────────────────────────────────────── -->
+<section id="pricing" class="section section--navy">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow eyebrow--accent">Pricing for owners</span>
+      <h2 class="section-title">One simple commission. Nothing upfront.</h2>
+      <p class="section-lede">
+        Every owner starts as a Standard Partner at {standardTier.percent}%.
+        Rental businesses, schools, clubs and early partners can apply for a reduced rate.
+        Renters pay the price shown — no service fee on top. {currentRateNote}
+        {existingBookingSummary} <a href="/carpeit/terms/#owner-fees">See eligibility and fee details.</a>
+      </p>
+    </div>
+
+    <div class="price-grid price-grid--3">
+      {commissionTiers.map((t) => (
+        <div class={t.isDefault ? 'price-card price-card--accent tier-card' : 'price-card tier-card'}>
+          <p class="price-tier">{t.name}</p>
+          <p class="tier-badge">{t.badge}</p>
+          <p class="price-amount tier-rate">
+            <span class="tier-percent">{t.percent}%</span> commission
+          </p>
+          <ul class="price-points">
+            {t.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+          <p class="tier-example">
+            <span>{formatEuro(exampleRentalPrice)} rental</span>
+            <span aria-hidden="true">→</span>
+            <span>you receive <strong>{formatEuro(ownerReceives(t))}</strong></span>
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <p class="tier-note">
+      The commission is everything CarpeIt takes from you: any VAT due is included, and Stripe’s
+      card processing fees are paid by CarpeIt out of its commission. Payouts reach your bank on
+      Stripe’s payout schedule. Volume and Founding rates are by approval; Founding Partner
+      eligibility and duration follow the published programme terms.
+      See <a href="/carpeit/terms/">the Terms, section 6</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────────────────── -->
+<section id="faq" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow eyebrow--accent">FAQ</span>
+      <h2 class="section-title">Commission and payouts, answered.</h2>
+    </div>
+
+    <div class="faq">
+      {pricingFaqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+          {f.link && <p><a href={f.link.href}>{f.link.label}</a></p>}
+        </details>
+      ))}
+    </div>
+
+    <p class="tier-note">
+      More questions about renting, deposits or handovers? See <a href="/carpeit/support/">Support</a>.
+    </p>
   </div>
 </section>
 
@@ -996,6 +1081,88 @@ const structuredData = {
 
 .price-grid--3 { grid-template-columns: repeat(3, 1fr); }
 
+/* ── Commission tiers ─────────────────────────────────────────── */
+.tier-card { display: flex; flex-direction: column; }
+.tier-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid rgba(237,233,226,0.14);
+  border-radius: 100px;
+  padding: 0.2rem 0.7rem;
+  margin: 0 0 1.25rem;
+}
+.price-card--accent .tier-badge {
+  color: #07171E;
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.tier-rate { margin-bottom: 1.5rem; }
+.tier-percent {
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.price-card--accent .tier-percent { color: var(--accent-soft); }
+.tier-card .price-points { margin-bottom: 1.75rem; }
+.tier-example {
+  margin: auto 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(237,233,226,0.08);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.62);
+}
+.tier-example strong { color: var(--ink); font-weight: 600; }
+.tier-note {
+  max-width: 72ch;
+  margin: 2rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(237,233,226,0.50);
+}
+.tier-note a,
+.faq a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(57,198,189,0.85);
+}
+
+/* ── FAQ (same pattern as the Support page) ───────────────────── */
+.faq { max-width: 78ch; margin: 0; }
+.faq details {
+  border-bottom: 1px solid rgba(237,233,226,0.08);
+  padding: 1.1rem 0;
+}
+.faq details:first-child { border-top: 1px solid rgba(237,233,226,0.08); }
+.faq summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--accent); flex-shrink: 0; }
+.faq details[open] summary::after { content: '−'; }
+.faq details p {
+  margin: 0.75rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(237,233,226,0.65);
+}
+
 /* ── Build ────────────────────────────────────────────────────── */
 .build-grid {
   display: grid;
@@ -1101,6 +1268,10 @@ const structuredData = {
   .premise-grid { grid-template-columns: minmax(0, 1fr); gap: 3.5rem; }
   .premise-visual { order: 2; }
 }
+@media (max-width: 1100px) {
+  .nav-links { gap: 1.25rem; }
+  .nav-links li.nav-wide { display: none; }
+}
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
@@ -1119,7 +1290,9 @@ const structuredData = {
   .nav-links { gap: 0.875rem; }
   .nav-links a { font-size: 0.8125rem; }
   .nav-cta { padding: 0.45rem 0.875rem; }
-  .nav-links li:nth-child(-n+5) { display: none; }
+  /* Phones: just Pricing, FAQ, Portfolio and the CTA */
+  .nav-links li:nth-child(-n+4),
+  .nav-links li.nav-wide { display: none; }
   .gallery { padding: 0 1.25rem 1rem; scroll-padding: 0 1.25rem; grid-auto-columns: 200px; }
   .section-inner { padding: 0 1.25rem; }
   .hero-headline { font-size: 2.375rem; }
