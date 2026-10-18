@@ -20,14 +20,14 @@ const features = [
     eyebrow: 'One tap',
     title: 'The button is already on the right side.',
     body:
-      'Open Nursling and the primary button is set to the breast that comes next. Tap it and you are tracking. No confirmation screen, no dialogs, nothing to dismiss.',
+      'Open Nursling and the breast that comes next is already marked. Tap it and you are tracking. No confirmation screen, no dialogs, nothing to dismiss.',
     points: [
       'Starts you on the breast you finished on last time',
       'Switch sides mid-session and it still counts as one nursing',
       'A distinct haptic for every action, so you can feel the confirmation',
     ],
     image: '/nursling/02-home.png',
-    alt: 'Nursling home screen showing time since the last nursing and the Nurse Left button',
+    alt: 'Nursling home screen showing "Last fed 1 h ago", Left and Right circles with Left marked Next, a Log bottle row and the feeding history',
   },
   {
     eyebrow: 'Built for night',
@@ -43,6 +43,19 @@ const features = [
     alt: 'Nursling active nursing screen showing the left breast and a running timer on a dark background',
   },
   {
+    eyebrow: 'Bottles, too',
+    title: 'Breast, bottle or both — one log.',
+    body:
+      'Log a bottle of formula or expressed milk in a couple of taps. It sits in the same history and the same insights as every nursing, so the day reads as one timeline.',
+    points: [
+      'Amount optional, with quick picks and one-tap repeat of the last bottle',
+      'Formula, expressed or other',
+      'Counted alongside breastfeeding in history and insights',
+    ],
+    image: '/nursling/04-log-bottle.png',
+    alt: 'Nursling Log bottle sheet with an amount of 4 fl oz, quick picks, and Formula, Expressed and Other options',
+  },
+  {
     eyebrow: 'Insights',
     title: 'See the pattern, not a spreadsheet.',
     body:
@@ -53,7 +66,7 @@ const features = [
       'Left versus right balance, so you notice a drift early',
     ],
     image: '/nursling/05-insights.png',
-    alt: 'Nursling insights screen showing nursing count, total time, average duration and a left versus right chart',
+    alt: 'Nursling insights screen showing a weekly feedings chart, total and average breastfeeding time, total bottle volume and breast versus bottle balance',
   },
   {
     eyebrow: 'Private by design',
@@ -66,7 +79,7 @@ const features = [
       'A CSV export you own, free whether you buy or not',
     ],
     image: '/nursling/06-settings-privacy.png',
-    alt: 'Nursling settings screen showing reminders, dark at night, CSV export and privacy notes',
+    alt: 'Nursling settings screen showing dark at night, CSV export, the one-time unlock and the note that feedings are stored on this device only',
   },
 ];
 
@@ -230,7 +243,7 @@ const structuredData = {
       <div class="premise-phone">
         <img
           src="/nursling/01-onboarding.png"
-          alt="Nursling welcome screen reading &quot;A simpler way to keep close. Track breastfeeding with one tap.&quot; and &quot;No account. No cloud. Just your journey.&quot;"
+          alt="Nursling welcome screen reading &quot;Welcome to Nursling. A simpler way to keep close. Track breastfeeding and bottle feeding with one tap.&quot; and &quot;No account. No cloud. Just your journey.&quot;"
           loading="lazy"
           width="248"
           height="512"
@@ -268,6 +281,30 @@ const structuredData = {
           </div>
         </article>
       ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── DUO ───────────────────────────────────────────────────────── -->
+<section id="duo" class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow">iPhone Duo</span>
+      <h2 class="section-title">Unfold it, and the log sits beside the breasts.</h2>
+      <p class="section-lede">
+        On the inner display of iPhone Duo, Home and History stop taking turns: the next breast
+        and the bottle on one side, the whole day's log on the other. Folded, it is the same
+        one-tap phone it always was.
+      </p>
+    </div>
+    <div class="duo-frame reveal">
+      <img
+        src="/nursling/duo-home.png"
+        alt="Nursling on the unfolded iPhone Duo: Last fed, the Left and Right circles and Log bottle on the left, the History list with today's feedings on the right"
+        loading="lazy"
+        width="1600"
+        height="1125"
+      />
     </div>
   </div>
 </section>
@@ -642,6 +679,20 @@ const structuredData = {
   height: 460px;
   transform: rotate(3deg);
   z-index: 2;
+}
+
+/* ── Duo ──────────────────────────────────────────────────────── */
+.duo-frame {
+  max-width: 880px;
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35);
+}
+.duo-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* ── Proof strip ──────────────────────────────────────────────── */
