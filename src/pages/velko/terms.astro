@@ -1,39 +1,39 @@
 ---
-import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
-import { foundingMigrationSummary, foundingApplicationsSummary, existingBookingSummary } from '../../data/carpeitPricing';
-import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
+import VelkoDoc from '../../layouts/VelkoDoc.astro';
+import { foundingMigrationSummary, foundingApplicationsSummary, existingBookingSummary } from '../../data/velkoPricing';
+import { velkoOperator, complaintsBookUrl } from '../../data/velkoOperator';
 
 // Coordinate app_config.terms_version with this revision before activating the new pricing model.
 const lastUpdated = '17 October 2026';
-const email = carpeitOperator.email;
+const email = velkoOperator.email;
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 ---
 
-<CarpeItDoc
-  title="CarpeIt — Terms of Service"
-  description="The terms for renting and lending water sports gear on CarpeIt."
+<VelkoDoc
+  title="Velko — Terms of Service"
+  description="The terms for renting and lending water sports gear on Velko."
   heading="Terms of Service"
   lastUpdated={lastUpdated}
 >
   <p class="doc-lead">
-    These terms are the agreement between you and CarpeIt when you use the app to rent gear or
+    These terms are the agreement between you and Velko when you use the app to rent gear or
     lend it. They also set out what renters and owners agree with each other. Please read them;
     you accept them in the app before you start, and again whenever they change.
   </p>
 
-  <h2>1. Who we are and what CarpeIt is</h2>
+  <h2>1. Who we are and what Velko is</h2>
   <p>
-    CarpeIt is a marketplace operated by {carpeitOperator.name} (NIPC {carpeitOperator.nipc}),
-    registered at {carpeitOperator.address} (“CarpeIt”, “we”). You can reach us at
-    <a href={mail('CarpeIt')}>{email}</a>. This address is also our single point of contact
+    Velko is a marketplace operated by {velkoOperator.name} (NIPC {velkoOperator.nipc}),
+    registered at {velkoOperator.address} (“Velko”, “we”). You can reach us at
+    <a href={mail('Velko')}>{email}</a>. This address is also our single point of contact
     for users and for authorities under the EU Digital Services Act; we answer in English and
     Portuguese.
   </p>
   <p>
-    CarpeIt lets riders, schools and shops (“owners”) offer kitesurf, surf, wing foil and SUP
-    equipment for rent, and lets other people (“renters”) book it. CarpeIt provides the app,
+    Velko lets riders, schools and shops (“owners”) offer kitesurf, surf, wing foil and SUP
+    equipment for rent, and lets other people (“renters”) book it. Velko provides the app,
     takes payments through Stripe, holds deposits under the procedure in section 8, and keeps
-    the record of each rental. CarpeIt does not own, inspect or supply the gear, and is not a
+    the record of each rental. Velko does not own, inspect or supply the gear, and is not a
     party to the rental itself: the rental is a contract between the renter and the owner.
   </p>
 
@@ -48,9 +48,9 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
   </ul>
   <p>
     Owners who rent out gear as part of a trade, business or profession must register as a
-    business. Before their listings go live, business owners give CarpeIt their legal name,
+    business. Before their listings go live, business owners give Velko their legal name,
     address, phone and trade register number, and certify that they comply with applicable EU
-    law. CarpeIt makes reasonable efforts to check this information (Digital Services Act,
+    law. Velko makes reasonable efforts to check this information (Digital Services Act,
     Art. 30).
   </p>
 
@@ -59,7 +59,7 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
     <li>You must be at least 18 and able to enter into a binding contract. You confirm this in the app before you start.</li>
     <li>Keep your sign-in secure. You are responsible for what happens on your account.</li>
     <li>Use accurate information, and one account per person. A school or shop adds a business profile to a personal account.</li>
-    <li>You can delete your account at any time from Profile in the app, once you have no rental in progress. See <a href="/carpeit/delete-account/">Delete your account</a>.</li>
+    <li>You can delete your account at any time from Profile in the app, once you have no rental in progress. See <a href="/velko/delete-account/">Delete your account</a>.</li>
   </ul>
 
   <h2>4. Listing gear</h2>
@@ -67,14 +67,14 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
     <li>Only list gear you own or are authorised to rent out, that is safe and in good working order, and that matches its description and photos, including any known defects or repairs.</li>
     <li>You set the daily price, the deposit, and when the gear is available. Keep your availability up to date.</li>
     <li>The pickup address you enter is shown only to renters whose booking you accept. The public listing shows an approximate area.</li>
-    <li>CarpeIt may remove listings that break these terms or the law (see section 13).</li>
+    <li>Velko may remove listings that break these terms or the law (see section 13).</li>
   </ul>
   <h3>Seller details and tax reporting</h3>
   <p>
-    Before you can lend, you give CarpeIt your seller details: your legal name, date of birth
+    Before you can lend, you give Velko your seller details: your legal name, date of birth
     (private owners), tax identification number (NIF) and the country that issued it, address
     and phone, and, for businesses, your trade register number. Under Council Directive (EU)
-    2021/514 (“DAC7”) and Decree-Law 41/2023, CarpeIt must collect these details, report the
+    2021/514 (“DAC7”) and Decree-Law 41/2023, Velko must collect these details, report the
     income owners earn through it to the Portuguese Tax Authority (Autoridade Tributária e
     Aduaneira, AT) once a year where DAC7 applies, and give each owner a copy of what was
     reported. These details are never shown to other users.
@@ -100,14 +100,14 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
 
   <h2 id="owner-fees">6. Prices, fees and payouts</h2>
   <ul class="doc-list">
-    <li>Renters pay the rental price shown before they book, which is the total for the rental. CarpeIt doesn't add a fee on top for renters, and the price doesn't depend on how you pay. Any deposit is shown separately (section 8).</li>
-    {/* Rates mirror src/data/carpeitPricing.ts and the backend commission_tiers table; change them together, with advance notice. */}
-    <li>CarpeIt charges owners a commission, a percentage of the rental price deducted from the rental payment before the owner is paid. Until the new pricing model activates, the current commission remains 8% for every owner. Once it activates, the default rate is 12% (Standard Partners). Founding Partners pay 8% and Volume Partners 10%; these rates are given by CarpeIt's approval, and their eligibility and duration are governed by the published programme terms. Any VAT due on CarpeIt's commission is included in the rate, so it is everything CarpeIt takes from the owner.</li>
-    <li>The commission is only charged when a rental goes ahead. If the renter gets a full refund, CarpeIt gives back its commission and the owner pays nothing on that rental. The rate and the amount the owner receives are shown before a listing is published and on every booking.</li>
+    <li>Renters pay the rental price shown before they book, which is the total for the rental. Velko doesn't add a fee on top for renters, and the price doesn't depend on how you pay. Any deposit is shown separately (section 8).</li>
+    {/* Rates mirror src/data/velkoPricing.ts and the backend commission_tiers table; change them together, with advance notice. */}
+    <li>Velko charges owners a commission, a percentage of the rental price deducted from the rental payment before the owner is paid. Until the new pricing model activates, the current commission remains 8% for every owner. Once it activates, the default rate is 12% (Standard Partners). Founding Partners pay 8% and Volume Partners 10%; these rates are given by Velko's approval, and their eligibility and duration are governed by the published programme terms. Any VAT due on Velko's commission is included in the rate, so it is everything Velko takes from the owner.</li>
+    <li>The commission is only charged when a rental goes ahead. If the renter gets a full refund, Velko gives back its commission and the owner pays nothing on that rental. The rate and the amount the owner receives are shown before a listing is published and on every booking.</li>
     <li>{foundingMigrationSummary}</li>
     <li>{foundingApplicationsSummary} Closing applications does not remove existing Founding Partners’ eligibility.</li>
     <li>{existingBookingSummary}</li>
-    <li>CarpeIt will tell owners about any change to their commission rate in advance, as the law requires.</li>
+    <li>Velko will tell owners about any change to their commission rate in advance, as the law requires.</li>
     <li>Owners are paid through Stripe. To accept bookings you must set up payouts with Stripe and accept <a href="https://stripe.com/legal/connect-account">Stripe's Connected Account Agreement</a>.</li>
     <li>You are responsible for any taxes due on what you earn.</li>
   </ul>
@@ -116,19 +116,19 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
   <p>
     Search shows active listings in the area you choose that are available for your dates and
     match the sport and any filters you set, newest first. Nobody can pay to be shown higher,
-    and CarpeIt doesn't rank its own interests above anyone's. Ratings show the average of
+    and Velko doesn't rank its own interests above anyone's. Ratings show the average of
     verified reviews: only the renter and the owner of a completed rental can review each
-    other, once, within 60 days of the rental ending. CarpeIt doesn't edit reviews, and removes
+    other, once, within 60 days of the rental ending. Velko doesn't edit reviews, and removes
     them only when they break section 12.
   </p>
 
   <h2>8. Deposits</h2>
   <ul class="doc-list">
     <li>If a listing has a deposit, a hold for that amount is placed on the renter's card from about 24 hours before pickup, and kept while the gear is out. It is not a charge.</li>
-    <li>Card holds expire after a few days, so for longer rentals (more than about 5 days) CarpeIt renews the hold before it expires: a new hold for the same amount is placed and the old one is released.</li>
+    <li>Card holds expire after a few days, so for longer rentals (more than about 5 days) Velko renews the hold before it expires: a new hold for the same amount is placed and the old one is released.</li>
     <li>The hold is released when the owner confirms the gear came back as expected, or automatically 24 hours after the return if the owner hasn't made a claim.</li>
     <li>If the hold can't be placed or renewed, pickup can't go ahead (or the renter is asked to update their card) until it can.</li>
-    <li>The deposit is the most CarpeIt will take from a renter for damage through the app.</li>
+    <li>The deposit is the most Velko will take from a renter for damage through the app.</li>
   </ul>
 
   <h2>9. Cancellations</h2>
@@ -157,11 +157,11 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
   </p>
   <p>
     If the renter disputes the claim or doesn't answer in time, the hold stays in place while a
-    CarpeIt reviewer looks at the rental record: pickup and return photos and whether both
+    Velko reviewer looks at the rental record: pickup and return photos and whether both
     people agreed to them, pickup problem reports, messages, and anything either person sends
     in within the time we give. Normal wear and tear and faults recorded at pickup are not
     charged to the renter, and amounts are based on reasonable repair cost or the fair value of
-    the item at the time of the rental, not its replacement cost when new. CarpeIt then decides
+    the item at the time of the rental, not its replacement cost when new. Velko then decides
     how much of the deposit, if any, goes to the owner, never more than the owner asked for,
     releases the rest, and tells you both why.
   </p>
@@ -171,27 +171,27 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
     first decision.
   </p>
   <p>
-    CarpeIt's decision settles only what happens to the deposit; it doesn't decide who is
+    Velko's decision settles only what happens to the deposit; it doesn't decide who is
     legally liable. Damage beyond the deposit, injury and any other claim are between the renter
     and the owner, and either of you keeps every right to take them to a Julgado de Paz, an
-    arbitration centre or the courts (section 18). On request, CarpeIt will share the rental
+    arbitration centre or the courts (section 18). On request, Velko will share the rental
     record with both of you and with the court.
   </p>
 
   <h2>12. How to behave</h2>
   <ul class="doc-list">
     <li>Be honest, respectful and on time. No harassment, hate, threats, spam or scams.</li>
-    <li>Keep bookings and payments in the app. Arranging payment outside CarpeIt removes the protections of the deposit and the rental record.</li>
+    <li>Keep bookings and payments in the app. Arranging payment outside Velko removes the protections of the deposit and the rental record.</li>
     <li>Reviews must describe a real rental, honestly.</li>
     <li>You can report a user, message or listing from the app, and block anyone you don't want to hear from. Once blocked, neither of you can message or book the other.</li>
-    <li>CarpeIt reviews reports and may remove content or suspend accounts that break these rules (section 13).</li>
+    <li>Velko reviews reports and may remove content or suspend accounts that break these rules (section 13).</li>
   </ul>
 
   <h2>13. Reporting illegal content, moderation and appeals</h2>
   <ul class="doc-list">
-    <li><strong>Reporting.</strong> Anyone, even without an account, can report a listing, message, review or user they believe is illegal or breaks these terms: in the app, or by email to <a href={mail('CarpeIt report')}>{email}</a>. Explain why, and include a link to or description of the content. We confirm receipt and tell you what we decided.</li>
+    <li><strong>Reporting.</strong> Anyone, even without an account, can report a listing, message, review or user they believe is illegal or breaks these terms: in the app, or by email to <a href={mail('Velko report')}>{email}</a>. Explain why, and include a link to or description of the content. We confirm receipt and tell you what we decided.</li>
     <li><strong>Our decisions.</strong> We may remove or restrict content, suspend lending, or suspend or close an account. These decisions are taken by a person, not by automated systems. We tell the person affected what we decided, the facts and the rule or law it is based on, and how to contest it (a statement of reasons), before or when the decision takes effect, unless the law or a safety risk prevents it.</li>
-    <li><strong>Appeals and redress.</strong> You can contest any moderation decision within 6 months by replying to that message or emailing <a href={mail('CarpeIt appeal')}>{email}</a>. Someone not involved in the original decision reviews it. You can also use a certified out-of-court dispute settlement body under Art. 21 of the Digital Services Act, or go to court.</li>
+    <li><strong>Appeals and redress.</strong> You can contest any moderation decision within 6 months by replying to that message or emailing <a href={mail('Velko appeal')}>{email}</a>. Someone not involved in the original decision reviews it. You can also use a certified out-of-court dispute settlement body under Art. 21 of the Digital Services Act, or go to court.</li>
     <li>Reports made in bad faith, or repeated unfounded reports, may lead us to stop processing your reports for a time, after a warning.</li>
   </ul>
 
@@ -200,7 +200,7 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
     Water sports are dangerous and can cause serious injury. Renters are responsible for judging
     whether gear, conditions and their own ability are suitable, for checking the gear before
     use, and for using it within their skill level and local rules. Owners are responsible for
-    the safety and condition of what they lend, and for disclosing known defects. CarpeIt
+    the safety and condition of what they lend, and for disclosing known defects. Velko
     doesn't check gear, people or spots, and doesn't provide insurance. We recommend that owners
     insure valuable gear for rental use, and that renters have personal accident and liability
     cover.
@@ -208,22 +208,22 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
 
   <h2>15. Liability</h2>
   <ul class="doc-list">
-    <li>CarpeIt is responsible for providing the app and the payment and deposit services described here with reasonable care and skill. CarpeIt is not responsible for the gear itself, for the rental contract between renter and owner, for what renters and owners do, or for loss caused by events outside our reasonable control.</li>
+    <li>Velko is responsible for providing the app and the payment and deposit services described here with reasonable care and skill. Velko is not responsible for the gear itself, for the rental contract between renter and owner, for what renters and owners do, or for loss caused by events outside our reasonable control.</li>
     <li>Nothing in these terms excludes or limits liability for death or personal injury caused by our negligence, for fraud, wilful misconduct or gross negligence (art. 809 of the Portuguese Civil Code and Decree-Law 446/85), or any other liability that cannot be excluded or limited by law. Nothing in these terms affects your statutory rights as a consumer.</li>
-    <li>Subject to the point above: if you lend on CarpeIt <strong>as a business</strong>, CarpeIt's total liability to you is limited to the fees CarpeIt received from you in the 12 months before the claim. If you are a <strong>consumer</strong>, CarpeIt is liable for loss that was a foreseeable result of our breach of these terms.</li>
+    <li>Subject to the point above: if you lend on Velko <strong>as a business</strong>, Velko's total liability to you is limited to the fees Velko received from you in the 12 months before the claim. If you are a <strong>consumer</strong>, Velko is liable for loss that was a foreseeable result of our breach of these terms.</li>
   </ul>
 
   <h2>16. Ending your use</h2>
   <p>
-    You can stop using CarpeIt and delete your account whenever you like, once you have no
-    rental in progress. CarpeIt may suspend or close accounts that break these terms or the law,
+    You can stop using Velko and delete your account whenever you like, once you have no
+    rental in progress. Velko may suspend or close accounts that break these terms or the law,
     as described in section 13.
   </p>
   <p>
-    For schools and shops lending as a business, CarpeIt gives at least 30 days' notice, with
+    For schools and shops lending as a business, Velko gives at least 30 days' notice, with
     reasons, before ending their access for good, except for a serious or repeated breach of
     these terms, a legal obligation, or a safety risk (Regulation (EU) 2019/1150, art. 4).
-    Business owners can raise any complaint about CarpeIt by email, and CarpeIt answers within
+    Business owners can raise any complaint about Velko by email, and Velko answers within
     15 days.
   </p>
 
@@ -240,15 +240,15 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
 
   <h2>18. Complaints and dispute resolution</h2>
   <ul class="doc-list">
-    <li><strong>Contact us first</strong> at <a href={mail('CarpeIt complaint')}>{email}</a>. We reply within 15 working days.</li>
-    <li><strong>Complaints book.</strong> You can also complain in CarpeIt's <a href={complaintsBookUrl}>electronic complaints book (Livro de Reclamações Eletrónico)</a>.</li>
-    <li><strong>Alternative dispute resolution.</strong> If you're a consumer and we can't resolve a dispute, you can take it to a consumer arbitration centre. Under Lei 144/2015, CarpeIt refers you to <a href="https://www.cniacc.pt">CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo</a> (www.cniacc.pt), or the consumer arbitration centre for your area. The full list of approved entities is on the <a href="https://www.consumidor.gov.pt">Portal do Consumidor</a>.</li>
+    <li><strong>Contact us first</strong> at <a href={mail('Velko complaint')}>{email}</a>. We reply within 15 working days.</li>
+    <li><strong>Complaints book.</strong> You can also complain in Velko's <a href={complaintsBookUrl}>electronic complaints book (Livro de Reclamações Eletrónico)</a>.</li>
+    <li><strong>Alternative dispute resolution.</strong> If you're a consumer and we can't resolve a dispute, you can take it to a consumer arbitration centre. Under Lei 144/2015, Velko refers you to <a href="https://www.cniacc.pt">CNIACC – Centro Nacional de Informação e Arbitragem de Conflitos de Consumo</a> (www.cniacc.pt), or the consumer arbitration centre for your area. The full list of approved entities is on the <a href="https://www.consumidor.gov.pt">Portal do Consumidor</a>.</li>
   </ul>
 
   <h2>19. Contact</h2>
   <p>
-    Questions about these terms? Email <a href={mail('CarpeIt terms')}>{email}</a>
-    or write to {carpeitOperator.name}, {carpeitOperator.address}.
-    For how your data is handled, see the <a href="/carpeit/privacy/">Privacy Policy</a>.
+    Questions about these terms? Email <a href={mail('Velko terms')}>{email}</a>
+    or write to {velkoOperator.name}, {velkoOperator.address}.
+    For how your data is handled, see the <a href="/velko/privacy/">Privacy Policy</a>.
   </p>
-</CarpeItDoc>
+</VelkoDoc>

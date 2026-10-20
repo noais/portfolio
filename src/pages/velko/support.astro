@@ -1,9 +1,9 @@
 ---
-import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
-import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
-import { pricingFaq } from '../../data/carpeitPricing';
+import VelkoDoc from '../../layouts/VelkoDoc.astro';
+import { velkoOperator, complaintsBookUrl } from '../../data/velkoOperator';
+import { pricingFaq } from '../../data/velkoPricing';
 
-const supportMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('CarpeIt support')}`;
+const supportMail = `mailto:${velkoOperator.email}?subject=${encodeURIComponent('Velko support')}`;
 
 const faqs: { q: string; a: string; link?: { href: string; label: string } }[] = [
   {
@@ -12,7 +12,7 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: 'Are there any fees for renters?',
-    a: 'No. You pay the rental price shown before you book, with no service fee on top. CarpeIt’s commission is paid by the owner out of the price, so nothing is added for you.',
+    a: 'No. You pay the rental price shown before you book, with no service fee on top. Velko’s commission is paid by the owner out of the price, so nothing is added for you.',
   },
   {
     q: 'How does the deposit work?',
@@ -28,11 +28,11 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: 'The gear came back damaged. What happens?',
-    a: 'As the owner, open a claim from the rental before you confirm the return: describe what happened and how much of the deposit you’re asking for. The renter has 48 hours to accept or dispute it. If they accept, that amount goes to you and the rest of the hold is released. If they dispute it or don’t answer, the deposit stays on hold while CarpeIt reviews the handover photos and your messages, then decides how much goes to the owner and releases the rest. Both of you are told the outcome and the reasons in the rental’s conversation, and either of you can ask for a review within 14 days.',
+    a: 'As the owner, open a claim from the rental before you confirm the return: describe what happened and how much of the deposit you’re asking for. The renter has 48 hours to accept or dispute it. If they accept, that amount goes to you and the rest of the hold is released. If they dispute it or don’t answer, the deposit stays on hold while Velko reviews the handover photos and your messages, then decides how much goes to the owner and releases the rest. Both of you are told the outcome and the reasons in the rental’s conversation, and either of you can ask for a review within 14 days.',
   },
   {
     q: 'How do I get paid for lending gear?',
-    a: 'Go to Profile → Payments & payouts and set up payouts with Stripe. You need this before you can accept a booking. Your share of each rental is paid to your Stripe account when you accept the booking, and Stripe pays it out to your bank on Stripe’s payout schedule. CarpeIt’s commission and the amount you’ll receive are shown before you publish a listing and on every booking.',
+    a: 'Go to Profile → Payments & payouts and set up payouts with Stripe. You need this before you can accept a booking. Your share of each rental is paid to your Stripe account when you accept the booking, and Stripe pays it out to your bank on Stripe’s payout schedule. Velko’s commission and the amount you’ll receive are shown before you publish a listing and on every booking.',
   },
   // Owner commission entries, shared with the landing page FAQ.
   pricingFaq('commission'),
@@ -46,24 +46,24 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: 'How do I delete my account?',
-    a: 'Go to Profile and tap Delete account. If you have a rental in progress, finish or cancel it first. If you can’t use the app, email us from the address on your account with the subject “Delete my CarpeIt account”, and we’ll delete it within 30 days. Your login and personal details are removed; records of past rentals stay for the other person, shown as “Deleted user”, for as long as the law requires. The Delete account page explains exactly what is kept and for how long.',
-    link: { href: '/carpeit/delete-account/', label: 'How to delete your account' },
+    a: 'Go to Profile and tap Delete account. If you have a rental in progress, finish or cancel it first. If you can’t use the app, email us from the address on your account with the subject “Delete my Velko account”, and we’ll delete it within 30 days. Your login and personal details are removed; records of past rentals stay for the other person, shown as “Deleted user”, for as long as the law requires. The Delete account page explains exactly what is kept and for how long.',
+    link: { href: '/velko/delete-account/', label: 'How to delete your account' },
   },
   {
     q: 'Can I get a copy of my data?',
-    a: 'Yes. Email us from the address on your account with the subject “CarpeIt data export”. We’ll send you a copy of your account, listings, bookings, messages and other data in a machine-readable format within a month, as the GDPR requires. You can also ask us to correct or delete anything.',
-    link: { href: '/carpeit/privacy/', label: 'Read the Privacy Policy' },
+    a: 'Yes. Email us from the address on your account with the subject “Velko data export”. We’ll send you a copy of your account, listings, bookings, messages and other data in a machine-readable format within a month, as the GDPR requires. You can also ask us to correct or delete anything.',
+    link: { href: '/velko/privacy/', label: 'Read the Privacy Policy' },
   },
 ];
 ---
 
-<CarpeItDoc
-  title="CarpeIt — Support"
-  description="Help with renting and lending water sports gear on CarpeIt, and how to contact support."
+<VelkoDoc
+  title="Velko — Support"
+  description="Help with renting and lending water sports gear on Velko, and how to contact support."
   heading="Support"
 >
   <p class="doc-lead">
-    Stuck on a booking, a payment or a handover? Most answers are below. If yours isn't, email <a href={supportMail}>{carpeitOperator.email}</a> and
+    Stuck on a booking, a payment or a handover? Most answers are below. If yours isn't, email <a href={supportMail}>{velkoOperator.email}</a> and
     include the listing or rental it's about. We usually reply within 2 working days.
   </p>
 
@@ -79,20 +79,20 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
 
   <h2>Contact</h2>
   <p>
-    Email <a href={supportMail}>{carpeitOperator.email}</a>. We usually reply within 2 working days.
-    For anything about your data, see the <a href="/carpeit/privacy/">Privacy Policy</a>; to close
-    your account, <a href="/carpeit/delete-account/">Delete your account</a>; for the rules of
-    renting and lending, the <a href="/carpeit/terms/">Terms of Service</a>.
+    Email <a href={supportMail}>{velkoOperator.email}</a>. We usually reply within 2 working days.
+    For anything about your data, see the <a href="/velko/privacy/">Privacy Policy</a>; to close
+    your account, <a href="/velko/delete-account/">Delete your account</a>; for the rules of
+    renting and lending, the <a href="/velko/terms/">Terms of Service</a>.
   </p>
   <p>
     Not happy with how we handled something? You can also use the
     <a href={complaintsBookUrl}>electronic complaints book (Livro de Reclamações)</a>, or, as a
     consumer, take a dispute to <a href="https://www.cniacc.pt">CNIACC</a>, a consumer
-    arbitration centre. CarpeIt is operated by {carpeitOperator.name}, {carpeitOperator.address}.
+    arbitration centre. Velko is operated by {velkoOperator.name}, {velkoOperator.address}.
   </p>
 
   <p class="doc-note">
     If someone is in danger on the water or on land, call 112 (the EU emergency number) or your
     local emergency services first.
   </p>
-</CarpeItDoc>
+</VelkoDoc>

@@ -1,10 +1,10 @@
 ---
-import CarpeItDoc from '../../../layouts/CarpeItDoc.astro';
+import VelkoDoc from '../../../layouts/VelkoDoc.astro';
 ---
 
-<CarpeItDoc
-  title="CarpeIt — Payout setup link expired"
-  description="Stripe's payout setup link expired. Start it again from CarpeIt."
+<VelkoDoc
+  title="Velko — Payout setup link expired"
+  description="Stripe's payout setup link expired. Start it again from Velko."
   heading="That setup link expired"
 >
   <p class="doc-lead">
@@ -14,24 +14,24 @@ import CarpeItDoc from '../../../layouts/CarpeItDoc.astro';
   </p>
 
   <p>
-    <a href="carpeit://connect/refresh" class="app-button" id="open-app">Open CarpeIt</a>
+    <a href="velko://connect/refresh" class="app-button" id="open-app">Open Velko</a>
   </p>
 
   <h2>Starting again</h2>
   <p>
-    In CarpeIt, go to <strong>Profile → Payments &amp; payouts</strong> and tap
+    In Velko, go to <strong>Profile → Payments &amp; payouts</strong> and tap
     <strong>Continue payout setup</strong>. Stripe keeps whatever you already
     entered, so you'll only be asked for what's still missing.
   </p>
 
   <p class="doc-note">
     Stuck? Email
-    <a href="mailto:hey@davidferreira.dev?subject=CarpeIt%20payouts">hey@davidferreira.dev</a>.
+    <a href="mailto:hey@davidferreira.dev?subject=Velko%20payouts">hey@davidferreira.dev</a>.
   </p>
-</CarpeItDoc>
+</VelkoDoc>
 
 <script>
-  window.setTimeout(() => { window.location.href = 'carpeit://connect/refresh'; }, 400);
+  window.setTimeout(() => { window.location.href = 'velko://connect/refresh'; }, 400);
 </script>
 
 <style>

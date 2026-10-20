@@ -1,17 +1,17 @@
-// CarpeIt owner commission tiers, as shown on the CarpeIt landing page and
+// Velko owner commission tiers, as shown on the Velko landing page and
 // Support FAQ.
 //
 // KEEP IN SYNC: this mirrors the backend `commission_tiers` table
-// (carpeit-server migration 0048). Change the rates there and here together,
-// and update section 6 of src/pages/carpeit/terms.astro (which states the
+// (velko-server migration 0048). Change the rates there and here together,
+// and update section 6 of src/pages/velko/terms.astro (which states the
 // rates in its own words, because a change to the Terms needs advance notice
 // and a terms_version bump).
 //
-// The percentage is everything CarpeIt takes from the owner: any VAT due on
-// CarpeIt's commission is included in it, and Stripe's processing fees are
-// paid by CarpeIt out of its commission.
+// The percentage is everything Velko takes from the owner: any VAT due on
+// Velko's commission is included in it, and Stripe's processing fees are
+// paid by Velko out of its commission.
 
-import { carpeitOperator } from './carpeitOperator';
+import { velkoOperator } from './velkoOperator';
 
 export type CommissionTierCode = 'standard' | 'volume' | 'founding';
 
@@ -44,7 +44,7 @@ export const ownerPricingSummary = 'When the new pricing model activates, Standa
 export const currentRateNote = 'Until the new pricing model activates, every owner pays the current 8% commission.';
 export const foundingMigrationSummary = 'Existing owners with at least one published listing or a booking as owner before the activation cutoff qualify for Founding Partner commission. This applies to private owners, schools and shops. Accounts with only drafts and no bookings default to Standard.';
 export const foundingApplicationsSummary = foundingApplicationsOpen
-  ? 'Founding Partner applications are open to eligible early partners, including owners joining the Ericeira and Peniche launch. New owners default to Standard; the 8% rate requires approval from CarpeIt.'
+  ? 'Founding Partner applications are open to eligible early partners, including owners joining the Ericeira and Peniche launch. New owners default to Standard; the 8% rate requires approval from Velko.'
   : 'Founding Partner applications are closed. Existing Founding Partners retain their eligibility; new owners default to Standard.';
 export const existingBookingSummary = 'Already-confirmed bookings keep their original commission. The new rates apply to future bookings after activation.';
 
@@ -90,10 +90,10 @@ export const foundingTier: CommissionTier = {
   badge: foundingApplicationsOpen ? 'Open to new owners · by approval' : 'Existing Founding Partners only',
   bullets: [
     'Special reduced rate for eligible early partners',
-    'A reward for supporting CarpeIt from the beginning',
+    'A reward for supporting Velko from the beginning',
     'Eligibility and duration governed by the published programme terms',
     foundingApplicationsOpen
-      ? 'Already listing on CarpeIt? You keep 8% as a Founding Partner'
+      ? 'Already listing on Velko? You keep 8% as a Founding Partner'
       : 'No longer open to new applications',
   ],
 };
@@ -113,10 +113,10 @@ export interface PricingFaq {
   link?: { href: string; label: string };
 }
 
-const applyMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('CarpeIt partner tier')}`;
+const applyMail = `mailto:${velkoOperator.email}?subject=${encodeURIComponent('Velko partner tier')}`;
 
 const foundingApply = foundingApplicationsOpen
-  ? `The Founding Partner programme is open to new owners, by approval, and owners who already list on CarpeIt keep ${foundingTier.percent}% as Founding Partners. Its eligibility and duration are set by the published programme terms.`
+  ? `The Founding Partner programme is open to new owners, by approval, and owners who already list on Velko keep ${foundingTier.percent}% as Founding Partners. Its eligibility and duration are set by the published programme terms.`
   : `The Founding Partner programme is closed to new applications; owners who are already Founding Partners keep ${foundingTier.percent}% under the published programme terms.`;
 
 export const pricingFaqs: PricingFaq[] = [
@@ -128,22 +128,22 @@ export const pricingFaqs: PricingFaq[] = [
   {
     id: 'free-listing',
     q: 'Is listing free?',
-    a: 'Yes. Listing your equipment costs nothing and there is no subscription. CarpeIt only earns its commission when a rental goes ahead.',
+    a: 'Yes. Listing your equipment costs nothing and there is no subscription. Velko only earns its commission when a rental goes ahead.',
   },
   {
     id: 'when-charged',
     q: 'When is the commission charged?',
-    a: 'Only when a rental goes ahead. The renter’s card is authorised when they send a request and charged when you accept it; CarpeIt’s commission is deducted from that payment before your share is paid out. If the renter ends up with a full refund, CarpeIt gives back its commission too, so you pay nothing on that rental.',
+    a: 'Only when a rental goes ahead. The renter’s card is authorised when they send a request and charged when you accept it; Velko’s commission is deducted from that payment before your share is paid out. If the renter ends up with a full refund, Velko gives back its commission too, so you pay nothing on that rental.',
   },
   {
     id: 'payouts',
     q: 'How and when do I get paid?',
-    a: 'Through Stripe Connect. Set up payouts in Profile → Payments & payouts; you need this before you can accept a booking. Your share of each rental is paid to your Stripe account when you accept the booking, and Stripe pays it out to your bank on Stripe’s payout schedule. Stripe’s card processing fees are paid by CarpeIt out of its commission, not by you.',
+    a: 'Through Stripe Connect. Set up payouts in Profile → Payments & payouts; you need this before you can accept a booking. Your share of each rental is paid to your Stripe account when you accept the booking, and Stripe pays it out to your bank on Stripe’s payout schedule. Stripe’s card processing fees are paid by Velko out of its commission, not by you.',
   },
   {
     id: 'cancellations',
     q: 'What happens if a rental is cancelled or refunded?',
-    a: 'A renter can cancel a request for free before you accept it. After you accept, the renter gets a full refund if they cancel up to 48 hours before pickup, and no refund after that. If you cancel, the renter always gets a full refund. Whenever the renter gets a full refund, CarpeIt gives back its commission, so you pay nothing on that rental.',
+    a: 'A renter can cancel a request for free before you accept it. After you accept, the renter gets a full refund if they cancel up to 48 hours before pickup, and no refund after that. If you cancel, the renter always gets a full refund. Whenever the renter gets a full refund, Velko gives back its commission, so you pay nothing on that rental.',
   },
   {
     id: 'renter-fees',
@@ -153,8 +153,8 @@ export const pricingFaqs: PricingFaq[] = [
   {
     id: 'become-partner',
     q: 'How do I become a Founding or Volume Partner?',
-    a: `Email ${carpeitOperator.email} with a few words about you and your gear, and CarpeIt will review it. The Volume Partner rate is for qualified high-volume partners such as rental businesses, schools, clubs and frequent equipment owners. ${foundingApply} Until a tier is approved, you are on the Standard rate.`,
-    link: { href: applyMail, label: `Email ${carpeitOperator.email}` },
+    a: `Email ${velkoOperator.email} with a few words about you and your gear, and Velko will review it. The Volume Partner rate is for qualified high-volume partners such as rental businesses, schools, clubs and frequent equipment owners. ${foundingApply} Until a tier is approved, you are on the Standard rate.`,
+    link: { href: applyMail, label: `Email ${velkoOperator.email}` },
   },
   {
     id: 'founding-eligibility',
@@ -170,7 +170,7 @@ export const pricingFaqs: PricingFaq[] = [
   {
     id: 'vat',
     q: 'Does the commission include VAT?',
-    a: 'Yes. The percentage is everything CarpeIt takes from you: any VAT due on CarpeIt’s commission is included in it. You remain responsible for any taxes due on what you earn.',
+    a: 'Yes. The percentage is everything Velko takes from you: any VAT due on Velko’s commission is included in it. You remain responsible for any taxes due on what you earn.',
   },
 ];
 
