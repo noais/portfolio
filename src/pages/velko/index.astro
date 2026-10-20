@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { carpeitOperator, complaintsBookUrl } from '../../data/carpeitOperator';
-import { commissionTiers, exampleRentalPrice, formatEuro, ownerReceives, pricingFaqs, standardTier, currentRateNote, existingBookingSummary, foundingApplicationsOpen } from '../../data/carpeitPricing';
+import { velkoOperator, complaintsBookUrl } from '../../data/velkoOperator';
+import { commissionTiers, exampleRentalPrice, formatEuro, ownerReceives, pricingFaqs, standardTier, currentRateNote, existingBookingSummary, foundingApplicationsOpen } from '../../data/velkoPricing';
 
 const strip = ['Kitesurf', 'Surf', 'Wing foil', 'SUP', 'Riders', 'Schools & shops'];
 
@@ -34,34 +34,34 @@ const features = [
 
 const screens = [
   {
-    src: '/carpeit/screen-explore.webp',
+    src: '/velko/screen-explore.webp',
     title: 'Browse what’s nearby',
     body: 'Gear from riders, schools and shops, with the day price up front.',
-    alt: 'CarpeIt Explore feed with a Duotone Unit 4m wing at €30 a day and sport filters',
+    alt: 'Velko Explore feed with a Duotone Unit 4m wing at €30 a day and sport filters',
   },
   {
-    src: '/carpeit/screen-map.webp',
+    src: '/velko/screen-map.webp',
     title: 'Search the coast',
     body: 'Price pins along the spots you ride, with a list view one tap away.',
-    alt: 'CarpeIt map search with price pins around Aveiro and a Duotone Rebel SLS preview card',
+    alt: 'Velko map search with price pins around Aveiro and a Duotone Rebel SLS preview card',
   },
   {
-    src: '/carpeit/screen-detail.webp',
+    src: '/velko/screen-detail.webp',
     title: 'Know what you’re getting',
     body: 'Sport-specific specs, condition and owner rating before you book.',
-    alt: 'CarpeIt listing for a Duotone Rebel SLS 9m kite at €50 a day',
+    alt: 'Velko listing for a Duotone Rebel SLS 9m kite at €50 a day',
   },
   {
-    src: '/carpeit/screen-dates.webp',
+    src: '/velko/screen-dates.webp',
     title: 'Pick your days',
     body: 'Live availability and an honest total before checkout.',
-    alt: 'CarpeIt availability calendar with 16 to 18 October selected and a Continue · €100 button',
+    alt: 'Velko availability calendar with 16 to 18 October selected and a Continue · €100 button',
   },
   {
-    src: '/carpeit/screen-explore2.webp',
+    src: '/velko/screen-explore2.webp',
     title: 'Follow the water',
     body: 'A map preview and editorial moments that keep the feed feeling like the beach.',
-    alt: 'CarpeIt Explore map preview with prices and a “Find your gear. Follow the water.” card',
+    alt: 'Velko Explore map preview with prices and a “Find your gear. Follow the water.” card',
   },
 ];
 
@@ -127,32 +127,32 @@ const ownerTypes = [
   },
 ];
 
-const listMail = `mailto:${carpeitOperator.email}?subject=${encodeURIComponent('Listing my gear on CarpeIt')}`;
+const listMail = `mailto:${velkoOperator.email}?subject=${encodeURIComponent('Listing my gear on Velko')}`;
 
 const app = {
   '@type': 'SoftwareApplication',
-  name: 'CarpeIt',
+  name: 'Velko',
   operatingSystem: 'iOS, Android',
   applicationCategory: 'LifestyleApplication',
   inLanguage: 'en',
-  url: 'https://davidferreira.dev/carpeit/',
-  image: 'https://davidferreira.dev/carpeit/og.png',
+  url: 'https://davidferreira.dev/velko/',
+  image: 'https://davidferreira.dev/velko/og.png',
   description:
     'A peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear in Portugal. Rent from local riders, schools and shops, or earn from the gear you are not using.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
   author: { '@type': 'Person', name: 'David Ferreira', url: 'https://davidferreira.dev' },
   publisher: {
     '@type': 'Organization',
-    name: carpeitOperator.name,
-    email: carpeitOperator.email,
-    address: carpeitOperator.address,
+    name: velkoOperator.name,
+    email: velkoOperator.email,
+    address: velkoOperator.address,
   },
 };
 
 // Mirrors the visible FAQ below, question for question.
 const faqPage = {
   '@type': 'FAQPage',
-  url: 'https://davidferreira.dev/carpeit/#faq',
+  url: 'https://davidferreira.dev/velko/#faq',
   mainEntity: pricingFaqs.map((f) => ({
     '@type': 'Question',
     name: f.q,
@@ -167,17 +167,17 @@ const structuredData = {
 ---
 
 <Layout
-  title="CarpeIt — rent water sports gear from local riders."
-  description="CarpeIt is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear in Portugal. Rent from local riders, schools and shops with no renter fees — or list your gear for free and earn when it’s rented."
-  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, list gear for free, earn from your gear, rental commission, Portugal, iOS app, Android app, CarpeIt"
+  title="Velko — rent water sports gear from local riders."
+  description="Velko is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear in Portugal. Rent from local riders, schools and shops with no renter fees — or list your gear for free and earn when it’s rented."
+  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, list gear for free, earn from your gear, rental commission, Portugal, iOS app, Android app, Velko"
   structuredData={structuredData}
-  siteName="CarpeIt"
+  siteName="Velko"
   locale="en_GB"
-  ogImage="/carpeit/og.png"
-  ogImageAlt="CarpeIt — rent water sports gear from local riders, schools and shops, or list yours for free"
+  ogImage="/velko/og.png"
+  ogImageAlt="Velko — rent water sports gear from local riders, schools and shops, or list yours for free"
   twitterCard="summary_large_image"
-  favicon="/carpeit/favicon-64.png"
-  appleTouchIcon="/carpeit/apple-touch-icon.png"
+  favicon="/velko/favicon-64.png"
+  appleTouchIcon="/velko/apple-touch-icon.png"
 >
 
 <!-- ─── NAV ─────────────────────────────────────────────────────── -->
@@ -205,9 +205,9 @@ const structuredData = {
 
     <div class="hero-copy">
       <div class="hero-id">
-        <img src="/carpeit/app-icon.png" alt="CarpeIt app icon" class="hero-icon" width="72" height="72" />
+        <img src="/velko/app-icon.png" alt="Velko app icon" class="hero-icon" width="72" height="72" />
         <div>
-          <p class="hero-name">CarpeIt</p>
+          <p class="hero-name">Velko</p>
           <p class="hero-kicker">Water sports gear rental · Launching in Portugal</p>
         </div>
       </div>
@@ -218,7 +218,7 @@ const structuredData = {
       </h1>
 
       <p class="hero-sub">
-        Rent great gear from local riders, schools and shops — or share yours. CarpeIt is a
+        Rent great gear from local riders, schools and shops — or share yours. Velko is a
         peer-to-peer marketplace for kitesurf, surf, wing foil and SUP, built around trust:
         honest totals, separate deposits, and condition photos at every handover.
       </p>
@@ -232,10 +232,10 @@ const structuredData = {
     <div class="hero-visual" aria-hidden="true">
       <div class="phone-stack">
         <div class="phone phone--back">
-          <img src="/carpeit/screen-explore.webp" alt="" width="659" height="1434" loading="eager" />
+          <img src="/velko/screen-explore.webp" alt="" width="659" height="1434" loading="eager" />
         </div>
         <div class="phone phone--front">
-          <img src="/carpeit/welcome.webp" alt="" width="659" height="1434" loading="eager" fetchpriority="high" />
+          <img src="/velko/welcome.webp" alt="" width="659" height="1434" loading="eager" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -265,7 +265,7 @@ const structuredData = {
         Water sports equipment is expensive, bulky and situational. Riders travel without the
         right kite or board for the conditions, while other riders have spare sizes that barely
         get wet. Schools and shops have gear to rent, but finding it means websites, WhatsApp
-        and phone calls. CarpeIt puts all of it on one map, bookable in minutes, with the trust
+        and phone calls. Velko puts all of it on one map, bookable in minutes, with the trust
         built in that lending your own gear to a stranger needs.
       </p>
       <div class="premise-stats">
@@ -287,8 +287,8 @@ const structuredData = {
     <div class="premise-visual">
       <div class="premise-phone">
         <img
-          src="/carpeit/screen-detail.webp"
-          alt="CarpeIt listing for a Duotone Rebel SLS 9m kite in Costa Nova at €50 a day, with condition, discipline and a Check availability button"
+          src="/velko/screen-detail.webp"
+          alt="Velko listing for a Duotone Rebel SLS 9m kite in Costa Nova at €50 a day, with condition, discipline and a Check availability button"
           loading="lazy"
           width="659"
           height="1434"
@@ -306,7 +306,7 @@ const structuredData = {
       <h2 class="section-title">From the map to the water in a few taps.</h2>
     </div>
   </div>
-  <ol class="gallery" aria-label="CarpeIt screens">
+  <ol class="gallery" aria-label="Velko screens">
     {screens.map((sc, i) => (
       <li class="gallery-item">
         <div class="gallery-phone">
@@ -328,7 +328,7 @@ const structuredData = {
       <h2 class="section-title">Trust before growth hacks.</h2>
       <p class="section-lede">
         Condition photos, clear deposits and transparent payouts matter more than urgency
-        banners. Every flow in CarpeIt is designed so both sides know exactly what they are
+        banners. Every flow in Velko is designed so both sides know exactly what they are
         agreeing to.
       </p>
     </div>
@@ -376,9 +376,9 @@ const structuredData = {
       <h2 class="section-title">List your equipment for free. Earn when someone rents it.</h2>
       <p class="section-lede">
         That spare kite, the board that only comes out in big swell, the SUPs stacked at the back
-        of the school: most gear spends more days dry than wet. CarpeIt puts it in front of riders
+        of the school: most gear spends more days dry than wet. Velko puts it in front of riders
         searching the coast you’re on, so it earns while you’re not using it. Listing is free,
-        there’s no subscription, and CarpeIt only takes a commission when a rental goes ahead —
+        there’s no subscription, and Velko only takes a commission when a rental goes ahead —
         you see exactly what you’ll receive before you publish. We’re onboarding the first
         riders, schools and shops in Portugal ahead of launch.
       </p>
@@ -400,7 +400,7 @@ const structuredData = {
 
     <div class="hero-actions list-actions">
       <a href={listMail} class="btn-primary">{foundingApplicationsOpen ? 'Ask about Founding Partner eligibility' : 'Tell us about your gear'}</a>
-      <a href="/carpeit/terms/" class="btn-ghost">Read the owner terms</a>
+      <a href="/velko/terms/" class="btn-ghost">Read the owner terms</a>
     </div>
   </div>
 </section>
@@ -415,7 +415,7 @@ const structuredData = {
         Every owner starts as a Standard Partner at {standardTier.percent}%.
         Rental businesses, schools, clubs and early partners can apply for a reduced rate.
         Renters pay the price shown — no service fee on top. {currentRateNote}
-        {existingBookingSummary} <a href="/carpeit/terms/#owner-fees">See eligibility and fee details.</a>
+        {existingBookingSummary} <a href="/velko/terms/#owner-fees">See eligibility and fee details.</a>
       </p>
     </div>
 
@@ -442,11 +442,11 @@ const structuredData = {
     </div>
 
     <p class="tier-note">
-      The commission is everything CarpeIt takes from you: any VAT due is included, and Stripe’s
-      card processing fees are paid by CarpeIt out of its commission. Payouts reach your bank on
+      The commission is everything Velko takes from you: any VAT due is included, and Stripe’s
+      card processing fees are paid by Velko out of its commission. Payouts reach your bank on
       Stripe’s payout schedule. Volume and Founding rates are by approval; Founding Partner
       eligibility and duration follow the published programme terms.
-      See <a href="/carpeit/terms/">the Terms, section 6</a>.
+      See <a href="/velko/terms/">the Terms, section 6</a>.
     </p>
   </div>
 </section>
@@ -470,7 +470,7 @@ const structuredData = {
     </div>
 
     <p class="tier-note">
-      More questions about renting, deposits or handovers? See <a href="/carpeit/support/">Support</a>.
+      More questions about renting, deposits or handovers? See <a href="/velko/support/">Support</a>.
     </p>
   </div>
 </section>
@@ -482,7 +482,7 @@ const structuredData = {
       <span class="eyebrow eyebrow--accent">Behind the build</span>
       <h2 class="section-title">A two-sided marketplace, end to end.</h2>
       <p class="section-lede">
-        CarpeIt is a product by <a href="/">David Ferreira</a> — the SwiftUI app and its design
+        Velko is a product by <a href="/">David Ferreira</a> — the SwiftUI app and its design
         system, the Supabase schema and edge functions that own pricing and booking state, and
         the Stripe payment, deposit and payout flows.
       </p>
@@ -509,11 +509,11 @@ const structuredData = {
     <span class="eyebrow eyebrow--accent">Get in touch</span>
     <h2 class="get-headline">Life’s better on the water.</h2>
     <p class="get-sub">
-      CarpeIt is launching in Portugal on iPhone and Android. If you run a school or shop, have
+      Velko is launching in Portugal on iPhone and Android. If you run a school or shop, have
       gear to share, or want to talk about building something similar, I’d like to hear from you.
     </p>
     <div class="hero-actions">
-      <a href={`mailto:${carpeitOperator.email}?subject=CarpeIt`} class="btn-primary">Email me about CarpeIt</a>
+      <a href={`mailto:${velkoOperator.email}?subject=Velko`} class="btn-primary">Email me about Velko</a>
       <a href="/#work" class="btn-ghost">See more work</a>
     </div>
   </div>
@@ -522,28 +522,28 @@ const structuredData = {
 <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
 <footer class="footer">
   <p class="footer-links">
-    <a href="/carpeit/support/">Support</a>
+    <a href="/velko/support/">Support</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/privacy/">Privacy</a>
+    <a href="/velko/privacy/">Privacy</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/terms/">Terms</a>
+    <a href="/velko/terms/">Terms</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/delete-account/">Delete account</a>
+    <a href="/velko/delete-account/">Delete account</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/accessibility/">Accessibility</a>
+    <a href="/velko/accessibility/">Accessibility</a>
     <span aria-hidden="true">·</span>
     <a href={complaintsBookUrl}>Livro de Reclamações</a>
     <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>
-  <p>{carpeitOperator.name} · NIPC {carpeitOperator.nipc} · {carpeitOperator.address} · <span id="year"></span></p>
+  <p>{velkoOperator.name} · NIPC {velkoOperator.nipc} · {velkoOperator.address} · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
 </footer>
 
 </Layout>
 
 <style>
-/* CarpeIt's own lime + ocean-aqua accents, on the site's dark navy shell */
+/* Velko's own lime + ocean-aqua accents, on the site's dark navy shell */
 :root {
   --accent:   #D6F76B;
   --accent-2: #39C6BD;

@@ -1,8 +1,8 @@
 ---
-// Shell for CarpeIt's policy and support pages: the site's navy layout with
-// CarpeIt's lime + aqua accents, a CarpeIt nav, and a document column.
+// Shell for Velko's policy and support pages: the site's navy layout with
+// Velko's lime + aqua accents, a Velko nav, and a document column.
 import Layout from './Layout.astro';
-import { carpeitOperator, complaintsBookUrl } from '../data/carpeitOperator';
+import { velkoOperator, complaintsBookUrl } from '../data/velkoOperator';
 
 interface Props {
   title: string;
@@ -17,21 +17,21 @@ const { title, description, heading, lastUpdated } = Astro.props;
 <Layout
   title={title}
   description={description}
-  siteName="CarpeIt"
+  siteName="Velko"
   locale="en_GB"
-  ogImage="/carpeit/og.png"
-  ogImageAlt="CarpeIt — rent water sports gear from local riders, schools and shops"
+  ogImage="/velko/og.png"
+  ogImageAlt="Velko — rent water sports gear from local riders, schools and shops"
   twitterCard="summary_large_image"
-  favicon="/carpeit/favicon-64.png"
-  appleTouchIcon="/carpeit/apple-touch-icon.png"
+  favicon="/velko/favicon-64.png"
+  appleTouchIcon="/velko/apple-touch-icon.png"
 >
 
 <header class="nav-shell">
   <nav class="nav-inner">
     <a href="/" class="nav-logo">DF</a>
     <ul class="nav-links">
-      <li><a href="/carpeit/">CarpeIt</a></li>
-      <li><a href="/carpeit/support/">Support</a></li>
+      <li><a href="/velko/">Velko</a></li>
+      <li><a href="/velko/support/">Support</a></li>
       <li><a href="/">Portfolio</a></li>
     </ul>
   </nav>
@@ -39,7 +39,7 @@ const { title, description, heading, lastUpdated } = Astro.props;
 
 <main class="doc">
   <div class="doc-inner">
-    <span class="eyebrow">CarpeIt</span>
+    <span class="eyebrow">Velko</span>
     <h1 class="doc-title">{heading}</h1>
     {lastUpdated && <p class="doc-meta">Last updated {lastUpdated}</p>}
     <slot />
@@ -48,23 +48,23 @@ const { title, description, heading, lastUpdated } = Astro.props;
 
 <footer class="footer">
   <p class="footer-links">
-    <a href="/carpeit/">CarpeIt</a>
+    <a href="/velko/">Velko</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/support/">Support</a>
+    <a href="/velko/support/">Support</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/privacy/">Privacy</a>
+    <a href="/velko/privacy/">Privacy</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/terms/">Terms</a>
+    <a href="/velko/terms/">Terms</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/delete-account/">Delete account</a>
+    <a href="/velko/delete-account/">Delete account</a>
     <span aria-hidden="true">·</span>
-    <a href="/carpeit/accessibility/">Accessibility</a>
+    <a href="/velko/accessibility/">Accessibility</a>
     <span aria-hidden="true">·</span>
     <a href={complaintsBookUrl}>Livro de Reclamações</a>
     <span aria-hidden="true">·</span>
     <a href="/">Portfolio</a>
   </p>
-  <p>{carpeitOperator.name} · NIPC {carpeitOperator.nipc} · {carpeitOperator.address} · <span id="year"></span></p>
+  <p>{velkoOperator.name} · NIPC {velkoOperator.nipc} · {velkoOperator.address} · <span id="year"></span></p>
   <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
 </footer>
 

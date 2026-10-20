@@ -1,21 +1,21 @@
 ---
-import CarpeItDoc from '../../layouts/CarpeItDoc.astro';
-import { carpeitOperator } from '../../data/carpeitOperator';
+import VelkoDoc from '../../layouts/VelkoDoc.astro';
+import { velkoOperator } from '../../data/velkoOperator';
 
 const lastUpdated = '14 October 2026';
-const email = carpeitOperator.email;
-const a11yMail = `mailto:${email}?subject=${encodeURIComponent('CarpeIt accessibility')}`;
+const email = velkoOperator.email;
+const a11yMail = `mailto:${email}?subject=${encodeURIComponent('Velko accessibility')}`;
 ---
 
-<CarpeItDoc
-  title="CarpeIt — Accessibility"
-  description="CarpeIt's accessibility statement: the standard we aim for, known gaps, and how to tell us about a barrier."
+<VelkoDoc
+  title="Velko — Accessibility"
+  description="Velko's accessibility statement: the standard we aim for, known gaps, and how to tell us about a barrier."
   heading="Accessibility"
   lastUpdated={lastUpdated}
 >
   <p class="doc-lead">
-    CarpeIt should work for everyone who wants to get on the water. This statement covers the
-    CarpeIt apps for iPhone and Android and these CarpeIt web pages.
+    Velko should work for everyone who wants to get on the water. This statement covers the
+    Velko apps for iPhone and Android and these Velko web pages.
   </p>
 
   <h2>What we aim for</h2>
@@ -38,13 +38,13 @@ const a11yMail = `mailto:${email}?subject=${encodeURIComponent('CarpeIt accessib
 
   <h2>Tell us about a barrier</h2>
   <p>
-    If something in CarpeIt is hard or impossible for you to use, email
+    If something in Velko is hard or impossible for you to use, email
     <a href={a11yMail}>{email}</a> with the screen or page and what happened. We usually reply
     within 2 working days, and we'll do what we can to help you in the meantime.
   </p>
 
   <p class="doc-note">
-    This statement was prepared on 14 October 2026, before CarpeIt's public launch, and will be
+    This statement was prepared on 14 October 2026, before Velko's public launch, and will be
     reviewed after launch and at least once a year.
   </p>
-</CarpeItDoc>
+</VelkoDoc>
