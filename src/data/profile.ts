@@ -4,7 +4,7 @@
 
 export const profile = {
   name: 'David Ferreira',
-  role: 'Mobile Engineering Lead & iOS Architect',
+  role: 'Software Engineering Lead',
   yearsExperience: '16+',
   location: 'Portugal',
   timezone: 'UTC+0 / UTC+1 (Lisbon)',
@@ -130,6 +130,7 @@ export const community = [
 export const languages = [
   { name: 'Portuguese', level: 'Native' },
   { name: 'English', level: 'Professional' },
+  { name: 'French', level: 'Professional' },
 ];
 
 /** The Person node every page's JSON-LD points at by @id. */
@@ -143,16 +144,15 @@ export const personSchema = {
   image: `${profile.site}/og.png`,
   address: { '@type': 'PostalAddress', addressCountry: 'PT' },
   alumniOf: { '@type': 'CollegeOrUniversity', name: education.school },
-  knowsLanguage: ['pt', 'en'],
+  knowsLanguage: ['pt', 'en', 'fr'],
   knowsAbout: [
-    'iOS development',
-    'Swift',
-    'SwiftUI',
-    'Mobile architecture',
-    'Swift Concurrency',
-    'Real-time systems',
+    'Software engineering',
+    'Software architecture',
     'Engineering leadership',
+    'Mobile development',
+    'Real-time systems',
     'Release management',
+    'AI-assisted development',
   ],
   sameAs: [profile.linkedin, profile.github],
 };
