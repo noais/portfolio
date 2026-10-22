@@ -65,6 +65,27 @@ const screens = [
   },
 ];
 
+const duoScreens = [
+  {
+    src: '/velko/duo-explore.webp',
+    title: 'The feed beside the coast',
+    body: 'Gear from the local community on one side, the map it lives on fading in on the other.',
+    alt: 'Velko on the unfolded iPhone Duo: the Explore feed with a Duotone Rebel SLS 9m kite at €50 a day on the left, a full-height map of the Aveiro coast with price pins on the right',
+  },
+  {
+    src: '/velko/duo-search.webp',
+    title: 'Map and results together',
+    body: 'Tap a pin to preview it, while the list stays one glance away.',
+    alt: 'Velko search on the unfolded iPhone Duo: a map with a selected €30 pin and its Duotone Unit 4m preview on the left, filters and listing results on the right',
+  },
+  {
+    src: '/velko/duo-detail.webp',
+    title: 'Photos stay in view',
+    body: 'Read the specs and the owner while the gear stays on screen.',
+    alt: 'Velko listing for a Duotone Unit 4m wing on the unfolded iPhone Duo: price, specs and the owner on the left, a full-height photo of a rider on the right',
+  },
+];
+
 const roles = [
   {
     tier: 'Renting',
@@ -318,6 +339,34 @@ const structuredData = {
       </li>
     ))}
   </ol>
+</section>
+
+<!-- ─── DUO ───────────────────────────────────────────────────────── -->
+<section id="duo" class="section section--navy duo-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow eyebrow--accent">iPhone Duo</span>
+      <h2 class="section-title">Unfold it, and the map comes along.</h2>
+      <p class="section-lede">
+        On the inner display of iPhone Duo, Velko stops making you choose: the feed sits beside
+        the coast, search results beside the map, the photos beside the specs. Folded, it is the
+        same one-handed phone app, and what you were looking at carries across.
+      </p>
+    </div>
+    <div class="duo-grid">
+      {duoScreens.map((sc, i) => (
+        <figure class={`duo-item reveal${i === 0 ? ' duo-item--lead' : ' reveal-delay-1'}`}>
+          <div class="duo-frame">
+            <img src={sc.src} alt={sc.alt} width="1600" height="1126" loading="lazy" decoding="async" />
+          </div>
+          <figcaption>
+            <h3 class="gallery-title">{sc.title}</h3>
+            <p class="gallery-body">{sc.body}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
 </section>
 
 <!-- ─── FEATURES ──────────────────────────────────────────────────── -->
@@ -992,6 +1041,26 @@ const structuredData = {
   margin: 0;
 }
 
+/* ── Duo ──────────────────────────────────────────────────────── */
+.duo-section { border-top: none; padding-top: 0; }
+.duo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem 2rem;
+}
+.duo-item { margin: 0; min-width: 0; }
+.duo-item--lead { grid-column: 1 / -1; }
+.duo-item--lead .duo-frame { max-width: 960px; margin: 0 auto 1.25rem; }
+.duo-item--lead figcaption { max-width: 960px; margin: 0 auto; }
+.duo-frame {
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35);
+  margin-bottom: 1.25rem;
+}
+.duo-item:not(.duo-item--lead) .duo-frame { border-radius: 20px; }
+.duo-frame img { display: block; width: 100%; height: auto; }
+
 /* ── Surfaces ─────────────────────────────────────────────────── */
 .surface-grid {
   display: grid;
@@ -1286,6 +1355,8 @@ const structuredData = {
   .price-grid--3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
+  .duo-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .duo-frame { border-radius: 16px; }
   .nav-inner { padding: 0 1.25rem; }
   .nav-links { gap: 0.875rem; }
   .nav-links a { font-size: 0.8125rem; }
