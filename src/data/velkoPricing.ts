@@ -1,5 +1,6 @@
-// Velko owner commission tiers, as shown on the Velko landing page and
-// Support FAQ.
+// Velko service fee tiers, as shown on the Velko landing page and Support FAQ.
+// The renter pays the fee on top of the owner's price; the owner receives the
+// full price they set (velko-server migration 0054, docs/MONEY_SAFETY.md).
 //
 // KEEP IN SYNC: this mirrors the backend `commission_tiers` table
 // (velko-server migration 0048). Change the rates there and here together,
@@ -7,9 +8,9 @@
 // rates in its own words, because a change to the Terms needs advance notice
 // and a terms_version bump).
 //
-// The percentage is everything Velko takes from the owner: any VAT due on
-// Velko's commission is included in it, and Stripe's processing fees are
-// paid by Velko out of its commission.
+// Any VAT due on the fee is included in it, and Stripe's processing fees are
+// paid by Velko out of it. The fee has a minimum that covers Velko's costs, so
+// the percentage is the plain rate only from about €90.
 
 import { velkoOperator } from './velkoOperator';
 
@@ -18,7 +19,7 @@ export type CommissionTierCode = 'standard' | 'volume' | 'founding';
 export interface CommissionTier {
   code: CommissionTierCode;
   name: string;
-  /** Commission as a whole percentage of the rental price. */
+  /** Service fee as a whole percentage of the owner's price. */
   percent: number;
   /** Short label shown above the rate, e.g. who the tier is for. */
   badge: string;
@@ -38,15 +39,15 @@ export interface CommissionTier {
 export const foundingApplicationsOpen = true;
 
 // Until the backend switches the new model on (commission_tiers_enabled),
-// every owner pays the current flat 8%. The copy says so wherever it quotes
+// every booking uses the current flat 8% rate. The copy says so wherever it quotes
 // the new rates.
-export const ownerPricingSummary = 'When the new pricing model activates, Standard commission will be 12% of the rental price and Founding Partners will pay 8%. Listing remains free, and renters pay no additional service fee.';
-export const currentRateNote = 'Until the new pricing model activates, every owner pays the current 8% commission.';
-export const foundingMigrationSummary = 'Existing owners with at least one published listing or a booking as owner before the activation cutoff qualify for Founding Partner commission. This applies to private owners, schools and shops. Accounts with only drafts and no bookings default to Standard.';
+export const ownerPricingSummary = 'When the new pricing model activates, the service fee on a Standard Partner’s listings will be 12% of their price and on a Founding Partner’s 8%. Listing remains free, and owners receive the full price they set.';
+export const currentRateNote = 'Until the new pricing model activates, every booking uses the current 8% rate.';
+export const foundingMigrationSummary = 'Existing owners with at least one published listing or a booking as owner before the activation cutoff qualify for the Founding Partner rate. This applies to private owners, schools and shops. Accounts with only drafts and no bookings default to Standard.';
 export const foundingApplicationsSummary = foundingApplicationsOpen
   ? 'Founding Partner applications are open to eligible early partners, including owners joining the Ericeira and Peniche launch. New owners default to Standard; the 8% rate requires approval from Velko.'
   : 'Founding Partner applications are closed. Existing Founding Partners retain their eligibility; new owners default to Standard.';
-export const existingBookingSummary = 'Already-confirmed bookings keep their original commission. The new rates apply to future bookings after activation.';
+export const existingBookingSummary = 'Already-confirmed bookings keep their original amounts. The new rates apply to future bookings after activation.';
 
 /** Worked example used on every tier card. */
 export const exampleRentalPrice = 100;
@@ -54,8 +55,9 @@ export const exampleRentalPrice = 100;
 export const formatEuro = (amount: number) =>
   `€${Number.isInteger(amount) ? amount : amount.toFixed(2)}`;
 
-export const ownerReceives = (tier: CommissionTier, price = exampleRentalPrice) =>
-  Math.round(price * (100 - tier.percent)) / 100;
+/** What the renter pays at a price where the plain percentage applies (about €90 and up). */
+export const renterPays = (tier: CommissionTier, price = exampleRentalPrice) =>
+  Math.round(price * (100 + tier.percent)) / 100;
 
 export const standardTier: CommissionTier = {
   code: 'standard',
@@ -66,7 +68,7 @@ export const standardTier: CommissionTier = {
   bullets: [
     'Free equipment listings',
     'No upfront subscription',
-    'Commission charged only on successful rentals',
+    'Service fee only on rentals that go ahead, paid by the renter',
     'Clear and transparent pricing',
   ],
 };
@@ -93,7 +95,7 @@ export const foundingTier: CommissionTier = {
     'A reward for supporting Velko from the beginning',
     'Eligibility and duration governed by the published programme terms',
     foundingApplicationsOpen
-      ? 'Already listing on Velko? You keep 8% as a Founding Partner'
+      ? 'Already listing on Velko? Your listings keep the 8% rate as a Founding Partner'
       : 'No longer open to new applications',
   ],
 };
@@ -116,39 +118,39 @@ export interface PricingFaq {
 const applyMail = `mailto:${velkoOperator.email}?subject=${encodeURIComponent('Velko partner tier')}`;
 
 const foundingApply = foundingApplicationsOpen
-  ? `The Founding Partner programme is open to new owners, by approval, and owners who already list on Velko keep ${foundingTier.percent}% as Founding Partners. Its eligibility and duration are set by the published programme terms.`
-  : `The Founding Partner programme is closed to new applications; owners who are already Founding Partners keep ${foundingTier.percent}% under the published programme terms.`;
+  ? `The Founding Partner programme is open to new owners, by approval, and owners who already list on Velko keep the ${foundingTier.percent}% rate as Founding Partners. Its eligibility and duration are set by the published programme terms.`
+  : `The Founding Partner programme is closed to new applications; owners who are already Founding Partners keep the ${foundingTier.percent}% rate under the published programme terms.`;
 
 export const pricingFaqs: PricingFaq[] = [
   {
     id: 'commission',
-    q: 'How much is the commission, and which tier am I on?',
-    a: `Every owner starts as a Standard Partner, at ${standardTier.percent}% of the rental price. Volume Partners pay ${volumeTier.percent}% and Founding Partners ${foundingTier.percent}%; both are by approval. Your rate and exactly what you’ll receive are shown before you publish a listing and on every booking. On a ${formatEuro(exampleRentalPrice)} rental, a Standard Partner receives ${formatEuro(ownerReceives(standardTier))}, a Volume Partner ${formatEuro(ownerReceives(volumeTier))} and a Founding Partner ${formatEuro(ownerReceives(foundingTier))}.`,
+    q: 'How much is the service fee, and which tier am I on?',
+    a: `You receive the full price you set, and the renter pays Velko’s service fee on top. The rate depends on your tier: every owner starts as a Standard Partner, at ${standardTier.percent}%. Volume Partners are at ${volumeTier.percent}% and Founding Partners at ${foundingTier.percent}%, both by approval. The fee has a minimum that covers Velko’s costs, so it is a higher share on small rentals, for example €5.50 on a €50 rental at the ${foundingTier.percent}% rate. On a ${formatEuro(exampleRentalPrice)} rental you receive ${formatEuro(exampleRentalPrice)} on every tier, and the renter pays ${formatEuro(renterPays(standardTier))}, ${formatEuro(renterPays(volumeTier))} or ${formatEuro(renterPays(foundingTier))}. What you’ll receive and what the renter will pay are shown before you publish a listing and on every booking.`,
   },
   {
     id: 'free-listing',
     q: 'Is listing free?',
-    a: 'Yes. Listing your equipment costs nothing and there is no subscription. Velko only earns its commission when a rental goes ahead.',
+    a: 'Yes. Listing your equipment costs nothing and there is no subscription. Velko only earns its service fee, paid by the renter, when a rental goes ahead.',
   },
   {
     id: 'when-charged',
-    q: 'When is the commission charged?',
-    a: 'Only when a rental goes ahead. The renter’s card is authorised when they send a request and charged when you accept it; Velko’s commission is deducted from that payment before your share is paid out. If the renter ends up with a full refund, Velko gives back its commission too, so you pay nothing on that rental.',
+    q: 'When is the service fee charged?',
+    a: 'Only when a rental goes ahead. The renter’s card is authorised for the total, service fee included, when they send a request, and charged when you accept it. Nothing is deducted from your price. If the rental is refunded, Velko returns its fee too.',
   },
   {
     id: 'payouts',
     q: 'How and when do I get paid?',
-    a: 'Through Stripe Connect. Set up payouts in Profile → Payments & payouts; you need this before you can accept a booking. Your share of each rental is paid to your Stripe account when you accept the booking, and Stripe pays it out to your bank on Stripe’s payout schedule. Stripe’s card processing fees are paid by Velko out of its commission, not by you.',
+    a: 'Through Stripe Connect. Set up payouts in Profile → Payments & payouts; you need this before you can accept a booking. The price you set is paid to your Stripe account once the gear has been handed over (pickup confirmed in the app), and Stripe pays it out to your bank on Stripe’s payout schedule. Velko pays Stripe’s card processing fees on a rental out of its service fee.',
   },
   {
     id: 'cancellations',
     q: 'What happens if a rental is cancelled or refunded?',
-    a: 'A renter can cancel a request for free before you accept it. After you accept, the renter gets a full refund if they cancel up to 48 hours before pickup, and no refund after that. If you cancel, the renter always gets a full refund. Whenever the renter gets a full refund, Velko gives back its commission, so you pay nothing on that rental.',
+    a: 'A renter can cancel a request for free before you accept it. After you accept, they can cancel until 48 hours before pickup and are refunded less the card payment fee, which the payment provider doesn’t return (for example €1.00 on a €50 rental paid by a European card); after that, there’s no refund. If you cancel an accepted booking, the renter always gets a full refund, and you first pay by card the payment fee that refund costs (for example €1.30 on a €50 rental). The app shows the amount before anyone confirms.',
   },
   {
     id: 'renter-fees',
-    q: 'Do renters pay any extra fees?',
-    a: 'No. Renters pay the price shown before they book, with no service fee on top. If a listing has a deposit, it is held on the renter’s card, not charged, unless there is a damage claim.',
+    q: 'What do renters pay?',
+    a: 'The price they see. Every price in the app already includes Velko’s service fee, and checkout shows it as its own line, so nothing is added at the end. If a listing has a deposit, it is held on the renter’s card, not charged, unless there is a damage claim.',
   },
   {
     id: 'become-partner',
@@ -165,12 +167,12 @@ export const pricingFaqs: PricingFaq[] = [
   {
     id: 'existing-bookings',
     q: 'When do the new rates start, and what about my existing bookings?',
-    a: `${currentRateNote} ${existingBookingSummary} The rate for each booking is fixed when it is made and shown before you accept it.`,
+    a: `${currentRateNote} ${existingBookingSummary} The amounts for each booking are fixed when it is made and shown before you accept it.`,
   },
   {
     id: 'vat',
-    q: 'Does the commission include VAT?',
-    a: 'Yes. The percentage is everything Velko takes from you: any VAT due on Velko’s commission is included in it. You remain responsible for any taxes due on what you earn.',
+    q: 'Does the service fee include VAT?',
+    a: 'Yes. Any VAT due on Velko’s service fee is included in it. You remain responsible for any taxes due on what you earn.',
   },
 ];
 

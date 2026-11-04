@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { velkoOperator, complaintsBookUrl } from '../../data/velkoOperator';
-import { commissionTiers, exampleRentalPrice, formatEuro, ownerReceives, pricingFaqs, standardTier, currentRateNote, existingBookingSummary, foundingApplicationsOpen } from '../../data/velkoPricing';
+import { commissionTiers, exampleRentalPrice, formatEuro, renterPays, pricingFaqs, standardTier, currentRateNote, existingBookingSummary, foundingApplicationsOpen } from '../../data/velkoPricing';
 
 const strip = ['Kitesurf', 'Surf', 'Wing foil', 'SUP', 'Riders', 'Schools & shops'];
 
@@ -16,7 +16,7 @@ const features = [
   },
   {
     title: 'Money shown honestly',
-    body: 'Rental total, deposit and owner payout are always separate lines. The deposit is held, never added to the rental price, and owners see their commission and exactly what they receive before they publish.',
+    body: 'Rental total, deposit and owner payout are always separate lines. The deposit is held, never added to the rental price, and owners see exactly what they receive and what renters pay before they publish.',
   },
   {
     title: 'Condition on the record',
@@ -103,7 +103,7 @@ const roles = [
     points: [
       'List in minutes, with forms built for each sport',
       'Choose exactly when your gear is available',
-      'See your commission and payout before you publish',
+      'Receive the full price you set, shown before you publish',
       'Get paid out through Stripe',
     ],
     accent: true,
@@ -189,8 +189,8 @@ const structuredData = {
 
 <Layout
   title="Velko — rent water sports gear from local riders."
-  description="Velko is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear in Portugal. Rent from local riders, schools and shops with no renter fees — or list your gear for free and earn when it’s rented."
-  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, list gear for free, earn from your gear, rental commission, Portugal, iOS app, Android app, Velko"
+  description="Velko is a peer-to-peer rental marketplace for kitesurf, surf, wing foil and SUP gear in Portugal. Rent from local riders, schools and shops at prices that already include the service fee — or list your gear for free and earn when it’s rented."
+  keywords="water sports gear rental, kitesurf rental, surfboard rental, wing foil rental, SUP rental, peer-to-peer marketplace, list gear for free, earn from your gear, Portugal, iOS app, Android app, Velko"
   structuredData={structuredData}
   siteName="Velko"
   locale="en_GB"
@@ -427,8 +427,8 @@ const structuredData = {
         That spare kite, the board that only comes out in big swell, the SUPs stacked at the back
         of the school: most gear spends more days dry than wet. Velko puts it in front of riders
         searching the coast you’re on, so it earns while you’re not using it. Listing is free,
-        there’s no subscription, and Velko only takes a commission when a rental goes ahead —
-        you see exactly what you’ll receive before you publish. We’re onboarding the first
+        there’s no subscription, and you receive the full price you set: Velko’s service fee is paid by the
+        renter, only when a rental goes ahead. We’re onboarding the first
         riders, schools and shops in Portugal ahead of launch.
       </p>
     </div>
@@ -458,12 +458,13 @@ const structuredData = {
 <section id="pricing" class="section section--navy">
   <div class="section-inner">
     <div class="section-header">
-      <span class="eyebrow eyebrow--accent">Pricing for owners</span>
-      <h2 class="section-title">One simple commission. Nothing upfront.</h2>
+      <span class="eyebrow eyebrow--accent">Pricing</span>
+      <h2 class="section-title">You keep your price. Nothing upfront.</h2>
       <p class="section-lede">
-        Every owner starts as a Standard Partner at {standardTier.percent}%.
-        Rental businesses, schools, clubs and early partners can apply for a reduced rate.
-        Renters pay the price shown — no service fee on top. {currentRateNote}
+        Owners receive the full price they set. Renters pay Velko’s service fee on top, and every
+        price they see already includes it. Every owner starts as a Standard Partner at {standardTier.percent}%;
+        rental businesses, schools, clubs and early partners can apply for a lower rate, which
+        makes their gear cheaper to rent. {currentRateNote}
         {existingBookingSummary} <a href="/velko/terms/#owner-fees">See eligibility and fee details.</a>
       </p>
     </div>
@@ -474,7 +475,7 @@ const structuredData = {
           <p class="price-tier">{t.name}</p>
           <p class="tier-badge">{t.badge}</p>
           <p class="price-amount tier-rate">
-            <span class="tier-percent">{t.percent}%</span> commission
+            <span class="tier-percent">{t.percent}%</span> service fee
           </p>
           <ul class="price-points">
             {t.bullets.map((b) => (
@@ -482,17 +483,18 @@ const structuredData = {
             ))}
           </ul>
           <p class="tier-example">
-            <span>{formatEuro(exampleRentalPrice)} rental</span>
+            <span>You receive <strong>{formatEuro(exampleRentalPrice)}</strong></span>
             <span aria-hidden="true">→</span>
-            <span>you receive <strong>{formatEuro(ownerReceives(t))}</strong></span>
+            <span>renter pays <strong>{formatEuro(renterPays(t))}</strong></span>
           </p>
         </div>
       ))}
     </div>
 
     <p class="tier-note">
-      The commission is everything Velko takes from you: any VAT due is included, and Stripe’s
-      card processing fees are paid by Velko out of its commission. Payouts reach your bank on
+      The fee includes any VAT due, and Velko pays Stripe’s card processing fees on a rental out of it.
+      It has a minimum that covers Velko’s costs, so it is a higher share on small rentals (for
+      example €5.50 on a €50 rental at the 8% rate). Payouts reach your bank on
       Stripe’s payout schedule. Volume and Founding rates are by approval; Founding Partner
       eligibility and duration follow the published programme terms.
       See <a href="/velko/terms/">the Terms, section 6</a>.
@@ -505,7 +507,7 @@ const structuredData = {
   <div class="section-inner">
     <div class="section-header">
       <span class="eyebrow eyebrow--accent">FAQ</span>
-      <h2 class="section-title">Commission and payouts, answered.</h2>
+      <h2 class="section-title">Fees and payouts, answered.</h2>
     </div>
 
     <div class="faq">
