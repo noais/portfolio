@@ -61,7 +61,7 @@ const capabilities = [
 const proofDomains = ['Automotive', 'Live Video', 'Secure Messaging', 'Health', 'Smart Home', 'Telecom', 'Outdoor Sports'];
 
 const pageTitle = `David Ferreira — ${profile.role}`;
-const pageDescription = `${profile.role} with ${profile.yearsExperience} years in software. Software architecture, real-time systems and engineering leadership at FRiNGE, Volkswagen Group, YEO Messaging and Bosch. Based in Portugal, open to fully remote roles.`;
+const pageDescription = `${profile.role} with ${profile.yearsExperience} years in software. Software architecture, real-time systems and engineering leadership at ABN AMRO, FRiNGE, Volkswagen Group, YEO Messaging and Bosch. Based in Portugal, open to fully remote roles.`;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const year = new Date().getFullYear();
 
       <p class="hero-sub">
         I'm David Ferreira, a <strong>software engineering lead</strong> with {profile.yearsExperience} years in software, from backend
-        platforms to mobile products, and most of the last decade leading teams and releases. I design the architecture, lead the team and ship: most recently at FRiNGE and Volkswagen Group.
+        platforms to mobile products, and most of the last decade leading teams and releases. I design the architecture, lead the team and ship: now at ABN AMRO through Capgemini Engineering, on mobile security and authentication, and before that at FRiNGE and Volkswagen Group.
       </p>
 
       <div class="hero-actions">
@@ -196,7 +196,7 @@ const year = new Date().getFullYear();
           <div class="case-meta">
             <span class="case-tag">{r.tag}</span>
             <span class="lead-period">
-              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – <time datetime={r.end}>{r.period.split(' – ')[1]}</time>
+              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – {r.end ? <time datetime={r.end}>{r.period.split(' – ')[1]}</time> : r.period.split(' – ')[1]}
             </span>
           </div>
           <h3 class="case-title">{r.company}</h3>
@@ -356,7 +356,7 @@ const year = new Date().getFullYear();
         <li class="timeline-item">
           <div class="timeline-meta">
             <span class="timeline-period">
-              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – <time datetime={r.end}>{r.period.split(' – ')[1]}</time>
+              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – {r.end ? <time datetime={r.end}>{r.period.split(' – ')[1]}</time> : r.period.split(' – ')[1]}
             </span>
           </div>
           <div class="timeline-body">
