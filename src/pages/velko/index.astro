@@ -148,6 +148,9 @@ const ownerTypes = [
   },
 ];
 
+// Google Play listing; the iPhone app is still on its way to the App Store.
+const playStoreUrl = 'https://play.google.com/store/apps/details?id=dev.velko.android';
+
 const listMail = `mailto:${velkoOperator.email}?subject=${encodeURIComponent('Listing my gear on Velko')}`;
 
 const app = {
@@ -245,7 +248,8 @@ const structuredData = {
       </p>
 
       <div class="hero-actions">
-        <span class="status-pill"><span class="status-dot"></span>Coming soon to the App Store and Google Play</span>
+        <a href={playStoreUrl} target="_blank" rel="noopener" class="btn-primary">Get it on Google Play</a>
+        <span class="status-pill"><span class="status-dot"></span>Coming soon to the App Store</span>
         <a href="#how" class="btn-ghost">See how it works</a>
       </div>
     </div>
@@ -558,7 +562,8 @@ const structuredData = {
     <span class="eyebrow eyebrow--accent">Get in touch</span>
     <h2 class="get-headline">Life’s better on the water.</h2>
     <p class="get-sub">
-      Velko is launching in Portugal on iPhone and Android. If you run a school or shop, have
+      Velko is live in Portugal on <a href={playStoreUrl} target="_blank" rel="noopener">Google Play</a>, with the iPhone app
+      coming soon to the App Store. If you run a school or shop, have
       gear to share, or want to talk about building something similar, I’d like to hear from you.
     </p>
     <div class="hero-actions">
@@ -744,7 +749,7 @@ const structuredData = {
   transition: background 0.15s;
 }
 .btn-primary:hover { background: #e2fb8c; }
-/* A status, not a button: nothing to click until the app is live */
+/* A status, not a button: nothing to click until the iPhone app is live */
 .status-pill {
   display: inline-flex;
   align-items: center;
