@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { profile, experience, education, community, languages, personSchema } from '../data/profile';
 
-const summary = `${profile.role} with ${profile.yearsExperience} years in software, from backend platforms to mobile products, and most of the last decade leading teams and releases. I own architecture end to end, from concurrency and real-time video to release strategy across multiple teams, and I lead its delivery. My work spans automotive (Volkswagen Group), live video (FRiNGE), secure messaging (YEO Messaging), health (Prozis) and smart home (Bosch).`;
+const summary = `${profile.role} with ${profile.yearsExperience} years in software, from backend platforms to mobile products, and most of the last decade leading teams and releases. I own architecture end to end, from concurrency and real-time video to release strategy across multiple teams, and I lead its delivery. My work spans banking security and authentication (ABN AMRO), automotive (Volkswagen Group), live video (FRiNGE), secure messaging (YEO Messaging), health (Prozis) and smart home (Bosch).`;
 
 const skills = [
   { label: 'Mobile', items: 'Swift 6, Swift Concurrency, SwiftUI, UIKit, Objective-C, App Intents, WidgetKit, watchOS, HomeKit, CoreML, ARKit, Vision' },
@@ -20,7 +20,7 @@ const products = [
 ];
 
 const pageTitle = `${profile.name} — CV · ${profile.role}`;
-const pageDescription = `CV of ${profile.name}, ${profile.role}. ${profile.yearsExperience} years in software; FRiNGE, Volkswagen Group, YEO Messaging, Prozis, Bosch. ${profile.availability}`;
+const pageDescription = `CV of ${profile.name}, ${profile.role}. ${profile.yearsExperience} years in software; ABN AMRO, FRiNGE, Volkswagen Group, YEO Messaging, Prozis, Bosch. ${profile.availability}`;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -80,13 +80,13 @@ const structuredData = {
           <div class="cv-role-head">
             <h3 class="cv-role-title">{r.role} <span class="cv-at">· {r.company}</span></h3>
             <p class="cv-period">
-              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – <time datetime={r.end}>{r.period.split(' – ')[1]}</time>
+              <time datetime={r.start}>{r.period.split(' – ')[0]}</time> – {r.end ? <time datetime={r.end}>{r.period.split(' – ')[1]}</time> : r.period.split(' – ')[1]}
             </p>
           </div>
           <ul class="cv-points">
             {r.highlights.map((h) => <li>{h}</li>)}
           </ul>
-          <p class="cv-stack">{r.stack.join(' · ')}</p>
+          {r.stack.length > 0 && <p class="cv-stack">{r.stack.join(' · ')}</p>}
         </li>
       ))}
     </ol>

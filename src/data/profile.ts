@@ -23,13 +23,26 @@ export interface Role {
   period: string;
   /** ISO year-month, for <time datetime>. */
   start: string;
-  end: string;
+  /** Omitted for the current role, whose period ends in "Present". */
+  end?: string;
   summary: string;
   highlights: string[];
   stack: string[];
 }
 
 export const experience: Role[] = [
+  {
+    company: 'ABN AMRO (through Capgemini Engineering)',
+    role: 'Solution Architect · Mobile Security & Authentication',
+    period: 'Nov 2026 – Present',
+    start: '2026-11',
+    summary: 'Solution design at ABN AMRO through Capgemini Engineering, focused on mobile security, authentication and digital signing.',
+    highlights: [
+      'Solution design for mobile security, authentication and digital signing in ABN AMRO’s digital banking',
+      'Combining solution design, mobile architecture and technical leadership to deliver secure, scalable and reliable digital banking experiences',
+    ],
+    stack: ['Mobile security', 'Authentication', 'Digital signing', 'Solution architecture'],
+  },
   {
     company: 'FRiNGE',
     role: 'Head of Mobile / Lead iOS Engineer',
@@ -148,6 +161,9 @@ export const personSchema = {
   knowsAbout: [
     'Software engineering',
     'Software architecture',
+    'Solution architecture',
+    'Mobile security',
+    'Authentication',
     'Engineering leadership',
     'Mobile development',
     'Real-time systems',

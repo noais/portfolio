@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { profile, experience, personSchema } from '../data/profile';
 
-const trustLogos = ['Volkswagen Group', 'FRiNGE', 'YEO Messaging', 'Prozis', 'Bosch', 'Portugal Telecom'];
+const trustLogos = ['ABN AMRO', 'Volkswagen Group', 'FRiNGE', 'YEO Messaging', 'Prozis', 'Bosch', 'Portugal Telecom'];
 const trustStats = [`${profile.yearsExperience} Years in Software`, 'Software Engineering Lead', 'Mobile & Platform Architecture', 'On-device ML & RAG in production code'];
 
 const services = [
@@ -301,7 +301,7 @@ const structuredData = {
         <li class="timeline-item">
           <div class="timeline-meta">
             <span class="timeline-period">
-              <time datetime={role.start}>{role.period.split(' – ')[0]}</time> – <time datetime={role.end}>{role.period.split(' – ')[1]}</time>
+              <time datetime={role.start}>{role.period.split(' – ')[0]}</time> – {role.end ? <time datetime={role.end}>{role.period.split(' – ')[1]}</time> : role.period.split(' – ')[1]}
             </span>
           </div>
           <div class="timeline-body">
