@@ -4,7 +4,7 @@ import { foundingMigrationSummary, foundingApplicationsSummary, existingBookingS
 import { velkoOperator, complaintsBookUrl } from '../../data/velkoOperator';
 
 // Coordinate app_config.terms_version with this revision before activating the new pricing model.
-const lastUpdated = '17 October 2026';
+const lastUpdated = '4 November 2026';
 const email = velkoOperator.email;
 const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 ---
@@ -100,15 +100,17 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
 
   <h2 id="owner-fees">6. Prices, fees and payouts</h2>
   <ul class="doc-list">
-    <li>Renters pay the rental price shown before they book, which is the total for the rental. Velko doesn't add a fee on top for renters, and the price doesn't depend on how you pay. Any deposit is shown separately (section 8).</li>
+    <li><strong>Renters</strong> pay the price shown before they book, which is the total for the rental: the owner's price plus <strong>Velko's service fee</strong>, which is included in every price shown (in Explore, on the listing and at checkout) and itemised at checkout. Any VAT due on the fee is included in it. The price doesn't depend on how you pay. Any deposit is shown separately (section 8).</li>
     {/* Rates mirror src/data/velkoPricing.ts and the backend commission_tiers table; change them together, with advance notice. */}
-    <li>Velko charges owners a commission, a percentage of the rental price deducted from the rental payment before the owner is paid. Until the new pricing model activates, the current commission remains 8% for every owner. Once it activates, the default rate is 12% (Standard Partners). Founding Partners pay 8% and Volume Partners 10%; these rates are given by Velko's approval, and their eligibility and duration are governed by the published programme terms. Any VAT due on Velko's commission is included in the rate, so it is everything Velko takes from the owner.</li>
-    <li>The commission is only charged when a rental goes ahead. If the renter gets a full refund, Velko gives back its commission and the owner pays nothing on that rental. The rate and the amount the owner receives are shown before a listing is published and on every booking.</li>
+    <li>The service fee is a percentage of the owner's price, set by the owner's partner tier. Until the new pricing model activates, the rate is 8% for every owner. Once it activates, the default rate is 12% (Standard Partners). Founding Partners are at 8% and Volume Partners at 10%; these rates are given by Velko's approval, and their eligibility and duration are governed by the published programme terms.</li>
+    <li>The fee is never less than what processing that rental costs Velko (card and payout fees), with a minimum of €3.50. For example, on a €50 rental the fee is €5.50; from about €90 the percentage applies.</li>
+    <li>Listing is free. <strong>Owners</strong> receive the full price they set for each rental that goes ahead; Velko takes nothing from it. The amount the owner will receive, and what the renter will pay, are shown before a listing is published and on every booking request before the owner accepts it.</li>
     <li>{foundingMigrationSummary}</li>
     <li>{foundingApplicationsSummary} Closing applications does not remove existing Founding Partners’ eligibility.</li>
     <li>{existingBookingSummary}</li>
-    <li>Velko will tell owners about any change to their commission rate in advance, as the law requires.</li>
-    <li>Owners are paid through Stripe. To accept bookings you must set up payouts with Stripe and accept <a href="https://stripe.com/legal/connect-account">Stripe's Connected Account Agreement</a>.</li>
+    <li>Velko pays the card processing costs out of its fee. If a rental is refunded, Velko returns its fee too, but the payment provider doesn't return its card payment fee: who bears it is set out in section 9. Velko gives owners notice of any change to the rates, as the law requires.</li>
+    <li>Owners are paid through Stripe once the gear has been handed over (pickup confirmed in the app), not when they accept. To accept bookings you must set up payouts with Stripe and accept <a href="https://stripe.com/legal/connect-account">Stripe's Connected Account Agreement</a>.</li>
+    <li>If a renter's bank reverses a payment (a chargeback) and the dispute is lost, the owner pays back what they received from that payment and the provider's dispute fee (€20). Until they pay it by card in the app they can't publish listings or accept bookings, and any payout that falls due first is used for it. Velko waives this where the owner wasn't at fault, for example a stolen card. Nothing is paid out from a payment while a chargeback on it is open.</li>
     <li>You are responsible for any taxes due on what you earn.</li>
   </ul>
 
@@ -133,8 +135,8 @@ const mail = (subject: string) => `mailto:${email}?subject=${encodeURIComponent(
 
   <h2>9. Cancellations</h2>
   <ul class="doc-list">
-    <li><strong>Renters</strong> can cancel a request at any time for free. After the owner accepts, cancelling is free until 48 hours before pickup and the rental price is refunded in full; after that, it isn't refunded.</li>
-    <li><strong>Owners</strong> can cancel an accepted booking, and the renter is always refunded in full. Owners who cancel repeatedly may lose access to lending.</li>
+    <li><strong>Renters</strong> can cancel a request at any time for free. After the owner accepts, you can cancel until 48 hours before pickup: the rental price is refunded <strong>less the card payment fee</strong> charged when it was paid, which the payment provider doesn't return (for example €1.00 on a €50 rental paid by a European card). The checkout shows this before you book. After that, it isn't refunded.</li>
+    <li><strong>Owners</strong> can cancel an accepted booking, and the renter is always refunded in full. To cancel, the owner first pays by card the payment fee that refund costs (for example €1.30 on a €50 rental); the app shows the amount before they confirm. Owners who cancel repeatedly may lose access to lending.</li>
     <li>The exact refund is shown in the app before you confirm a cancellation.</li>
   </ul>
 
