@@ -1,0 +1,72 @@
+---
+import FunnitDoc from '../../layouts/FunnitDoc.astro';
+import { velkoOperator as operator } from '../../data/velkoOperator';
+
+const email = operator.email;
+const supportMail = `mailto:${email}?subject=${encodeURIComponent('Funnit: apoio')}`;
+
+const faqs = [
+  {
+    q: 'Porque não vejo atividades na minha zona?',
+    a: 'O Funnit só mostra na página inicial as atividades cuja fonte indica uma idade que inclui a da criança e um local dentro do teu raio. Muitas agendas não indicam a idade; essas aparecem na pesquisa se ligares «Incluir idade ou preço por confirmar». Se a app disser «Ainda não há fontes para esta zona», ainda não lemos nenhuma agenda dessa zona: escreve-nos e diz-nos qual é a agenda da tua câmara.',
+  },
+  {
+    q: 'A informação de uma atividade está errada.',
+    a: 'A informação vem da fonte original e pode mudar. Confirma sempre na fonte antes de saíres. Se encontrares um erro, envia-nos o nome da atividade e o que está errado, e corrigimos a leitura dessa fonte.',
+  },
+  {
+    q: 'Porque é que a distância não corresponde ao caminho?',
+    a: 'A distância é em linha reta entre o teu ponto de partida e o local da atividade. Não indica o tempo de viagem.',
+  },
+  {
+    q: 'O que inclui o Funnit Premium?',
+    a: 'As notificações (resumos diários ou semanais, alertas de novidades, alterações e lembretes de atividades guardadas, inscrições a terminar e alertas extra, por exemplo para as férias ou para um irmão), a exportação para o calendário e atividades guardadas sem limite. Descobrir, pesquisar e o mapa são sempre gratuitos.',
+  },
+  {
+    q: 'Como cancelo a subscrição?',
+    a: 'No iPhone: Definições → o teu nome → Subscrições → Funnit. No Android: Google Play → o teu perfil → Pagamentos e subscrições → Subscrições → Funnit. Desinstalar a app não cancela a subscrição. O Premium mantém-se até ao fim do período pago.',
+  },
+  {
+    q: 'Mudei de telemóvel. Como recupero o Premium?',
+    a: 'Abre Funnit → Preferências → Funnit Premium e toca em «Restaurar compras», com o mesmo Apple ID ou a mesma conta Google com que subscreveste. Como não há contas, o perfil e as atividades guardadas não passam de um telemóvel para o outro.',
+  },
+  {
+    q: 'Não recebo notificações.',
+    a: 'Confirma que o Premium está ativo, que as notificações estão ligadas em Funnit → Preferências → Notificações e nas definições do telemóvel. Os envios entre as 20:00 e as 08:00 ficam para as 08:00. Um resumo só é enviado quando há atividades que encaixam nos teus critérios.',
+  },
+  {
+    q: 'Como apago os meus dados?',
+    a: 'Desligar as notificações na app apaga tudo o que o servidor tem sobre a tua instalação. O resto está só no telemóvel e apaga-se ao desinstalar a app. Vê a política de privacidade.',
+  },
+  {
+    q: 'Organizo atividades para crianças. Como apareço no Funnit?',
+    a: 'Se publicas as tuas atividades num site com agenda, envia-nos o endereço. Lemos agendas públicas e indicamos sempre a fonte, com ligação para o teu site.',
+  },
+];
+---
+
+<FunnitDoc
+  title="Funnit — Apoio"
+  description="Ajuda com o Funnit: atividades, distâncias, notificações e a subscrição Premium."
+  heading="Apoio"
+>
+  <p class="doc-lead">
+    Tens uma dúvida ou encontraste um problema? Escreve para
+    <a href={supportMail}>{email}</a>. Respondemos normalmente em dois dias úteis. Diz-nos se usas
+    iPhone ou Android e, se for o caso, o nome da atividade.
+  </p>
+
+  <h2>Perguntas frequentes</h2>
+  <div class="faq">
+    {faqs.map((f) => (
+      <details>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <p class="doc-note">
+    <a href="/funnit/privacy/">Política de privacidade</a> · <a href="/funnit/terms/">Termos de utilização</a>
+  </p>
+</FunnitDoc>

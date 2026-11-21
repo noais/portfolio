@@ -1,0 +1,142 @@
+---
+import FunnitDoc from '../../layouts/FunnitDoc.astro';
+import { velkoOperator as operator } from '../../data/velkoOperator';
+
+const lastUpdated = '21 de novembro de 2026';
+const email = operator.email;
+const privacyMail = `mailto:${email}?subject=${encodeURIComponent('Funnit: privacidade')}`;
+---
+
+<FunnitDoc
+  title="Funnit — Política de privacidade"
+  description="Como o Funnit, a app de atividades para crianças em Portugal, trata os teus dados: sem contas, sem publicidade e com o perfil guardado no teu telemóvel."
+  heading="Política de privacidade"
+  lastUpdated={lastUpdated}
+>
+  <p class="doc-lead">
+    O Funnit ajuda pais e cuidadores a encontrar atividades para os filhos por idade, interesses
+    e distância, e envia-os para a fonte original de cada atividade. Não tem contas nem
+    publicidade. O perfil da criança fica no teu telemóvel. Só sai dele o que é preciso para te
+    mostrar as atividades da tua zona e, se as ativares, para te enviar notificações.
+  </p>
+
+  <h2>Quem é responsável</h2>
+  <p>
+    O Funnit é explorado pela {operator.name} (NIPC {operator.nipc}), {operator.address}, que
+    é a responsável pelo tratamento dos teus dados pessoais nos termos do Regulamento Geral
+    sobre a Proteção de Dados (RGPD). Podes contactar-nos sobre qualquer assunto desta política
+    através de <a href={privacyMail}>{email}</a> ou por correio para a morada acima.
+  </p>
+
+  <h2>O que fica só no teu telemóvel</h2>
+  <ul class="doc-list">
+    <li><strong>O perfil:</strong> a idade da criança (em anos inteiros, de 0 a 17), os interesses que escolheste, o ponto de partida e o raio de pesquisa. Nunca pedimos o nome, a fotografia ou a data de nascimento da criança.</li>
+    <li><strong>As atividades guardadas</strong> e as tuas preferências.</li>
+  </ul>
+  <p>
+    Estes dados não são enviados para nenhum servidor enquanto não ativares as notificações.
+    Apagam-se quando desinstalas a app.
+  </p>
+
+  <h2>O que o Funnit envia para o servidor</h2>
+  <h3>Para mostrar atividades</h3>
+  <p>
+    Para obter as atividades, a app envia ao servidor do Funnit os códigos dos concelhos que
+    ficam dentro do teu raio (por exemplo, «Lisboa» e «Oeiras»). Não envia as tuas coordenadas
+    nem a idade da criança: a escolha das atividades certas para o teu perfil é feita no
+    telemóvel.
+  </p>
+  <h3>Se ativares as notificações (Premium)</h3>
+  <p>
+    Para te avisar de atividades novas que encaixam no teu perfil, o servidor precisa de saber o
+    que procurar. Quando ativas as notificações, a app envia:
+  </p>
+  <ul class="doc-list">
+    <li>um identificador aleatório da instalação, criado pela app, que não te identifica;</li>
+    <li>o endereço de entrega das notificações do teu telemóvel (um token da Apple ou da Google);</li>
+    <li>os critérios das notificações: idade da criança, interesses, ponto de partida aproximado (arredondado a cerca de 1 km), raio, fuso horário, frequência e horário dos resumos, e os alertas extra que criares;</li>
+    <li>os identificadores das atividades guardadas, se ligares «Alterações em guardados» ou os lembretes;</li>
+    <li>o registo da subscrição Premium, assinado pela Apple ou pela Google, para confirmarmos que está ativa. Este registo identifica uma compra, não uma pessoa: não recebemos o teu nome, e-mail nem dados de pagamento.</li>
+  </ul>
+  <p>
+    Quando desligas as notificações na app, a instalação e tudo o que lhe está associado
+    (critérios, atividades vigiadas, resumos enviados e registos de entrega) são apagados do
+    servidor.
+  </p>
+
+  <h3>Localização</h3>
+  <p>
+    A app só pede acesso à localização quando tocas em «Usar a minha localização», e apenas a
+    localização aproximada. O ponto é arredondado a cerca de 1 km e guardado no telemóvel como
+    ponto de partida. Podes sempre escrever uma zona à mão em vez disso. Não há localização em
+    segundo plano.
+  </p>
+
+  <h2>O que o Funnit não faz</h2>
+  <ul class="doc-list">
+    <li>Não tem contas nem início de sessão.</li>
+    <li>Não tem publicidade nem identificadores de publicidade.</li>
+    <li>Não segue a tua atividade noutras apps ou sites e não usa SDKs de análise.</li>
+    <li>Não vende nem cede os teus dados a ninguém.</li>
+    <li>Não usa a idade da criança, nem qualquer outro dado do perfil, para gerar receita.</li>
+  </ul>
+
+  <h2>Porque os tratamos</h2>
+  <ul class="doc-list">
+    <li><strong>Para prestar o serviço</strong> (execução de contrato, art. 6.º, n.º 1, al. b) do RGPD): mostrar as atividades da tua zona, enviar as notificações que pediste e confirmar a tua subscrição.</li>
+    <li><strong>Consentimento</strong> (art. 6.º, n.º 1, al. a)): a localização aproximada e as notificações, pedidas pelas autorizações do próprio telemóvel. Podes retirá-lo a qualquer momento nas definições do telemóvel ou desligando as notificações na app, sem afetar o que foi feito antes.</li>
+    <li><strong>Interesse legítimo</strong> (art. 6.º, n.º 1, al. f)): manter o servidor seguro e a funcionar, através de registos técnicos dos pedidos.</li>
+  </ul>
+
+  <h2>Quem mais intervém</h2>
+  <ul class="doc-list">
+    <li><strong>Cloudflare</strong>: protege e encaminha os pedidos ao servidor do Funnit e, como qualquer rede, vê o endereço IP de quem faz o pedido.</li>
+    <li><strong>Apple</strong>: entrega as notificações no iPhone (Apple Push Notification service), processa as compras na App Store e, no iPhone, fornece o mapa e a pesquisa de lugares.</li>
+    <li><strong>Google</strong>: entrega as notificações no Android (Firebase Cloud Messaging), processa as compras no Google Play e, no Android, converte o nome de um lugar em coordenadas.</li>
+    <li><strong>OpenStreetMap</strong>: no Android, os mosaicos do mapa vêm dos servidores do OpenStreetMap, que veem o endereço IP de quem os pede.</li>
+    <li><strong>As fontes das atividades</strong>: as fotografias das atividades são carregadas diretamente do site de cada fonte (por exemplo, a agenda de uma câmara municipal), que vê o endereço IP do teu telemóvel. Quando abres uma atividade na fonte original, passas a estar sujeito à política de privacidade desse site.</li>
+  </ul>
+  <p>
+    Alguns destes prestadores são norte-americanos ou podem aceder a dados a partir dos Estados
+    Unidos. Quando estão certificados ao abrigo do EU–US Data Privacy Framework, a transferência
+    assenta na decisão de adequação da Comissão Europeia; caso contrário, nas cláusulas
+    contratuais-tipo da Comissão.
+  </p>
+
+  <h2>Durante quanto tempo</h2>
+  <ul class="doc-list">
+    <li><strong>No telemóvel:</strong> até apagares a app ou os dados nela.</li>
+    <li><strong>No servidor, com as notificações ligadas:</strong> enquanto estiverem ligadas. Ao desligá-las, tudo é apagado de imediato. Se apagares a app sem as desligar primeiro, escreve-nos e apagamos a instalação.</li>
+  </ul>
+
+  <h2>Os teus direitos</h2>
+  <p>
+    Podes pedir acesso aos teus dados, a sua retificação, apagamento, limitação ou
+    portabilidade, e opor-te ao tratamento baseado em interesse legítimo. Como não há contas, a
+    forma mais rápida é desligar as notificações na app, que apaga tudo o que o servidor tem.
+    Para qualquer outro pedido, escreve para <a href={privacyMail}>{email}</a> e respondemos
+    no prazo de um mês. Se não ficares satisfeito, podes apresentar queixa à
+    <a href="https://www.cnpd.pt">Comissão Nacional de Proteção de Dados (CNPD)</a>.
+  </p>
+
+  <h2>Crianças</h2>
+  <p>
+    O Funnit destina-se a pais e cuidadores adultos, não a crianças. A única informação sobre a
+    criança é a idade em anos, que não a identifica.
+  </p>
+
+  <h2>Este site</h2>
+  <p>
+    As páginas do Funnit em davidferreira.dev são um site estático alojado no GitHub Pages. O
+    GitHub regista dados técnicos dos pedidos (como o endereço IP e o navegador) para entregar e
+    proteger o site; consulta a
+    <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">declaração de privacidade do GitHub</a>.
+    O site não usa cookies, análise nem rastreadores.
+  </p>
+
+  <h2>Alterações</h2>
+  <p>
+    Se esta política mudar, a nova versão é publicada aqui com uma nova data no topo, e as
+    alterações importantes são anunciadas na app.
+  </p>
+</FunnitDoc>

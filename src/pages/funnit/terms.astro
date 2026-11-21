@@ -1,0 +1,91 @@
+---
+import FunnitDoc from '../../layouts/FunnitDoc.astro';
+import { velkoOperator as operator, complaintsBookUrl } from '../../data/velkoOperator';
+
+const lastUpdated = '21 de novembro de 2026';
+const email = operator.email;
+---
+
+<FunnitDoc
+  title="Funnit — Termos de utilização"
+  description="Os termos de utilização do Funnit e da subscrição Funnit Premium."
+  heading="Termos de utilização"
+  lastUpdated={lastUpdated}
+>
+  <p class="doc-lead">
+    Estes termos aplicam-se à app Funnit, para iPhone e Android, e à subscrição Funnit Premium.
+    Ao usar a app aceitas estes termos. O Funnit é explorado pela {operator.name}
+    (NIPC {operator.nipc}), {operator.address}.
+  </p>
+
+  <h2>O que o Funnit é</h2>
+  <p>
+    O Funnit reúne atividades para crianças publicadas por terceiros (câmaras municipais,
+    teatros, museus, bibliotecas, bilheteiras e outros organizadores) e mostra-as de acordo com
+    a idade, os interesses e a distância que escolheste. O Funnit não organiza nem vende as
+    atividades: para te inscreveres, comprares bilhete ou confirmares detalhes, segues para a
+    fonte original.
+  </p>
+
+  <h2>A informação das atividades</h2>
+  <p>
+    Fazemos o possível para que a informação esteja certa e atualizada, mas ela vem das fontes e
+    pode mudar ou conter erros. Datas, horários, preços, idades e locais devem ser confirmados
+    na fonte original antes de saíres de casa. Quando um dado não é conhecido, a app diz «por
+    confirmar» em vez de o inventar. As distâncias são em linha reta e não indicam tempo de
+    viagem. O Funnit não é responsável pelas atividades em si, pela sua segurança, nem por
+    alterações ou cancelamentos feitos pelos organizadores.
+  </p>
+  <p>
+    A ordem dos resultados é sempre a mesma para todos: primeiro a atividade que começa mais
+    cedo, depois a mais próxima. Ninguém paga para aparecer primeiro.
+  </p>
+
+  <h2>Funnit Premium</h2>
+  <p>
+    Descobrir, pesquisar e o mapa são gratuitos. O Funnit Premium é uma subscrição opcional que
+    acrescenta as notificações (resumos, alertas de novidades, alterações e lembretes de
+    atividades guardadas, inscrições a terminar e alertas extra), a exportação para o calendário
+    e atividades guardadas sem limite.
+  </p>
+  <ul class="doc-list">
+    <li>Há uma subscrição mensal e uma anual. O preço, com IVA incluído, aparece na app antes de confirmares a compra.</li>
+    <li>O pagamento é cobrado na tua conta Apple ID ou Google Play quando confirmas a compra.</li>
+    <li>A subscrição renova-se automaticamente pelo mesmo período e preço, a menos que a canceles pelo menos 24 horas antes do fim do período em curso. A renovação é cobrada nas 24 horas anteriores ao fim do período.</li>
+    <li>Geres ou cancelas a subscrição nas definições da tua conta da App Store (Definições → o teu nome → Subscrições) ou do Google Play (Pagamentos e subscrições → Subscrições). Desinstalar a app não cancela a subscrição.</li>
+    <li>Ao cancelar, o Premium mantém-se até ao fim do período já pago. O que guardaste nunca se perde, mesmo depois de o Premium terminar.</li>
+    <li>Os reembolsos são tratados pela Apple ou pela Google, segundo as regras de cada loja.</li>
+  </ul>
+  <p>
+    No iPhone aplica-se também o
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Contrato de Licença de Utilizador Final padrão da Apple</a>.
+    Em caso de conflito, prevalecem estes termos, na medida em que a lei o permita.
+  </p>
+
+  <h2>Utilização aceitável</h2>
+  <p>
+    Usa o Funnit para fins pessoais e não comerciais. Não tentes copiar o catálogo de forma
+    sistemática, sobrecarregar o servidor ou contornar a verificação da subscrição.
+  </p>
+
+  <h2>Privacidade</h2>
+  <p>
+    O Funnit não tem contas e guarda o perfil no teu telemóvel. A <a href="/funnit/privacy/">política de privacidade</a>
+    explica o que sai do telemóvel e porquê.
+  </p>
+
+  <h2>Responsabilidade</h2>
+  <p>
+    O Funnit é fornecido tal como está. Na medida máxima permitida por lei, não respondemos por
+    danos indiretos resultantes do uso da app ou da informação de terceiros nela apresentada.
+    Nada nestes termos limita os teus direitos enquanto consumidor ao abrigo da lei portuguesa.
+  </p>
+
+  <h2>Alterações e contacto</h2>
+  <p>
+    Podemos atualizar estes termos; a versão em vigor está sempre nesta página, com a data no
+    topo. Para dúvidas ou reclamações, escreve para <a href={`mailto:${email}`}>{email}</a>. Podes
+    também usar o <a href={complaintsBookUrl}>Livro de Reclamações eletrónico</a>. Estes termos
+    regem-se pela lei portuguesa.
+  </p>
+</FunnitDoc>

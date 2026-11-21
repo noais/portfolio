@@ -1,0 +1,38 @@
+---
+import FunnitDoc from '../../layouts/FunnitDoc.astro';
+import { velkoOperator as operator } from '../../data/velkoOperator';
+
+const features = [
+  ['Pela idade certa', 'Diz a idade da criança e o que ela gosta. A página inicial só mostra o que a fonte confirma ser para essa idade.'],
+  ['Perto de ti', 'Escolhe o ponto de partida e o raio. Vês a distância em linha reta e as atividades no mapa.'],
+  ['Sempre da fonte', 'Cada atividade leva-te à agenda original, da câmara, do teatro ou do museu, para confirmares e te inscreveres.'],
+  ['Honesto com o que não se sabe', 'Idade, preço ou horário por confirmar aparecem como tal. Nada é inventado, e ninguém paga para aparecer primeiro.'],
+  ['Sem conta', 'O perfil e as atividades guardadas ficam no teu telemóvel. Não há registo nem publicidade.'],
+  ['Funnit Premium', 'Resumos e alertas quando surge algo para a idade da criança, lembretes das atividades guardadas e exportação para o calendário.'],
+];
+---
+
+<FunnitDoc
+  title="Funnit — Atividades para crianças perto de ti"
+  description="Encontra atividades para a tua criança em Portugal, por idade, interesses e distância, a partir das agendas oficiais."
+  heading="Atividades para crianças, perto de ti"
+>
+  <img src="/funnit/app-icon.png" alt="" width="96" height="96" style="border-radius: 22px; margin: 0 0 1.5rem;" />
+  <p class="doc-lead">
+    O Funnit junta as agendas de câmaras municipais, teatros, museus e bibliotecas de todo o
+    país e mostra-te o que há para a idade da tua criança, perto de casa. Gratuito para
+    descobrir, pesquisar e ver no mapa. Disponível em Portugal, para iPhone e Android.
+  </p>
+
+  {features.map(([title, text]) => (
+    <>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </>
+  ))}
+
+  <p class="doc-note">
+    <a href="/funnit/support/">Apoio</a> · <a href="/funnit/privacy/">Política de privacidade</a> ·
+    <a href="/funnit/terms/">Termos de utilização</a> · {operator.email}
+  </p>
+</FunnitDoc>

@@ -1,0 +1,264 @@
+---
+// Shell for Funnit's policy and support pages, in European Portuguese (the app is
+// Portugal only): the site's navy layout with Funnit's lima + sálvia accents.
+import Layout from './Layout.astro';
+import { velkoOperator as operator, complaintsBookUrl } from '../data/velkoOperator';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  lastUpdated?: string;
+}
+
+const { title, description, heading, lastUpdated } = Astro.props;
+---
+
+<Layout
+  title={title}
+  description={description}
+  siteName="Funnit"
+  locale="pt_PT"
+  lang="pt-PT"
+  ogImage="/funnit/app-icon.png"
+  ogImageAlt="Ícone do Funnit"
+  ogImageWidth={512}
+  ogImageHeight={512}
+  twitterCard="summary"
+  favicon="/funnit/favicon-64.png"
+  appleTouchIcon="/funnit/apple-touch-icon.png"
+>
+
+<header class="nav-shell">
+  <nav class="nav-inner">
+    <a href="/" class="nav-logo">DF</a>
+    <ul class="nav-links">
+      <li><a href="/funnit/">Funnit</a></li>
+      <li><a href="/funnit/support/">Apoio</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="doc">
+  <div class="doc-inner">
+    <span class="eyebrow">Funnit</span>
+    <h1 class="doc-title">{heading}</h1>
+    {lastUpdated && <p class="doc-meta">Última atualização: {lastUpdated}</p>}
+    <slot />
+  </div>
+</main>
+
+<footer class="footer">
+  <p class="footer-links">
+    <a href="/funnit/">Funnit</a>
+    <span aria-hidden="true">·</span>
+    <a href="/funnit/support/">Apoio</a>
+    <span aria-hidden="true">·</span>
+    <a href="/funnit/privacy/">Privacidade</a>
+    <span aria-hidden="true">·</span>
+    <a href="/funnit/terms/">Termos</a>
+    <span aria-hidden="true">·</span>
+    <a href={complaintsBookUrl}>Livro de Reclamações</a>
+  </p>
+  <p>{operator.name} · NIPC {operator.nipc} · {operator.address} · <span id="year"></span></p>
+  <script>document.getElementById('year').textContent = new Date().getFullYear().toString();</script>
+</footer>
+
+</Layout>
+
+<style is:global>
+:root { --accent: #E0E8BA; --accent-2: #9CC7B4; }
+
+/* ── Nav ───────────────────────────────────────────────────────── */
+.nav-shell {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(13,15,26,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(237,233,226,0.07);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0; padding: 0;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ── Document ─────────────────────────────────────────────────── */
+.doc { padding: 140px 0 100px; }
+.doc-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  margin-bottom: 0.75rem;
+}
+.doc-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 0.75rem;
+  line-height: 1.1;
+}
+.doc-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(237,233,226,0.30);
+  margin: 0 0 2.5rem;
+}
+.doc-lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(237,233,226,0.75);
+  margin: 0 0 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(237,233,226,0.08);
+}
+.doc-inner h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 2.75rem 0 0.875rem;
+  line-height: 1.25;
+}
+.doc-inner h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 1.75rem 0 0.5rem;
+}
+.doc-inner p {
+  font-size: 0.9875rem;
+  line-height: 1.75;
+  color: rgba(237,233,226,0.55);
+  margin: 0 0 1rem;
+}
+.doc-inner a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(224,232,186,0.85);
+}
+.doc-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.doc-list li {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(237,233,226,0.65);
+  padding-left: 1.25rem;
+  position: relative;
+}
+.doc-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.doc-note {
+  margin-top: 3.5rem !important;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(237,233,226,0.08);
+  font-size: 0.8125rem !important;
+  color: rgba(237,233,226,0.30) !important;
+}
+
+/* ── FAQ ──────────────────────────────────────────────────────── */
+.faq { margin: 0 0 1rem; }
+.faq details {
+  border-bottom: 1px solid rgba(237,233,226,0.08);
+  padding: 1.1rem 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--accent); flex-shrink: 0; }
+.faq details[open] summary::after { content: '−'; }
+.faq details p { margin: 0.75rem 0 0; }
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(237,233,226,0.05);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(237,233,226,0.22);
+}
+.footer p { margin: 0; }
+.footer-links {
+  margin-bottom: 0.5rem !important;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.footer a {
+  color: rgba(237,233,226,0.45);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer a:hover { color: var(--ink); }
+
+@media (max-width: 600px) {
+  .doc { padding: 110px 0 72px; }
+  .nav-links { gap: 1rem; }
+  .doc-inner { padding: 0 1rem; }
+}
+</style>
