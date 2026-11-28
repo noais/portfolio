@@ -148,7 +148,8 @@ const ownerTypes = [
   },
 ];
 
-// Google Play listing; the iPhone app is still on its way to the App Store.
+// Store listings. Both apps are available in Portugal only for now.
+const appStoreUrl = 'https://apps.apple.com/us/app/velko-surf-kite-gear-rental/id6829442646';
 const playStoreUrl = 'https://play.google.com/store/apps/details?id=dev.velko.android';
 
 const listMail = `mailto:${velkoOperator.email}?subject=${encodeURIComponent('Listing my gear on Velko')}`;
@@ -248,8 +249,8 @@ const structuredData = {
       </p>
 
       <div class="hero-actions">
+        <a href={appStoreUrl} target="_blank" rel="noopener" class="btn-primary">Download on the App Store</a>
         <a href={playStoreUrl} target="_blank" rel="noopener" class="btn-primary">Get it on Google Play</a>
-        <span class="status-pill"><span class="status-dot"></span>Coming soon to the App Store</span>
         <a href="#how" class="btn-ghost">See how it works</a>
       </div>
     </div>
@@ -562,8 +563,8 @@ const structuredData = {
     <span class="eyebrow eyebrow--accent">Get in touch</span>
     <h2 class="get-headline">Life’s better on the water.</h2>
     <p class="get-sub">
-      Velko is live in Portugal on <a href={playStoreUrl} target="_blank" rel="noopener">Google Play</a>, with the iPhone app
-      coming soon to the App Store. If you run a school or shop, have
+      Velko is live in Portugal on the <a href={appStoreUrl} target="_blank" rel="noopener">App Store</a> and
+      <a href={playStoreUrl} target="_blank" rel="noopener">Google Play</a>. If you run a school or shop, have
       gear to share, or want to talk about building something similar, I’d like to hear from you.
     </p>
     <div class="hero-actions">
