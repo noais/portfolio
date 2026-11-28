@@ -11,8 +11,8 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
     a: 'Pick your dates and send a request. Your card is authorised for the rental price but not charged. The owner has 72 hours to accept. If they accept, you are charged and the exact pickup point unlocks in your rental. If they decline or don’t answer, the authorisation is released and you pay nothing.',
   },
   {
-    q: 'Are there any fees for renters?',
-    a: 'No. You pay the rental price shown before you book, with no service fee on top. Velko’s commission is paid by the owner out of the price, so nothing is added for you.',
+    q: 'Is there a fee for renters?',
+    a: 'Yes, Velko’s service fee, and it’s already included in every price you see. Checkout shows it as its own line, and nothing else is added at the end. If you cancel an accepted booking, the card payment fee is kept back from your refund; checkout shows this before you book.',
   },
   {
     q: 'How does the deposit work?',
@@ -32,9 +32,9 @@ const faqs: { q: string; a: string; link?: { href: string; label: string } }[] =
   },
   {
     q: 'How do I get paid for lending gear?',
-    a: 'Go to Profile → Payments & payouts and set up payouts with Stripe. You need this before you can accept a booking. Your share of each rental is paid to your Stripe account when you accept the booking, and Stripe pays it out to your bank on Stripe’s payout schedule. Velko’s commission and the amount you’ll receive are shown before you publish a listing and on every booking.',
+    a: 'Go to Profile → Payments & payouts and set up payouts with Stripe. You need this before you can accept a booking. The price you set is paid to your Stripe account once the gear has been handed over (pickup confirmed in the app), and Stripe pays it out to your bank on Stripe’s payout schedule. What you’ll receive is shown before you publish a listing and on every booking.',
   },
-  // Owner commission entries, shared with the landing page FAQ.
+  // Owner fee entries, shared with the landing page FAQ.
   pricingFaq('commission'),
   pricingFaq('when-charged'),
   pricingFaq('become-partner'),
